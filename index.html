@@ -95,7 +95,7 @@
 <body class="bg-background text-neutral overflow-x-hidden">
 
     <!-- Top Sticky Glass Navbar Placeholder -->
-    <div id="navbar-placeholder"></div>
+    <div id="navbar-placeholder" class="fixed top-0 left-0 right-0 z-50 pointer-events-none w-full"></div>
 
     <!-- Hero Section -->
     <section class="relative px-6 md:px-12 pt-16 md:pt-24 pb-20 overflow-hidden">
@@ -260,95 +260,109 @@
             </h2>
         </div>
 
-        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-wrap justify-center gap-8 pb-16 lg:pb-32">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-wrap justify-center gap-x-8 gap-y-12 lg:gap-y-24 pb-16 lg:pb-32">
             
             <!-- Card 1: Ms Office (Staggered Higher) -->
-            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-0 min-h-[240px]">
-                <div class="space-y-6">
-                    <div class="w-12 h-12 rounded-2xl bg-primary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
-                        <span class="material-symbols-outlined text-white text-xl font-bold">description</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Ms Office</h3>
-                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Excel, Word, Powerpoint expert.</p>
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none lg:translate-y-0">
+                <div class="w-full bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all min-h-[240px]">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-2xl bg-primary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                            <span class="material-symbols-outlined text-white text-xl font-bold">description</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Ms Office</h3>
+                            <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Excel, Word, Powerpoint expert.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 2: Bahasa Inggris (Staggered Lower) -->
-            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-8 min-h-[240px]">
-                <div class="space-y-6">
-                    <div class="w-12 h-12 rounded-2xl bg-secondary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
-                        <span class="material-symbols-outlined text-neutral text-xl font-bold">language</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Bahasa Inggris</h3>
-                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Daily conversation & TOEFL.</p>
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none lg:translate-y-8">
+                <div class="w-full bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all min-h-[240px]">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-2xl bg-secondary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                            <span class="material-symbols-outlined text-neutral text-xl font-bold">language</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Bahasa Inggris</h3>
+                            <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Daily conversation & TOEFL.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 3: Komputer Dasar (Staggered Higher) -->
-            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-0 min-h-[240px]">
-                <div class="space-y-6">
-                    <div class="w-12 h-12 rounded-2xl bg-tertiary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
-                        <span class="material-symbols-outlined text-white text-xl font-bold">computer</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Komputer Dasar</h3>
-                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Kuasai dasar hardware & software.</p>
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none lg:translate-y-0">
+                <div class="w-full bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all min-h-[240px]">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-2xl bg-tertiary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                            <span class="material-symbols-outlined text-white text-xl font-bold">computer</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Komputer Dasar</h3>
+                            <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Kuasai dasar hardware & software.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 4: Canva & Design (Staggered Lower) -->
-            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-8 min-h-[240px]">
-                <div class="space-y-6">
-                    <div class="w-12 h-12 rounded-2xl bg-[#FFB4A6] border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
-                        <span class="material-symbols-outlined text-neutral text-xl font-bold">palette</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Canva & Design</h3>
-                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Visual branding yang estetik.</p>
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none lg:translate-y-8">
+                <div class="w-full bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all min-h-[240px]">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-2xl bg-[#FFB4A6] border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                            <span class="material-symbols-outlined text-neutral text-xl font-bold">palette</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Canva & Design</h3>
+                            <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Visual branding yang estetik.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 5: Internet Productivity (Staggered Higher) -->
-            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-0 min-h-[240px]">
-                <div class="space-y-6">
-                    <div class="w-12 h-12 rounded-2xl bg-primary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
-                        <span class="material-symbols-outlined text-white text-xl font-bold">bolt</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Internet Productivity</h3>
-                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Browsing cerdas & tools kolaborasi.</p>
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none lg:translate-y-0">
+                <div class="w-full bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all min-h-[240px]">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-2xl bg-primary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                            <span class="material-symbols-outlined text-white text-xl font-bold">bolt</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Internet Productivity</h3>
+                            <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Browsing cerdas & tools kolaborasi.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 6: Public Speaking (Staggered Lower) -->
-            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-8 min-h-[240px]">
-                <div class="space-y-6">
-                    <div class="w-12 h-12 rounded-2xl bg-secondary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
-                        <span class="material-symbols-outlined text-neutral text-xl font-bold">record_voice_over</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Public Speaking</h3>
-                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Berani bicara di depan umum.</p>
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none lg:translate-y-8">
+                <div class="w-full bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all min-h-[240px]">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-2xl bg-secondary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                            <span class="material-symbols-outlined text-neutral text-xl font-bold">record_voice_over</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Public Speaking</h3>
+                            <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Berani bicara di depan umum.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 7: Persiapan Kerja (Staggered Higher) -->
-            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-0 min-h-[240px]">
-                <div class="space-y-6">
-                    <div class="w-12 h-12 rounded-2xl bg-tertiary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
-                        <span class="material-symbols-outlined text-white text-xl font-bold">work</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Persiapan Kerja</h3>
-                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">CV ATS friendly & interview hack.</p>
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none lg:translate-y-0">
+                <div class="w-full bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all min-h-[240px]">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-2xl bg-tertiary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                            <span class="material-symbols-outlined text-white text-xl font-bold">work</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Persiapan Kerja</h3>
+                            <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">CV ATS friendly & interview hack.</p>
+                        </div>
                     </div>
                 </div>
             </div>

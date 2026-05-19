@@ -4,30 +4,61 @@
  * Bypasses fetch on file:// protocol to avoid Chrome CORS console errors
  */
 document.addEventListener('DOMContentLoaded', () => {
+    // Ensure sticky floating navbar pointer-events and positioning work flawlessly on all browsers
+    const style = document.createElement('style');
+    style.textContent = `
+        #navbar-placeholder {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 9999 !important;
+            pointer-events: none !important;
+            width: 100% !important;
+        }
+        #navbar-placeholder nav {
+            pointer-events: auto !important;
+        }
+    `;
+    document.head.appendChild(style);
     // Hardcoded Fallbacks for offline/local file:// access
     const navbarFallback = `
-    <nav class="bg-white/80 backdrop-blur-xl rounded-full mt-4 mx-4 md:mx-auto max-w-7xl sticky top-4 border border-neutral/15 shadow-premium flex justify-between items-center px-6 md:px-8 py-3.5 z-50 transition-all duration-300">
+    <style>
+        #navbar-placeholder {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 9999 !important;
+            pointer-events: none !important;
+            width: 100% !important;
+        }
+        #navbar-placeholder nav {
+            pointer-events: auto !important;
+        }
+    </style>
+    <nav class="bg-white/80 backdrop-blur-xl rounded-full mt-4 mx-auto w-[calc(100%-3rem)] md:w-[calc(100%-6rem)] max-w-7xl border border-neutral/15 shadow-premium flex justify-between items-center px-6 md:px-8 py-2.5 pointer-events-auto transition-all duration-300">
         <div class="flex items-center gap-8">
-            <a href="index.html" class="font-bold text-2xl text-primary tracking-tighter hover:scale-105 transition-transform flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-[28px] fill-current text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
+            <a href="index.html" class="font-bold text-xl text-primary tracking-tighter hover:scale-105 transition-transform flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[24px] fill-current text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
                 <span>ClassQu</span>
             </a>
-            <div class="hidden lg:flex items-center gap-7" id="nav-links">
-                <a class="text-neutral/70 font-semibold hover:text-primary transition-all duration-300 hover:scale-105" href="index.html">Home</a>
-                <a class="text-neutral/70 font-semibold hover:text-primary transition-all duration-300 hover:scale-105" href="materi.html">Kelas & Roadmap</a>
-                <a class="text-neutral/70 font-semibold hover:text-primary transition-all duration-300 hover:scale-105" href="subscription.html">Subscription</a>
-                <a class="text-neutral/70 font-semibold hover:text-primary transition-all duration-300 hover:scale-105" href="tentang.html">Tentang</a>
-                <a class="text-neutral/70 font-semibold hover:text-primary transition-all duration-300 hover:scale-105" href="karir.html">Karir</a>
-                <a class="text-neutral/70 font-semibold hover:text-primary transition-all duration-300 hover:scale-105" href="hubungi.html">Hubungi</a>
+            <div class="hidden lg:flex items-center gap-8" id="nav-links">
+                <a class="text-neutral/70 font-semibold text-sm hover:text-primary transition-all duration-300 hover:scale-105" href="index.html">Home</a>
+                <a class="text-neutral/70 font-semibold text-sm hover:text-primary transition-all duration-300 hover:scale-105" href="materi.html">Kelas & Roadmap</a>
+                <a class="text-neutral/70 font-semibold text-sm hover:text-primary transition-all duration-300 hover:scale-105" href="subscription.html">Subscription</a>
+                <a class="text-neutral/70 font-semibold text-sm hover:text-primary transition-all duration-300 hover:scale-105" href="tentang.html">Tentang</a>
+                <a class="text-neutral/70 font-semibold text-sm hover:text-primary transition-all duration-300 hover:scale-105" href="karir.html">Karir</a>
+                <a class="text-neutral/70 font-semibold text-sm hover:text-primary transition-all duration-300 hover:scale-105" href="hubungi.html">Hubungi</a>
             </div>
         </div>
-        <div class="flex items-center gap-3">
-            <a href="dashboard.html" class="hidden sm:flex items-center gap-1.5 text-neutral/75 font-bold hover:text-primary transition-colors mr-2">
-                <span class="material-symbols-outlined text-[20px]">dashboard</span> 
+        <div class="flex items-center gap-4">
+            <a href="dashboard.html" class="hidden sm:flex items-center gap-1.5 text-neutral/75 font-bold text-sm hover:text-primary transition-colors mr-2">
+                <span class="material-symbols-outlined text-[18px]">dashboard</span> 
                 <span>Dashboard</span>
             </a>
-            <a href="login.html" class="text-neutral hover:text-primary font-bold transition-colors px-3 py-1">Login</a>
-            <a href="materi.html" class="btn-playful bg-primary text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-glow">Mulai Belajar</a>
+            <a href="login.html" class="text-neutral text-sm hover:text-primary font-bold transition-colors px-3 py-1">Login</a>
+            <a href="materi.html" class="btn-playful bg-primary text-white px-5 py-2 rounded-full font-bold text-sm shadow-glow">Mulai Belajar</a>
         </div>
     </nav>
     `;
@@ -210,12 +241,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Dynamic Navbar Loader with local file:// protocol fallback
     const navPlaceholder = document.getElementById('navbar-placeholder');
     if (navPlaceholder) {
+        navPlaceholder.className = "fixed top-0 left-0 right-0 z-50 pointer-events-none w-full";
         if (isLocalFile) {
             // Directly load fallback without fetching to prevent Chrome CORS console errors
             navPlaceholder.innerHTML = navbarFallback;
             highlightActiveNav();
         } else {
-            fetch('navbar.html')
+            fetch('navbar.html?nocache=' + new Date().getTime())
                 .then(response => {
                     if (!response.ok) throw new Error('Network error loading navbar');
                     return response.text();
@@ -239,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Directly load fallback without fetching to prevent Chrome CORS console errors
             footerPlaceholder.innerHTML = footerFallback;
         } else {
-            fetch('footer.html')
+            fetch('footer.html?nocache=' + new Date().getTime())
                 .then(response => {
                     if (!response.ok) throw new Error('Network error loading footer');
                     return response.text();
@@ -261,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sidebarPlaceholder.innerHTML = sidebarFallback;
             highlightActiveSidebar();
         } else {
-            fetch('sidebar.html')
+            fetch('sidebar.html?nocache=' + new Date().getTime())
                 .then(response => {
                     if (!response.ok) throw new Error('Network error loading sidebar');
                     return response.text();
