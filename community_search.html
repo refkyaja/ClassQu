@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Pencarian Global - ClassQu Community</title>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "primary": "#a53b29",      // Premium deep brick/coral
+              "primary-light": "#ff7e67",
+              "secondary-accent": "#ffd56d", // Amber yellow
+              "tertiary": "#006a64",     // Deep Teal
+              "tertiary-light": "#60b2ab", // Mint Teal
+              "on-surface": "#1c1b1b",
+              "on-surface-variant": "#57423e",
+              "background": "#fdf8f8",
+              "outline-variant": "#dec0ba"
+            },
+            "borderRadius": {
+              "DEFAULT": "1rem",
+              "lg": "1.75rem",
+              "xl": "2.5rem",
+              "full": "9999px"
+            },
+            "spacing": {
+              "margin-mobile": "20px",
+              "margin-desktop": "48px",
+              "gutter": "24px"
+            },
+            "fontFamily": {
+              "body-lg": ["Plus Jakarta Sans"],
+              "display-lg": ["Plus Jakarta Sans"],
+              "headline-md": ["Plus Jakarta Sans"],
+              "title-sm": ["Plus Jakarta Sans"],
+              "label-upper": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(165, 59, 41, 0.08);
+            box-shadow: 0 10px 40px -10px rgba(165, 59, 41, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 50px -10px rgba(165, 59, 41, 0.1);
+            border-color: rgba(165, 59, 41, 0.15);
+        }
+        .glow-button {
+            transition: all 0.3s ease;
+        }
+        .glow-button:hover {
+            box-shadow: 0 8px 24px rgba(165, 59, 41, 0.25);
+            transform: translateY(-1px);
+        }
+        .chat-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: rgba(165, 59, 41, 0.15);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-lg text-on-surface selection:bg-primary-light/10 selection:text-primary overflow-x-hidden lg:overflow-y-hidden min-h-screen lg:h-screen flex flex-col justify-start relative">
+
+    <!-- Background Ambient Glowing Blobs -->
+    <div class="fixed top-[-10%] left-[-10%] w-[45vw] h-[45vw] bg-primary/4 rounded-full blur-[100px] pointer-events-none z-[-1]"></div>
+    <div class="fixed bottom-[-15%] right-[-5%] w-[40vw] h-[40vw] bg-tertiary-light/4 rounded-full blur-[90px] pointer-events-none z-[-1]"></div>
+
+    <!-- NAVBAR Placeholder -->
+    <div id="community-navbar-placeholder" class="shrink-0 z-50"></div>
+
+    <!-- Main Grid Layout Container -->
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter px-margin-mobile md:px-margin-desktop mt-4 lg:mb-0 lg:pb-6 items-start w-full lg:flex-grow lg:overflow-hidden">
+        
+        <!-- LEFT SIDEBAR Placeholder -->
+        <div id="community-sidebar-left-placeholder" class="lg:col-span-3 space-y-6 flex flex-col w-full lg:h-[calc(100vh-100px)] lg:overflow-y-auto chat-scroll pr-1 pb-8"></div>
+
+        <!-- MAIN SEARCH PAGE CONTENT -->
+        <main class="lg:col-span-6 w-full lg:h-[calc(100vh-100px)] lg:overflow-y-auto chat-scroll px-1 pb-8 flex flex-col gap-5">
+            
+            <!-- Sticky Back Header -->
+            <div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-primary/5 py-3.5 px-4 -mx-1 flex items-center gap-6 shrink-0 rounded-b-2xl shadow-sm">
+                <a href="community.html" class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-neutral-100/80 border border-primary/10 transition-colors text-on-surface">
+                    <span class="material-symbols-outlined text-lg font-black">arrow_back</span>
+                </a>
+                <div>
+                    <h1 class="text-sm font-black text-on-surface tracking-tight leading-none">Pencarian Diskusi</h1>
+                    <p class="text-[9.5px] font-bold text-on-surface-variant/40 mt-1 leading-none">Temukan topik terbaik di Komunitas ClassQu</p>
+                </div>
+            </div>
+
+            <!-- Search Area Card -->
+            <div class="glass-card rounded-3xl p-6 space-y-6 bg-white/90 border border-primary/10">
+                <!-- Search Input Bar -->
+                <div class="relative bg-neutral-100 hover:bg-neutral-200/50 focus-within:bg-white rounded-2xl p-3 flex items-center gap-2 border border-primary/5 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+                    <span class="material-symbols-outlined text-on-surface-variant/40 text-[20px] font-black shrink-0">search</span>
+                    <input id="global-search-input" type="text" placeholder="Ketik topik, judul, tag, atau isi postingan..." oninput="handleGlobalSearch(this.value)" class="w-full bg-transparent focus:outline-none placeholder-on-surface-variant/35 border-none p-0 focus:ring-0 text-[13px] font-bold text-on-surface" autofocus />
+                </div>
+
+                <!-- Populer / Trending Tags Section -->
+                <div class="space-y-2">
+                    <span class="text-[9.5px] font-black text-on-surface-variant/40 uppercase tracking-wider block">Pencarian Populer</span>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="fillGlobalSearch('Javascript')" class="px-3 py-1.5 rounded-full bg-primary/5 hover:bg-primary/10 text-primary text-[10px] font-black tracking-wide transition-all">⚡ Javascript</button>
+                        <button onclick="fillGlobalSearch('UI/UX')" class="px-3 py-1.5 rounded-full bg-tertiary-light/5 hover:bg-tertiary-light/10 text-tertiary-light text-[10px] font-black tracking-wide transition-all">🎨 UI/UX Design</button>
+                        <button onclick="fillGlobalSearch('Excel')" class="px-3 py-1.5 rounded-full bg-[#107c41]/5 hover:bg-[#107c41]/10 text-[#107c41] text-[10px] font-black tracking-wide transition-all">📊 Excel Rumus</button>
+                        <button onclick="fillGlobalSearch('Burnout')" class="px-3 py-1.5 rounded-full bg-orange-500/5 hover:bg-orange-500/10 text-orange-600 text-[10px] font-black tracking-wide transition-all">🔥 Burnout</button>
+                        <button onclick="fillGlobalSearch('CV ATS')" class="px-3 py-1.5 rounded-full bg-purple-600/5 hover:bg-purple-600/10 text-purple-700 text-[10px] font-black tracking-wide transition-all">💼 CV ATS Friendly</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Results panel -->
+            <div class="space-y-3">
+                <div class="flex justify-between items-center px-1">
+                    <span id="search-results-title" class="text-[10px] font-black text-on-surface-variant/45 uppercase tracking-wider">Hasil Diskusi (0)</span>
+                    <span class="text-[9px] font-bold text-on-surface-variant/30 uppercase">Urut berdasarkan Relevansi</span>
+                </div>
+                
+                <div id="search-results-list" class="space-y-4">
+                    <div class="glass-card rounded-2xl py-12 px-6 text-center text-on-surface-variant/35 text-xs font-bold select-none bg-white/70">
+                        <span class="material-symbols-outlined text-4xl font-light mb-2 text-on-surface-variant/20 block">search_insights</span>
+                        Ketik kata kunci di atas untuk mencari diskusi atau postingan menarik!
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- RIGHT SIDEBAR Placeholder -->
+        <div id="community-sidebar-right-placeholder" class="lg:col-span-3 space-y-6 flex flex-col w-full lg:h-[calc(100vh-100px)] lg:overflow-y-auto chat-scroll pr-1 pb-8"></div>
+
+    </div>
+
+    <!-- Dynamic Components Loader Script -->
+    <script src="community_components.js"></script>
+    <script>
+        // Global Array for posts fetched from localStorage
+        let MY_POSTS = [];
+        try {
+            const stored = localStorage.getItem('MY_POSTS');
+            if (stored) {
+                MY_POSTS = JSON.parse(stored);
+            }
+        } catch(e) {}
+
+        // Global Search Functions
+        function fillGlobalSearch(text) {
+            const input = document.getElementById('global-search-input');
+            if (input) {
+                input.value = text;
+                handleGlobalSearch(text);
+            }
+        }
+
+        function handleGlobalSearch(query) {
+            const resultsList = document.getElementById('search-results-list');
+            const resultsTitle = document.getElementById('search-results-title');
+            if (!resultsList || !resultsTitle) return;
+
+            const q = query.trim().toLowerCase();
+            if (!q) {
+                resultsList.innerHTML = `
+                    <div class="glass-card rounded-2xl py-12 px-6 text-center text-on-surface-variant/35 text-xs font-bold select-none bg-white/70">
+                        <span class="material-symbols-outlined text-4xl font-light mb-2 text-on-surface-variant/20 block">search_insights</span>
+                        Ketik kata kunci di atas untuk mencari diskusi atau postingan menarik!
+                    </div>
+                `;
+                resultsTitle.textContent = "Hasil Diskusi (0)";
+                return;
+            }
+
+            // Static posts
+            const staticPosts = [
+                {
+                    id: 'maya',
+                    author: 'Maya Putri',
+                    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB04QHkH6tB9ZzxuotPYoJyGEnbZp8Jl3ioaVh9nkSh32h_hIkOi7tW6KhkkSYXy3yhpHDYjM0OzBdkx7gwUSVRDodciM_U-MlxAn0olsTIw6IF9Fd1TPHV8qMZSLsngnPjrweW7YGnsUQpLqjmALtNvhwct6rAdQHmjAKvMbIqvEups2BYCQnDdcYJ1907DoY-Cf8ZZCWpL5NTXiR6TXP0itxQ7q8lJkfJsn7FI_Pfcd_q7eRfUZotZr5p0SJnYm1GekY0YUrWjg',
+                    tag: 'UI/UX & Design',
+                    title: 'Tips membuat hierarchy yang baik di UI Design ✨',
+                    content: 'Halo semuanya! Aku baru selesai bikin project dashboard dan ingin berbagi beberapa tips tentang visual hierarchy yang menurutku...'
+                },
+                {
+                    id: 'rizky',
+                    author: 'Rizky Pratama',
+                    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA',
+                    tag: 'Ms Office QA',
+                    title: 'Rumus Excel ini kenapa hasilnya #VALUE ya?',
+                    content: 'Guys, aku lagi belajar VLOOKUP tapi hasilnya muncul #VALUE. Udah cek data juga. Ada yang bisa bantu...'
+                },
+                {
+                    id: 'sarah',
+                    author: 'Sarah Wijaya',
+                    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDssyzQLmMMfFWttctiYSzDFJhuKJM4G_skmst8A0zZ8GnyvH6YOUiKAr9PIh87ilXPLcDVwYGbInuXwRddrRB9IQ_wYGqaNfFRdVpGlCdIzH_cFGrO5o2mQ585QYUSq76zI-uLmFiMotk8vgwsnX-XTLzhM8YO7iW22MfL6VcglCf7H2bHa9_ZSPJknCIjBpNbDimgKbqlDDP1y5HWs9yrb35SUxmNrzc8fZfPHEDwR3vQUyV7YGQyL8SdTmJOfkRoblQ6YZgoBQ',
+                    tag: 'Career Preparation',
+                    title: '3 Hal yang HR Lihat Pertama di CV Kamu',
+                    content: 'Berdasarkan pengalaman aku review ratusan CV, ini 3 hal yang paling diperhatikan HR sebelum lanjut ke tahap...'
+                }
+            ];
+
+            // Map Dynamic Posts
+            const dynamicPosts = MY_POSTS.map(p => ({
+                id: p.id,
+                author: p.authorName || 'Kevin Sanjaya',
+                avatar: p.authorAvatar || 'https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q',
+                tag: p.tag,
+                title: p.title,
+                content: p.content
+            }));
+
+            const allPosts = [...staticPosts, ...dynamicPosts];
+
+            // Perform search match
+            const results = allPosts.filter(p => 
+                p.title.toLowerCase().includes(q) || 
+                p.content.toLowerCase().includes(q) || 
+                p.tag.toLowerCase().includes(q) || 
+                p.author.toLowerCase().includes(q)
+            );
+
+            resultsTitle.textContent = `Hasil Diskusi (${results.length})`;
+
+            if (results.length === 0) {
+                resultsList.innerHTML = `
+                    <div class="glass-card rounded-2xl py-12 px-6 text-center text-on-surface-variant/35 text-xs font-bold select-none bg-white/70">
+                        <span class="material-symbols-outlined text-4xl font-light mb-2 text-on-surface-variant/20 block">search_off</span>
+                        Tidak ada diskusi yang cocok untuk "${query}"
+                    </div>
+                `;
+                return;
+            }
+
+            resultsList.innerHTML = results.map(p => `
+                <div onclick="window.location.href='community_post_detail.html?id=${p.id}'" class="glass-card rounded-2xl p-5 space-y-3 bg-white hover:border-primary/20 hover:scale-[1.01] transition-all cursor-pointer text-left relative">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="${p.avatar}" class="w-8 h-8 rounded-full object-cover border border-primary/10" />
+                            <div>
+                                <h5 class="text-xs font-black text-on-surface leading-none">${p.author}</h5>
+                                <p class="text-[9px] text-on-surface-variant/40 font-bold mt-1 uppercase tracking-wider"># ${p.tag}</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-sm text-on-surface-variant/30">chevron_right</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="space-y-1">
+                        <h4 class="font-extrabold text-xs text-on-surface tracking-tight">${p.title}</h4>
+                        <p class="text-[11px] text-on-surface-variant/75 font-bold leading-relaxed line-clamp-3">${p.content || '(Teks kosong)'}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

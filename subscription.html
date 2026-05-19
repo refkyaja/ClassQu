@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Subscription - ClassQu</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "on-background": "#1C1B1B",
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-low": "#FFFBF4",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface-variant": "#57423e",
+                    },
+                    borderRadius: {
+                        'card': '32px',
+                        'lg': '2rem',
+                        'xl': '3rem',
+                        'full': '9999px'
+                    },
+                    boxShadow: {
+                        'playful-sm': '2px 2px 0px 0px #1C1B1B',
+                        'playful': '4px 4px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 10px 30px -5px rgba(255, 126, 103, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid #1C1B1B;
+            box-shadow: 4px 4px 0px 0px #1C1B1B;
+            border-radius: 32px;
+        }
+        .glass-card-soft {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(28, 27, 27, 0.1);
+            box-shadow: 0 10px 35px -5px rgba(28, 27, 27, 0.03);
+            border-radius: 24px;
+        }
+        .btn-playful {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #1C1B1B;
+            box-shadow: 3px 3px 0px 0px #1C1B1B;
+        }
+        .btn-playful:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px 0px #1C1B1B;
+        }
+        .btn-playful:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px 0px #1C1B1B;
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Top Sticky Glass Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Header Hero Section -->
+    <header class="max-w-7xl mx-auto px-6 md:px-12 pt-16 text-center">
+        <span class="bg-primary/10 text-primary px-4 py-1.5 rounded-full border border-primary/20 font-bold text-xs uppercase tracking-wider mb-4 inline-block">AKSELERASI POTENSI ANDA</span>
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight text-neutral mb-6 leading-tight">
+            Pilih Paket Belajar <br class="hidden md:block"/> yang <span class="text-primary">Tepat Untukmu</span>
+        </h1>
+        <p class="text-neutral/60 text-lg md:text-xl max-w-2xl mx-auto font-medium mb-16">
+            Dapatkan akses penuh ke ribuan video interaktif, kuis terpadu, review portfolio berkala dengan mentor, dan komunitas berenergi tinggi.
+        </p>
+    </header>
+
+    <!-- Pricing Tiers Grid -->
+    <main class="max-w-7xl mx-auto px-6 md:px-12 pb-24">
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-24">
+            
+            <!-- Free Plan -->
+            <div class="glass-card bg-white p-8 flex flex-col justify-between hover:translate-y-[-6px] transition-transform duration-300">
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-black text-neutral mb-2">Free Plan</h3>
+                        <p class="text-neutral/60 text-xs font-semibold">Bagi pemula yang baru ingin mencicipi dunia digital skills.</p>
+                    </div>
+                    <div class="border-y border-neutral/10 py-6">
+                        <span class="text-5xl font-black text-neutral">Rp 0</span>
+                        <span class="text-neutral/50 font-bold text-sm">/selamanya</span>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-tertiary text-xl font-bold">check_circle</span>
+                            <span class="text-sm font-extrabold text-neutral/80">Akses 3 Modul Dasar Pilihan</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-tertiary text-xl font-bold">check_circle</span>
+                            <span class="text-sm font-extrabold text-neutral/80">Kuis & Challenge Interaktif</span>
+                        </li>
+                        <li class="flex items-center gap-3 opacity-40">
+                            <span class="material-symbols-outlined text-neutral/60 text-xl">cancel</span>
+                            <span class="text-sm font-bold text-neutral/60 line-through">Sertifikat Kelulusan Resmi</span>
+                        </li>
+                        <li class="flex items-center gap-3 opacity-40">
+                            <span class="material-symbols-outlined text-neutral/60 text-xl">cancel</span>
+                            <span class="text-sm font-bold text-neutral/60 line-through">Review Portfolio Mingguan</span>
+                        </li>
+                    </ul>
+                </div>
+                <a href="login.html" class="btn-playful bg-white text-neutral py-3.5 rounded-full font-extrabold text-sm text-center mt-12 w-full block">Daftar Sekarang</a>
+            </div>
+
+            <!-- Pro Plan (Paling Populer) -->
+            <div class="glass-card bg-primary text-white p-8 flex flex-col justify-between hover:translate-y-[-6px] transition-transform duration-300 relative overflow-hidden shadow-glow">
+                <div class="absolute top-0 right-0 bg-secondary text-neutral px-6 py-2 rounded-bl-2xl font-black text-[10px] tracking-wider uppercase border-l border-b border-neutral">Paling Populer</div>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-black mb-2">Pro Member</h3>
+                        <p class="text-white/80 text-xs font-semibold">Paling ideal untuk akselerasi karir dan skill komersial.</p>
+                    </div>
+                    <div class="border-y border-white/20 py-6">
+                        <span class="text-5xl font-black">Rp 149k</span>
+                        <span class="text-white/60 font-bold text-sm">/bulan</span>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-secondary text-xl font-bold" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            <span class="text-sm font-extrabold">Akses Seluruh Kelas Premium</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-secondary text-xl font-bold" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            <span class="text-sm font-extrabold">Sertifikat Resmi Terverifikasi</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-secondary text-xl font-bold" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            <span class="text-sm font-extrabold">Discord Pro Group Lounge</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-secondary text-xl font-bold" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            <span class="text-sm font-extrabold">Download Modul secara Offline</span>
+                        </li>
+                    </ul>
+                </div>
+                <a href="login.html" class="btn-playful bg-white text-primary py-3.5 rounded-full font-black text-sm text-center mt-12 w-full block shadow-premium">Berlangganan Pro</a>
+            </div>
+
+            <!-- Master Plan -->
+            <div class="glass-card bg-white p-8 flex flex-col justify-between hover:translate-y-[-6px] transition-transform duration-300">
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-black text-neutral mb-2">Master Member</h3>
+                        <p class="text-neutral/60 text-xs font-semibold">Dilengkapi mentoring 1-on-1 personal secara mendalam.</p>
+                    </div>
+                    <div class="border-y border-neutral/10 py-6">
+                        <span class="text-5xl font-black text-neutral">Rp 499k</span>
+                        <span class="text-neutral/50 font-bold text-sm">/bulan</span>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-tertiary text-xl font-bold">check_circle</span>
+                            <span class="text-sm font-extrabold text-neutral/80">Semua Fitur Paket Pro Member</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-tertiary text-xl font-bold">check_circle</span>
+                            <span class="text-sm font-extrabold text-neutral/80">Mentoring Privat 1-on-1 (2x Sebulan)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-tertiary text-xl font-bold">check_circle</span>
+                            <span class="text-sm font-extrabold text-neutral/80">Review Portfolio dengan Praktisi</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-tertiary text-xl font-bold">check_circle</span>
+                            <span class="text-sm font-extrabold text-neutral/80">Jaminan Penyaluran Magang/Kerja</span>
+                        </li>
+                    </ul>
+                </div>
+                <a href="login.html" class="btn-playful bg-white text-neutral py-3.5 rounded-full font-extrabold text-sm text-center mt-12 w-full block">Daftar Master</a>
+            </div>
+        </section>
+
+        <!-- Feature Comparison Matrix -->
+        <section class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-black text-neutral text-center mb-10">Bandingkan Seluruh Fitur</h2>
+            <div class="glass-card bg-white overflow-hidden border-2 border-neutral shadow-playful">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-primary/10 border-b-2 border-neutral">
+                                <th class="p-5 font-black text-sm text-neutral">Fitur Platform</th>
+                                <th class="p-5 font-black text-sm text-neutral text-center">Free</th>
+                                <th class="p-5 font-black text-sm text-primary text-center">Pro Member</th>
+                                <th class="p-5 font-black text-sm text-neutral text-center">Master Member</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y-2 divide-neutral/10 font-bold text-sm text-neutral/80">
+                            <tr class="hover:bg-neutral/5 transition-colors">
+                                <td class="p-5">Akses Video Modul Dasar</td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-tertiary font-bold">check</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-primary font-bold">check</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-tertiary font-bold">check</span></td>
+                            </tr>
+                            <tr class="hover:bg-neutral/5 transition-colors">
+                                <td class="p-5">Akses Video Modul Premium</td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-neutral/30">close</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-primary font-bold">check</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-tertiary font-bold">check</span></td>
+                            </tr>
+                            <tr class="hover:bg-neutral/5 transition-colors">
+                                <td class="p-5">Sertifikat Kelulusan Resmi</td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-neutral/30">close</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-primary font-bold">check</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-tertiary font-bold">check</span></td>
+                            </tr>
+                            <tr class="hover:bg-neutral/5 transition-colors">
+                                <td class="p-5">Download Modul Offline</td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-neutral/30">close</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-primary font-bold">check</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-tertiary font-bold">check</span></td>
+                            </tr>
+                            <tr class="hover:bg-neutral/5 transition-colors">
+                                <td class="p-5">Akses Premium Discord Hub</td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-neutral/30">close</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-primary font-bold">check</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-tertiary font-bold">check</span></td>
+                            </tr>
+                            <tr class="hover:bg-neutral/5 transition-colors">
+                                <td class="p-5">Mentoring Privat 1-on-1</td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-neutral/30">close</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-neutral/30">close</span></td>
+                                <td class="p-5 text-center"><span class="material-symbols-outlined text-tertiary font-bold">check</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stylized FAQ Accordions -->
+        <section class="max-w-4xl mx-auto mb-24">
+            <h2 class="text-3xl md:text-4xl font-black text-neutral text-center mb-10">Pertanyaan Umum (FAQ)</h2>
+            <div class="space-y-4">
+                
+                <!-- FAQ 1 -->
+                <div class="glass-card bg-white overflow-hidden border-2 border-neutral">
+                    <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center p-6 text-left hover:bg-primary/5 transition-colors group">
+                        <span class="font-black text-neutral group-hover:text-primary transition-colors text-base">Bagaimana sistem pembayarannya?</span>
+                        <span class="material-symbols-outlined text-primary font-bold transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="px-6 pb-6 text-neutral/70 font-medium text-sm leading-relaxed hidden">
+                        Kami menerima berbagai metode pembayaran mulai dari Transfer Bank, Kartu Kredit, hingga E-Wallet seperti GoPay, OVO, ShopeePay, dan DANA. Semua pembayaran diproses melalui gerbang pembayaran terenkripsi yang aman.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="glass-card bg-white overflow-hidden border-2 border-neutral">
+                    <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center p-6 text-left hover:bg-primary/5 transition-colors group">
+                        <span class="font-black text-neutral group-hover:text-primary transition-colors text-base">Apakah saya bisa berhenti berlangganan kapan saja?</span>
+                        <span class="material-symbols-outlined text-primary font-bold transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="px-6 pb-6 text-neutral/70 font-medium text-sm leading-relaxed hidden">
+                        Ya, paket Pro dan Master berlangganan per bulan dan Anda bebas berhenti berlangganan kapan saja. Akun Anda akan tetap aktif sebagai Pro member hingga masa tenggang periode bayar berjalan selesai.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="glass-card bg-white overflow-hidden border-2 border-neutral">
+                    <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center p-6 text-left hover:bg-primary/5 transition-colors group">
+                        <span class="font-black text-neutral group-hover:text-primary transition-colors text-base">Apa itu sertifikat digital resmi?</span>
+                        <span class="material-symbols-outlined text-primary font-bold transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="px-6 pb-6 text-neutral/70 font-medium text-sm leading-relaxed hidden">
+                        Sertifikat digital ClassQu dilengkapi dengan ID Kredensial unik yang divalidasi oleh sistem kami. Anda bisa membagikannya di LinkedIn, CV, atau mengunggahnya untuk melamar lowongan kerja secara resmi di platform partner kami.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="glass-card bg-white overflow-hidden border-2 border-neutral">
+                    <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center p-6 text-left hover:bg-primary/5 transition-colors group">
+                        <span class="font-black text-neutral group-hover:text-primary transition-colors text-base">Bagaimana cara kerja sesi 1-on-1 dengan mentor?</span>
+                        <span class="material-symbols-outlined text-primary font-bold transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="px-6 pb-6 text-neutral/70 font-medium text-sm leading-relaxed hidden">
+                        Untuk Master Member, Anda dapat memesan sesi Zoom private 1-on-1 berdurasi 45 menit melalui menu dashboard pelajar. Sesi ini sangat ideal untuk review portofolio, konsultasi projek karir, atau bertanya materi rumit secara langsung kepada expert kami.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Support banner CTA -->
+        <section class="relative">
+            <div class="bg-primary/10 border-2 border-neutral rounded-[32px] p-12 text-center overflow-hidden shadow-playful relative">
+                <div class="relative z-10 space-y-6">
+                    <h2 class="text-3xl font-black text-neutral">Masih Bingung Memilih Paket?</h2>
+                    <p class="text-neutral/70 font-medium max-w-xl mx-auto">Tanya langsung pada tim support kami. Dapatkan konsultasi gratis tentang jalur belajar yang paling sesuai dengan passion karirmu.</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+                        <button class="btn-playful bg-primary text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-glow">Hubungi Customer Success</button>
+                        <a href="materi.html" class="btn-playful bg-white text-neutral px-8 py-3.5 rounded-full font-bold text-sm">Lihat Review Alumni</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Pure JS FAQ Accordion Toggles -->
+    <script>
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('.material-symbols-outlined');
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                answer.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+    <script src="components.js"></script>
+</body>
+</html>

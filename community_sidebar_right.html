@@ -1,0 +1,116 @@
+<!-- Card 1: Mentor Aktif -->
+<div class="glass-card rounded-2xl p-5 flex flex-col gap-4">
+    <div class="flex justify-between items-center border-b border-primary/5 pb-2">
+        <h4 class="font-extrabold text-[11px] text-on-surface-variant/60 uppercase tracking-widest">Mentor Aktif</h4>
+        <a href="#" onclick="switchTab('mentor')" class="text-tertiary-light text-[10.5px] font-black hover:underline whitespace-nowrap">Lihat Semua</a>
+    </div>
+    
+    <div class="space-y-4">
+        <!-- Mentor 1 -->
+        <div class="flex items-center justify-between gap-2.5">
+            <div class="flex items-center gap-2">
+                <img alt="Mentor Dimas" class="w-8 h-8 rounded-full border border-primary/10 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQlgX9G2HBuDhqDtUojpm0MesHmY6kzelS3zL-PmSDFbmEYmr4hfqsgJqa88dNMJzyXzvVdLTyKOrAliTx5JXkipmfF8qTI4vjHjIrcIf1RQDXbw63vpQIZBX8VkTOyCPK2E7wIpixERadCJUm4CtIYmzmLT8UIIWDI6Ojs8xXw6b9RtZQ5fW5-QjmllhAcyKJlZmYZAi1OseMVPmAs1na6I-bAZV1TwS0dNwXLeZqiciDmw9QIPtGNlQnbPaY4tB38AH2yE9EHg"/>
+                <div>
+                    <p class="text-[11px] font-black text-on-surface leading-tight">Dimas Pratama</p>
+                    <p class="text-[8.5px] text-[#008f86] font-bold leading-none mt-0.5">Public Speaking Specialist</p>
+                    <p class="text-[8px] text-emerald-500 font-extrabold flex items-center gap-0.5 mt-0.5">
+                        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full inline-block"></span> Online
+                    </p>
+                </div>
+            </div>
+            <button onclick="openGroupChat('general')" class="w-7 h-7 rounded-lg border border-primary/10 flex items-center justify-center bg-white/80 hover:bg-primary hover:text-white hover:scale-105 transition-all shadow-sm">
+                <span class="material-symbols-outlined text-[13px]">chat_bubble</span>
+            </button>
+        </div>
+
+        <!-- Mentor 2 -->
+        <div class="flex items-center justify-between gap-2.5">
+            <div class="flex items-center gap-2">
+                <img alt="Mentor Aulia" class="w-8 h-8 rounded-full border border-primary/10 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVqCS4JcK8zSkdk8gF67Dogn_DsKXfgMf6HabnC0Wu3zPc-OVbdAz1ai38rGgkKZ3JA7nO1RlKd7WRxZEIEdk-vLiE7BL7zkVOOetgR2mNL-Gpf59nMLT80L_nFcD7MJBbGr0JZz60g2CB2zG9Y62yjuMlL_DWWscx-q2b6alE0zeRBQnD6MSxYQyqvSTXl9GtjhhW7HpmKGnEKGOKcrItgzr7uOJ_CCfrBsP-M1xXv8ERFnBL8oEpM5lwdy8Qpd6IsC6eGkvaHQ"/>
+                <div>
+                    <p class="text-[11px] font-black text-on-surface leading-tight">Aulia Rizky</p>
+                    <p class="text-[8.5px] text-[#008f86] font-bold leading-none mt-0.5">Senior UI/UX Designer</p>
+                    <p class="text-[8px] text-emerald-500 font-extrabold flex items-center gap-0.5 mt-0.5">
+                        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full inline-block"></span> Online
+                    </p>
+                </div>
+            </div>
+            <button onclick="openGroupChat('uiux')" class="w-7 h-7 rounded-lg border border-primary/10 flex items-center justify-center bg-white/80 hover:bg-primary hover:text-white hover:scale-105 transition-all shadow-sm">
+                <span class="material-symbols-outlined text-[13px]">chat_bubble</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Card 2: Trending Discussion (Amber Yellow Glassmorphic) -->
+<div class="glass-card rounded-2xl p-5 flex flex-col gap-4" style="background: rgba(255, 213, 109, 0.08); border-color: rgba(255, 213, 109, 0.25)">
+    <h4 class="font-extrabold text-[11px] text-secondary-accent uppercase tracking-widest flex items-center gap-1.5" style="color: #c48b00">
+        <span class="material-symbols-outlined text-sm font-bold text-secondary-accent" style="font-variation-settings: 'FILL' 1; color: #c48b00">local_fire_department</span>
+        <span>Trending Discussion</span>
+    </h4>
+    
+    <div class="flex flex-col gap-2">
+        <a href="#" onclick="searchTrending('ATS')" class="w-full bg-white/80 border border-primary/10 rounded-xl p-2.5 flex justify-between items-center hover:translate-y-[-1px] shadow-sm transition-transform text-left">
+            <span class="text-[11px] font-black text-on-surface">🔥 Cara bikin CV ATS Friendly</span>
+            <span class="text-[8.5px] font-bold text-on-surface-variant/50 shrink-0">128 komentar</span>
+        </a>
+        <a href="#" onclick="searchTrending('Excel')" class="w-full bg-white/80 border border-primary/10 rounded-xl p-2.5 flex justify-between items-center hover:translate-y-[-1px] shadow-sm transition-transform text-left">
+            <span class="text-[11px] font-black text-on-surface">📊 Belajar Excel dari Nol</span>
+            <span class="text-[8.5px] font-bold text-on-surface-variant/50 shrink-0">96 komentar</span>
+        </a>
+        <a href="#" onclick="searchTrending('UI/UX')" class="w-full bg-white/80 border border-primary/10 rounded-xl p-2.5 flex justify-between items-center hover:translate-y-[-1px] shadow-sm transition-transform text-left">
+            <span class="text-[11px] font-black text-on-surface">🗺️ Roadmap UI/UX 2026</span>
+            <span class="text-[8.5px] font-bold text-on-surface-variant/50 shrink-0">74 komentar</span>
+        </a>
+    </div>
+</div>
+
+<!-- Card 3: Leaderboard (Mingguan) -->
+<div class="glass-card rounded-2xl p-5 flex flex-col gap-4">
+    <div class="flex justify-between items-center border-b border-primary/5 pb-2">
+        <h4 class="font-extrabold text-[11px] text-on-surface-variant/60 uppercase tracking-widest flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm font-bold text-secondary-accent" style="font-variation-settings: 'FILL' 1; color: #c48b00">military_tech</span>
+            <span>Leaderboard (Mingguan)</span>
+        </h4>
+        <a href="leaderboard.html" class="text-tertiary-light text-[10.5px] font-black hover:underline whitespace-nowrap">Lihat Semua</a>
+    </div>
+    
+    <div class="space-y-2.5 font-bold text-[11px]">
+        <!-- Rank 1 -->
+        <div class="flex items-center justify-between p-2.5 bg-secondary-accent/10 border border-secondary-accent/20 rounded-xl shadow-sm">
+            <span class="flex items-center gap-2">
+                <span class="text-sm shrink-0">🥇</span> 
+                <span class="font-black text-on-surface leading-none">Kevin Sanjaya</span>
+            </span>
+            <span class="font-black text-on-surface">1,250 XP</span>
+        </div>
+        <!-- Rank 2 -->
+        <div class="flex items-center justify-between p-2 bg-neutral-100/40 rounded-xl border border-neutral-200/20">
+            <span class="flex items-center gap-2">
+                <span class="text-xs shrink-0">🥈</span> 
+                <span class="text-on-surface-variant font-bold leading-none">Maya Putri</span>
+            </span>
+            <span class="text-on-surface-variant/75">980 XP</span>
+        </div>
+        <!-- Rank 3 -->
+        <div class="flex items-center justify-between p-2 bg-neutral-100/40 rounded-xl border border-neutral-200/20">
+            <span class="flex items-center gap-2">
+                <span class="text-xs shrink-0">🥉</span> 
+                <span class="text-on-surface-variant font-bold leading-none">Rizky Pratama</span>
+            </span>
+            <span class="text-on-surface-variant/75">760 XP</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 4: Challenge Mingguan (Teal Glassmorphic) -->
+<div class="glass-card rounded-2xl p-5 flex flex-col gap-4" style="background: rgba(96, 178, 171, 0.08); border-color: rgba(96, 178, 171, 0.15)">
+    <h4 class="font-extrabold text-[11px] text-tertiary-light uppercase tracking-widest flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-sm font-bold text-tertiary-light">military_tech</span>
+        <span>Challenge Mingguan</span>
+    </h4>
+    
+    <p class="text-xs font-black text-on-surface leading-snug">Buat desain landing page bertema EduTech!</p>
+    
+    <button onclick="window.location.href='achievement.html'" class="glow-button w-full py-2.5 bg-primary text-white hover:scale-102 active:scale-98 transition-all rounded-xl font-black text-[10px] uppercase tracking-wider shadow-lg shadow-primary/20">Ikut Challenge</button>
+</div>

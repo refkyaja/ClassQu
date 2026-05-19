@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ClassQu Dashboard - Belajar Jadi Menyenangkan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-bright": "#fdf8f8",
+                "surface-container-high": "#ece7e7",
+                "primary": "#a53b29",
+                "error-container": "#ffdad6",
+                "secondary-fixed-dim": "#eac25b",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary": "#ffffff",
+                "inverse-primary": "#ffb4a6",
+                "on-tertiary-container": "#00423e",
+                "error": "#ba1a1a",
+                "on-tertiary-fixed": "#00201e",
+                "on-surface-variant": "#57423e",
+                "on-secondary-fixed-variant": "#594400",
+                "on-secondary-container": "#775b00",
+                "surface": "#fdf8f8",
+                "on-primary": "#ffffff",
+                "tertiary-fixed": "#9ff1e9",
+                "primary-fixed-dim": "#ffb4a6",
+                "tertiary": "#006a64",
+                "outline": "#8b716d",
+                "secondary-container": "#ffd56d",
+                "surface-container": "#f1edec",
+                "primary-container": "#ff7e67",
+                "outline-variant": "#dec0ba",
+                "on-error-container": "#93000a",
+                "surface-container-highest": "#e6e1e1",
+                "on-primary-fixed-variant": "#842415",
+                "inverse-on-surface": "#f4f0ef",
+                "secondary-fixed": "#ffdf96",
+                "surface-container-low": "#f7f2f2",
+                "tertiary-fixed-dim": "#83d5cd",
+                "on-error": "#ffffff",
+                "on-primary-fixed": "#3f0300",
+                "on-tertiary-fixed-variant": "#00504b",
+                "on-primary-container": "#731709",
+                "on-surface": "#1c1b1b",
+                "tertiary-container": "#60b2ab",
+                "primary-fixed": "#ffdad4",
+                "surface-variant": "#e6e1e1",
+                "on-secondary-fixed": "#251a00",
+                "on-background": "#1c1b1b",
+                "background": "#fdf8f8",
+                "inverse-surface": "#313030",
+                "surface-tint": "#a53b29",
+                "on-tertiary": "#ffffff",
+                "secondary": "#765a00",
+                "surface-dim": "#ddd9d8"
+        },
+        "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "xl": "32px",
+                "margin-mobile": "16px",
+                "md": "16px",
+                "unit": "4px",
+                "margin-desktop": "64px",
+                "sm": "8px",
+                "xs": "4px",
+                "gutter": "20px",
+                "lg": "24px",
+                "section-gap": "80px",
+                "stack-md": "16px",
+                "stack-lg": "32px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": ["Plus Jakarta Sans"],
+                "display-lg": ["Plus Jakarta Sans"],
+                "headline-md": ["Plus Jakarta Sans"],
+                "body-lg": ["Plus Jakarta Sans"],
+                "body-md": ["Plus Jakarta Sans"],
+                "label-md": ["Plus Jakarta Sans"],
+                "label-sm": ["Plus Jakarta Sans"],
+                "headline-lg": ["Plus Jakarta Sans"],
+                "title-sm": ["Plus Jakarta Sans"],
+                "label-upper": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "title-sm": ["20px", {"lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600"}],
+                "label-upper": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}]
+        }
+      },
+    },
+  }
+</script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 40px 60px -15px rgba(165, 59, 41, 0.08);
+        }
+        .ambient-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(165, 59, 41, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(40px);
+            z-index: -1;
+        }
+        .active-nav-glow {
+            box-shadow: 0 4px 20px -2px rgba(165, 59, 41, 0.3);
+        }
+        .progress-3d {
+            background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen">
+<div class="ambient-glow -top-20 -left-20"></div>
+<div class="ambient-glow bottom-0 right-0" style="background: radial-gradient(circle, rgba(255, 213, 109, 0.15) 0%, rgba(255, 255, 255, 0) 70%);"></div>
+<aside class="hidden lg:flex flex-col w-72 p-6 fixed left-0 top-0 z-40 bg-white/60 dark:bg-surface-container-low/40 backdrop-blur-2xl rounded-r-lg h-[calc(100vh-32px)] my-4 border-r border-white/20 shadow-2xl shadow-primary/5">
+<div class="mb-10 px-3">
+<span class="font-headline-md text-headline-md font-black text-primary tracking-tighter">ClassQu</span>
+</div>
+<nav class="flex-1 space-y-3">
+<a class="bg-primary-container text-on-primary-container rounded-xl p-3 flex items-center gap-3 shadow-md active-nav-glow scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-upper text-label-upper">Dashboard</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-upper text-label-upper">Materi</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-upper text-label-upper">Progress</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-upper text-label-upper">Community</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-upper text-label-upper">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 space-y-2 border-t border-outline-variant/20">
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-upper text-label-upper">Bantuan</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all text-error" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-upper text-label-upper">Keluar</span>
+</a>
+</div>
+</aside>
+<main class="lg:ml-72 min-h-screen px-margin-mobile md:px-margin-desktop py-8">
+<header class="flex flex-col md:flex-row md:items-center justify-between mb-stack-lg gap-4">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Halo, Pelajar!</h1>
+<p class="text-on-surface-variant font-body-md text-body-md">Lanjutkan petualangan belajarmu hari ini.</p>
+</div>
+<div class="glass-card rounded-full px-6 py-3 flex items-center gap-6 border-outline-variant/30">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div>
+<p class="font-label-upper text-[10px] uppercase text-on-surface-variant leading-none">Level</p>
+<p class="font-title-sm text-title-sm text-on-surface leading-none">12</p>
+</div>
+</div>
+<div class="h-8 w-px bg-outline-variant/50"></div>
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/30 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<p class="font-label-upper text-[10px] uppercase text-on-surface-variant leading-none">Total XP</p>
+<p class="font-title-sm text-title-sm text-on-surface leading-none">450 XP</p>
+</div>
+</div>
+<button class="ml-4 bg-primary text-on-primary rounded-full px-4 py-2 font-label-upper text-label-upper hover:scale-105 transition-transform active:scale-95">
+                    Lihat Achievement
+                </button>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<section class="lg:col-span-8 space-y-stack-lg">
+<div>
+<div class="flex items-center justify-between mb-stack-md">
+<h2 class="font-title-sm text-title-sm">Kelas Aktif</h2>
+<a class="text-primary font-label-upper text-label-upper hover:underline" href="#">Lihat Semua</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="glass-card p-6 rounded-lg group hover:translate-y-[-4px] transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-2xl bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+</div>
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Coding</span>
+</div>
+<h3 class="font-title-sm text-on-surface mb-2">Mastering UI with Tailwind</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-6">Modul 4: Grid &amp; Flexbox Mastery</p>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-bold text-on-surface-variant">
+<span>PROGRESS</span>
+<span>65%</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary progress-3d rounded-full" style="width: 65%"></div>
+</div>
+</div>
+</div>
+<div class="glass-card p-6 rounded-lg group hover:translate-y-[-4px] transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl">brush</span>
+</div>
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Design</span>
+</div>
+<h3 class="font-title-sm text-on-surface mb-2">Fundamental Visual Design</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-6">Modul 2: Color Theory &amp; Psychology</p>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-bold text-on-surface-variant">
+<span>PROGRESS</span>
+<span>32%</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container progress-3d rounded-full" style="width: 32%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="glass-card p-6 rounded-lg">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-title-sm text-title-sm">Streak Belajar</h2>
+<div class="flex items-center gap-1 text-primary font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span>14 Hari</span>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center">
+<div class="text-[10px] font-bold text-outline uppercase">S</div>
+<div class="text-[10px] font-bold text-outline uppercase">S</div>
+<div class="text-[10px] font-bold text-outline uppercase">R</div>
+<div class="text-[10px] font-bold text-outline uppercase">K</div>
+<div class="text-[10px] font-bold text-outline uppercase">J</div>
+<div class="text-[10px] font-bold text-outline uppercase">S</div>
+<div class="text-[10px] font-bold text-outline uppercase">M</div>
+<div class="aspect-square flex items-center justify-center bg-primary rounded-lg text-white font-bold">1</div>
+<div class="aspect-square flex items-center justify-center bg-primary rounded-lg text-white font-bold">2</div>
+<div class="aspect-square flex items-center justify-center bg-primary rounded-lg text-white font-bold">3</div>
+<div class="aspect-square flex items-center justify-center bg-primary rounded-lg text-white font-bold">4</div>
+<div class="aspect-square flex items-center justify-center bg-primary rounded-lg text-white font-bold">5</div>
+<div class="aspect-square flex items-center justify-center bg-primary rounded-lg text-white font-bold">6</div>
+<div class="aspect-square flex items-center justify-center bg-surface-container-highest rounded-lg text-on-surface-variant font-bold">7</div>
+</div>
+</div>
+<div class="glass-card p-6 rounded-lg">
+<h2 class="font-title-sm text-title-sm mb-6">Achievement Terbaru</h2>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-secondary-fixed to-secondary-container shadow-lg shadow-secondary/20 flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<div>
+<p class="font-bold text-on-surface leading-tight">Early Bird</p>
+<p class="text-xs text-on-surface-variant">Selesaikan materi sebelum jam 8 pagi</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-tertiary-fixed to-tertiary-container shadow-lg shadow-tertiary/20 flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<p class="font-bold text-on-surface leading-tight">Pixel Perfect</p>
+<p class="text-xs text-on-surface-variant">Mendapatkan skor 100 di kuis UI</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 rounded-xl bg-primary relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -mr-24 -mt-24 group-hover:scale-110 transition-transform duration-500"></div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="max-w-md">
+<h2 class="font-headline-md text-white mb-2">Eksplorasi Roadmap Belajar</h2>
+<p class="text-white/80 font-body-md">Tentukan jalur karirmu dan mulai belajar dari nol hingga mahir bersama mentor ahli.</p>
+</div>
+<button class="bg-white text-primary font-bold px-8 py-3 rounded-full hover:shadow-xl transition-all active:scale-95 whitespace-nowrap">
+                            Buka Roadmap
+                        </button>
+</div>
+</div>
+</section>
+<aside class="lg:col-span-4 space-y-stack-lg">
+<div class="glass-card p-6 rounded-lg">
+<h2 class="font-title-sm text-title-sm mb-6">Leaderboard Preview</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-2 hover:bg-surface-container rounded-xl transition-colors">
+<div class="flex items-center gap-3">
+<span class="font-bold text-on-surface-variant w-4">1</span>
+<div class="w-8 h-8 rounded-full bg-outline-variant overflow-hidden">
+<img alt="Top student" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXUQqV23sSZlKthg2EOUYMKZLJFzhbHgB-CZ--qXkr-I6djdD06X9OV2__zG6yefGwEoEWcma_zILmXVlPld2UwOjD6AMDKyRDqXxO5oOvFye-PYjBEofVObeWQNU6evU5vnMVpXn1bPEQ-hXd1Hle1UqPBHfGdDAKKUHl_jbFDRvteuDFA8L0gkTtOP5cHlmur7i3GA5NlMfJYy8T_9t65dR9_EJvLo9Fyqhix-7NAYgthcgIkjBpGHENe2Dh2qp6xw9kvoCUlA"/>
+</div>
+<span class="font-bold text-on-surface text-sm">Andi Wijaya</span>
+</div>
+<span class="text-xs font-bold text-primary">1,240 XP</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-primary/10 rounded-xl border border-primary/20">
+<div class="flex items-center gap-3">
+<span class="font-bold text-primary w-4">12</span>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold">ME</div>
+<span class="font-bold text-on-surface text-sm">Kamu</span>
+</div>
+<span class="text-xs font-bold text-primary">450 XP</span>
+</div>
+<div class="flex items-center justify-between p-2 hover:bg-surface-container rounded-xl transition-colors">
+<div class="flex items-center gap-3">
+<span class="font-bold text-on-surface-variant w-4">13</span>
+<div class="w-8 h-8 rounded-full bg-outline-variant overflow-hidden">
+<img alt="Top student" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRDCCfXXErl3mvgxlSjxycLX-FZQ7Qvda9du6qZTMOtM2gwcdE6QUjVwz9S7j1Xgjq1g4wZO8eECcuuLTtz_naTJAK85hgbPKwJ2oDiT2OFhbxCArm9LmPlH8uNZ3SK0JoEWImwMFKrtN3EERBdp_cl7anbXlpgn96tTNE7Sr2Gqfsr7Tt81YOvq8FxE-Fm8y0TtbFE_Gku4h8zOhfQJ-jB-1FFcj0eggEppxgCNe9VqgxAaNZT2MS7OeYw75YAjdjXQ77McI_yQ"/>
+</div>
+<span class="font-bold text-on-surface text-sm">Siti Aminah</span>
+</div>
+<span class="text-xs font-bold text-primary">435 XP</span>
+</div>
+</div>
+</div>
+<div class="glass-card p-6 rounded-lg">
+<h2 class="font-title-sm text-title-sm mb-6">Upcoming Live Class</h2>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-surface-container-high/50 border border-outline-variant/20 hover:border-primary/50 transition-colors group">
+<div class="flex items-center gap-2 mb-2 text-primary">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span class="text-[10px] font-bold uppercase">Hari Ini • 19:00</span>
+</div>
+<h3 class="font-bold text-on-surface mb-1 group-hover:text-primary transition-colors">Portfolio Review Session</h3>
+<p class="text-xs text-on-surface-variant mb-4">Bersama Coach Reyhan</p>
+<button class="w-full py-2 bg-primary-container text-on-primary-container rounded-lg font-bold text-xs hover:bg-primary hover:text-white transition-all">
+                                Ingatkan Saya
+                            </button>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-high/50 border border-outline-variant/20">
+<div class="flex items-center gap-2 mb-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span class="text-[10px] font-bold uppercase">Besok • 15:00</span>
+</div>
+<h3 class="font-bold text-on-surface mb-1">Career Prep 101</h3>
+<p class="text-xs text-on-surface-variant mb-4">Strategi Lolos Intern di Big Tech</p>
+<button class="w-full py-2 bg-surface-container-highest text-on-surface-variant rounded-lg font-bold text-xs hover:bg-outline-variant transition-all">
+                                Lihat Detail
+                            </button>
+</div>
+</div>
+</div>
+<div class="glass-card p-6 rounded-lg bg-surface-container-lowest/50 border-dashed border-2 border-outline-variant/50">
+<div class="flex flex-col items-center text-center py-4">
+<div class="w-16 h-16 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary mb-4">
+<span class="material-symbols-outlined text-3xl">add_task</span>
+</div>
+<h3 class="font-bold text-on-surface mb-1">Belum Ada Tugas</h3>
+<p class="text-xs text-on-surface-variant px-4">Hebat! Kamu sudah menyelesaikan semua tantangan minggu ini.</p>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full py-12 px-margin-mobile md:px-margin-desktop mt-section-gap border-t border-outline-variant/30 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-headline-md text-headline-md font-bold text-on-background">ClassQu</span>
+<p class="text-on-surface-variant text-sm">© 2024 ClassQu. Dibuat dengan semangat untuk masa depan.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary font-label-upper text-label-upper transition-colors" href="#">Tentang Kami</a>
+<a class="text-on-surface-variant hover:text-primary font-label-upper text-label-upper transition-colors" href="#">Bantuan</a>
+<a class="text-on-surface-variant hover:text-primary font-label-upper text-label-upper transition-colors" href="#">Kebijakan</a>
+</div>
+</footer>
+</main>
+<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-outline-variant/20 px-6 py-3 flex justify-between items-center z-50">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold uppercase">Beranda</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px] font-bold uppercase">Kelas</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-[10px] font-bold uppercase">Progress</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase">Profil</span>
+</a>
+</div>
+</body></html>

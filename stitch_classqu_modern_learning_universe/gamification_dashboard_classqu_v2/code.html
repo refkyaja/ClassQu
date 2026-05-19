@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ClassQu - Gamification Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-bright": "#fdf8f8",
+                "surface-container-high": "#ece7e7",
+                "primary": "#a53b29",
+                "error-container": "#ffdad6",
+                "secondary-fixed-dim": "#eac25b",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary": "#ffffff",
+                "inverse-primary": "#ffb4a6",
+                "on-tertiary-container": "#00423e",
+                "error": "#ba1a1a",
+                "on-tertiary-fixed": "#00201e",
+                "on-surface-variant": "#57423e",
+                "on-secondary-fixed-variant": "#594400",
+                "on-secondary-container": "#775b00",
+                "surface": "#fdf8f8",
+                "on-primary": "#ffffff",
+                "tertiary-fixed": "#9ff1e9",
+                "primary-fixed-dim": "#ffb4a6",
+                "tertiary": "#006a64",
+                "outline": "#8b716d",
+                "secondary-container": "#ffd56d",
+                "surface-container": "#f1edec",
+                "primary-container": "#ff7e67",
+                "outline-variant": "#dec0ba",
+                "on-error-container": "#93000a",
+                "surface-container-highest": "#e6e1e1",
+                "on-primary-fixed-variant": "#842415",
+                "inverse-on-surface": "#f4f0ef",
+                "secondary-fixed": "#ffdf96",
+                "surface-container-low": "#f7f2f2",
+                "tertiary-fixed-dim": "#83d5cd",
+                "on-error": "#ffffff",
+                "on-primary-fixed": "#3f0300",
+                "on-tertiary-fixed-variant": "#00504b",
+                "on-primary-container": "#731709",
+                "on-surface": "#1c1b1b",
+                "tertiary-container": "#60b2ab",
+                "primary-fixed": "#ffdad4",
+                "surface-variant": "#e6e1e1",
+                "on-secondary-fixed": "#251a00",
+                "on-background": "#1c1b1b",
+                "background": "#fdf8f8",
+                "inverse-surface": "#313030",
+                "surface-tint": "#a53b29",
+                "on-tertiary": "#ffffff",
+                "secondary": "#765a00",
+                "surface-dim": "#ddd9d8"
+            },
+            "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "xl": "32px",
+                "margin-mobile": "16px",
+                "md": "16px",
+                "unit": "4px",
+                "margin-desktop": "64px",
+                "sm": "8px",
+                "xs": "4px",
+                "gutter": "20px",
+                "lg": "24px"
+            },
+            "fontFamily": {
+                "headline-lg-mobile": ["Plus Jakarta Sans"],
+                "display-lg": ["Plus Jakarta Sans"],
+                "headline-md": ["Plus Jakarta Sans"],
+                "body-lg": ["Plus Jakarta Sans"],
+                "body-md": ["Plus Jakarta Sans"],
+                "label-md": ["Plus Jakarta Sans"],
+                "label-sm": ["Plus Jakarta Sans"],
+                "headline-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fdf8f8; color: #1c1b1b; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(165, 59, 41, 0.1);
+            box-shadow: 0 20px 40px -10px rgba(165, 59, 41, 0.05);
+        }
+        .progress-bar-glow {
+            box-shadow: 0 0 15px rgba(165, 59, 41, 0.3);
+            background: linear-gradient(90deg, #a53b29 0%, #ff7e67 100%);
+        }
+        .achievement-badge:hover {
+            transform: translateY(-4px) scale(1.05);
+            filter: drop-shadow(0 10px 20px rgba(165, 59, 41, 0.2));
+        }
+        .streak-fire {
+            filter: drop-shadow(0 0 8px #ffdf96);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #dec0ba;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background overflow-x-hidden">
+<!-- Top Navigation Shell -->
+<header class="bg-white/80 backdrop-blur-xl border border-outline-variant/30 rounded-full mt-4 mx-4 md:mx-auto max-w-7xl sticky top-4 shadow-xl shadow-primary/5 z-50 flex justify-between items-center w-full px-8 py-3">
+<div class="text-2xl md:text-3xl font-extrabold text-primary tracking-tighter">ClassQu</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-all duration-300" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300" href="#">Kelas</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300" href="#">Subscription</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300" href="#">Community</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300" href="#">Blog</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="text-on-surface-variant font-medium hidden sm:inline">Login</span>
+<button class="bg-primary px-6 py-2.5 rounded-full text-on-primary font-bold hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20">Mulai Belajar</button>
+</div>
+</header>
+<div class="flex max-w-7xl mx-auto px-4 md:px-8 gap-gutter mt-8">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex flex-col w-72 p-6 fixed left-0 top-0 z-40 bg-white/60 backdrop-blur-2xl border-r border-outline-variant/20 h-screen shadow-2xl shadow-primary/5">
+<div class="text-2xl font-black text-primary mb-12">ClassQu</div>
+<div class="mb-8 p-4 bg-surface-container rounded-2xl flex flex-col items-center text-center gap-2">
+<img alt="Student Profile Picture" class="w-16 h-16 rounded-full border-4 border-primary/20 shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q"/>
+<div>
+<h3 class="font-bold text-on-surface">Halo, Pelajar!</h3>
+<p class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Level 12 • 450 XP</p>
+</div>
+<button class="bg-primary/10 text-primary px-4 py-1.5 rounded-full text-[10px] font-bold hover:bg-primary hover:text-white transition-colors mt-2">Lihat Achievement</button>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="bg-primary-container text-on-primary-container rounded-xl p-3 flex items-center gap-3 shadow-sm active:scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-xs font-bold uppercase tracking-wider">Dashboard</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-xs font-bold uppercase tracking-wider">Materi</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-xs font-bold uppercase tracking-wider">Progress</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-xs font-bold uppercase tracking-wider">Community</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-xs font-bold uppercase tracking-wider">Settings</span>
+</a>
+</nav>
+<div class="flex flex-col gap-2 mt-auto pt-4 border-t border-outline-variant/30">
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-xs font-bold uppercase tracking-wider">Bantuan</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-xs font-bold uppercase tracking-wider">Keluar</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="w-full lg:ml-72 flex flex-col gap-8 pb-24">
+<!-- Hero Stats Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- XP & Level Card -->
+<div class="col-span-1 md:col-span-2 glass-card p-8 rounded-lg relative overflow-hidden group">
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-primary/5 blur-3xl rounded-full"></div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div class="flex justify-between items-start">
+<div>
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase mb-2 inline-block">Proyeksi Karir: Software Architect</span>
+<h1 class="text-2xl font-bold text-on-surface mb-1">Level 12: Sang Penjelajah</h1>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-4xl font-extrabold text-primary leading-none">450</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">XP Hari Ini</span>
+</div>
+</div>
+<div class="mt-8">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">
+<span>850 / 1200 XP menuju Level 13</span>
+<span>71%</span>
+</div>
+<div class="w-full h-4 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full w-[71%] progress-bar-glow rounded-full relative">
+<div class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent opacity-50"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Streak Card -->
+<div class="glass-card p-8 rounded-lg flex flex-col items-center justify-center text-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-secondary-container/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-[64px] text-secondary streak-fire mb-4" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<h2 class="text-5xl font-extrabold text-on-surface leading-none">14</h2>
+<p class="text-sm text-on-surface-variant font-bold uppercase tracking-wider mt-1">Hari Beruntun!</p>
+<div class="mt-6 flex gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Daily Quests (4/12) -->
+<div class="md:col-span-4 flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-lg font-bold text-on-surface">Quest Harian</h3>
+<span class="text-primary font-bold text-xs cursor-pointer hover:underline">Lihat Semua</span>
+</div>
+<div class="glass-card p-6 rounded-lg flex-grow flex flex-col gap-4">
+<div class="flex items-center gap-4 p-3 bg-surface-container-low border border-outline-variant/30 rounded-xl">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">book</span>
+</div>
+<div class="flex-grow">
+<p class="text-sm font-bold">Selesaikan 2 Materi</p>
+<div class="flex justify-between items-center text-[10px] text-on-surface-variant mt-1">
+<span>Progress: 1/2</span>
+<span class="text-tertiary font-bold">+50 XP</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 bg-surface-container-low border border-outline-variant/30 rounded-xl">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">quiz</span>
+</div>
+<div class="flex-grow">
+<p class="text-sm font-bold">Kuis Tanpa Salah</p>
+<div class="flex justify-between items-center text-[10px] text-on-surface-variant mt-1">
+<span>Incomplete</span>
+<span class="text-secondary font-bold">+100 XP</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 bg-tertiary-container/20 border border-tertiary/20 rounded-xl">
+<div class="w-10 h-10 rounded-full bg-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-white">check</span>
+</div>
+<div class="flex-grow opacity-60">
+<p class="text-sm font-bold line-through">Login Hari Ini</p>
+<p class="text-[10px] text-tertiary font-bold">Selesai!</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Achievement Gallery (8/12) -->
+<div class="md:col-span-8 flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-lg font-bold text-on-surface">Galeri Pencapaian</h3>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary/10 rounded-full text-[10px] font-bold text-primary cursor-pointer hover:bg-primary hover:text-white transition-colors">Baru Didapat</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold text-on-surface-variant cursor-pointer">Langka</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-lg grid grid-cols-2 sm:grid-cols-4 gap-6">
+<div class="achievement-badge flex flex-col items-center gap-2 text-center transition-all cursor-help" title="Selesaikan 10 kelas berturut-turut">
+<div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-secondary-fixed to-secondary flex items-center justify-center shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined text-on-secondary-fixed text-4xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Star Student</p>
+</div>
+<div class="achievement-badge flex flex-col items-center gap-2 text-center transition-all cursor-help">
+<div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-tertiary-fixed to-tertiary flex items-center justify-center shadow-lg shadow-tertiary/20">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Fast Learner</p>
+</div>
+<div class="achievement-badge flex flex-col items-center gap-2 text-center transition-all cursor-help grayscale opacity-40">
+<div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-fixed to-primary flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Community Hero</p>
+</div>
+<div class="achievement-badge flex flex-col items-center gap-2 text-center transition-all cursor-help grayscale opacity-40">
+<div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-teal-400 to-tertiary flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Scholarship Elite</p>
+</div>
+<div class="achievement-badge flex flex-col items-center gap-2 text-center transition-all cursor-help grayscale opacity-40">
+<div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-400 to-primary flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Early Adopter</p>
+</div>
+<div class="achievement-badge flex flex-col items-center gap-2 text-center transition-all cursor-help grayscale opacity-40">
+<div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-amber-400 to-secondary flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Master Mind</p>
+</div>
+<div class="achievement-badge flex flex-col items-center gap-2 text-center transition-all cursor-help grayscale opacity-40">
+<div class="w-20 h-20 rounded-2xl bg-surface-container flex items-center justify-center border-2 border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-outline-variant text-4xl">lock</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">???</p>
+</div>
+<div class="achievement-badge flex flex-col items-center gap-2 text-center transition-all cursor-help grayscale opacity-40">
+<div class="w-20 h-20 rounded-2xl bg-surface-container flex items-center justify-center border-2 border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-outline-variant text-4xl">lock</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">???</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Leaderboard & Rewards Store Section -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Full Leaderboard (7/12) -->
+<div class="md:col-span-7 flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-lg font-bold text-on-surface">Papan Peringkat Bulanan</h3>
+<div class="flex bg-surface-container rounded-full p-1">
+<button class="bg-primary text-on-primary px-4 py-1 rounded-full text-[10px] font-bold">Global</button>
+<button class="px-4 py-1 text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors">Teman</button>
+</div>
+</div>
+<div class="glass-card rounded-lg overflow-hidden">
+<div class="p-6 bg-primary text-on-primary flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="font-bold text-lg">#24</span>
+<img alt="User Profile" class="w-10 h-10 rounded-full border-2 border-white/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS61qS7adTMyHzorunZi3UjoMcegkAAuGNfCQnWT7MDUTGohyDJvFupKXDIijRT-REIVAMe9TXxuRHvtXEBigYyjp8lVe70Rjrv9aWf3dHOTG7o3N3EDlxP8SIxOBhYCgS6Jmc-NVPZ5lN0jLi66_3F3FhEVFxkZO68u4ibiM4wDFz8grYoALVW0KmGCSmc1kB5ZJwejWrIU_gOcn2ZyFuKcxnvVId6aBFYeoLfCk0nHxSKFyoIyehwChgQT2KPnfP-Ir7YmBsgQ"/>
+<div>
+<p class="font-bold">Kamu (Andi)</p>
+<p class="text-[10px] opacity-80">Berada di Top 5% Global</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-2xl font-extrabold leading-none">1,240</p>
+<p class="text-[10px] font-bold uppercase tracking-wider opacity-80">XP BULAN INI</p>
+</div>
+</div>
+<div class="p-2 h-[300px] overflow-y-auto custom-scrollbar">
+<table class="w-full text-left border-separate border-spacing-y-2 px-2">
+<thead>
+<tr class="text-[10px] font-bold text-outline uppercase">
+<th class="p-3">Rank</th>
+<th class="p-3">Student</th>
+<th class="p-3">XP</th>
+<th class="p-3">Badge Utama</th>
+</tr>
+</thead>
+<tbody>
+<tr class="bg-secondary-container/10 rounded-xl overflow-hidden hover:scale-[1.01] transition-transform">
+<td class="p-3 font-black text-secondary">1</td>
+<td class="p-3 flex items-center gap-3">
+<img alt="Student Rank 1" class="w-8 h-8 rounded-full border border-secondary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMLIxb0ROdqhOzRaBLL1Z9ye_ufFrW8XkBOpcicPVrBIGWX1vyh9W2WKOofFgvm8O4OdaWRciN_tGSuR3wgOMVg5Ic18B1a1OeSw4ck4FlQ-lyNLpvqB7ObWVLqooMVRLfCEOpkF9wNj_ntdVGNWiyltElDiGxS92rbOdbfzfar4goQsWiWM3Mf5sx9KIa9xVnOuYEF1BcHzzc9yWu2oG-StJq4txjVgGlmynOzsU_kqmx22Zjg_M6SRPpgkwOMFTd_Cw04BvTTw"/>
+<span class="font-bold text-sm">Budi Santoso</span>
+</td>
+<td class="p-3 text-sm font-semibold">2,850</td>
+<td class="p-3"><span class="bg-secondary-fixed text-on-secondary-fixed-variant px-2 py-0.5 rounded-full text-[10px] font-bold">Elite Scholar</span></td>
+</tr>
+<tr class="bg-surface-container-low rounded-xl overflow-hidden hover:scale-[1.01] transition-transform">
+<td class="p-3 font-black text-outline">2</td>
+<td class="p-3 flex items-center gap-3">
+<img alt="Student Rank 2" class="w-8 h-8 rounded-full border border-primary/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvRbYAeuvGgR26Gn7gqnKhicjKHKt4UWAEkMcuxt1bHfLQPy4t8rYI-xMwcXvfNLJ7gGHRECuenmpJvYcqRoSfvvlVyBf2sKoAxEZ6T1LmGxpVk-wqYNZDRfJhAeSX9CIDghc5XnMl2lujaL4a3FUTC5Sh4e7y6CPtAcVDJtspkHI12vlFc2KUF84m4PE7uHxwUSFmE4N0s6I2GXZzRKaF-511uHAtcCltBBJyVBfHE-MMiE3hAP1NNwTYNWywpjVROMl4V6iMIg"/>
+<span class="font-bold text-sm">Citra Lestari</span>
+</td>
+<td class="p-3 text-sm font-semibold">2,710</td>
+<td class="p-3"><span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-0.5 rounded-full text-[10px] font-bold">Quiz Master</span></td>
+</tr>
+<tr class="bg-surface-container-low rounded-xl overflow-hidden hover:scale-[1.01] transition-transform">
+<td class="p-3 font-black text-outline">3</td>
+<td class="p-3 flex items-center gap-3">
+<img alt="Student Rank 3" class="w-8 h-8 rounded-full border border-primary/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmKW_GgCU_t4L1yiWrCKzychDNqOEQV2Fqw4KzEwa_r7fdQN1aZGxb0kj-dcihd0rvo4Ww6Pn4Fx0yiQdaOrH3R0Y23IqUuaFIqQorMj7xfj-ox7JzzQoZJCgT8J2gaBUWRFUzMKvT_V0wC62DNDDQxL3dZev7uYwTbzkliGL4capfBaa-OB2T4Ypahyyelht-wd-0hilRBwq8TgLG4LT_hrM8-ROPhnxvXfbQuBXxkVGDQ6oReOnci84z-Q6Ab31gnC13NOcQjw"/>
+<span class="font-bold text-sm">Deni Setiawan</span>
+</td>
+<td class="p-3 text-sm font-semibold">2,490</td>
+<td class="p-3"><span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded-full text-[10px] font-bold">Early Bird</span></td>
+</tr>
+<tr class="bg-surface-container-low rounded-xl overflow-hidden hover:scale-[1.01] transition-transform">
+<td class="p-3 font-black text-outline">4</td>
+<td class="p-3 flex items-center gap-3">
+<img alt="Student Rank 4" class="w-8 h-8 rounded-full border border-primary/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDFmyOR31FcnntjhF6WLD7ubZaPRGiakqTDhxy3jHs3SjLtilsRI08aHCY5mFb_Ya5bj2r6q5ZvoBlmCNK_aMfZ_x8tLe8SZRdf3JoA3nzPzA01c5w63RPT2ygsydmFS278dBOUOWurQptc6SB7PJWmNNhjVa0_saHzCfIQtkx12zLhS6fAR4WKZyZ-FmATIKWtFSb5fUPm-xoGwCkp-tq6NcIh1lfzJ_L8fIKqYfY-9I1QSD3bfTVsLxryDnPJsMYR0DDQuF0Xg"/>
+<span class="font-bold text-sm">Eva Mariana</span>
+</td>
+<td class="p-3 text-sm font-semibold">2,100</td>
+<td class="p-3"><span class="bg-error-container text-on-error-container px-2 py-0.5 rounded-full text-[10px] font-bold">Fire Streak</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Rewards Store Preview (5/12) -->
+<div class="md:col-span-5 flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-lg font-bold text-on-surface">Tukar Poin (Rewards)</h3>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+<span class="font-bold text-xs">2,450 Coin</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-lg flex flex-col gap-4 flex-grow">
+<div class="group relative bg-surface-container-low border border-outline-variant/20 p-4 rounded-xl hover:shadow-lg transition-all cursor-pointer">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">shopping_cart</span>
+</div>
+<div>
+<p class="font-bold text-sm">Diskon Berlangganan</p>
+<p class="text-[10px] text-on-surface-variant">Potongan 20% Paket Pro</p>
+</div>
+</div>
+<div class="text-right">
+<span class="bg-surface-container-highest px-2 py-1 rounded-md text-[10px] font-bold block mb-1">1,000 Poin</span>
+<button class="bg-primary text-white px-3 py-1 rounded-full text-[10px] font-bold active:scale-95 transition-transform">Tukar</button>
+</div>
+</div>
+</div>
+<div class="group relative bg-surface-container-low border border-outline-variant/20 p-4 rounded-xl hover:shadow-lg transition-all cursor-pointer">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-secondary-container/30 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl">person</span>
+</div>
+<div>
+<p class="font-bold text-sm">Avatar Eksklusif</p>
+<p class="text-[10px] text-on-surface-variant">Karakter "Penyihir Kode"</p>
+</div>
+</div>
+<div class="text-right">
+<span class="bg-surface-container-highest px-2 py-1 rounded-md text-[10px] font-bold block mb-1">500 Poin</span>
+<button class="bg-primary text-white px-3 py-1 rounded-full text-[10px] font-bold active:scale-95 transition-transform">Tukar</button>
+</div>
+</div>
+</div>
+<div class="group relative bg-surface-container-low border border-outline-variant/20 p-4 rounded-xl hover:shadow-lg transition-all cursor-pointer">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-tertiary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-3xl">card_giftcard</span>
+</div>
+<div>
+<p class="font-bold text-sm">E-Voucher Gopay</p>
+<p class="text-[10px] text-on-surface-variant">Senilai Rp. 25.000</p>
+</div>
+</div>
+<div class="text-right">
+<span class="bg-surface-container-highest px-2 py-1 rounded-md text-[10px] font-bold block mb-1">5,000 Poin</span>
+<button class="bg-outline-variant text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold cursor-not-allowed">Belum Cukup</button>
+</div>
+</div>
+</div>
+<button class="mt-auto w-full py-3 rounded-xl border border-primary/20 text-primary font-bold text-xs hover:bg-primary hover:text-white transition-all">Lihat Semua di Rewards Store</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-mobile md:px-margin-desktop bg-surface-container border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div class="max-w-xl">
+<div class="text-2xl font-bold text-on-background mb-4">ClassQu</div>
+<p class="text-sm text-on-surface-variant max-w-sm">Dibuat dengan semangat untuk masa depan pendidikan yang lebih inklusif dan menyenangkan melalui gamifikasi cerdas.</p>
+</div>
+<div class="flex flex-wrap gap-8">
+<div class="flex flex-col gap-2">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Produk</span>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Tentang Kami</a>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Kebijakan Privasi</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Dukungan</span>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Syarat &amp; Ketentuan</a>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Hubungi Kami</a>
+</div>
+</div>
+<div class="w-full pt-8 border-t border-outline-variant/20 mt-8 flex flex-col md:flex-row justify-between gap-4">
+<p class="text-xs text-on-surface-variant">© 2024 ClassQu. Dibuat dengan semangat untuk masa depan.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">language</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">alternate_email</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">public</span>
+</div>
+</div>
+</footer>
+<!-- Mobile Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-xl md:hidden border-t border-outline-variant/30 flex justify-around p-4 z-50">
+<a class="text-primary flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold">Dash</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px] font-bold">Materi</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-[10px] font-bold">Stats</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold">Sosial</span>
+</a>
+</nav>
+<!-- Floating Action Button Contextual -->
+<button class="fixed bottom-24 right-8 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 md:bottom-8">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</body></html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Community - ClassQu</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#fdf8f8",
+                    "surface-container-high": "#ece7e7",
+                    "primary": "#a53b29",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#eac25b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#ffb4a6",
+                    "on-tertiary-container": "#00423e",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#00201e",
+                    "on-surface-variant": "#57423e",
+                    "on-secondary-fixed-variant": "#594400",
+                    "on-secondary-container": "#775b00",
+                    "surface": "#fdf8f8",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#9ff1e9",
+                    "primary-fixed-dim": "#ffb4a6",
+                    "tertiary": "#006a64",
+                    "outline": "#8b716d",
+                    "secondary-container": "#ffd56d",
+                    "surface-container": "#f1edec",
+                    "primary-container": "#ff7e67",
+                    "outline-variant": "#dec0ba",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e6e1e1",
+                    "on-primary-fixed-variant": "#842415",
+                    "inverse-on-surface": "#f4f0ef",
+                    "secondary-fixed": "#ffdf96",
+                    "surface-container-low": "#f7f2f2",
+                    "tertiary-fixed-dim": "#83d5cd",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#3f0300",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "on-primary-container": "#731709",
+                    "on-surface": "#1c1b1b",
+                    "tertiary-container": "#60b2ab",
+                    "primary-fixed": "#ffdad4",
+                    "surface-variant": "#e6e1e1",
+                    "on-secondary-fixed": "#251a00",
+                    "on-background": "#1c1b1b",
+                    "background": "#fdf8f8",
+                    "inverse-surface": "#313030",
+                    "surface-tint": "#a53b29",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#765a00",
+                    "surface-dim": "#ddd9d8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "margin-desktop": "48px",
+                    "gutter": "24px",
+                    "section-gap": "80px",
+                    "stack-md": "16px",
+                    "container-max": "1280px",
+                    "stack-lg": "32px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-md-mobile": ["Plus Jakarta Sans"],
+                    "title-sm": ["Plus Jakarta Sans"],
+                    "label-upper": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-sm": ["20px", {"lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600"}],
+                    "label-upper": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(165, 59, 41, 0.1);
+        }
+        .glow-orange-hover:hover {
+            box-shadow: 0 0 20px rgba(165, 59, 41, 0.2);
+        }
+        .ambient-glow {
+            box-shadow: 0 20px 60px -15px rgba(165, 59, 41, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chat-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: rgba(165, 59, 41, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopAppBar -->
+<nav class="bg-white/70 backdrop-blur-xl text-primary rounded-full mt-4 mx-4 md:mx-auto max-w-7xl sticky top-4 border border-white/30 shadow-xl shadow-primary/10 flex justify-between items-center w-full px-8 py-3 z-50">
+<div class="font-display-lg text-display-lg-mobile md:text-display-lg font-extrabold text-primary tracking-tighter">ClassQu</div>
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 hover:scale-105" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 hover:scale-105" href="#">Kelas</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 hover:scale-105" href="#">Subscription</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 transition-all duration-300 hover:scale-105" href="#">Community</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 hover:scale-105" href="#">Blog</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block font-label-upper text-label-upper text-primary font-bold hover:scale-105 transition-transform">Login</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-upper text-label-upper font-bold shadow-lg shadow-primary/25 hover:scale-105 active:scale-95 transition-all">Mulai Belajar</button>
+</div>
+</nav>
+<div class="max-w-7xl mx-auto flex gap-gutter mt-10 px-margin-mobile md:px-margin-desktop mb-24">
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden lg:flex flex-col w-72 p-6 sticky top-24 h-[calc(100vh-120px)] glass-card rounded-lg border-r border-white/20 shadow-2xl shadow-primary/5">
+<div class="mb-stack-lg">
+<div class="font-headline-md text-headline-md font-black text-primary mb-2">Community</div>
+<div class="bg-surface-container-low rounded-xl p-4 flex items-center gap-3">
+<img alt="Student Profile" class="w-10 h-10 rounded-full border-2 border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbqrWvFqphhbtNSGXoLEug7YOvg6onVhGQD2vJSJJiqjmfFWTMgwImvGrs-X8JpcnO1NrmVmFanRIa11hK6yJyz80pn6ZqBb1HRkmlpcuVcYTqo93FkRtaklp15k8QhGKtxZymSUGKpistuZMmLLX6RTuLz3qtQCAYlB3WZjX8c4jWJlHrYpd-bEEMX7LsHx89ZBpRRXAP7A7y6jSL8am64dA4FsjiM4z50S5d7t1WUgwY2nqqxZz33m1pp0Xl9cGjW1YlvUZ3mQ"/>
+<div>
+<p class="font-title-sm text-[14px] text-on-surface font-bold">Halo, Pelajar!</p>
+<p class="text-[12px] text-on-surface-variant">Level 12 • 450 XP</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-2 flex-grow overflow-y-auto">
+<a class="bg-primary text-on-primary rounded-xl p-3 flex items-center gap-3 shadow-md active:scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-upper text-label-upper">Dashboard</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-upper text-label-upper">Materi</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-upper text-label-upper">Progress</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-upper text-label-upper">Community</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-upper text-label-upper">Settings</span>
+</a>
+<div class="mt-stack-lg pt-stack-lg border-t border-outline-variant/20 flex flex-col gap-2">
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-upper text-label-upper">Bantuan</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-3 p-3 hover:bg-surface-container-highest rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-upper text-label-upper">Keluar</span>
+</a>
+</div>
+</nav>
+<button class="mt-6 bg-tertiary text-on-tertiary w-full py-3 rounded-xl font-label-upper text-label-upper font-bold hover:brightness-110 transition-all shadow-lg">Lihat Achievement</button>
+</aside>
+<!-- Main Feed Canvas -->
+<main class="flex-grow">
+<!-- Search & Filter Bar -->
+<div class="glass-card p-4 rounded-xl mb-stack-lg sticky top-[100px] z-30 shadow-sm border border-outline-variant/30 flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="relative w-full md:w-1/3">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full focus:ring-2 focus:ring-primary/50 text-body-md transition-all" placeholder="Cari diskusi atau materi..." type="text"/>
+</div>
+<div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-[12px] font-bold whitespace-nowrap">Semua</button>
+<button class="bg-surface-container-highest text-on-surface px-4 py-1.5 rounded-full text-[12px] font-bold whitespace-nowrap hover:bg-primary-fixed transition-colors">Design</button>
+<button class="bg-surface-container-highest text-on-surface px-4 py-1.5 rounded-full text-[12px] font-bold whitespace-nowrap hover:bg-primary-fixed transition-colors">English</button>
+<button class="bg-surface-container-highest text-on-surface px-4 py-1.5 rounded-full text-[12px] font-bold whitespace-nowrap hover:bg-primary-fixed transition-colors">Coding</button>
+<button class="bg-surface-container-highest text-on-surface px-4 py-1.5 rounded-full text-[12px] font-bold whitespace-nowrap hover:bg-primary-fixed transition-colors">Business</button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-gutter">
+<!-- Feed (Left/Center) -->
+<div class="xl:col-span-2 space-y-stack-lg">
+<!-- CTA Card -->
+<section class="relative overflow-hidden rounded-lg p-stack-lg bg-gradient-to-br from-primary to-primary-container text-on-primary ambient-glow">
+<div class="relative z-10 max-w-md">
+<h2 class="font-headline-md text-headline-md-mobile md:text-headline-md mb-2">Ayo Bergabung di Grup Diskusi!</h2>
+<p class="text-body-md opacity-90 mb-6">Dapatkan tips eksklusif dan koneksi baru dengan 50,000+ pelajar lainnya.</p>
+<button class="bg-white text-primary px-8 py-3 rounded-full font-bold text-label-upper hover:scale-105 transition-transform flex items-center gap-2 shadow-xl">
+                            Join Community <span class="material-symbols-outlined">rocket_launch</span>
+</button>
+</div>
+<div class="absolute -right-10 -bottom-10 w-64 h-64 bg-white/20 blur-3xl rounded-full"></div>
+</section>
+<!-- Discussion Post 1 -->
+<article class="glass-card p-stack-lg rounded-lg border border-outline-variant/30 hover:shadow-lg transition-shadow">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<img alt="Sarah J." class="w-12 h-12 rounded-full ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjbPOC80imJ6FRhywKveP-8tbiYceNmyrPJteAoWh0b3JEja5pJrF8rWcX_D5pQF5wWyO8_obE_UAa9d6g-R6fxxD71e4Hr3HHEzdmT1RROc2NULoUipc4FfoXOEvGscHVxJGh0UcdCFpK-iN3SdeK8VYng48O0ZsV_6aKb7FqwO4drSZ1dXKBZJ00pSi8Fjv_xGIGKITdX838Iy4XZU9n0iyoY_FabcT9bbb1mNYK3CQKscSVFxJqwrR_X5YPR86AcUfH702ojQ"/>
+<div>
+<h4 class="font-title-sm text-[16px] font-bold">Sarah J. <span class="text-primary font-normal text-sm ml-1">#UI/UX Design</span></h4>
+<p class="text-[12px] text-outline">Diposting 2 jam yang lalu</p>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<p class="font-body-md text-on-surface mb-4 leading-relaxed">
+                        Guys, baru aja selesai kelas "Advanced Typography" di ClassQu. Bener-bener ngerubah cara pandang gue soal kerning. Ada yang mau join zoom buat review portofolio bareng besok malam? 🎨✨
+                    </p>
+<div class="rounded-xl overflow-hidden mb-4 border border-outline-variant/20">
+<img alt="Sarah's Project" class="w-full aspect-video object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLO3sZEHa41v4D_ppeLwr2050LvdV0av2ImdUnETvV0ICgfNiI7XRYPt8HYmx1Ncy_bvQKat1yCxRPJ_MthQPxM94wMnrQyU-IEYO-kpuh29Vlcu8gHz30e6sf08Ziv1lcrq6N19FQ1xQH_u1FqUPyzBFjQWMs1D9hbL92Cf41ybEfHdsrVb97z2DxS7XSN2ko-0T-UIxHdoSC8hjwJtaE1wVzVVMf3kIjPBsMqJliAH66BZ_JlffgPoZsNWyFPbVMD9eW4w5PBQ"/>
+</div>
+<div class="flex items-center gap-stack-lg border-t border-outline-variant/10 pt-4">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-sm font-bold">42 Likes</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-sm font-bold">12 Comments</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+<span class="text-sm font-bold">Share</span>
+</button>
+</div>
+</article>
+<!-- Achievement Activity Card -->
+<div class="glass-card p-stack-md rounded-lg flex items-center gap-4 border border-primary/10 bg-primary/5">
+<div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-on-primary shrink-0 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-3xl">emoji_events</span>
+</div>
+<div class="flex-grow">
+<p class="text-sm text-on-surface-variant">Baru saja dibagikan</p>
+<h5 class="font-title-sm text-[16px] font-bold">Budi Santoso <span class="font-normal">menyelesaikan kursus</span> Master English Fluency! 🏆</h5>
+</div>
+<button class="bg-tertiary text-on-tertiary px-4 py-2 rounded-full text-[12px] font-bold whitespace-nowrap">Ucapkan Selamat!</button>
+</div>
+<!-- Discussion Post 2 -->
+<article class="glass-card p-stack-lg rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Ahmad" class="w-12 h-12 rounded-full ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ41sdb2nd-8X-I7zF7Ixeb9JxI4FdIW17CXcyQP6CqainX0HVr_GoOC2A42T3fO5ZHqBIlYbHvPqEsrSr6ceRdBM3x2BdEXHVLpsHBXfw5N70AkkpCo1k00DIhKu7awVzlluEY98gNRw_GaRou_2U2InSuZbcJRo7jgxCVFwaWNCS7cmHepQrHVMSmkzXvI999algutCE6o8JF6KU2thNp-rjnSvDKmNgWCg_x7_Z1D_y8dPBhr38OSU6wa7SJF0qGUDhVeIfIg"/>
+<div>
+<h4 class="font-title-sm text-[16px] font-bold">Ahmad K. <span class="text-primary font-normal text-sm ml-1">#Productivity</span></h4>
+<p class="text-[12px] text-outline">Diposting 5 jam yang lalu</p>
+</div>
+</div>
+<p class="font-body-md text-on-surface leading-relaxed">
+                        Ada yang punya rekomendasi plugin Figma buat ngatur design system biar lebih clean? Lagi ngerjain project buat startup nih. Thanks in advance! 🙏
+                    </p>
+<div class="flex items-center gap-stack-lg mt-4 border-t border-outline-variant/10 pt-4">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-sm font-bold">18 Likes</span>
+</button>
+<button class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-sm">8 Balasan</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Right Sidebar: Mentors & Chat -->
+<div class="space-y-stack-lg">
+<!-- Mentor Highlights -->
+<section class="glass-card p-6 rounded-lg border border-outline-variant/30">
+<h3 class="font-title-sm text-on-surface font-bold mb-stack-md flex items-center justify-between">
+                        Top Mentors
+                        <span class="text-primary text-[12px] cursor-pointer hover:underline">Lihat Semua</span>
+</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3 p-2 hover:bg-surface-container-low rounded-xl transition-all cursor-pointer">
+<img alt="Mentor 1" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQlgX9G2HBuDhqDtUojpm0MesHmY6kzelS3zL-PmSDFbmEYmr4hfqsgJqa88dNMJzyXzvVdLTyKOrAliTx5JXkipmfF8qTI4vjHjIrcIf1RQDXbw63vpQIZBX8VkTOyCPK2E7wIpixERadCJUm4CtIYmzmLT8UIIWDI6Ojs8xXw6b9RtZQ5fW5-QjmllhAcyKJlZmYZAi1OseMVPmAs1na6I-bAZV1TwS0dNwXLeZqiciDmw9QIPtGNlQnbPaY4tB38AH2yE9EHg"/>
+<div class="flex-grow">
+<p class="text-sm font-bold">Dian Pratama</p>
+<p class="text-[12px] text-tertiary">Senior Product Manager</p>
+</div>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex items-center gap-3 p-2 hover:bg-surface-container-low rounded-xl transition-all cursor-pointer">
+<img alt="Mentor 2" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVqCS4JcK8zSkdk8gF67Dogn_DsKXfgMf6HabnC0Wu3zPc-OVbdAz1ai38rGgkKZ3JA7nO1RlKd7WRxZEIEdk-vLiE7BL7zkVOOetgR2mNL-Gpf59nMLT80L_nFcD7MJBbGr0JZz60g2CB2zG9Y62yjuMlL_DWWscx-q2b6alE0zeRBQnD6MSxYQyqvSTXl9GtjhhW7HpmKGnEKGOKcrItgzr7uOJ_CCfrBsP-M1xXv8ERFnBL8oEpM5lwdy8Qpd6IsC6eGkvaHQ"/>
+<div class="flex-grow">
+<p class="text-sm font-bold">Aulia Rizky</p>
+<p class="text-[12px] text-tertiary">UI Specialist at Google</p>
+</div>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+</section>
+<!-- Small Groups Chat Interface -->
+<section class="glass-card h-[450px] flex flex-col rounded-lg border border-outline-variant/30 overflow-hidden ambient-glow">
+<div class="p-4 bg-tertiary text-on-tertiary flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined">forum</span>
+<h3 class="font-title-sm text-[14px] font-bold">Grup Belajar English</h3>
+</div>
+<span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">12 Online</span>
+</div>
+<!-- Messages Area -->
+<div class="flex-grow p-4 space-y-4 overflow-y-auto chat-scroll bg-surface-container-low/30">
+<div class="flex gap-2">
+<img alt="Chat User 1" class="w-6 h-6 rounded-full mt-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB04QHkH6tB9ZzxuotPYoJyGEnbZp8Jl3ioaVh9nkSh32h_hIkOi7tW6KhkkSYXy3yhpHDYjM0OzBdkx7gwUSVRDodciM_U-MlxAn0olsTIw6IF9Fd1TPHV8qMZSLsngnPjrweW7YGnsUQpLqjmALtNvhwct6rAdQHmjAKvMbIqvEups2BYCQnDdcYJ1907DoY-Cf8ZZCWpL5NTXiR6TXP0itxQ7q8lJkfJsn7FI_Pfcd_q7eRfUZotZr5p0SJnYm1GekY0YUrWjg"/>
+<div class="max-w-[80%] bg-white p-3 rounded-2xl rounded-tl-none shadow-sm border border-outline-variant/10">
+<p class="text-[10px] font-bold text-tertiary mb-1">Maya</p>
+<p class="text-xs">Guys, any tips for IELTS speaking section? I'm struggling with the flow.</p>
+</div>
+</div>
+<div class="flex flex-row-reverse gap-2">
+<div class="max-w-[80%] bg-tertiary-container text-on-tertiary-container p-3 rounded-2xl rounded-tr-none shadow-md">
+<p class="text-xs">Try the P.E.E.L method (Point, Explanation, Example, Link). It helps a lot!</p>
+</div>
+</div>
+<div class="flex gap-2">
+<img alt="Chat User 2" class="w-6 h-6 rounded-full mt-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJcoYKFe9-fPgxhz_juquDotAP9lpDPYMj5mfct9ntkFeVcwz8fBEyunIsOrjHsYIqkhpeZvIpny6CtO-ZuNRpWptOYzZzWFEGcLWAzfzoEbvCMsj2bboNoExhEeZGDhT3nqde6_VkJHXUXdL1k1aHDdlYUvAnwRcOMM-g8kDVw7fqKaq81sQtU-1J0FBMJjinq2VzM3p_Z-kJDAMooKLv5V7fGf9GH9MZrhzivbVOQ_aI5rUBIM1mBtf12CRJiWxk229Gs_ZINA"/>
+<div class="max-w-[80%] bg-white p-3 rounded-2xl rounded-tl-none shadow-sm border border-outline-variant/10">
+<p class="text-[10px] font-bold text-tertiary mb-1">Kevin</p>
+<p class="text-xs">Agreed! And don't forget to record yourself and listen back. It helps spot the filler words.</p>
+</div>
+</div>
+</div>
+<!-- Chat Input -->
+<div class="p-3 bg-white border-t border-outline-variant/20 flex items-center gap-2">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+</button>
+<input class="flex-grow bg-surface-container-low border-none rounded-full py-2 px-4 text-xs focus:ring-1 focus:ring-primary" placeholder="Tulis pesan..." type="text"/>
+<button class="bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-mobile md:px-margin-desktop mt-section-gap bg-surface-container-lowest border-t border-outline-variant/30">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-stack-lg">
+<div class="col-span-1 md:col-span-2">
+<div class="font-headline-md text-headline-md font-bold text-on-background mb-4">ClassQu</div>
+<p class="text-body-md text-on-surface-variant max-w-sm mb-6">Membangun masa depan pendidikan melalui kolaborasi dan teknologi. Bergabunglah dengan kami sekarang.</p>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary-fixed transition-colors"><span class="material-symbols-outlined text-[20px]">language</span></button>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary-fixed transition-colors"><span class="material-symbols-outlined text-[20px]">mail</span></button>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary-fixed transition-colors"><span class="material-symbols-outlined text-[20px]">groups</span></button>
+</div>
+</div>
+<div>
+<h6 class="font-label-upper text-label-upper text-primary font-bold mb-4">Links</h6>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Tentang Kami</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Kebijakan Privasi</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Syarat &amp; Ketentuan</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Hubungi Kami</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-label-upper text-label-upper text-primary font-bold mb-4">Newsletter</h6>
+<p class="text-body-md text-on-surface-variant mb-4">Dapatkan update terbaru tentang kursus dan event komunitas.</p>
+<div class="flex gap-2">
+<input class="bg-white border border-outline-variant rounded-full px-4 py-2 text-sm focus:ring-2 focus:ring-primary w-full" placeholder="Email Anda" type="email"/>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full font-bold text-xs">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-outline-variant/10 text-center text-on-surface-variant font-label-upper text-[11px]">
+        © 2024 ClassQu. Dibuat dengan semangat untuk masa depan.
+    </div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 right-0 md:hidden bg-white/80 backdrop-blur-xl border-t border-outline-variant/20 flex justify-around items-center py-3 z-50 rounded-t-xl shadow-2xl">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px] font-bold">Kelas</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-[10px] font-bold">Community</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button (Mobile) -->
+<button class="md:hidden fixed bottom-20 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center z-40 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</body></html>

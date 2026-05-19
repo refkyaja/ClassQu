@@ -1,0 +1,242 @@
+<!-- PANEL 3: MENTOR SPOTLIGHT & CONSULTATIONS (Center Panel) -->
+<div class="flex flex-col gap-6">
+
+    <!-- Hero Banner with Quick Stats -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+        <!-- Left: Headline and Tagline -->
+        <div class="lg:col-span-7 flex flex-col justify-center space-y-2">
+            <h2 class="font-extrabold text-2xl md:text-3xl text-on-surface leading-tight tracking-tight">
+                Belajar & Berkembang <br/>
+                Bersama <span class="text-primary bg-primary/5 rounded-xl px-2">Mentor Hebat</span>
+            </h2>
+            <p class="text-on-surface-variant/70 text-xs font-bold leading-relaxed max-w-md">
+                Dapatkan bimbingan langsung dari praktisi berpengalaman dari top tech companies dan percepat perjalanan karir serta skill-mu.
+            </p>
+        </div>
+
+        <!-- Right: Stats Panel (Neo-brutalism design style) -->
+        <div class="lg:col-span-5 grid grid-cols-2 gap-3 bg-[#FAF6F0]/80 border border-primary/10 rounded-2xl p-4 shadow-sm relative overflow-hidden select-none">
+            <div class="space-y-0.5 text-center flex flex-col justify-center p-2.5 bg-white/70 rounded-xl border border-primary/5">
+                <span class="text-lg font-black text-primary leading-none">35+</span>
+                <span class="text-[8.5px] font-black text-on-surface-variant/50 uppercase tracking-wide">Mentor Aktif</span>
+            </div>
+            <div class="space-y-0.5 text-center flex flex-col justify-center p-2.5 bg-white/70 rounded-xl border border-primary/5">
+                <span class="text-lg font-black text-[#6A4BFF] leading-none">1.250+</span>
+                <span class="text-[8.5px] font-black text-on-surface-variant/50 uppercase tracking-wide">Sesi Mentoring</span>
+            </div>
+            <div class="space-y-0.5 text-center flex flex-col justify-center p-2.5 bg-white/70 rounded-xl border border-primary/5">
+                <span class="text-lg font-black text-[#e3aa1a] leading-none">4.9/5</span>
+                <span class="text-[8.5px] font-black text-on-surface-variant/50 uppercase tracking-wide">Rating Mentor</span>
+            </div>
+            <div class="space-y-0.5 text-center flex flex-col justify-center p-2.5 bg-white/70 rounded-xl border border-primary/5">
+                <span class="text-lg font-black text-[#20a48a] leading-none">98%</span>
+                <span class="text-[8.5px] font-black text-on-surface-variant/50 uppercase tracking-wide">Siswa Puas</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mentor Selector Tabs bar (Sticky top) -->
+    <div class="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-primary/5 py-3 px-1 -mx-1 flex justify-between items-center rounded-b-xl shadow-sm mb-1 select-none">
+        <div class="flex gap-4 font-black text-xs">
+            <button onclick="filterMentorTab('semua', this)" class="mentor-tab-btn text-primary border-b-2 border-primary pb-1">Semua Mentor</button>
+            <button onclick="filterMentorTab('favorit', this)" class="mentor-tab-btn text-on-surface-variant/50 hover:text-primary transition-colors pb-1">Mentor Favorit</button>
+            <button onclick="filterMentorTab('saya', this)" class="mentor-tab-btn text-on-surface-variant/50 hover:text-primary transition-colors pb-1">Mentor Saya</button>
+            <button onclick="filterMentorTab('riwayat', this)" class="mentor-tab-btn text-on-surface-variant/50 hover:text-primary transition-colors pb-1">Riwayat Sesi</button>
+        </div>
+        
+        <div class="flex items-center gap-1 border border-primary/15 rounded-full px-3 py-1 bg-white/80 text-[9.5px] font-black shadow-sm cursor-pointer hover:bg-white transition-colors">
+            <span>Urutkan: Terpopuler</span>
+            <span class="material-symbols-outlined text-xs">keyboard_arrow_down</span>
+        </div>
+    </div>
+
+    <!-- Mentor Grid List of 8 cards -->
+    <div id="mentor-grid-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- Card 1: Dimas Pratama -->
+        <div class="glass-card rounded-2xl p-5 border border-primary/10 hover:border-primary/25 transition-all duration-200 bg-white flex flex-col justify-between relative overflow-hidden group shadow-sm hover:shadow">
+            <div class="absolute top-3 right-3 w-7 h-7 bg-[#FFF5F3] text-primary border border-primary/10 rounded-full flex items-center justify-center text-xs font-black shadow-sm select-none">👑</div>
+            <div class="space-y-3.5">
+                <div class="flex items-center gap-3">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQlgX9G2HBuDhqDtUojpm0MesHmY6kzelS3zL-PmSDFbmEYmr4hfqsgJqa88dNMJzyXzvVdLTyKOrAliTx5JXkipmfF8qTI4vjHjIrcIf1RQDXbw63vpQIZBX8VkTOyCPK2E7wIpixERadCJUm4CtIYmzmLT8UIIWDI6Ojs8xXw6b9RtZQ5fW5-QjmllhAcyKJlZmYZAi1OseMVPmAs1na6I-bAZV1TwS0dNwXLeZqiciDmw9QIPtGNlQnbPaY4tB38AH2yE9EHg" alt="Dimas Pratama" class="w-12 h-12 rounded-full border border-primary/15 object-cover"/>
+                    <div>
+                        <h4 class="text-xs font-black text-on-surface">Dimas Pratama</h4>
+                        <p class="text-[9px] text-tertiary-light font-black uppercase mt-0.5">Public Speaking Specialist</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">Public Speaking</span>
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">Presentation</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-primary/5 pt-3 mt-4">
+                <span class="text-[10px] font-black text-[#e3aa1a] flex items-center gap-1">⭐ 4.9 <span class="text-on-surface-variant/40 font-bold">(230 ulasan)</span></span>
+                <button onclick="selectMentorForBooking('Dimas Pratama')" class="px-4.5 py-1.5 rounded-xl border border-primary/15 hover:border-primary bg-transparent hover:bg-primary hover:text-white text-[9.5px] font-black uppercase tracking-wide transition-all select-none">Lihat Profil</button>
+            </div>
+        </div>
+
+        <!-- Card 2: Aulia Rizky -->
+        <div class="glass-card rounded-2xl p-5 border border-primary/10 hover:border-primary/25 transition-all duration-200 bg-white flex flex-col justify-between relative overflow-hidden group shadow-sm hover:shadow">
+            <div class="absolute top-3 right-3 w-7 h-7 bg-[#E8F8F5] text-[#20a48a] border border-[#20a48a]/10 rounded-full flex items-center justify-center text-xs font-black shadow-sm select-none">🛡️</div>
+            <div class="space-y-3.5">
+                <div class="flex items-center gap-3">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVqCS4JcK8zSkdk8gF67Dogn_DsKXfgMf6HabnC0Wu3zPc-OVbdAz1ai38rGgkKZ3JA7nO1RlKd7WRxZEIEdk-vLiE7BL7zkVOOetgR2mNL-Gpf59nMLT80L_nFcD7MJBbGr0JZz60g2CB2zG9Y62yjuMlL_DWWscx-q2b6alE0zeRBQnD6MSxYQyqvSTXl9GtjhhW7HpmKGnEKGOKcrItgzr7uOJ_CCfrBsP-M1xXv8ERFnBL8oEpM5lwdy8Qpd6IsC6eGkvaHQ" alt="Aulia Rizky" class="w-12 h-12 rounded-full border border-primary/15 object-cover"/>
+                    <div>
+                        <h4 class="text-xs font-black text-on-surface">Aulia Rizky</h4>
+                        <p class="text-[9px] text-tertiary-light font-black uppercase mt-0.5">UI/UX Designer</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">UI/UX Design</span>
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">Figma</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-primary/5 pt-3 mt-4">
+                <span class="text-[10px] font-black text-[#e3aa1a] flex items-center gap-1">⭐ 4.9 <span class="text-on-surface-variant/40 font-bold">(198 ulasan)</span></span>
+                <button onclick="selectMentorForBooking('Aulia Rizky')" class="px-4.5 py-1.5 rounded-xl border border-primary/15 hover:border-primary bg-transparent hover:bg-primary hover:text-white text-[9.5px] font-black uppercase tracking-wide transition-all select-none">Lihat Profil</button>
+            </div>
+        </div>
+
+        <!-- Card 3: Rizky Pratama -->
+        <div class="glass-card rounded-2xl p-5 border border-primary/10 hover:border-primary/25 transition-all duration-200 bg-white flex flex-col justify-between relative overflow-hidden group shadow-sm hover:shadow">
+            <div class="absolute top-3 right-3 w-7 h-7 bg-red-50 text-red-600 border border-red-200 rounded-full flex items-center justify-center text-xs font-black shadow-sm select-none">⚡</div>
+            <div class="space-y-3.5">
+                <div class="flex items-center gap-3">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA" alt="Rizky Pratama" class="w-12 h-12 rounded-full border border-primary/15 object-cover"/>
+                    <div>
+                        <h4 class="text-xs font-black text-on-surface">Rizky Pratama</h4>
+                        <p class="text-[9px] text-tertiary-light font-black uppercase mt-0.5">Microsoft Office Expert</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">Excel</span>
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">PowerPoint</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-primary/5 pt-3 mt-4">
+                <span class="text-[10px] font-black text-[#e3aa1a] flex items-center gap-1">⭐ 4.8 <span class="text-on-surface-variant/40 font-bold">(312 ulasan)</span></span>
+                <button onclick="selectMentorForBooking('Rizky Pratama')" class="px-4.5 py-1.5 rounded-xl border border-primary/15 hover:border-primary bg-transparent hover:bg-primary hover:text-white text-[9.5px] font-black uppercase tracking-wide transition-all select-none">Lihat Profil</button>
+            </div>
+        </div>
+
+        <!-- Card 4: Sarah Wijaya -->
+        <div class="glass-card rounded-2xl p-5 border border-primary/10 hover:border-primary/25 transition-all duration-200 bg-white flex flex-col justify-between relative overflow-hidden group shadow-sm hover:shadow">
+            <div class="absolute top-3 right-3 w-7 h-7 bg-[#EFE9FF] text-[#6A4BFF] border border-[#6A4BFF]/10 rounded-full flex items-center justify-center text-xs font-black shadow-sm select-none">🏅</div>
+            <div class="space-y-3.5">
+                <div class="flex items-center gap-3">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDssyzQLmMMfFWttctiYSzDFJhuKJM4G_skmst8A0zZ8GnyvH6YOUiKAr9PIh87ilXPLcDVwYGbInuXwRddrRB9IQ_wYGqaNfFRdVpGlCdIzH_cFGrO5o2mQ585QYUSq76zI-uLmFiMotk8vgwsnX-XTLzhM8YO7iW22MfL6VcglCf7H2bHa9_ZSPJknCIjBpNbDimgKbqlDDP1y5HWs9yrb35SUxmNrzc8fZfPHEDwR3vQUyV7YGQyL8SdTmJOfkRoblQ6YZgoBQ" alt="Sarah Wijaya" class="w-12 h-12 rounded-full border border-primary/15 object-cover"/>
+                    <div>
+                        <h4 class="text-xs font-black text-on-surface">Sarah Wijaya</h4>
+                        <p class="text-[9px] text-tertiary-light font-black uppercase mt-0.5">Career & HR Consultant</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">Career Prep</span>
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">CV Writing</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-primary/5 pt-3 mt-4">
+                <span class="text-[10px] font-black text-[#e3aa1a] flex items-center gap-1">⭐ 4.9 <span class="text-on-surface-variant/40 font-bold">(156 ulasan)</span></span>
+                <button onclick="selectMentorForBooking('Sarah Wijaya')" class="px-4.5 py-1.5 rounded-xl border border-primary/15 hover:border-primary bg-transparent hover:bg-primary hover:text-white text-[9.5px] font-black uppercase tracking-wide transition-all select-none">Lihat Profil</button>
+            </div>
+        </div>
+
+        <!-- Card 5: Fajar Maulana -->
+        <div class="glass-card rounded-2xl p-5 border border-primary/10 hover:border-primary/25 transition-all duration-200 bg-white flex flex-col justify-between relative overflow-hidden group shadow-sm hover:shadow">
+            <div class="absolute top-3 right-3 w-7 h-7 bg-[#E8F8F5] text-[#20a48a] border border-[#20a48a]/10 rounded-full flex items-center justify-center text-xs font-black shadow-sm select-none">&lt;&gt;</div>
+            <div class="space-y-3.5">
+                <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Fajar Maulana" class="w-12 h-12 rounded-full border border-primary/15 object-cover"/>
+                    <div>
+                        <h4 class="text-xs font-black text-on-surface">Fajar Maulana</h4>
+                        <p class="text-[9px] text-tertiary-light font-black uppercase mt-0.5">Full Stack Developer</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">JavaScript</span>
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">React</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-primary/5 pt-3 mt-4">
+                <span class="text-[10px] font-black text-[#e3aa1a] flex items-center gap-1">⭐ 4.8 <span class="text-on-surface-variant/40 font-bold">(178 ulasan)</span></span>
+                <button onclick="selectMentorForBooking('Fajar Maulana')" class="px-4.5 py-1.5 rounded-xl border border-primary/15 hover:border-primary bg-transparent hover:bg-primary hover:text-white text-[9.5px] font-black uppercase tracking-wide transition-all select-none">Lihat Profil</button>
+            </div>
+        </div>
+
+        <!-- Card 6: Maya Putri -->
+        <div class="glass-card rounded-2xl p-5 border border-primary/10 hover:border-primary/25 transition-all duration-200 bg-white flex flex-col justify-between relative overflow-hidden group shadow-sm hover:shadow">
+            <div class="absolute top-3 right-3 w-7 h-7 bg-orange-50 text-orange-600 border border-orange-200 rounded-full flex items-center justify-center text-xs font-black shadow-sm select-none">📝</div>
+            <div class="space-y-3.5">
+                <div class="flex items-center gap-3">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB04QHkH6tB9ZzxuotPYoJyGEnbZp8Jl3ioaVh9nkSh32h_hIkOi7tW6KhkkSYXy3yhpHDYjM0OzBdkx7gwUSVRDodciM_U-MlxAn0olsTIw6IF9Fd1TPHV8qMZSLsngnPjrweW7YGnsUQpLqjmALtNvhwct6rAdQHmjAKvMbIqvEups2BYCQnDdcYJ1907DoY-Cf8ZZCWpL5NTXiR6TXP0itxQ7q8lJkfJsn7FI_Pfcd_q7eRfUZotZr5p0SJnYm1GekY0YUrWjg" alt="Maya Putri" class="w-12 h-12 rounded-full border border-primary/15 object-cover"/>
+                    <div>
+                        <h4 class="text-xs font-black text-on-surface">Maya Putri</h4>
+                        <p class="text-[9px] text-tertiary-light font-black uppercase mt-0.5">English Language Coach</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">English Speaking</span>
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">TOEFL</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-primary/5 pt-3 mt-4">
+                <span class="text-[10px] font-black text-[#e3aa1a] flex items-center gap-1">⭐ 4.9 <span class="text-on-surface-variant/40 font-bold">(265 ulasan)</span></span>
+                <button onclick="selectMentorForBooking('Maya Putri')" class="px-4.5 py-1.5 rounded-xl border border-primary/15 hover:border-primary bg-transparent hover:bg-primary hover:text-white text-[9.5px] font-black uppercase tracking-wide transition-all select-none">Lihat Profil</button>
+            </div>
+        </div>
+
+        <!-- Card 7: Yoga Adi -->
+        <div class="glass-card rounded-2xl p-5 border border-primary/10 hover:border-primary/25 transition-all duration-200 bg-white flex flex-col justify-between relative overflow-hidden group shadow-sm hover:shadow">
+            <div class="absolute top-3 right-3 w-7 h-7 bg-[#EFE9FF] text-[#6A4BFF] border border-[#6A4BFF]/10 rounded-full flex items-center justify-center text-xs font-black shadow-sm select-none">📢</div>
+            <div class="space-y-3.5">
+                <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Yoga Adi" class="w-12 h-12 rounded-full border border-primary/15 object-cover"/>
+                    <div>
+                        <h4 class="text-xs font-black text-on-surface">Yoga Adi</h4>
+                        <p class="text-[9px] text-tertiary-light font-black uppercase mt-0.5">Digital Marketing Specialist</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">Digital Marketing</span>
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">Ads</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-primary/5 pt-3 mt-4">
+                <span class="text-[10px] font-black text-[#e3aa1a] flex items-center gap-1">⭐ 4.7 <span class="text-on-surface-variant/40 font-bold">(129 ulasan)</span></span>
+                <button onclick="selectMentorForBooking('Yoga Adi')" class="px-4.5 py-1.5 rounded-xl border border-primary/15 hover:border-primary bg-transparent hover:bg-primary hover:text-white text-[9.5px] font-black uppercase tracking-wide transition-all select-none">Lihat Profil</button>
+            </div>
+        </div>
+
+        <!-- Card 8: Putri Ananda -->
+        <div class="glass-card rounded-2xl p-5 border border-primary/10 hover:border-primary/25 transition-all duration-200 bg-white flex flex-col justify-between relative overflow-hidden group shadow-sm hover:shadow">
+            <div class="absolute top-3 right-3 w-7 h-7 bg-yellow-50 text-[#e3aa1a] border border-yellow-200 rounded-full flex items-center justify-center text-xs font-black shadow-sm select-none">💛</div>
+            <div class="space-y-3.5">
+                <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Putri Ananda" class="w-12 h-12 rounded-full border border-primary/15 object-cover"/>
+                    <div>
+                        <h4 class="text-xs font-black text-on-surface">Putri Ananda</h4>
+                        <p class="text-[9px] text-tertiary-light font-black uppercase mt-0.5">Canva & Design Trainer</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">Canva</span>
+                    <span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">Design</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-primary/5 pt-3 mt-4">
+                <span class="text-[10px] font-black text-[#e3aa1a] flex items-center gap-1">⭐ 4.8 <span class="text-on-surface-variant/40 font-bold">(210 ulasan)</span></span>
+                <button onclick="selectMentorForBooking('Putri Ananda')" class="px-4.5 py-1.5 rounded-xl border border-primary/15 hover:border-primary bg-transparent hover:bg-primary hover:text-white text-[9.5px] font-black uppercase tracking-wide transition-all select-none">Lihat Profil</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Center Footer Indicator / Load more -->
+    <div class="flex flex-col items-center py-6 select-none shrink-0">
+        <button onclick="showNotice('Muat Lebih Banyak', 'Mengambil profil mentor berprestasi lainnya untuk Anda...')" class="px-6 py-2 bg-white border border-primary/10 hover:bg-neutral-50 rounded-xl text-[10.5px] font-black uppercase tracking-wider text-on-surface-variant transition-all shadow-sm flex items-center gap-1.5 active:scale-97">
+            <span>Muat Lebih Banyak</span>
+            <span class="material-symbols-outlined text-xs">keyboard_arrow_down</span>
+        </button>
+    </div>
+
+</div>

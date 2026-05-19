@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Grade Kuis Saya - ClassQu Student Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-lowest": "#FFFFFF",
+                    },
+                    boxShadow: {
+                        'playful-sm': '4px 4px 0px 0px #1C1B1B',
+                        'playful': '8px 8px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #1C1B1B;
+            box-shadow: 6px 6px 0px 0px #1C1B1B;
+            border-radius: 28px;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px 0px #1C1B1B;
+        }
+        .btn-playful {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #1C1B1B;
+            box-shadow: 3px 3px 0px 0px #1C1B1B;
+        }
+        .btn-playful:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px 0px #1C1B1B;
+        }
+        .btn-playful:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px 0px #1C1B1B;
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Workspace Container Grid -->
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 mt-12 px-6 md:px-12 mb-24 relative">
+        
+        <!-- Left Side Navigation Sidebar Placeholder -->
+        <div id="sidebar-placeholder" class="w-full lg:w-72 flex-none lg:sticky lg:top-12 z-20"></div>
+
+        <!-- Main Grade Canvas -->
+        <main class="flex-grow space-y-8 z-10">
+            
+            <!-- Breadcrumbs / Back button -->
+            <div>
+                <a href="dashboard.html" class="inline-flex items-center gap-2 text-neutral/65 font-bold text-xs hover:text-primary transition-colors group">
+                    <span class="material-symbols-outlined text-sm font-black group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    <span>Kembali ke Dashboard</span>
+                </a>
+            </div>
+
+            <!-- Page Title Panel -->
+            <div class="glass-card bg-white p-6 md:p-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                    <div class="space-y-2">
+                        <span class="bg-[#FFF3DF] text-primary border-2 border-neutral px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider inline-block">RIWAYAT EVALUASI</span>
+                        <h1 class="text-3xl font-black text-neutral leading-tight">Grade & Nilai Kuis Saya</h1>
+                        <p class="text-neutral/50 text-xs font-semibold leading-relaxed max-w-xl">
+                            Pantau tingkat pemahaman belajarmu dari seluruh kuis modul yang sudah dikerjakan. Raih skor minimal 70% di setiap kuis untuk membuka materi selanjutnya!
+                        </p>
+                    </div>
+
+                    <!-- Overall Quiz Stats widget -->
+                    <div class="flex gap-4 shrink-0 w-full md:w-auto">
+                        <div class="bg-white border-2 border-neutral p-4 rounded-2xl flex-1 md:w-32 shadow-playful-sm text-center">
+                            <span class="block text-[8px] font-black text-neutral/40 uppercase">KUIS SELESAI</span>
+                            <span class="text-2xl font-black text-primary">6 / 8</span>
+                        </div>
+                        <div class="bg-white border-2 border-neutral p-4 rounded-2xl flex-1 md:w-32 shadow-playful-sm text-center">
+                            <span class="block text-[8px] font-black text-neutral/40 uppercase">RATA-RATA NILAI</span>
+                            <span class="text-2xl font-black text-tertiary">91.6</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Subject list container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <!-- Card 1: Web Developer Roadmap -->
+                <div class="glass-card bg-white p-5 flex flex-col justify-between gap-6">
+                    <div class="space-y-4">
+                        <span class="bg-primary/10 text-primary border border-primary/20 px-2.5 py-0.5 rounded-full text-[9px] font-black tracking-wider uppercase inline-block">WEB DEVELOPMENT</span>
+                        <h3 class="font-black text-base text-neutral leading-snug">Web Developer Roadmap: Level 12 (Sang Penjelajah)</h3>
+                        <p class="text-neutral/50 text-[11px] font-semibold">Dimentori oleh Sarah W. • Lead Dev</p>
+                        
+                        <!-- Quiz completion bar -->
+                        <div class="space-y-1 pt-2">
+                            <div class="flex justify-between text-[9px] font-extrabold text-neutral/50">
+                                <span>Progress Kuis Modul</span>
+                                <span class="text-primary">2 / 3 Selesai</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-neutral/5 border border-neutral/10 rounded-full overflow-hidden p-0.5 flex">
+                                <div class="h-full rounded-full bg-primary" style="width: 66%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="openQuizDrawer(1)" class="btn-playful w-full py-2.5 bg-[#FFF3DF] text-neutral text-xs font-black rounded-xl">Lihat Detail Nilai Kuis</button>
+                </div>
+
+                <!-- Card 2: Figma UI/UX Design -->
+                <div class="glass-card bg-white p-5 flex flex-col justify-between gap-6">
+                    <div class="space-y-4">
+                        <span class="bg-secondary/15 text-[#B18E36] border border-secondary/30 px-2.5 py-0.5 rounded-full text-[9px] font-black tracking-wider uppercase inline-block">UI/UX DESIGN</span>
+                        <h3 class="font-black text-base text-neutral leading-snug">Figma UI/UX Design: Wireframe to Prototype</h3>
+                        <p class="text-neutral/50 text-[11px] font-semibold">Dimentori oleh Nadia A. • UI/UX Specialist</p>
+                        
+                        <!-- Quiz completion bar -->
+                        <div class="space-y-1 pt-2">
+                            <div class="flex justify-between text-[9px] font-extrabold text-neutral/50">
+                                <span>Progress Kuis Modul</span>
+                                <span class="text-[#B18E36]">1 / 2 Selesai</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-neutral/5 border border-neutral/10 rounded-full overflow-hidden p-0.5 flex">
+                                <div class="h-full rounded-full bg-secondary" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="openQuizDrawer(2)" class="btn-playful w-full py-2.5 bg-[#FFF3DF] text-neutral text-xs font-black rounded-xl">Lihat Detail Nilai Kuis</button>
+                </div>
+
+                <!-- Card 3: Soft Skills Public Speaking -->
+                <div class="glass-card bg-white p-5 flex flex-col justify-between gap-6">
+                    <div class="space-y-4">
+                        <span class="bg-tertiary/10 text-tertiary border border-tertiary/20 px-2.5 py-0.5 rounded-full text-[9px] font-black tracking-wider uppercase inline-block">SOFT SKILLS</span>
+                        <h3 class="font-black text-base text-neutral leading-snug">Confident Public Speaking 101: Seni Presentasi</h3>
+                        <p class="text-neutral/50 text-[11px] font-semibold">Dimentori oleh Dimas P. • Public Speaking Expert</p>
+                        
+                        <!-- Quiz completion bar -->
+                        <div class="space-y-1 pt-2">
+                            <div class="flex justify-between text-[9px] font-extrabold text-neutral/50">
+                                <span>Progress Kuis Modul</span>
+                                <span class="text-tertiary">3 / 3 Selesai</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-neutral/5 border border-neutral/10 rounded-full overflow-hidden p-0.5 flex">
+                                <div class="h-full rounded-full bg-tertiary" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="openQuizDrawer(3)" class="btn-playful w-full py-2.5 bg-[#FFF3DF] text-neutral text-xs font-black rounded-xl">Lihat Detail Nilai Kuis</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Bottom Sheet Drawer Overlay & Container (Z-Index 40 & 50) -->
+    <div id="drawer-backdrop" onclick="closeQuizDrawer()" class="fixed inset-0 bg-neutral/60 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+    <div id="drawer-sheet" class="fixed inset-x-0 bottom-0 z-50 bg-[#FFFBF4] border-t-4 border-neutral rounded-t-[32px] max-w-xl mx-auto p-6 space-y-6 translate-y-full transition-transform duration-300 ease-out shadow-playful">
+        
+        <!-- Smartphone Top Pull Bar -->
+        <div class="w-12 h-1.5 bg-neutral/15 rounded-full mx-auto mb-2 cursor-pointer hover:bg-neutral/30" onclick="closeQuizDrawer()"></div>
+        
+        <!-- Drawer Header info -->
+        <div class="flex justify-between items-start border-b border-neutral/10 pb-4">
+            <div>
+                <span id="drawer-category-badge" class="bg-primary/10 text-primary border border-primary/20 px-3 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider mb-2 inline-block">KATEGORI</span>
+                <h2 id="drawer-course-title" class="text-lg font-black text-neutral leading-tight">Nama Kelas</h2>
+                <p id="drawer-mentor" class="text-neutral/50 text-[10px] font-semibold mt-1">Dimentori oleh...</p>
+            </div>
+            
+            <button onclick="closeQuizDrawer()" class="btn-playful bg-white text-neutral p-1.5 rounded-xl flex items-center justify-center">
+                <span class="material-symbols-outlined font-black text-xs">close</span>
+            </button>
+        </div>
+
+        <!-- Drawer Quiz List Stack -->
+        <div class="space-y-4 max-h-[300px] overflow-y-auto pr-1" id="drawer-quiz-list">
+            <!-- Dynamic quizzes list loaded by JS -->
+        </div>
+
+        <!-- Drawer actions footer -->
+        <div class="pt-2">
+            <button onclick="closeQuizDrawer()" class="btn-playful w-full py-3 bg-neutral text-white font-black text-xs rounded-full uppercase shadow-playful-sm">Tutup Detail</button>
+        </div>
+    </div>
+
+    <!-- Components dynamic loader script -->
+    <script src="components.js"></script>
+
+    <!-- Drawer Logic and datasets -->
+    <script>
+        // High fidelity Grade datasets with Module Quiz Scores
+        const COURSE_QUIZZES = {
+            1: {
+                title: "Web Developer Roadmap: Level 12 (Sang Penjelajah)",
+                category: "WEB DEVELOPMENT",
+                mentor: "Sarah W. • Lead Dev",
+                badgeClass: "bg-primary/10 text-primary border-primary/20",
+                quizzes: [
+                    { name: "Kuis Modul 1: HTML & CSS Dasar", score: 100, completed: true, status: "passed", xp: "+100 XP" },
+                    { name: "Kuis Modul 2: JavaScript Modern & ES6", score: 80, completed: true, status: "passed", xp: "+100 XP" },
+                    { name: "Kuis Modul 3: DOM Manipulation", score: null, completed: false, status: "unattempted", xp: "+100 XP", link: "quiz.html?course=1&module=3" },
+                    { name: "Kuis Modul 4: Framework React & Deployment", score: null, completed: false, status: "locked", xp: "+100 XP" }
+                ]
+            },
+            2: {
+                title: "Figma UI/UX Design: Wireframe to Prototype",
+                category: "UI/UX DESIGN",
+                mentor: "Nadia A. • UI/UX Specialist",
+                badgeClass: "bg-secondary/15 text-[#B18E36] border-secondary/30",
+                quizzes: [
+                    { name: "Kuis Modul 1: Pengenalan Figma & UI Basics", score: 90, completed: true, status: "passed", xp: "+100 XP" },
+                    { name: "Kuis Modul 2: Wireframing & Layout", score: null, completed: false, status: "unattempted", xp: "+100 XP", link: "quiz.html?course=2&module=2" },
+                    { name: "Kuis Modul 3: Prototyping & Motion", score: null, completed: false, status: "locked", xp: "+100 XP" }
+                ]
+            },
+            3: {
+                title: "Confident Public Speaking 101: Seni Presentasi",
+                category: "SOFT SKILLS",
+                mentor: "Dimas P. • Public Speaking Expert",
+                badgeClass: "bg-tertiary/10 text-tertiary border-tertiary/20",
+                quizzes: [
+                    { name: "Kuis Modul 1: Mengalahkan Demam Panggung", score: 100, completed: true, status: "passed", xp: "+100 XP" },
+                    { name: "Kuis Modul 2: Struktur Pembicaraan & Storytelling", score: 80, completed: true, status: "passed", xp: "+100 XP" },
+                    { name: "Kuis Modul 3: Bahasa Tubuh & Intonasi", score: 100, completed: true, status: "passed", xp: "+100 XP" }
+                ]
+            }
+        };
+
+        // Open Bottom Sheet Drawer
+        function openQuizDrawer(courseId) {
+            const data = COURSE_QUIZZES[courseId];
+            if (!data) return;
+
+            // Bind course header info
+            const badge = document.getElementById('drawer-category-badge');
+            badge.className = `px-3 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider mb-2 inline-block ${data.badgeClass}`;
+            badge.textContent = data.category;
+
+            document.getElementById('drawer-course-title').textContent = data.title;
+            document.getElementById('drawer-mentor').textContent = `Dimentori oleh ${data.mentor}`;
+
+            // Generate quiz items
+            const quizList = document.getElementById('drawer-quiz-list');
+            quizList.innerHTML = data.quizzes.map((quiz, qIdx) => {
+                
+                if (quiz.status === "passed") {
+                    return `
+                        <div class="bg-white border-2 border-neutral p-3.5 rounded-2xl flex items-center justify-between gap-4 shadow-playful-sm font-bold text-xs">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <span class="material-symbols-outlined text-[#60B2AB] font-bold shrink-0">check_circle</span>
+                                <div class="min-w-0">
+                                    <h4 class="text-neutral truncate leading-tight">${quiz.name}</h4>
+                                    <span class="text-[9px] font-black text-[#60B2AB] tracking-wide uppercase font-mono">${quiz.xp} Earned</span>
+                                </div>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <span class="block text-[8px] font-black text-neutral/40 uppercase">NILAI</span>
+                                <span class="text-sm font-black text-neutral">${quiz.score} / 100</span>
+                            </div>
+                        </div>
+                    `;
+                } else if (quiz.status === "unattempted") {
+                    return `
+                        <div class="bg-[#FFF3DF] border-2 border-neutral p-3.5 rounded-2xl flex items-center justify-between gap-4 shadow-playful-sm font-bold text-xs">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <span class="material-symbols-outlined text-primary font-bold shrink-0">pending</span>
+                                <div class="min-w-0">
+                                    <h4 class="text-neutral truncate leading-tight">${quiz.name}</h4>
+                                    <span class="text-[9px] font-black text-neutral/45 tracking-wide uppercase">Belum Dikerjakan</span>
+                                </div>
+                            </div>
+                            <a href="${quiz.link}" class="btn-playful py-1.5 px-4 bg-primary text-white font-black text-[10px] rounded-xl uppercase shrink-0">Mulai</a>
+                        </div>
+                    `;
+                } else {
+                    // LOCKED
+                    return `
+                        <div class="bg-neutral/5 border border-neutral/15 p-3.5 rounded-2xl flex items-center justify-between gap-4 opacity-50 font-bold text-xs">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <span class="material-symbols-outlined text-neutral/40 shrink-0">lock</span>
+                                <div class="min-w-0">
+                                    <h4 class="text-neutral/45 truncate leading-tight">${quiz.name}</h4>
+                                    <span class="text-[9px] font-bold text-neutral/35 tracking-wide uppercase">Kuis Terkunci</span>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-xs text-neutral/30 shrink-0">lock</span>
+                        </div>
+                    `;
+                }
+            }).join('');
+
+            // Trigger open animation
+            const backdrop = document.getElementById('drawer-backdrop');
+            const sheet = document.getElementById('drawer-sheet');
+
+            backdrop.classList.remove('hidden');
+            setTimeout(() => {
+                backdrop.classList.add('opacity-100');
+                sheet.classList.remove('translate-y-full');
+            }, 10);
+        }
+
+        // Close Bottom Sheet Drawer
+        function closeQuizDrawer() {
+            const backdrop = document.getElementById('drawer-backdrop');
+            const sheet = document.getElementById('drawer-sheet');
+
+            backdrop.classList.remove('opacity-100');
+            sheet.classList.add('translate-y-full');
+
+            setTimeout(() => {
+                backdrop.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>

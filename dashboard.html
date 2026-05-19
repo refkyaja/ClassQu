@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Student Dashboard - ClassQu</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "on-background": "#1C1B1B",
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-low": "#FFFBF4",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface-variant": "#57423e",
+                    },
+                    borderRadius: {
+                        'card': '32px',
+                        'lg': '2rem',
+                        'xl': '3rem',
+                        'full': '9999px'
+                    },
+                    boxShadow: {
+                        'playful-sm': '2px 2px 0px 0px #1C1B1B',
+                        'playful': '4px 4px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 10px 30px -5px rgba(255, 126, 103, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid #1C1B1B;
+            box-shadow: 4px 4px 0px 0px #1C1B1B;
+            border-radius: 32px;
+        }
+        .glass-card-soft {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(28, 27, 27, 0.1);
+            box-shadow: 0 10px 35px -5px rgba(28, 27, 27, 0.03);
+            border-radius: 24px;
+        }
+        .btn-playful {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #1C1B1B;
+            box-shadow: 3px 3px 0px 0px #1C1B1B;
+        }
+        .btn-playful:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px 0px #1C1B1B;
+        }
+        .btn-playful:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px 0px #1C1B1B;
+        }
+        .progress-bar-glow {
+            box-shadow: 0 0 15px rgba(255, 126, 103, 0.3);
+            background: linear-gradient(90deg, #FF7E67 0%, #FFD56C 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(28, 27, 27, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Workspace Container Grid (Floating Setup) -->
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 mt-12 px-6 md:px-12 mb-24">
+        
+        <!-- Left Side Navigation Sidebar Placeholder -->
+        <div id="sidebar-placeholder" class="w-full lg:w-72 flex-none lg:sticky lg:top-12"></div>
+
+        <!-- Main Dashboard Canvas -->
+        <main class="flex-grow space-y-8">
+            
+            <!-- Hero Stats: XP Progress & active learning streak -->
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- XP progress card -->
+                <div id="xp-card" class="col-span-1 md:col-span-2 glass-card bg-white p-6 relative overflow-hidden group cursor-pointer hover:scale-[1.01] hover:shadow-premium transition-all duration-300">
+                    <div class="absolute -right-12 -top-12 w-48 h-48 bg-primary/5 blur-3xl rounded-full"></div>
+                    <div class="relative z-10 flex flex-col h-full justify-between space-y-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="bg-primary/10 text-primary border border-primary/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider mb-2 inline-block">JALUR SPEKTRA: WEB DEVELOPER</span>
+                                <h1 class="text-2xl font-black text-neutral">Level 12: Sang Penjelajah</h1>
+                            </div>
+                            <div class="flex flex-col items-end">
+                                <span class="text-3xl font-black text-primary leading-none">450</span>
+                                <span class="text-[9px] font-black uppercase tracking-wider text-neutral/40">XP Hari Ini</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] font-bold uppercase text-neutral/50 mb-2">
+                                <span>850 / 1,200 XP menuju Level 13</span>
+                                <span>71%</span>
+                            </div>
+                            <div class="w-full h-3.5 bg-neutral/10 rounded-full overflow-hidden border border-neutral/5 mb-3">
+                                <div class="h-full w-[71%] progress-bar-glow rounded-full"></div>
+                            </div>
+                            <div class="flex justify-end">
+                                <span class="text-[9px] text-primary font-black uppercase tracking-wider flex items-center gap-1 bg-primary/5 px-2 py-0.5 rounded-full border border-primary/10">
+                                    <span class="material-symbols-outlined text-[10px] font-bold">visibility</span> Detail Leveling Tiers
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Streak Card -->
+                <div class="glass-card bg-white p-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
+                    <span class="material-symbols-outlined text-[54px] text-primary mb-2" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                    <h2 class="text-4xl font-black text-neutral leading-none">14 Days</h2>
+                    <p class="text-[10px] text-neutral/50 font-black uppercase tracking-widest mt-1">Study Streak 🔥</p>
+                    <div class="mt-4 flex gap-1.5">
+                        <div class="w-2.5 h-2.5 rounded-full bg-primary border border-neutral/10"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-primary border border-neutral/10"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-primary border border-neutral/10"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-primary border border-neutral/10"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-neutral/10 border border-neutral/20"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lanjut Belajar Section (Uncompleted Modules) -->
+            <section class="space-y-4">
+                <h3 class="font-black text-lg text-neutral px-2 flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-primary">play_circle</span>
+                    <span>Lanjutkan Belajar</span>
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Module Card 1 -->
+                    <div class="glass-card bg-white p-5 space-y-4 flex flex-col justify-between hover:scale-[1.01] transition-transform">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="bg-[#FFF3DF] text-primary border border-primary/20 px-2 py-0.5 rounded-full text-[9px] font-black uppercase">CSS GRID MASTER</span>
+                                <span class="text-[9px] font-extrabold text-[#60B2AB] bg-[#E6F4F1] px-2 py-0.5 rounded-full uppercase">Sedang Berjalan</span>
+                            </div>
+                            <h4 class="text-sm font-black text-neutral leading-snug">CSS Grid Layouts & Advanced Responsive Design</h4>
+                            <p class="text-neutral/60 text-[10px] font-semibold leading-relaxed">
+                                Pelajari cara membuat grid sistem kompleks, template areas, minmax, auto-fit, auto-fill, dan layout spektra modern.
+                            </p>
+                        </div>
+                        <div class="space-y-3 pt-3 border-t border-neutral/10">
+                            <div>
+                                <div class="flex justify-between text-[9px] font-black text-neutral/50 mb-1">
+                                    <span>PROGRESS: 3 DARI 8 MATERI</span>
+                                    <span>37%</span>
+                                </div>
+                                <div class="w-full h-2 bg-neutral/15 rounded-full overflow-hidden border border-neutral/5">
+                                    <div class="h-full w-[37%] bg-primary rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-black text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/10">+120 XP</span>
+                                <a href="detail_siswa.html" class="btn-playful bg-secondary text-neutral px-4 py-1.5 rounded-full font-black text-[10px] uppercase flex items-center gap-1">
+                                    <span>Lanjut</span>
+                                    <span class="material-symbols-outlined text-xs">play_arrow</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module Card 2 -->
+                    <div class="glass-card bg-white p-5 space-y-4 flex flex-col justify-between hover:scale-[1.01] transition-transform">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="bg-[#FFF3DF] text-primary border border-primary/20 px-2 py-0.5 rounded-full text-[9px] font-black uppercase">JAVASCRIPT PRO</span>
+                                <span class="text-[9px] font-extrabold text-primary bg-primary/5 px-2 py-0.5 rounded-full uppercase">Sedang Berjalan</span>
+                            </div>
+                            <h4 class="text-sm font-black text-neutral leading-snug">Asynchronous JS: Promises, Async-Await & Ajax</h4>
+                            <p class="text-neutral/60 text-[10px] font-semibold leading-relaxed">
+                                Kuasai asinkronus pemrograman javascript, penanganan error try-catch, Promise.all, dan interaksi server REST API.
+                            </p>
+                        </div>
+                        <div class="space-y-3 pt-3 border-t border-neutral/10">
+                            <div>
+                                <div class="flex justify-between text-[9px] font-black text-neutral/50 mb-1">
+                                    <span>PROGRESS: 1 DARI 6 MATERI</span>
+                                    <span>16%</span>
+                                </div>
+                                <div class="w-full h-2 bg-neutral/15 rounded-full overflow-hidden border border-neutral/5">
+                                    <div class="h-full w-[16%] bg-primary rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-black text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/10">+180 XP</span>
+                                <a href="detail_siswa.html" class="btn-playful bg-secondary text-neutral px-4 py-1.5 rounded-full font-black text-[10px] uppercase flex items-center gap-1">
+                                    <span>Lanjut</span>
+                                    <span class="material-symbols-outlined text-xs">play_arrow</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module Card 3 -->
+                    <div class="glass-card bg-white p-5 space-y-4 flex flex-col justify-between hover:scale-[1.01] transition-transform">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="bg-[#FFF3DF] text-primary border border-primary/20 px-2 py-0.5 rounded-full text-[9px] font-black uppercase">API INTEGRATION</span>
+                                <span class="text-[9px] font-extrabold text-neutral/50 bg-neutral/5 px-2 py-0.5 rounded-full uppercase border border-neutral/10">Belum Dimulai</span>
+                            </div>
+                            <h4 class="text-sm font-black text-neutral leading-snug">Fetching Server Data with REST APIs & Axios Client</h4>
+                            <p class="text-neutral/60 text-[10px] font-semibold leading-relaxed">
+                                Belajar mengambil data, mengirimkan payload, headers autentikasi, serta mengelola state respons eksternal ke dalam UI.
+                            </p>
+                        </div>
+                        <div class="space-y-3 pt-3 border-t border-neutral/10">
+                            <div>
+                                <div class="flex justify-between text-[9px] font-black text-neutral/50 mb-1">
+                                    <span>PROGRESS: 0 DARI 5 MATERI</span>
+                                    <span>0%</span>
+                                </div>
+                                <div class="w-full h-2 bg-neutral/15 rounded-full overflow-hidden border border-neutral/5">
+                                    <div class="h-full w-[0%] bg-primary rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-black text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/10">+250 XP</span>
+                                <a href="detail_siswa.html" class="btn-playful bg-secondary text-neutral px-4 py-1.5 rounded-full font-black text-[10px] uppercase flex items-center gap-1">
+                                    <span>Mulai</span>
+                                    <span class="material-symbols-outlined text-xs">play_arrow</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Bento grids: Daily Quests & Achievements -->
+            <section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                
+                <!-- Daily Quests Checklist (4 cols) -->
+                <div class="md:col-span-5 space-y-4">
+                    <h3 class="font-black text-lg text-neutral px-2 flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-primary">task_alt</span>
+                        <span>Quest Harian</span>
+                    </h3>
+                    <div class="glass-card bg-white p-6 space-y-4">
+                        <!-- Quest 1 -->
+                        <div class="flex items-center gap-3 p-3 bg-neutral/5 border border-neutral/10 rounded-2xl">
+                            <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                                <span class="material-symbols-outlined text-sm font-bold">menu_book</span>
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-xs font-black text-neutral leading-snug">Pelajari 2 Modul Excel</p>
+                                <div class="flex justify-between items-center text-[10px] text-neutral/50 mt-1 font-bold">
+                                    <span>Progress: 1/2</span>
+                                    <span class="text-primary font-black">+50 XP</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quest 2 -->
+                        <div class="flex items-center gap-3 p-3 bg-neutral/5 border border-neutral/10 rounded-2xl">
+                            <div class="w-9 h-9 rounded-full bg-secondary/20 flex items-center justify-center text-neutral shrink-0">
+                                <span class="material-symbols-outlined text-sm font-bold">quiz</span>
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-xs font-black text-neutral leading-snug">Kuis Sempurna (100%)</p>
+                                <div class="flex justify-between items-center text-[10px] text-neutral/50 mt-1 font-bold">
+                                    <span>Belum Selesai</span>
+                                    <span class="text-secondary font-black">+100 XP</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quest 3 (Completed) -->
+                        <div class="flex items-center gap-3 p-3 bg-tertiary/10 border border-tertiary/20 rounded-2xl opacity-60">
+                            <div class="w-9 h-9 rounded-full bg-tertiary flex items-center justify-center text-white shrink-0">
+                                <span class="material-symbols-outlined text-sm font-bold">check</span>
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-xs font-bold text-neutral leading-snug line-through">Absensi Login Harian</p>
+                                <p class="text-[9px] text-tertiary font-black uppercase mt-0.5">Selesai! (+10 XP)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Achievements Badge list (7 cols) -->
+                <div class="md:col-span-7 space-y-4">
+                    <h3 class="font-black text-lg text-neutral px-2 flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-tertiary">workspace_premium</span>
+                        <span>Achievement</span>
+                    </h3>
+                    <div class="glass-card bg-white p-6 grid grid-cols-3 sm:grid-cols-4 gap-4">
+                        <!-- 1. Star Student (Unlocked) -->
+                        <div class="flex flex-col items-center text-center gap-2 group cursor-pointer">
+                            <div class="w-14 h-14 rounded-2xl bg-secondary border-2 border-neutral flex items-center justify-center shadow-playful-sm group-hover:scale-105 transition-transform shrink-0">
+                                <span class="material-symbols-outlined text-neutral text-2xl font-bold" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                            </div>
+                            <span class="text-[9px] font-black uppercase tracking-wider text-neutral/70 leading-tight">Star Student</span>
+                        </div>
+
+                        <!-- 2. Fast Learner (Unlocked) -->
+                        <div class="flex flex-col items-center text-center gap-2 group cursor-pointer">
+                            <div class="w-14 h-14 rounded-2xl bg-tertiary border-2 border-neutral flex items-center justify-center shadow-playful-sm group-hover:scale-105 transition-transform shrink-0">
+                                <span class="material-symbols-outlined text-white text-2xl font-bold" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                            </div>
+                            <span class="text-[9px] font-black uppercase tracking-wider text-neutral/70 leading-tight">Fast Learner</span>
+                        </div>
+
+                        <!-- 3. Daily Warrior (Unlocked) -->
+                        <div class="flex flex-col items-center text-center gap-2 group cursor-pointer">
+                            <div class="w-14 h-14 rounded-2xl bg-primary border-2 border-neutral flex items-center justify-center shadow-playful-sm group-hover:scale-105 transition-transform shrink-0">
+                                <span class="material-symbols-outlined text-white text-2xl font-bold" style="font-variation-settings: 'FILL' 1;">shield</span>
+                            </div>
+                            <span class="text-[9px] font-black uppercase tracking-wider text-neutral/70 leading-tight">Daily Warrior</span>
+                        </div>
+
+                        <!-- 4. Forum Solver (Unlocked) -->
+                        <div class="flex flex-col items-center text-center gap-2 group cursor-pointer">
+                            <div class="w-14 h-14 rounded-2xl bg-purple-400 border-2 border-neutral flex items-center justify-center shadow-playful-sm group-hover:scale-105 transition-transform shrink-0">
+                                <span class="material-symbols-outlined text-neutral text-2xl font-bold" style="font-variation-settings: 'FILL' 1;">forum</span>
+                            </div>
+                            <span class="text-[9px] font-black uppercase tracking-wider text-neutral/70 leading-tight">Forum Solver</span>
+                        </div>
+
+                        <!-- 5. Locked: Elite Club -->
+                        <div class="flex flex-col items-center text-center gap-2 opacity-40 grayscale shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-neutral/10 border-2 border-dashed border-neutral/30 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-neutral/40 text-2xl">lock</span>
+                            </div>
+                            <span class="text-[9px] font-black uppercase tracking-wider text-neutral/40 leading-tight">Elite Club</span>
+                        </div>
+
+                        <!-- 6. Locked: Mega Winner -->
+                        <div class="flex flex-col items-center text-center gap-2 opacity-40 grayscale shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-neutral/10 border-2 border-dashed border-neutral/30 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-neutral/40 text-2xl">lock</span>
+                            </div>
+                            <span class="text-[9px] font-black uppercase tracking-wider text-neutral/40 leading-tight">Mega Winner</span>
+                        </div>
+
+                        <!-- 7. Locked: Speed Demon -->
+                        <div class="flex flex-col items-center text-center gap-2 opacity-40 grayscale shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-neutral/10 border-2 border-dashed border-neutral/30 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-neutral/40 text-2xl">lock</span>
+                            </div>
+                            <span class="text-[9px] font-black uppercase tracking-wider text-neutral/40 leading-tight">Speed Demon</span>
+                        </div>
+
+                        <!-- 8. Locked: Code Wizard -->
+                        <div class="flex flex-col items-center text-center gap-2 opacity-40 grayscale shrink-0">
+                            <div class="w-14 h-14 rounded-2xl bg-neutral/10 border-2 border-dashed border-neutral/30 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-neutral/40 text-2xl">lock</span>
+                            </div>
+                            <span class="text-[9px] font-black uppercase tracking-wider text-neutral/40 leading-tight">Code Wizard</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leaderboard Monthly Preview & Rewards store -->
+            <section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                
+                <!-- Monthly leaderboard (7 cols) -->
+                <div class="md:col-span-7 space-y-4">
+                    <h3 class="font-black text-lg text-neutral px-2 flex items-center justify-between">
+                        <span class="flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-primary">emoji_events</span>
+                            <span>Peringkat Bulanan</span>
+                        </span>
+                        <span class="text-xs font-black text-primary bg-primary/10 border border-primary/20 px-3 py-1 rounded-full">Top 5%</span>
+                    </h3>
+                    <div class="glass-card bg-white overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-primary/10 border-b border-neutral/10 text-[10px] font-black uppercase tracking-wider text-neutral/60">
+                                        <th class="p-4">Rank</th>
+                                        <th class="p-4">Student</th>
+                                        <th class="p-4">Total XP</th>
+                                        <th class="p-4 text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-neutral/10 text-xs font-bold text-neutral">
+                                    <tr class="hover:bg-neutral/5 transition-colors">
+                                        <td class="p-4 font-black text-primary text-sm">1</td>
+                                        <td class="p-4 flex items-center gap-2">
+                                            <div class="w-7 h-7 rounded-full overflow-hidden border border-neutral">
+                                                <img alt="Budi" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMLIxb0ROdqhOzRaBLL1Z9ye_ufFrW8XkBOpcicPVrBIGWX1vyh9W2WKOofFgvm8O4OdaWRciN_tGSuR3wgOMVg5Ic18B1a1OeSw4ck4FlQ-lyNLpvqB7ObWVLqooMVRLfCEOpkF9wNj_ntdVGNWiyltElDiGxS92rbOdbfzfar4goQsWiWM3Mf5sx9KIa9xVnOuYEF1BcHzzc9yWu2oG-StJq4txjVgGlmynOzsU_kqmx22Zjg_M6SRPpgkwOMFTd_Cw04BvTTw"/>
+                                            </div>
+                                            <span>Budi Santoso</span>
+                                        </td>
+                                        <td class="p-4">2,850 XP</td>
+                                        <td class="p-4 text-center"><span class="bg-secondary text-neutral px-2 py-0.5 rounded text-[9px] font-black uppercase border border-neutral">ELITE</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-neutral/5 transition-colors">
+                                        <td class="p-4 font-black text-neutral/50 text-sm">2</td>
+                                        <td class="p-4 flex items-center gap-2">
+                                            <div class="w-7 h-7 rounded-full overflow-hidden border border-neutral/10">
+                                                <img alt="Citra" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvRbYAeuvGgR26Gn7gqnKhicjKHKt4UWAEkMcuxt1bHfLQPy4t8rYI-xMwcXvfNLJ7gGHRECuenmpJvYcqRoSfvvlVyBf2sKoAxEZ6T1LmGxpVk-wqYNZDRfJhAeSX9CIDghc5XnMl2lujaL4a3FUTC5Sh4e7y6CPtAcVDJtspkHI12vlFc2KUF84m4PE7uHxwUSFmE4N0s6I2GXZzRKaF-511uHAtcCltBBJyVBfHE-MMiE3hAP1NNwTYNWywpjVROMl4V6iMIg"/>
+                                            </div>
+                                            <span>Citra Lestari</span>
+                                        </td>
+                                        <td class="p-4">2,710 XP</td>
+                                        <td class="p-4 text-center"><span class="bg-tertiary text-white px-2 py-0.5 rounded text-[9px] font-black uppercase">EXPERT</span></td>
+                                    </tr>
+                                    <tr class="bg-primary/5 hover:bg-primary/10 transition-colors">
+                                        <td class="p-4 font-black text-primary text-sm">#24</td>
+                                        <td class="p-4 flex items-center gap-2">
+                                            <div class="w-7 h-7 rounded-full overflow-hidden border-2 border-primary">
+                                                <img alt="Andi" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q"/>
+                                            </div>
+                                            <span class="font-extrabold text-primary">Kamu (Andi)</span>
+                                        </td>
+                                        <td class="p-4 font-black text-primary">1,240 XP</td>
+                                        <td class="p-4 text-center"><span class="bg-primary text-white px-2 py-0.5 rounded text-[9px] font-black uppercase border border-neutral">STUDENT</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reward Store widget (5 cols) -->
+                <div class="md:col-span-5 space-y-4">
+                    <h3 class="font-black text-lg text-neutral px-2 flex items-center justify-between">
+                        <span class="flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+                            <span>Tukar Coins</span>
+                        </span>
+                        <span class="text-xs font-black text-neutral/50">2,450 Coin</span>
+                    </h3>
+                    <div class="glass-card bg-white p-6 space-y-4">
+                        <!-- Item 1 -->
+                        <div class="flex justify-between items-center p-3 bg-neutral/5 border border-neutral/10 rounded-2xl hover:shadow-premium transition-shadow duration-300">
+                            <div>
+                                <h4 class="text-xs font-black text-neutral">Diskon Pro 20%</h4>
+                                <span class="text-[9px] font-black text-primary uppercase">1,000 Coin</span>
+                            </div>
+                            <button class="btn-playful bg-primary text-white px-4 py-1.5 rounded-full font-black text-[10px]">TUKAR</button>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="flex justify-between items-center p-3 bg-neutral/5 border border-neutral/10 rounded-2xl hover:shadow-premium transition-shadow duration-300">
+                            <div>
+                                <h4 class="text-xs font-black text-neutral">Avatar "Kode Master"</h4>
+                                <span class="text-[9px] font-black text-primary uppercase">500 Coin</span>
+                            </div>
+                            <button class="btn-playful bg-primary text-white px-4 py-1.5 rounded-full font-black text-[10px]">TUKAR</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Leveling Info Modal -->
+    <div id="level-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-neutral/60 backdrop-blur-sm transition-opacity" id="modal-backdrop"></div>
+        
+        <!-- Modal Card Content -->
+        <div class="relative z-10 w-full max-w-2xl bg-[#FFFBF4] border-2 border-neutral rounded-card p-6 shadow-playful overflow-hidden flex flex-col max-h-[90vh]">
+            <!-- Decorative circle -->
+            <div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-start border-b-2 border-neutral/10 pb-4 mb-4 relative z-10 shrink-0">
+                <div>
+                    <span class="bg-primary/10 text-primary border border-primary/20 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-wider mb-1.5 inline-block">JALUR SPEKTRA: WEB DEVELOPER</span>
+                    <h3 class="text-xl md:text-2xl font-black text-neutral flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-primary text-2xl font-bold">military_tech</span>
+                        <span>Daftar Tingkatan Level</span>
+                    </h3>
+                </div>
+                <button id="close-modal-btn" class="w-8 h-8 rounded-full border-2 border-neutral flex items-center justify-center text-neutral bg-white hover:bg-neutral/5 transition-colors shadow-playful-sm active:translate-x-px active:translate-y-px">
+                    <span class="material-symbols-outlined text-sm font-black">close</span>
+                </button>
+            </div>
+            
+            <!-- Scrollable Content -->
+            <div class="overflow-y-auto pr-1 space-y-4 custom-scrollbar">
+                <p class="text-neutral/60 text-xs font-semibold leading-relaxed">
+                    Selesaikan materi, tantangan, dan kuis harian untuk terus mengumpulkan XP! Setiap kenaikan tingkat membuka kelas baru, lencana eksklusif, dan ClassQu Coins yang melimpah.
+                </p>
+                
+                <!-- Level Tiers Stack -->
+                <div class="space-y-3.5">
+                    
+                    <!-- Tier 1 -->
+                    <div class="p-4 rounded-2xl bg-white border-2 border-neutral/10 hover:border-neutral flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-colors">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-neutral/5 text-neutral/70 border border-neutral/20 px-2 py-0.5 rounded-lg text-[9px] font-black">Level 1 - 10</span>
+                                <h4 class="text-sm font-black text-neutral">Sang Pemula (Novice)</h4>
+                            </div>
+                            <p class="text-[10px] text-neutral/50 font-bold">Estimasi XP: 0 - 3,000 XP</p>
+                        </div>
+                        <div class="bg-[#FFF3DF] border border-neutral/10 rounded-xl p-2.5 sm:max-w-xs text-[10px] font-bold text-neutral/70 flex items-start gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-primary shrink-0">school</span>
+                            <span>Akses HTML/CSS + Lencana "Hello World" + 50 Coin</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Tier 2 (Current Level) -->
+                    <div class="p-4 rounded-2xl bg-primary/5 border-2 border-primary shadow-playful flex flex-col sm:flex-row sm:items-center justify-between gap-3 relative overflow-hidden">
+                        <div class="absolute right-0 top-0 bg-primary text-white text-[8px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-xl border-l border-b border-neutral shadow-sm">TINGKATAN KAMU</div>
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-primary text-white px-2 py-0.5 rounded-lg text-[9px] font-black">Level 11 - 30</span>
+                                <h4 class="text-sm font-black text-primary">Sang Penjelajah (Explorer)</h4>
+                            </div>
+                            <p class="text-[10px] text-primary/70 font-bold">Estimasi XP: 3,100 - 25,000 XP</p>
+                        </div>
+                        <div class="bg-white/90 border-2 border-primary/20 rounded-xl p-2.5 sm:max-w-xs text-[10px] font-bold text-primary flex items-start gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-primary shrink-0">workspace_premium</span>
+                            <span>Akses JavaScript Modern + Lencana "DOM Master" + 150 Coin</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Tier 3 -->
+                    <div class="p-4 rounded-2xl bg-white border-2 border-neutral/10 hover:border-neutral flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-colors">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-neutral/5 text-neutral/70 border border-neutral/20 px-2 py-0.5 rounded-lg text-[9px] font-black">Level 31 - 60</span>
+                                <h4 class="text-sm font-black text-neutral">Sang Penakluk (Conqueror)</h4>
+                            </div>
+                            <p class="text-[10px] text-neutral/50 font-bold">Estimasi XP: 26,000 - 75,000 XP</p>
+                        </div>
+                        <div class="bg-[#FFF3DF] border border-neutral/10 rounded-xl p-2.5 sm:max-w-xs text-[10px] font-bold text-neutral/70 flex items-start gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-[#B18E36] shrink-0">military_tech</span>
+                            <span>Akses React & Tailwind + Tema Editor ClassQu Pro + 300 Coin</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Tier 4 -->
+                    <div class="p-4 rounded-2xl bg-white border-2 border-neutral/10 hover:border-neutral flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-colors">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-neutral/5 text-neutral/70 border border-neutral/20 px-2 py-0.5 rounded-lg text-[9px] font-black">Level 61 - 80</span>
+                                <h4 class="text-sm font-black text-neutral">Sang Spesialis (Specialist)</h4>
+                            </div>
+                            <p class="text-[10px] text-neutral/50 font-bold">Estimasi XP: 76,000 - 140,000 XP</p>
+                        </div>
+                        <div class="bg-[#FFF3DF] border border-neutral/10 rounded-xl p-2.5 sm:max-w-xs text-[10px] font-bold text-neutral/70 flex items-start gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-tertiary shrink-0">storage</span>
+                            <span>Akses Fullstack NodeJS + Lencana "Database Wizard" + 500 Coin</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Tier 5 -->
+                    <div class="p-4 rounded-2xl bg-white border-2 border-neutral/10 hover:border-neutral flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-colors">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-neutral/5 text-neutral/70 border border-neutral/20 px-2 py-0.5 rounded-lg text-[9px] font-black">Level 81 - 100</span>
+                                <h4 class="text-sm font-black text-neutral">Sang Master Spektra (Spectra Master)</h4>
+                            </div>
+                            <p class="text-[10px] text-neutral/50 font-bold">Estimasi XP: 141,000 - 250,000+ XP</p>
+                        </div>
+                        <div class="bg-[#FFF3DF] border border-neutral/10 rounded-xl p-2.5 sm:max-w-xs text-[10px] font-bold text-neutral/70 flex items-start gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-secondary shrink-0">emoji_events</span>
+                            <span>Mentorship Eksklusif Portofolio + Lencana "Spectra Legend" + 1,000 Coin</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="mt-4 pt-4 border-t-2 border-neutral/10 flex justify-end shrink-0">
+                <button id="close-modal-btn-bottom" class="btn-playful bg-primary text-white font-extrabold px-6 py-2.5 rounded-full text-xs shadow-glow">
+                    Tutup Detail
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level Modal Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const xpCard = document.getElementById('xp-card');
+            const levelModal = document.getElementById('level-modal');
+            const backdrop = document.getElementById('modal-backdrop');
+            const closeBtn = document.getElementById('close-modal-btn');
+            const closeBtnBottom = document.getElementById('close-modal-btn-bottom');
+
+            function openModal() {
+                levelModal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            }
+
+            function closeModal() {
+                levelModal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            if (xpCard) {
+                xpCard.addEventListener('click', openModal);
+            }
+
+            if (backdrop) {
+                backdrop.addEventListener('click', closeModal);
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeModal);
+            }
+
+            if (closeBtnBottom) {
+                closeBtnBottom.addEventListener('click', closeModal);
+            }
+
+            // Support Escape key to close modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !levelModal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+
+    <script src="components.js"></script>
+</body>
+</html>

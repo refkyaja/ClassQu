@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Sertifikat Saya - ClassQu Student Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "on-background": "#1C1B1B",
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-low": "#FFFBF4",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface-variant": "#57423e",
+                    },
+                    borderRadius: {
+                        'card': '32px',
+                        'lg': '2rem',
+                        'xl': '3rem',
+                        'full': '9999px'
+                    },
+                    boxShadow: {
+                        'playful-sm': '2px 2px 0px 0px #1C1B1B',
+                        'playful': '4px 4px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 10px 30px -5px rgba(255, 126, 103, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #1C1B1B;
+            box-shadow: 4px 4px 0px 0px #1C1B1B;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #1C1B1B;
+        }
+        .btn-playful {
+            border: 2px solid #1C1B1B;
+            box-shadow: 2px 2px 0px 0px #1C1B1B;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-playful:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px 0px #1C1B1B;
+        }
+        .btn-playful:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px 0px #1C1B1B;
+        }
+        .certificate-preview-bg {
+            background: radial-gradient(circle at 10% 20%, rgb(255, 252, 244) 0%, rgb(255, 243, 223) 90%);
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Workspace Container Grid -->
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 mt-12 px-6 md:px-12 mb-24">
+        
+        <!-- Left Side Navigation Sidebar Placeholder -->
+        <div id="sidebar-placeholder" class="w-full lg:w-72 flex-none lg:sticky lg:top-12"></div>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow space-y-8">
+            
+            <!-- Page Header Widget -->
+            <div class="glass-card bg-white p-8 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-tertiary/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="space-y-1.5">
+                        <span class="bg-[#FFF3DF] text-tertiary px-3 py-1 rounded-full border border-tertiary/20 font-extrabold text-[10px] uppercase tracking-widest inline-block">PORTFOLIO & PENCAPAIAN</span>
+                        <h1 class="text-3xl font-black tracking-tight text-neutral">
+                            Sertifikat <span class="text-tertiary">Kelulusan</span>
+                        </h1>
+                        <p class="text-neutral/60 text-xs font-semibold max-w-lg leading-relaxed">
+                            Selamat! Setiap materi, kuis besar, dan proyek praktik yang kamu selesaikan menghasilkan sertifikat kredibel berlisensi industri.
+                        </p>
+                    </div>
+
+                    <!-- Certification stats widget -->
+                    <div class="flex gap-4 shrink-0">
+                        <div class="bg-[#FFF3DF] border-2 border-neutral px-4 py-3 rounded-2xl flex items-center gap-3 shadow-playful-sm">
+                            <div class="w-9 h-9 rounded-xl bg-tertiary flex items-center justify-center text-white border border-neutral">
+                                <span class="material-symbols-outlined font-bold text-base">verified</span>
+                            </div>
+                            <div>
+                                <span class="block text-[8px] font-black text-neutral/40 uppercase tracking-widest">SELESAI</span>
+                                <span class="font-black text-sm text-neutral">4 Sertifikat</span>
+                            </div>
+                        </div>
+                        <div class="bg-[#FFF3DF] border-2 border-neutral px-4 py-3 rounded-2xl flex items-center gap-3 shadow-playful-sm">
+                            <div class="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center text-neutral border border-neutral">
+                                <span class="material-symbols-outlined font-bold text-base">pending_actions</span>
+                            </div>
+                            <div>
+                                <span class="block text-[8px] font-black text-neutral/40 uppercase tracking-widest">PROSES KLAIM</span>
+                                <span class="font-black text-sm text-neutral">1 Tertunda</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificates Catalog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Certificate Card 1 -->
+                <div class="glass-card bg-white p-5 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <!-- Abstract Visual Mockup of Certificate -->
+                        <div class="h-44 rounded-xl border-2 border-neutral relative overflow-hidden flex flex-col justify-between p-4 certificate-preview-bg">
+                            <div class="absolute inset-0 bg-[radial-gradient(#1C1B1B_1px,transparent_1px)] [background-size:16px_16px] opacity-5"></div>
+                            
+                            <!-- Certificate Header inside mock -->
+                            <div class="flex justify-between items-start z-10">
+                                <div class="flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm text-primary font-black">school</span>
+                                    <span class="text-[8px] font-black tracking-wider uppercase text-neutral/70">ClassQu Certification</span>
+                                </div>
+                                <span class="material-symbols-outlined text-yellow-500 font-bold text-base bg-white rounded-full border border-neutral/15 p-0.5">workspace_premium</span>
+                            </div>
+
+                            <!-- Certificate Body inside mock -->
+                            <div class="text-center z-10 py-2">
+                                <span class="text-[7px] font-bold text-neutral/40 uppercase block tracking-widest">SERTIFIKAT KELULUSAN</span>
+                                <span class="text-xs font-black text-neutral block tracking-tight leading-tight mt-0.5">Andi Pratama</span>
+                                <div class="w-12 h-[1px] bg-neutral/20 mx-auto my-1.5"></div>
+                                <span class="text-[8px] font-extrabold text-primary block leading-none">Frontend Web Developer Mastery</span>
+                            </div>
+
+                            <!-- Certificate Footer inside mock -->
+                            <div class="flex justify-between items-end z-10 text-[6px] font-bold text-neutral/50">
+                                <div>ID: CQ-98821-WD</div>
+                                <div class="text-right">Issued: 12 April 2026</div>
+                            </div>
+                        </div>
+
+                        <!-- Certificate Info -->
+                        <div class="space-y-1.5">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-tertiary/10 text-tertiary border border-tertiary/20 px-2 py-0.5 rounded-full text-[8px] font-black uppercase">FRONTEND MASTER</span>
+                                <span class="text-[9px] font-bold text-neutral/40">Credential ID: CQ-98821-WD</span>
+                            </div>
+                            <h3 class="text-base font-black text-neutral leading-snug">Jalur Spektra: Frontend Web Developer Mastery</h3>
+                            <p class="text-neutral/60 text-[10px] font-semibold leading-relaxed">
+                                Lulus program akselerasi frontend menggunakan React, Tailwind CSS, REST API integrations, dan optimasi performa aplikasi web.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Certificate Action Triggers -->
+                    <div class="pt-4 border-t border-neutral/10 flex gap-3">
+                        <button onclick="openCertificateModal('Frontend Web Developer Mastery', 'CQ-98821-WD', '12 April 2026', 'Sangat Baik', 'Refky Firmansyah')" class="btn-playful flex-1 py-2.5 bg-primary text-white font-extrabold text-[10px] rounded-xl flex items-center justify-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm font-bold">visibility</span>
+                            <span>Lihat Sertifikat</span>
+                        </button>
+                        <button onclick="downloadCertificate('CQ-98821-WD')" class="btn-playful py-2.5 px-3 bg-white hover:bg-neutral/5 text-neutral font-extrabold text-[10px] rounded-xl flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-sm font-bold">download</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Certificate Card 2 -->
+                <div class="glass-card bg-white p-5 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <!-- Abstract Visual Mockup of Certificate -->
+                        <div class="h-44 rounded-xl border-2 border-neutral relative overflow-hidden flex flex-col justify-between p-4 certificate-preview-bg">
+                            <div class="absolute inset-0 bg-[radial-gradient(#1C1B1B_1px,transparent_1px)] [background-size:16px_16px] opacity-5"></div>
+                            
+                            <!-- Certificate Header inside mock -->
+                            <div class="flex justify-between items-start z-10">
+                                <div class="flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm text-tertiary font-black">school</span>
+                                    <span class="text-[8px] font-black tracking-wider uppercase text-neutral/70">ClassQu Certification</span>
+                                </div>
+                                <span class="material-symbols-outlined text-yellow-500 font-bold text-base bg-white rounded-full border border-neutral/15 p-0.5">workspace_premium</span>
+                            </div>
+
+                            <!-- Certificate Body inside mock -->
+                            <div class="text-center z-10 py-2">
+                                <span class="text-[7px] font-bold text-neutral/40 uppercase block tracking-widest">SERTIFIKAT KELULUSAN</span>
+                                <span class="text-xs font-black text-neutral block tracking-tight leading-tight mt-0.5">Andi Pratama</span>
+                                <div class="w-12 h-[1px] bg-neutral/20 mx-auto my-1.5"></div>
+                                <span class="text-[8px] font-extrabold text-tertiary block leading-none">Javascript & ES6 Core Foundations</span>
+                            </div>
+
+                            <!-- Certificate Footer inside mock -->
+                            <div class="flex justify-between items-end z-10 text-[6px] font-bold text-neutral/50">
+                                <div>ID: CQ-77412-JS</div>
+                                <div class="text-right">Issued: 02 Maret 2026</div>
+                            </div>
+                        </div>
+
+                        <!-- Certificate Info -->
+                        <div class="space-y-1.5">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded-full text-[8px] font-black uppercase">PROGRAMMING</span>
+                                <span class="text-[9px] font-bold text-neutral/40">Credential ID: CQ-77412-JS</span>
+                            </div>
+                            <h3 class="text-base font-black text-neutral leading-snug">Dasar Pemrograman JavaScript & ES6 Modern</h3>
+                            <p class="text-neutral/60 text-[10px] font-semibold leading-relaxed">
+                                Pembahasan mendalam konsep dasar logika pemrograman javascript, async-await, object oriented programming, dan fungsional pemrograman.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Certificate Action Triggers -->
+                    <div class="pt-4 border-t border-neutral/10 flex gap-3">
+                        <button onclick="openCertificateModal('Dasar Pemrograman JavaScript & ES6 Modern', 'CQ-77412-JS', '02 Maret 2026', 'Sempurna (A+)', 'Refky Firmansyah')" class="btn-playful flex-1 py-2.5 bg-primary text-white font-extrabold text-[10px] rounded-xl flex items-center justify-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm font-bold">visibility</span>
+                            <span>Lihat Sertifikat</span>
+                        </button>
+                        <button onclick="downloadCertificate('CQ-77412-JS')" class="btn-playful py-2.5 px-3 bg-white hover:bg-neutral/5 text-neutral font-extrabold text-[10px] rounded-xl flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-sm font-bold">download</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Certificate Card 3 -->
+                <div class="glass-card bg-white p-5 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <!-- Abstract Visual Mockup of Certificate -->
+                        <div class="h-44 rounded-xl border-2 border-neutral relative overflow-hidden flex flex-col justify-between p-4 certificate-preview-bg">
+                            <div class="absolute inset-0 bg-[radial-gradient(#1C1B1B_1px,transparent_1px)] [background-size:16px_16px] opacity-5"></div>
+                            
+                            <!-- Certificate Header inside mock -->
+                            <div class="flex justify-between items-start z-10">
+                                <div class="flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm text-yellow-500 font-black">school</span>
+                                    <span class="text-[8px] font-black tracking-wider uppercase text-neutral/70">ClassQu Certification</span>
+                                </div>
+                                <span class="material-symbols-outlined text-yellow-500 font-bold text-base bg-white rounded-full border border-neutral/15 p-0.5">workspace_premium</span>
+                            </div>
+
+                            <!-- Certificate Body inside mock -->
+                            <div class="text-center z-10 py-2">
+                                <span class="text-[7px] font-bold text-neutral/40 uppercase block tracking-widest">SERTIFIKAT KELULUSAN</span>
+                                <span class="text-xs font-black text-neutral block tracking-tight leading-tight mt-0.5">Andi Pratama</span>
+                                <div class="w-12 h-[1px] bg-neutral/20 mx-auto my-1.5"></div>
+                                <span class="text-[8px] font-extrabold text-yellow-600 block leading-none">Responsive Web Design Studio</span>
+                            </div>
+
+                            <!-- Certificate Footer inside mock -->
+                            <div class="flex justify-between items-end z-10 text-[6px] font-bold text-neutral/50">
+                                <div>ID: CQ-11092-RD</div>
+                                <div class="text-right">Issued: 15 Januari 2026</div>
+                            </div>
+                        </div>
+
+                        <!-- Certificate Info -->
+                        <div class="space-y-1.5">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-secondary text-neutral border border-neutral/15 px-2 py-0.5 rounded-full text-[8px] font-black uppercase">DESIGN SYSTEM</span>
+                                <span class="text-[9px] font-bold text-neutral/40">Credential ID: CQ-11092-RD</span>
+                            </div>
+                            <h3 class="text-base font-black text-neutral leading-snug">Responsive Web Design & Modern CSS Layouts</h3>
+                            <p class="text-neutral/60 text-[10px] font-semibold leading-relaxed">
+                                Menguasai flexbox, grid, media queries, CSS custom properties, serta animasi transisi kompleks untuk visual premium responsif.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Certificate Action Triggers -->
+                    <div class="pt-4 border-t border-neutral/10 flex gap-3">
+                        <button onclick="openCertificateModal('Responsive Web Design & Modern CSS Layouts', 'CQ-11092-RD', '15 Januari 2026', 'Sempurna (A+)', 'Refky Firmansyah')" class="btn-playful flex-1 py-2.5 bg-primary text-white font-extrabold text-[10px] rounded-xl flex items-center justify-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm font-bold">visibility</span>
+                            <span>Lihat Sertifikat</span>
+                        </button>
+                        <button onclick="downloadCertificate('CQ-11092-RD')" class="btn-playful py-2.5 px-3 bg-white hover:bg-neutral/5 text-neutral font-extrabold text-[10px] rounded-xl flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-sm font-bold">download</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Certificate Card 4 (Pending / Proses Klaim) -->
+                <div class="glass-card bg-neutral/5 border-dashed border-2 border-neutral/30 p-5 space-y-4 flex flex-col justify-between hover:transform-none hover:shadow-playful">
+                    <div class="space-y-3">
+                        <!-- Abstract Visual Mockup of Certificate -->
+                        <div class="h-44 rounded-xl border-2 border-dashed border-neutral/35 relative overflow-hidden flex flex-col justify-center items-center p-4 bg-neutral/10">
+                            <span class="material-symbols-outlined text-neutral/35 text-3xl font-bold mb-1 animate-pulse">lock</span>
+                            <span class="text-[9px] font-black text-neutral/40 uppercase tracking-widest">MENUNGGU KELULUSAN KUIS</span>
+                        </div>
+
+                        <!-- Certificate Info -->
+                        <div class="space-y-1.5">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-neutral/20 text-neutral/60 border border-neutral/10 px-2 py-0.5 rounded-full text-[8px] font-black uppercase">FULLSTACK DEVELOPER</span>
+                                <span class="text-[9px] font-bold text-neutral/40">Credential ID: CQ-PENDING-DB</span>
+                            </div>
+                            <h3 class="text-base font-black text-neutral/50 leading-snug">Backend Database Integration & API Architecture</h3>
+                            <p class="text-neutral/40 text-[10px] font-semibold leading-relaxed">
+                                Selesaikan sisa 1 modul kuis besar dan kirimkan proyek capstone database PostgreSQL & NodeJS untuk membuka sertifikat ini.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Certificate Action Triggers -->
+                    <div class="pt-4 border-t border-neutral/10 flex gap-3">
+                        <button onclick="window.location.href='materi_siswa.html'" class="btn-playful flex-1 py-2.5 bg-secondary text-neutral font-extrabold text-[10px] rounded-xl flex items-center justify-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
+                            <span>Selesaikan Kelas</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Certificate Verification Verification Card Widget -->
+            <div class="glass-card bg-white p-8 relative overflow-hidden">
+                <div class="absolute -left-10 -bottom-10 w-36 h-36 bg-secondary/15 rounded-full blur-xl pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="space-y-2 lg:max-w-md">
+                        <h3 class="text-lg font-black text-neutral flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-primary">verified_user</span>
+                            <span>Verifikasi Kredensial Sertifikat</span>
+                        </h3>
+                        <p class="text-neutral/60 text-[10px] font-semibold leading-relaxed">
+                            Apakah Anda institusi luar atau perekrut kerja? Verifikasi orisinalitas sertifikasi ClassQu dengan memasukkan kode ID unik sertifikat siswa di bawah ini.
+                        </p>
+                    </div>
+
+                    <!-- Verification interactive Input Form -->
+                    <div class="w-full lg:max-w-md flex items-center gap-3 shrink-0">
+                        <input id="verification-input" type="text" placeholder="Masukkan ID (cth: CQ-98821-WD)" class="flex-grow border-2 border-neutral p-3 rounded-2xl text-xs font-black placeholder-neutral/30 focus:ring-0 focus:border-primary uppercase bg-[#FFF3DF]"/>
+                        <button onclick="verifyCredential()" class="btn-playful bg-neutral text-white px-5 py-3 rounded-2xl font-black text-xs shrink-0 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm">search</span>
+                            <span>Verifikasi</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Elegant Playful Modal Container Widget for Certificate Render Preview -->
+    <div id="cert-modal" class="fixed inset-0 bg-neutral/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card bg-white w-full max-w-4xl p-6 md:p-10 relative overflow-hidden flex flex-col gap-6 md:scale-95 transition-transform duration-300">
+            <!-- Modal Close button -->
+            <button onclick="closeCertificateModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full border-2 border-neutral bg-[#FFF3DF] text-neutral hover:bg-red-500 hover:text-white flex items-center justify-center font-bold shadow-playful-sm transition-all">
+                <span class="material-symbols-outlined text-base">close</span>
+            </button>
+
+            <!-- Full Certificate Visual Frame -->
+            <div id="full-cert-frame" class="border-[12px] border-double border-[#C5A880] bg-[#FCF8F2] p-8 md:p-16 relative flex flex-col justify-between text-center min-h-[420px] rounded-xl">
+                <!-- Watermarks and decorative patterns -->
+                <div class="absolute inset-0 bg-[radial-gradient(#C5A880_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none"></div>
+                <div class="absolute top-4 left-4 right-4 bottom-4 border border-[#C5A880]/30 pointer-events-none"></div>
+                
+                <!-- Certificate Header -->
+                <div class="space-y-2 z-10">
+                    <div class="flex items-center justify-center gap-1.5">
+                        <span class="material-symbols-outlined text-2xl text-primary font-black">school</span>
+                        <span class="text-xs font-black tracking-widest text-[#C5A880] uppercase">CLASSQU DIGITAL EDUCATION LIGA</span>
+                    </div>
+                    <div class="w-16 h-[2px] bg-[#C5A880] mx-auto"></div>
+                </div>
+
+                <!-- Certificate Title -->
+                <div class="space-y-4 z-10 my-4">
+                    <span class="text-[9px] font-black text-neutral/40 uppercase tracking-[0.25em] block leading-none">SERTIFIKAT KELULUSAN & PENGHARGAAN</span>
+                    <h2 class="text-[10px] text-neutral/60 font-semibold leading-relaxed">Dengan ini menyatakan bahwa siswa berprestasi:</h2>
+                    <h1 class="text-3xl font-black text-neutral tracking-tight my-2">Andi Pratama</h1>
+                    <p class="text-xs font-semibold text-neutral/60 max-w-xl mx-auto leading-relaxed">
+                        Telah berhasil menyelesaikan semua kurikulum teoretis, tugas interaktif praktis, dan lulus ujian kompetensi akhir dengan predikat luar biasa untuk materi:
+                    </p>
+                    <h2 id="modal-cert-topic" class="text-xl font-extrabold text-[#C5A880] leading-snug"></h2>
+                </div>
+
+                <!-- Certificate Footer -->
+                <div class="grid grid-cols-3 gap-6 items-end z-10 pt-4 border-t border-[#C5A880]/20 text-[9px] font-bold text-neutral/50">
+                    <!-- Column 1: Date & Verification ID -->
+                    <div class="text-left space-y-1.5">
+                        <div>Tanggal Rilis: <span id="modal-cert-date" class="text-neutral font-extrabold"></span></div>
+                        <div>Predikat: <span id="modal-cert-predikat" class="text-neutral font-extrabold"></span></div>
+                        <div class="text-[8px]">ID Kredensial: <span id="modal-cert-id" class="text-[#C5A880] font-black"></span></div>
+                    </div>
+
+                    <!-- Column 2: Gold seal emblem -->
+                    <div class="flex justify-center relative">
+                        <div class="w-20 h-20 rounded-full bg-secondary border-4 border-double border-neutral/20 flex items-center justify-center shadow-lg relative transform rotate-12">
+                            <span class="material-symbols-outlined text-neutral text-3xl font-black">workspace_premium</span>
+                            <!-- Seal Ribbon Mock -->
+                            <div class="absolute -bottom-3 left-3 w-4 h-8 bg-primary rounded-b-md transform -rotate-12 pointer-events-none"></div>
+                            <div class="absolute -bottom-3 right-3 w-4 h-8 bg-primary rounded-b-md transform rotate-12 pointer-events-none"></div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Signature -->
+                    <div class="text-right space-y-2">
+                        <div class="italic font-serif text-sm text-neutral/70 font-black relative flex flex-col items-end">
+                            <!-- Premium Signature Mockup -->
+                            <div class="h-6 w-20 bg-cover shrink-0 select-none opacity-85 mb-1" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%2240%22 viewBox=%220 0 100 40%22><path d=%22M10,30 Q30,10 50,30 T90,20%22 fill=%22none%22 stroke=%22%231C1B1B%22 stroke-width=%222%22/></svg>');"></div>
+                            <span id="modal-cert-signee" class="text-neutral font-extrabold block">Refky Firmansyah</span>
+                        </div>
+                        <div class="w-24 h-[1px] bg-neutral/20 ml-auto"></div>
+                        <div class="text-[8px] uppercase tracking-widest text-neutral/40 block leading-none">Head of Product ClassQu</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Action Buttons (Download, Print, Share) -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <button onclick="triggerPrint()" class="btn-playful flex-1 py-3 bg-[#FFF3DF] text-neutral font-extrabold text-xs rounded-xl flex items-center justify-center gap-1.5">
+                    <span class="material-symbols-outlined text-base">print</span>
+                    <span>Cetak / Simpan PDF</span>
+                </button>
+                <button onclick="shareLinkedIn()" class="btn-playful flex-1 py-3 bg-tertiary text-white font-extrabold text-xs rounded-xl flex items-center justify-center gap-1.5">
+                    <span class="material-symbols-outlined text-base">share</span>
+                    <span>Bagikan ke LinkedIn</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Components dynamic loader script -->
+    <script src="components.js"></script>
+
+    <!-- Page logical engine -->
+    <script>
+        // Modal Trigger Control Functions
+        function openCertificateModal(topic, id, date, predikat, signee) {
+            document.getElementById('modal-cert-topic').textContent = topic;
+            document.getElementById('modal-cert-id').textContent = id;
+            document.getElementById('modal-cert-date').textContent = date;
+            document.getElementById('modal-cert-predikat').textContent = predikat;
+            document.getElementById('modal-cert-signee').textContent = signee;
+
+            const modal = document.getElementById('cert-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.firstElementChild.classList.remove('scale-95');
+                modal.firstElementChild.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeCertificateModal() {
+            const modal = document.getElementById('cert-modal');
+            modal.firstElementChild.classList.add('scale-95');
+            modal.firstElementChild.classList.remove('scale-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        // Mock Download Success Notification
+        function downloadCertificate(id) {
+            alert(`Sertifikat ${id} berhasil diunduh dalam format PDF Resolusi Tinggi!`);
+        }
+
+        // Mock Print dialog
+        function triggerPrint() {
+            window.print();
+        }
+
+        // Mock Linkedin share popup success
+        function shareLinkedIn() {
+            alert("Terhubung dengan LinkedIn. Kredensial sertifikat berhasil disematkan ke profil profesional Anda!");
+        }
+
+        // Search verification engine logic
+        function verifyCredential() {
+            const code = document.getElementById('verification-input').value.trim().toUpperCase();
+            if (!code) {
+                alert("Masukkan Kode ID Sertifikat terlebih dahulu!");
+                return;
+            }
+
+            const verifiedList = {
+                'CQ-98821-WD': { topic: 'Jalur Spektra: Frontend Web Developer Mastery', grade: 'Sangat Baik', issue: '12 April 2026' },
+                'CQ-77412-JS': { topic: 'Dasar Pemrograman JavaScript & ES6 Modern', grade: 'Sempurna (A+)', issue: '02 Maret 2026' },
+                'CQ-11092-RD': { topic: 'Responsive Web Design & Modern CSS Layouts', grade: 'Sempurna (A+)', issue: '15 Januari 2026' }
+            };
+
+            const match = verifiedList[code];
+            if (match) {
+                alert(`✅ Sertifikat VALID & TERVERIFIKASI!\n\nNama Siswa: Andi Pratama\nMateri: ${match.topic}\nTanggal Rilis: ${match.issue}\nPredikat Kelulusan: ${match.grade}`);
+            } else {
+                alert(`❌ KODE SERTIFIKAT TIDAK DITEMUKAN!\n\nMohon periksa kembali kode ID kredensial yang Anda masukkan. Pastikan kode sesuai format.`);
+            }
+        }
+    </script>
+</body>
+</html>

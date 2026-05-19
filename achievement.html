@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Achievement Saya - ClassQu Student Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-lowest": "#FFFFFF",
+                    },
+                    boxShadow: {
+                        'playful-sm': '4px 4px 0px 0px #1C1B1B',
+                        'playful': '8px 8px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #1C1B1B;
+            box-shadow: 6px 6px 0px 0px #1C1B1B;
+            border-radius: 28px;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px 0px #1C1B1B;
+        }
+        .btn-playful {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #1C1B1B;
+            box-shadow: 3px 3px 0px 0px #1C1B1B;
+        }
+        .btn-playful:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px 0px #1C1B1B;
+        }
+        .btn-playful:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px 0px #1C1B1B;
+        }
+        .achievement-card {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        .badge-glow-unlocked {
+            box-shadow: 0 10px 20px -5px rgba(255, 126, 103, 0.15);
+        }
+        .badge-glow-unlocked:hover {
+            box-shadow: 0 15px 30px -5px rgba(255, 126, 103, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Workspace Container Grid -->
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 mt-12 px-6 md:px-12 mb-24 relative">
+        
+        <!-- Left Side Navigation Sidebar Placeholder -->
+        <div id="sidebar-placeholder" class="w-full lg:w-72 flex-none lg:sticky lg:top-12 z-20"></div>
+
+        <!-- Main Achievement Area -->
+        <main class="flex-grow space-y-8 z-10">
+            
+            <!-- Breadcrumbs -->
+            <div>
+                <a href="dashboard.html" class="inline-flex items-center gap-2 text-neutral/65 font-bold text-xs hover:text-primary transition-colors group">
+                    <span class="material-symbols-outlined text-sm font-black group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    <span>Kembali ke Dashboard</span>
+                </a>
+            </div>
+
+            <!-- Page Title Panel -->
+            <div class="glass-card bg-white p-6 md:p-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                    <div class="space-y-2">
+                        <span class="bg-[#FFF3DF] text-primary border-2 border-neutral px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider inline-block">PRESTASI BELAJAR</span>
+                        <h1 class="text-3xl font-black text-neutral leading-tight">Achievement & Lencana</h1>
+                        <p class="text-neutral/50 text-xs font-semibold leading-relaxed max-w-xl">
+                            Pamerkan pencapaian hebatmu! Selesaikan modul pelajaran, raih skor kuis sempurna, dan kumpulkan 8 achievement eksklusif untuk dipamerkan di profil Discord-mu.
+                        </p>
+                    </div>
+
+                    <!-- Overall Stats Widget -->
+                    <div class="flex gap-4 shrink-0 w-full md:w-auto">
+                        <div class="bg-white border-2 border-neutral p-4 rounded-2xl flex-1 md:w-32 shadow-playful-sm text-center">
+                            <span class="block text-[8px] font-black text-neutral/40 uppercase">ACHIEVEMENT</span>
+                            <span class="text-2xl font-black text-primary">4 / 8</span>
+                        </div>
+                        <div class="bg-white border-2 border-neutral p-4 rounded-2xl flex-1 md:w-32 shadow-playful-sm text-center">
+                            <span class="block text-[8px] font-black text-neutral/40 uppercase">TOTAL POINT</span>
+                            <span class="text-2xl font-black text-tertiary">750 AP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Categories & Stats Summary -->
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <!-- Filter Tabs -->
+                <div class="flex bg-white border-2 border-neutral p-1.5 rounded-2xl shadow-playful-sm gap-1">
+                    <button onclick="filterAchievements('all')" id="tab-all" class="bg-neutral text-white font-extrabold text-[10px] px-4 py-2 rounded-xl transition-all uppercase">Semua</button>
+                    <button onclick="filterAchievements('unlocked')" id="tab-unlocked" class="text-neutral/65 font-extrabold text-[10px] px-4 py-2 rounded-xl hover:bg-neutral/5 transition-all uppercase">Terbuka (4)</button>
+                    <button onclick="filterAchievements('locked')" id="tab-locked" class="text-neutral/65 font-extrabold text-[10px] px-4 py-2 rounded-xl hover:bg-neutral/5 transition-all uppercase">Terkunci (4)</button>
+                </div>
+
+                <!-- Fun message -->
+                <span class="text-[10px] font-black text-[#60B2AB] bg-tertiary/10 border border-tertiary/20 px-3.5 py-1.5 rounded-xl uppercase tracking-wider">
+                    🎉 4 Achievement siap dipamerkan di profil Anda!
+                </span>
+            </div>
+
+            <!-- Grid of 8 Achievements -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="achievements-grid">
+                
+                <!-- 1. Star Student (Unlocked) -->
+                <div class="glass-card bg-white p-5 flex flex-col justify-between gap-6 achievement-card badge-glow-unlocked" data-status="unlocked">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div class="w-14 h-14 rounded-2xl bg-secondary border-2 border-neutral flex items-center justify-center shadow-playful-sm shrink-0">
+                                <span class="material-symbols-outlined text-neutral text-3xl font-bold" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                            </div>
+                            <span class="bg-tertiary/10 text-tertiary border border-tertiary/20 px-2 py-0.5 rounded-full text-[8px] font-black tracking-wide uppercase">TERBUKA</span>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-black text-sm text-neutral">Star Student</h3>
+                            <p class="text-neutral/50 text-[10px] font-semibold leading-relaxed">Selesaikan 3 kelas dengan nilai kuis 100/100 secara berturut-turut.</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-neutral/10 pt-4 flex justify-between items-center">
+                        <span class="text-[9px] font-black text-neutral/40">12 April 2026</span>
+                        <span class="text-[10px] font-black text-primary uppercase font-mono">+200 AP</span>
+                    </div>
+                </div>
+
+                <!-- 2. Fast Learner (Unlocked) -->
+                <div class="glass-card bg-white p-5 flex flex-col justify-between gap-6 achievement-card badge-glow-unlocked" data-status="unlocked">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div class="w-14 h-14 rounded-2xl bg-tertiary border-2 border-neutral flex items-center justify-center shadow-playful-sm shrink-0">
+                                <span class="material-symbols-outlined text-white text-3xl font-bold" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                            </div>
+                            <span class="bg-tertiary/10 text-tertiary border border-tertiary/20 px-2 py-0.5 rounded-full text-[8px] font-black tracking-wide uppercase">TERBUKA</span>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-black text-sm text-neutral">Fast Learner</h3>
+                            <p class="text-neutral/50 text-[10px] font-semibold leading-relaxed">Tonton 5 video materi secara berturut-turut dalam jangka waktu 1 hari.</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-neutral/10 pt-4 flex justify-between items-center">
+                        <span class="text-[9px] font-black text-neutral/40">15 April 2026</span>
+                        <span class="text-[10px] font-black text-primary uppercase font-mono">+150 AP</span>
+                    </div>
+                </div>
+
+                <!-- 3. Daily Warrior (Unlocked) -->
+                <div class="glass-card bg-white p-5 flex flex-col justify-between gap-6 achievement-card badge-glow-unlocked" data-status="unlocked">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div class="w-14 h-14 rounded-2xl bg-primary border-2 border-neutral flex items-center justify-center shadow-playful-sm shrink-0">
+                                <span class="material-symbols-outlined text-white text-3xl font-bold" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                            </div>
+                            <span class="bg-tertiary/10 text-tertiary border border-tertiary/20 px-2 py-0.5 rounded-full text-[8px] font-black tracking-wide uppercase">TERBUKA</span>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-black text-sm text-neutral">Daily Warrior</h3>
+                            <p class="text-neutral/50 text-[10px] font-semibold leading-relaxed">Selesaikan tantangan belajar harian Anda selama 7 hari berturut-turut.</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-neutral/10 pt-4 flex justify-between items-center">
+                        <span class="text-[9px] font-black text-neutral/40">20 April 2026</span>
+                        <span class="text-[10px] font-black text-primary uppercase font-mono">+300 AP</span>
+                    </div>
+                </div>
+
+                <!-- 4. Forum Solver (Unlocked) -->
+                <div class="glass-card bg-white p-5 flex flex-col justify-between gap-6 achievement-card badge-glow-unlocked" data-status="unlocked">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div class="w-14 h-14 rounded-2xl bg-[#FFF3DF] border-2 border-neutral flex items-center justify-center shadow-playful-sm shrink-0">
+                                <span class="material-symbols-outlined text-primary text-3xl font-bold" style="font-variation-settings: 'FILL' 1;">forum</span>
+                            </div>
+                            <span class="bg-tertiary/10 text-tertiary border border-tertiary/20 px-2 py-0.5 rounded-full text-[8px] font-black tracking-wide uppercase">TERBUKA</span>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-black text-sm text-neutral">Forum Solver</h3>
+                            <p class="text-neutral/50 text-[10px] font-semibold leading-relaxed">Berikan 5 jawaban yang disukai dan membantu siswa lain di Community Hub.</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-neutral/10 pt-4 flex justify-between items-center">
+                        <span class="text-[9px] font-black text-neutral/40">22 April 2026</span>
+                        <span class="text-[10px] font-black text-primary uppercase font-mono">+100 AP</span>
+                    </div>
+                </div>
+
+                <!-- 5. Elite Club (Locked) -->
+                <div class="glass-card bg-white p-5 flex flex-col justify-between gap-6 achievement-card opacity-65" data-status="locked">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div class="w-14 h-14 rounded-2xl border-2 border-dashed border-neutral/30 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-neutral/30 text-3xl font-bold">card_membership</span>
+                            </div>
+                            <span class="bg-neutral/5 text-neutral/40 border border-neutral/15 px-2 py-0.5 rounded-full text-[8px] font-black tracking-wide uppercase">TERKUNCI</span>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-black text-sm text-neutral/50 flex items-center gap-1.5">
+                                <span>Elite Club</span>
+                                <span class="material-symbols-outlined text-xs">lock</span>
+                            </h3>
+                            <p class="text-neutral/40 text-[10px] font-semibold leading-relaxed">Berlangganan paket ClassQu Pro untuk memperoleh akses roadmap premium tanpa batasan.</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-neutral/10 pt-4 flex justify-between items-center">
+                        <span class="text-[9px] font-black text-neutral/30">Misi Belum Selesai</span>
+                        <span class="text-[10px] font-black text-neutral/30 uppercase font-mono">+500 AP</span>
+                    </div>
+                </div>
+
+                <!-- 6. Mega Winner (Locked) -->
+                <div class="glass-card bg-white p-5 flex flex-col justify-between gap-6 achievement-card opacity-65" data-status="locked">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div class="w-14 h-14 rounded-2xl border-2 border-dashed border-neutral/30 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-neutral/30 text-3xl font-bold">emoji_events</span>
+                            </div>
+                            <span class="bg-neutral/5 text-neutral/40 border border-neutral/15 px-2 py-0.5 rounded-full text-[8px] font-black tracking-wide uppercase">TERKUNCI</span>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-black text-sm text-neutral/50 flex items-center gap-1.5">
+                                <span>Mega Winner</span>
+                                <span class="material-symbols-outlined text-xs">lock</span>
+                            </h3>
+                            <p class="text-neutral/40 text-[10px] font-semibold leading-relaxed">Pertahankan posisi peringkat 1 di papan Leaderboard mingguan selama 2 minggu berturut-turut.</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-neutral/10 pt-4 flex justify-between items-center">
+                        <span class="text-[9px] font-black text-neutral/30">Misi Belum Selesai</span>
+                        <span class="text-[10px] font-black text-neutral/30 uppercase font-mono">+1000 AP</span>
+                    </div>
+                </div>
+
+                <!-- 7. Speed Demon (Locked) -->
+                <div class="glass-card bg-white p-5 flex flex-col justify-between gap-6 achievement-card opacity-65" data-status="locked">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div class="w-14 h-14 rounded-2xl border-2 border-dashed border-neutral/30 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-neutral/30 text-3xl font-bold">alarm</span>
+                            </div>
+                            <span class="bg-neutral/5 text-neutral/40 border border-neutral/15 px-2 py-0.5 rounded-full text-[8px] font-black tracking-wide uppercase">TERKUNCI</span>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-black text-sm text-neutral/50 flex items-center gap-1.5">
+                                <span>Speed Demon</span>
+                                <span class="material-symbols-outlined text-xs">lock</span>
+                            </h3>
+                            <p class="text-neutral/40 text-[10px] font-semibold leading-relaxed">Selesaikan kuis evaluasi Modul 1 secara sempurna dengan durasi di bawah 3 menit.</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-neutral/10 pt-4 flex justify-between items-center">
+                        <span class="text-[9px] font-black text-neutral/30">Misi Belum Selesai</span>
+                        <span class="text-[10px] font-black text-neutral/30 uppercase font-mono">+250 AP</span>
+                    </div>
+                </div>
+
+                <!-- 8. Code Wizard (Locked) -->
+                <div class="glass-card bg-white p-5 flex flex-col justify-between gap-6 achievement-card opacity-65" data-status="locked">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div class="w-14 h-14 rounded-2xl border-2 border-dashed border-neutral/30 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-neutral/30 text-3xl font-bold">code</span>
+                            </div>
+                            <span class="bg-neutral/5 text-neutral/40 border border-neutral/15 px-2 py-0.5 rounded-full text-[8px] font-black tracking-wide uppercase">TERKUNCI</span>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-black text-sm text-neutral/50 flex items-center gap-1.5">
+                                <span>Code Wizard</span>
+                                <span class="material-symbols-outlined text-xs">lock</span>
+                            </h3>
+                            <p class="text-neutral/40 text-[10px] font-semibold leading-relaxed">Selesaikan seluruh silabus materi Web Developer Roadmap dari modul 1 hingga modul terakhir.</p>
+                        </div>
+                    </div>
+                    <div class="border-t border-neutral/10 pt-4 flex justify-between items-center">
+                        <span class="text-[9px] font-black text-neutral/30">Misi Belum Selesai</span>
+                        <span class="text-[10px] font-black text-neutral/30 uppercase font-mono">+800 AP</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Components dynamic loader script -->
+    <script src="components.js"></script>
+
+    <!-- Filter JS Script -->
+    <script>
+        function filterAchievements(status) {
+            // Update active tabs styling
+            const tabs = {
+                all: document.getElementById('tab-all'),
+                unlocked: document.getElementById('tab-unlocked'),
+                locked: document.getElementById('tab-locked')
+            };
+
+            // Reset tab styles
+            Object.keys(tabs).forEach(key => {
+                if (key === status) {
+                    tabs[key].className = "bg-neutral text-white font-extrabold text-[10px] px-4 py-2 rounded-xl transition-all uppercase";
+                } else {
+                    tabs[key].className = "text-neutral/65 font-extrabold text-[10px] px-4 py-2 rounded-xl hover:bg-neutral/5 transition-all uppercase";
+                }
+            });
+
+            // Filter achievement cards
+            const cards = document.querySelectorAll('.achievement-card');
+            cards.forEach(card => {
+                const cardStatus = card.getAttribute('data-status');
+                if (status === 'all') {
+                    card.style.display = 'flex';
+                } else if (status === cardStatus) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

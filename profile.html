@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Profil Saya - ClassQu Student Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "on-background": "#1C1B1B",
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-low": "#FFFBF4",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface-variant": "#57423e",
+                    },
+                    borderRadius: {
+                        'card': '32px',
+                        'lg': '2rem',
+                        'xl': '3rem',
+                        'full': '9999px'
+                    },
+                    boxShadow: {
+                        'playful-sm': '2px 2px 0px 0px #1C1B1B',
+                        'playful': '4px 4px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 10px 30px -5px rgba(255, 126, 103, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #1C1B1B;
+            box-shadow: 4px 4px 0px 0px #1C1B1B;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #1C1B1B;
+        }
+        .btn-playful {
+            border: 2px solid #1C1B1B;
+            box-shadow: 2px 2px 0px 0px #1C1B1B;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-playful:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px 0px #1C1B1B;
+        }
+        .btn-playful:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px 0px #1C1B1B;
+        }
+        /* Discord cover/banner custom high-fidelity gradients matching uploaded design */
+        .discord-banner-coral {
+            background: linear-gradient(to right, #E0523C, #F48F6C, #60B2AB);
+        }
+        .discord-banner-midnight {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+        }
+        .discord-banner-ocean {
+            background: linear-gradient(135deg, #38bdf8 0%, #0369a1 100%);
+        }
+        .discord-banner-emerald {
+            background: linear-gradient(135deg, #34d399 0%, #065f46 100%);
+        }
+        /* Custom scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #FFF3DF;
+            border-left: 2px solid #1C1B1B;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #FF7E67;
+            border: 2px solid #1C1B1B;
+            border-radius: 99px;
+        }
+        /* Animated neon badge glowing effect */
+        .badge-glow-gold {
+            box-shadow: 0 0 15px rgba(254, 240, 138, 0.6);
+            border: 2px solid #CA8A04 !important;
+        }
+        .badge-glow-purple {
+            box-shadow: 0 0 15px rgba(216, 180, 254, 0.6);
+            border: 2px solid #7C3AED !important;
+        }
+        .badge-glow-orange {
+            box-shadow: 0 0 15px rgba(254, 205, 211, 0.6);
+            border: 2px solid #EA580C !important;
+        }
+        .badge-glow-teal {
+            box-shadow: 0 0 15px rgba(153, 246, 228, 0.6);
+            border: 2px solid #0D9488 !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Workspace Container Grid -->
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 mt-12 px-6 md:px-12 mb-24">
+        
+        <!-- Left Side Navigation Sidebar Placeholder -->
+        <div id="sidebar-placeholder" class="w-full lg:w-72 flex-none lg:sticky lg:top-12"></div>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow space-y-8">
+            
+            <!-- Discord Concept Profile Showcase Banner Container Card (Perfect Match with Design Image) -->
+            <div class="glass-card bg-white rounded-[32px] overflow-hidden flex flex-col relative">
+                
+                <!-- 1. Customizable Discord Cover Banner -->
+                <div id="discord-cover" class="h-48 w-full discord-banner-coral border-b-2 border-neutral relative transition-all duration-500">
+                    <!-- Banner overlay pattern -->
+                    <div class="absolute inset-0 bg-[radial-gradient(#1C1B1B_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+                    
+                    <!-- Top Right Pencil Edit Trigger Button -->
+                    <button onclick="openBannerSelector()" class="absolute top-4 right-4 w-9 h-9 bg-white/30 backdrop-blur-md hover:bg-white text-neutral rounded-full flex items-center justify-center border border-white/40 shadow-sm transition-all group">
+                        <span class="material-symbols-outlined text-sm font-bold text-white group-hover:text-neutral">edit</span>
+                    </button>
+                </div>
+
+                <!-- 2. Avatar & Identity Details Bar (Discord Exact Overlapping Layout) -->
+                <div class="p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 relative">
+                    
+                    <!-- Left Section: Avatar Circle & Name Metadata -->
+                    <div class="flex flex-col md:flex-row items-center md:items-end gap-5 text-center md:text-left mt-[-72px] md:mt-[-84px] z-10">
+                        <!-- Profile Avatar Overlap Circle with Green Active Status Badge -->
+                        <div class="w-32 h-32 rounded-full border-4 border-white bg-[#FFF3DF] shadow-md relative overflow-hidden shrink-0 group">
+                            <img id="profile-avatar" alt="Avatar" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q"/>
+                            
+                            <!-- Discord Green Online Status Dot Indicator -->
+                            <div class="w-5 h-5 bg-emerald-500 rounded-full border-4 border-white absolute bottom-1 right-1 shadow-sm"></div>
+
+                            <!-- Hover Modify Button Overlay -->
+                            <button onclick="openAvatarSelector()" class="absolute inset-0 bg-neutral/70 text-white flex flex-col items-center justify-center font-extrabold text-[8px] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="material-symbols-outlined text-base mb-0.5">photo_camera</span>
+                                <span>Ganti</span>
+                            </button>
+                        </div>
+
+                        <!-- Identity Names -->
+                        <div class="space-y-1 pb-1">
+                            <h1 id="user-display-name" class="text-2xl font-black text-neutral">Sarah Amelia</h1>
+                            <p id="user-handle" class="text-xs font-bold text-neutral/50">@sarah_amelia</p>
+                        </div>
+                    </div>
+
+                    <!-- Right Section: Badges & Olive-brown Edit Button -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 shrink-0">
+                        
+                        <!-- Premium Olive/Mustard custom rounded button -->
+                        <button onclick="scrollToSettings()" class="bg-[#6E5500] hover:bg-[#5A4600] text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-playful-sm">
+                            Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Settings and Showcase Split Columns Workspace -->
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left 7 columns: settings forms (name, bio, password) -->
+                <div id="settings-card" class="xl:col-span-7 glass-card bg-white p-6 md:p-8 space-y-6">
+                    <div>
+                        <h2 class="text-xl font-black text-neutral flex items-center gap-2 border-b border-neutral/10 pb-3">
+                            <span class="material-symbols-outlined text-primary">manage_accounts</span>
+                            <span>Detail Pengaturan Akun</span>
+                        </h2>
+                        <p class="text-neutral/50 text-[10px] font-bold uppercase tracking-widest mt-1">Ubah nama, detail kustom bio, status, dan password.</p>
+                    </div>
+
+                    <!-- Input form -->
+                    <form onsubmit="saveProfileChanges(event)" class="space-y-5">
+                        <!-- Input 1: Name and Handle -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-1.5">
+                                <label class="text-[10px] font-black text-neutral/60 uppercase tracking-widest block">Nama Lengkap</label>
+                                <input id="input-name" type="text" value="Sarah Amelia" class="w-full border-2 border-neutral p-3 rounded-xl text-xs font-black focus:ring-0 focus:border-primary bg-background" required/>
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="text-[10px] font-black text-neutral/60 uppercase tracking-widest block">Username / Handle</label>
+                                <input id="input-handle" type="text" value="@sarah_amelia" class="w-full border-2 border-neutral p-3 rounded-xl text-xs font-black focus:ring-0 focus:border-primary bg-background" required/>
+                            </div>
+                        </div>
+
+                        <!-- Input 2: Track Selection & Status -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-1.5">
+                                <label class="text-[10px] font-black text-neutral/60 uppercase tracking-widest block">Jalur Pembelajaran (Track)</label>
+                                <select id="input-track" class="w-full border-2 border-neutral p-3 rounded-xl text-xs font-black focus:ring-0 focus:border-primary bg-background">
+                                    <option value="Learning Design 🎨" selected>Learning Design 🎨</option>
+                                    <option value="Web Developer 💻">Web Developer 💻</option>
+                                    <option value="UI/UX Designer ✨">UI/UX Designer ✨</option>
+                                    <option value="Mobile Developer 📱">Mobile Developer 📱</option>
+                                </select>
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="text-[10px] font-black text-neutral/60 uppercase tracking-widest block">Slogan / Custom Status</label>
+                                <input id="input-status" type="text" value="🔥 Membakar semangat belajar!" class="w-full border-2 border-neutral p-3 rounded-xl text-xs font-black focus:ring-0 focus:border-primary bg-background" placeholder="Ada slogan menarik?"/>
+                            </div>
+                        </div>
+
+                        <!-- Input 3: Biography Description -->
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-black text-neutral/60 uppercase tracking-widest block">Biografi Singkat</label>
+                            <textarea id="input-bio" rows="3" class="w-full border-2 border-neutral p-3 rounded-xl text-xs font-black focus:ring-0 focus:border-primary bg-background resize-none" placeholder="Tuliskan biografi belajarmu...">Halo! Saya adalah peminat Learning Design dan Frontend Design yang suka mengeksplorasi visual premium, UI/UX interaktif, serta gamifikasi media pembelajaran online di ClassQu.</textarea>
+                        </div>
+
+                        <!-- Input 4: Password change modifier -->
+                        <div class="border-t border-neutral/10 pt-5 space-y-4">
+                            <div>
+                                <h4 class="text-xs font-black text-neutral uppercase tracking-wider flex items-center gap-1.5 text-neutral/80">
+                                    <span class="material-symbols-outlined text-base">lock</span>
+                                    <span>Ganti Kata Sandi Keamanan</span>
+                                </h4>
+                                <p class="text-[9px] text-neutral/40 font-bold">Kosongkan kolom sandi baru jika Anda tidak ingin merubah sandi saat ini.</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="space-y-1.5">
+                                    <label class="text-[8px] font-black text-neutral/60 uppercase tracking-widest block">Sandi Lama</label>
+                                    <input id="input-old-pass" type="password" class="w-full border-2 border-neutral p-3 rounded-xl text-xs font-black focus:ring-0 focus:border-primary bg-background"/>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="text-[8px] font-black text-neutral/60 uppercase tracking-widest block">Sandi Baru</label>
+                                    <input id="input-new-pass" type="password" class="w-full border-2 border-neutral p-3 rounded-xl text-xs font-black focus:ring-0 focus:border-primary bg-background"/>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="text-[8px] font-black text-neutral/60 uppercase tracking-widest block">Ulangi Sandi Baru</label>
+                                    <input id="input-confirm-pass" type="password" class="w-full border-2 border-neutral p-3 rounded-xl text-xs font-black focus:ring-0 focus:border-primary bg-background"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form action button -->
+                        <div class="pt-4 border-t border-neutral/10 flex justify-end">
+                            <button type="submit" class="btn-playful bg-primary text-white font-extrabold text-[10px] uppercase py-3 px-8 rounded-xl flex items-center gap-1.5 shadow-glow">
+                                <span class="material-symbols-outlined text-sm font-bold">save</span>
+                                <span>Simpan Semua Perubahan</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right 5 columns: Showcase panels (Scores & Achievement Badges) -->
+                <div class="xl:col-span-5 space-y-6">
+                    
+                    <!-- Arena Leaderboard Showcase Scoreboard -->
+                    <div class="glass-card bg-white p-6 md:p-8 space-y-5">
+                        <div>
+                            <h3 class="font-black text-sm text-neutral border-b border-neutral/10 pb-3 flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-tertiary">leaderboard</span>
+                                <span>Pamer Arena Leaderboard</span>
+                            </h3>
+                            <p class="text-[9px] text-neutral/50 font-bold uppercase tracking-widest mt-1">Status peringkat Sarah saat ini di liga kompetisi.</p>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-3">
+                            <!-- Week rank -->
+                            <div class="bg-[#FFF3DF] border-2 border-neutral p-3.5 rounded-2xl text-center space-y-1 shadow-playful-sm">
+                                <span class="text-[8px] font-black text-neutral/40 uppercase tracking-widest block">MINGGUAN</span>
+                                <span class="text-xl font-black text-primary block leading-none">#2</span>
+                                <span class="text-[7px] font-extrabold text-neutral/50 block">1,120 XP</span>
+                            </div>
+                            <!-- Month rank -->
+                            <div class="bg-[#FFF3DF] border-2 border-neutral p-3.5 rounded-2xl text-center space-y-1 shadow-playful-sm">
+                                <span class="text-[8px] font-black text-neutral/40 uppercase tracking-widest block">BULANAN</span>
+                                <span class="text-xl font-black text-tertiary block leading-none">#12</span>
+                                <span class="text-[7px] font-extrabold text-neutral/50 block">2,850 XP</span>
+                            </div>
+                            <!-- All time rank -->
+                            <div class="bg-[#FFF3DF] border-2 border-neutral p-3.5 rounded-2xl text-center space-y-1 shadow-playful-sm">
+                                <span class="text-[8px] font-black text-neutral/40 uppercase tracking-widest block">ALL-TIME</span>
+                                <span class="text-xl font-black text-yellow-600 block leading-none">#18</span>
+                                <span class="text-[7px] font-extrabold text-neutral/50 block">8,920 XP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements badge showcases -->
+                    <div class="glass-card bg-white p-6 md:p-8 space-y-5">
+                        <div>
+                            <h3 class="font-black text-sm text-neutral border-b border-neutral/10 pb-3 flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-secondary">workspace_premium</span>
+                                <span>Pamer Achievement</span>
+                            </h3>
+                            <p class="text-[9px] text-neutral/50 font-bold uppercase tracking-widest mt-1">Achievement unik tanda kompetensi andalanmu.</p>
+                        </div>
+
+                        <!-- Grid of badges -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Badge 1: Speed Demon (Unlocked) -->
+                            <div class="bg-[#FCFBF7] border-2 border-neutral p-3.5 rounded-2xl flex items-center gap-3 badge-glow-gold relative overflow-hidden">
+                                <div class="absolute -right-5 -bottom-5 w-12 h-12 bg-yellow-500/5 rounded-full"></div>
+                                <div class="w-10 h-10 rounded-xl bg-yellow-500 text-white flex items-center justify-center font-bold border border-neutral shrink-0">
+                                    <span class="material-symbols-outlined text-xl">bolt</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <h4 class="text-[10px] font-black text-neutral truncate">Speed Demon</h4>
+                                    <span class="text-[8px] text-yellow-600 font-extrabold uppercase tracking-wide block">Kuis &lt; 30d</span>
+                                </div>
+                            </div>
+
+                            <!-- Badge 2: Perfect Score (Unlocked) -->
+                            <div class="bg-[#FCFBF7] border-2 border-neutral p-3.5 rounded-2xl flex items-center gap-3 badge-glow-purple relative overflow-hidden">
+                                <div class="absolute -right-5 -bottom-5 w-12 h-12 bg-purple-500/5 rounded-full"></div>
+                                <div class="w-10 h-10 rounded-xl bg-purple-500 text-white flex items-center justify-center font-bold border border-neutral shrink-0">
+                                    <span class="material-symbols-outlined text-xl">check_circle</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <h4 class="text-[10px] font-black text-neutral truncate">Perfect Score</h4>
+                                    <span class="text-[8px] text-purple-600 font-extrabold uppercase tracking-wide block">100% di 3 Kuis</span>
+                                </div>
+                            </div>
+
+                            <!-- Badge 3: Elite Learner (Unlocked) -->
+                            <div class="bg-[#FCFBF7] border-2 border-neutral p-3.5 rounded-2xl flex items-center gap-3 badge-glow-orange relative overflow-hidden">
+                                <div class="absolute -right-5 -bottom-5 w-12 h-12 bg-orange-500/5 rounded-full"></div>
+                                <div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-bold border border-neutral shrink-0">
+                                    <span class="material-symbols-outlined text-xl">workspace_premium</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <h4 class="text-[10px] font-black text-neutral truncate">Elite Learner</h4>
+                                    <span class="text-[8px] text-primary font-extrabold uppercase tracking-wide block">Mencapai Level 10</span>
+                                </div>
+                            </div>
+
+                            <!-- Badge 4: Helper Hero (Unlocked) -->
+                            <div class="bg-[#FCFBF7] border-2 border-neutral p-3.5 rounded-2xl flex items-center gap-3 badge-glow-teal relative overflow-hidden">
+                                <div class="absolute -right-5 -bottom-5 w-12 h-12 bg-teal-500/5 rounded-full"></div>
+                                <div class="w-10 h-10 rounded-xl bg-tertiary text-white flex items-center justify-center font-bold border border-neutral shrink-0">
+                                    <span class="material-symbols-outlined text-xl">forum</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <h4 class="text-[10px] font-black text-neutral truncate">Community Hero</h4>
+                                    <span class="text-[8px] text-tertiary font-extrabold uppercase tracking-wide block">5 Forum Solved</span>
+                                </div>
+                            </div>
+
+                            <!-- Badge 5: Leaderboard Monarch (Locked) -->
+                            <div class="bg-neutral/5 border-dashed border-2 border-neutral/20 p-3.5 rounded-2xl flex items-center gap-3 opacity-60">
+                                <div class="w-10 h-10 rounded-xl bg-neutral/20 text-neutral/50 flex items-center justify-center border border-neutral/20 shrink-0">
+                                    <span class="material-symbols-outlined text-lg font-bold">lock</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <h4 class="text-[10px] font-black text-neutral/50 truncate">Crown Monarch</h4>
+                                    <span class="text-[8px] text-neutral/40 font-extrabold uppercase block">Rank 1 Liga</span>
+                                </div>
+                            </div>
+
+                            <!-- Badge 6: Token Hoarder (Locked) -->
+                            <div class="bg-neutral/5 border-dashed border-2 border-neutral/20 p-3.5 rounded-2xl flex items-center gap-3 opacity-60">
+                                <div class="w-10 h-10 rounded-xl bg-neutral/20 text-neutral/50 flex items-center justify-center border border-neutral/20 shrink-0">
+                                    <span class="material-symbols-outlined text-lg font-bold">lock</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <h4 class="text-[10px] font-black text-neutral/50 truncate">Shop Hoarder</h4>
+                                    <span class="text-[8px] text-neutral/40 font-extrabold uppercase block">Tukar 5 Hadiah</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Discord Banner Selector Overlay Modal -->
+    <div id="banner-modal" class="fixed inset-0 bg-neutral/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card bg-white w-full max-w-md p-6 relative flex flex-col gap-5 scale-95 transition-transform duration-200">
+            <button onclick="closeBannerSelector()" class="absolute top-4 right-4 w-8 h-8 rounded-full border-2 border-neutral bg-[#FFF3DF] text-neutral hover:bg-red-500 hover:text-white flex items-center justify-center font-bold shadow-playful-sm">
+                <span class="material-symbols-outlined text-xs">close</span>
+            </button>
+            <div>
+                <h3 class="font-black text-base text-neutral flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-primary">palette</span>
+                    <span>Ubah Banner Profil Discord</span>
+                </h3>
+                <p class="text-[10px] font-semibold text-neutral/50">Ganti tema warna banner discord profilmu secara real-time.</p>
+            </div>
+
+            <!-- Gradient options -->
+            <div class="grid grid-cols-2 gap-3">
+                <button onclick="selectBanner('coral')" class="h-20 w-full discord-banner-coral border-2 border-neutral rounded-xl shadow-playful-sm hover:scale-[1.02] transition-transform text-left p-3 flex flex-col justify-end text-neutral font-black text-[10px] uppercase">
+                    Retro Coral
+                </button>
+                <button onclick="selectBanner('midnight')" class="h-20 w-full discord-banner-midnight border-2 border-neutral rounded-xl shadow-playful-sm hover:scale-[1.02] transition-transform text-left p-3 flex flex-col justify-end text-white font-black text-[10px] uppercase">
+                    Cyber Midnight
+                </button>
+                <button onclick="selectBanner('ocean')" class="h-20 w-full discord-banner-ocean border-2 border-neutral rounded-xl shadow-playful-sm hover:scale-[1.02] transition-transform text-left p-3 flex flex-col justify-end text-white font-black text-[10px] uppercase">
+                    Ocean Wave
+                </button>
+                <button onclick="selectBanner('emerald')" class="h-20 w-full discord-banner-emerald border-2 border-neutral rounded-xl shadow-playful-sm hover:scale-[1.02] transition-transform text-left p-3 flex flex-col justify-end text-white font-black text-[10px] uppercase">
+                    Mint Emerald
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Discord Avatar Selector Overlay Modal -->
+    <div id="avatar-modal" class="fixed inset-0 bg-neutral/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card bg-white w-full max-w-md p-6 relative flex flex-col gap-5 scale-95 transition-transform duration-200">
+            <button onclick="closeAvatarSelector()" class="absolute top-4 right-4 w-8 h-8 rounded-full border-2 border-neutral bg-[#FFF3DF] text-neutral hover:bg-red-500 hover:text-white flex items-center justify-center font-bold shadow-playful-sm">
+                <span class="material-symbols-outlined text-xs">close</span>
+            </button>
+            <div>
+                <h3 class="font-black text-base text-neutral flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-primary">face</span>
+                    <span>Pilih Karakter Avatar</span>
+                </h3>
+                <p class="text-[10px] font-semibold text-neutral/50">Gunakan avatar pre-set lucu yang sesuai dengan kepribadian belajarmu.</p>
+            </div>
+
+            <!-- Avatar Grid options -->
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <!-- Avatar 1: Sarah Amelia (Default) -->
+                <button onclick="selectAvatar('https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg')" class="flex flex-col items-center gap-2 border-2 border-neutral p-3 rounded-2xl bg-[#FFF3DF] hover:scale-105 transition-transform">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-neutral bg-white">
+                        <img alt="Sarah default" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"/>
+                    </div>
+                    <span class="text-[9px] font-black text-neutral leading-none block">Sarah Amelia</span>
+                </button>
+
+                <!-- Avatar 2: casual Andi -->
+                <button onclick="selectAvatar('https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q')" class="flex flex-col items-center gap-2 border-2 border-neutral p-3 rounded-2xl bg-[#FFF3DF] hover:scale-105 transition-transform">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-neutral bg-white">
+                        <img alt="Andi default" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q"/>
+                    </div>
+                    <span class="text-[9px] font-black text-neutral leading-none block">Andi Casual</span>
+                </button>
+
+                <!-- Avatar 3: Space Panda -->
+                <button onclick="selectAvatar('https://lh3.googleusercontent.com/aida-public/AB6AXuAJdCXnF7tN5TIg85mnZpVE3wT1-us09ocXUC5uFSy7Zya2O8ABifXJDOdKHFn5hLntRPoXs1-0OmKYsFk8SgyytJK_TGXDO0QMLEb6x6w7mXv0CT4bWp3Syg-tTHvl8UuP62MEtA6rtEHtHGoiecnG_ZPBSgLGjiNFqdU5XfwrKlWJD5klG8h6KblojLSptCH8itimnLgeW3--IXSWkNa4kd7Nzjn9LvPqiig6GByrID-tN8nzB-ETbj1bi8GBcEaU2xTnyPRgg')" class="flex flex-col items-center gap-2 border-2 border-neutral p-3 rounded-2xl bg-[#FFF3DF] hover:scale-105 transition-transform">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-neutral bg-white">
+                        <img alt="Panda Character" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJdCXnF7tN5TIg85mnZpVE3wT1-us09ocXUC5uFSy7Zya2O8ABifXJDOdKHFn5hLntRPoXs1-0OmKYsFk8SgyytJK_TGXDO0QMLEb6x6w7mXv0CT4bWp3Syg-tTHvl8UuP62MEtA6rtEHtHGoiecnG_ZPBSgLGjiNFqdU5XfwrKlWJD5klG8h6KblojLSptCH8itimnLgeW3--IXSWkNa4kd7Nzjn9LvPqiig6GByrID-tN8nzB-ETbj1bi8GBcEaU2xTnyPRgg"/>
+                    </div>
+                    <span class="text-[9px] font-black text-neutral leading-none block">Cyber Panda</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Components dynamic loader script -->
+    <script src="components.js"></script>
+
+    <!-- Page logical engine -->
+    <script>
+        // Smooth scroll to profile configuration card
+        function scrollToSettings() {
+            document.getElementById('settings-card').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Discord Banner Picker Modals
+        function openBannerSelector() {
+            const modal = document.getElementById('banner-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.firstElementChild.classList.remove('scale-95');
+                modal.firstElementChild.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeBannerSelector() {
+            const modal = document.getElementById('banner-modal');
+            modal.firstElementChild.classList.add('scale-95');
+            modal.firstElementChild.classList.remove('scale-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        // Apply Banner choice
+        function selectBanner(type) {
+            const cover = document.getElementById('discord-cover');
+            cover.className = `h-48 w-full border-b-2 border-neutral relative transition-all duration-500 discord-banner-${type}`;
+            closeBannerSelector();
+        }
+
+        // Discord Avatar Picker Modals
+        function openAvatarSelector() {
+            const modal = document.getElementById('avatar-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.firstElementChild.classList.remove('scale-95');
+                modal.firstElementChild.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeAvatarSelector() {
+            const modal = document.getElementById('avatar-modal');
+            modal.firstElementChild.classList.add('scale-95');
+            modal.firstElementChild.classList.remove('scale-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        function selectAvatar(url) {
+            document.getElementById('profile-avatar').src = url;
+            closeAvatarSelector();
+            alert("Avatar profil Discord berhasil diganti!");
+        }
+
+        // Form change trigger updates
+        function saveProfileChanges(event) {
+            event.preventDefault();
+
+            const newName = document.getElementById('input-name').value.trim();
+            const newHandle = document.getElementById('input-handle').value.trim();
+            const newTrack = document.getElementById('input-track').value;
+            const newStatus = document.getElementById('input-status').value.trim();
+            
+            const oldPass = document.getElementById('input-old-pass').value;
+            const newPass = document.getElementById('input-new-pass').value;
+            const confirmPass = document.getElementById('input-confirm-pass').value;
+
+            // Password security modifier validation
+            if (newPass || oldPass || confirmPass) {
+                if (!oldPass) {
+                    alert("⚠️ Masukkan Kata Sandi Lama Anda terlebih dahulu untuk validasi keamanan!");
+                    return;
+                }
+                if (newPass !== confirmPass) {
+                    alert("⚠️ Konfirmasi Kata Sandi Baru tidak cocok! Mohon periksa kembali input Anda.");
+                    return;
+                }
+            }
+
+            // Apply dynamic changes to UI components in real time
+            document.getElementById('user-display-name').textContent = newName;
+            document.getElementById('user-handle').textContent = newHandle.startsWith('@') ? newHandle : '@' + newHandle;
+            
+            // Track Badge updates dynamically
+            const badge = document.getElementById('track-badge');
+            let icon = 'palette';
+            if (newTrack.includes('Developer')) icon = 'code';
+            if (newTrack.includes('Designer')) icon = 'brush';
+            
+            badge.innerHTML = `
+                <span class="material-symbols-outlined text-sm">${icon}</span>
+                <span>${newTrack}</span>
+            `;
+
+            // Reset password fields
+            document.getElementById('input-old-pass').value = '';
+            document.getElementById('input-new-pass').value = '';
+            document.getElementById('input-confirm-pass').value = '';
+
+            alert("🎉 YAY! Detail profil Discord kamu berhasil diperbarui secara real-time!");
+        }
+    </script>
+</body>
+</html>

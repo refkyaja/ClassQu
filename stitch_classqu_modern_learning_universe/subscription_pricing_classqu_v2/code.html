@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Langganan ClassQu - Mulai Belajar Sekarang</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#fdf8f8",
+                    "surface-container-high": "#ece7e7",
+                    "primary": "#a53b29",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#eac25b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#ffb4a6",
+                    "on-tertiary-container": "#00423e",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#00201e",
+                    "on-surface-variant": "#57423e",
+                    "on-secondary-fixed-variant": "#594400",
+                    "on-secondary-container": "#775b00",
+                    "surface": "#fdf8f8",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#9ff1e9",
+                    "primary-fixed-dim": "#ffb4a6",
+                    "tertiary": "#006a64",
+                    "outline": "#8b716d",
+                    "secondary-container": "#ffd56d",
+                    "surface-container": "#f1edec",
+                    "primary-container": "#ff7e67",
+                    "outline-variant": "#dec0ba",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e6e1e1",
+                    "on-primary-fixed-variant": "#842415",
+                    "inverse-on-surface": "#f4f0ef",
+                    "secondary-fixed": "#ffdf96",
+                    "surface-container-low": "#f7f2f2",
+                    "tertiary-fixed-dim": "#83d5cd",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#3f0300",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "on-primary-container": "#731709",
+                    "on-surface": "#1c1b1b",
+                    "tertiary-container": "#60b2ab",
+                    "primary-fixed": "#ffdad4",
+                    "surface-variant": "#e6e1e1",
+                    "on-secondary-fixed": "#251a00",
+                    "on-background": "#1c1b1b",
+                    "background": "#fdf8f8",
+                    "inverse-surface": "#313030",
+                    "surface-tint": "#a53b29",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#765a00",
+                    "surface-dim": "#ddd9d8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "unit": "4px",
+                    "margin-desktop": "64px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "gutter": "20px",
+                    "lg": "24px",
+                    "section-gap": "80px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #fdf8f8;
+        background-image: 
+          radial-gradient(at 0% 0%, rgba(165, 59, 41, 0.05) 0px, transparent 50%),
+          radial-gradient(at 100% 100%, rgba(0, 106, 100, 0.05) 0px, transparent 50%);
+      }
+      .glass-card {
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(165, 59, 41, 0.1);
+      }
+      .glow-primary {
+        box-shadow: 0 20px 40px -10px rgba(165, 59, 41, 0.15);
+      }
+    </style>
+</head>
+<body class="font-body-md text-on-background min-h-screen overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-white/70 backdrop-blur-xl border border-outline-variant/30 shadow-xl shadow-primary/5 rounded-full mt-4 mx-4 md:mx-auto max-w-7xl sticky top-4 z-50 flex justify-between items-center px-8 py-3">
+<div class="font-display-lg text-headline-lg-mobile md:text-headline-lg font-extrabold text-primary tracking-tighter">
+        ClassQu
+    </div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 hover:scale-105" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 hover:scale-105" href="#">Kelas</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 transition-all duration-300" href="#">Subscription</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 hover:scale-105" href="#">Community</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all duration-300 hover:scale-105" href="#">Blog</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-primary font-bold hover:scale-105 transition-all duration-300">Login</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-bold shadow-lg hover:scale-105 active:scale-95 transition-all duration-200">Mulai Belajar</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop mt-stack-lg">
+<!-- Hero Section -->
+<section class="text-center py-16">
+<span class="bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-sm tracking-wider uppercase mb-6 inline-block">Investasi Masa Depan</span>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background mb-4">
+            Pilih Paket Belajar <br class="hidden md:block"/> yang <span class="text-primary">Tepat Untukmu</span>
+</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+            Akses ribuan materi eksklusif, komunitas belajar global, dan mentor profesional untuk mengakselerasi karirmu.
+        </p>
+</section>
+<!-- Pricing Tiers -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-section-gap">
+<!-- Free Tier -->
+<div class="glass-card p-8 rounded-lg flex flex-col hover:translate-y-[-8px] transition-transform duration-500">
+<div class="mb-8">
+<h3 class="font-headline-md text-on-background mb-2">Free</h3>
+<p class="text-on-surface-variant font-body-md">Untuk yang baru mulai mencoba dunia belajar online.</p>
+</div>
+<div class="mb-8">
+<span class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background">Rp 0</span>
+<span class="text-on-surface-variant">/selamanya</span>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">Akses 10 Kelas Dasar</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">Kuis Interaktif Terbatas</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="cancel">cancel</span>
+<span class="text-on-surface-variant line-through font-body-md">Sertifikat Resmi</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary/5 transition-colors">Pilih Paket</button>
+</div>
+<!-- Pro Tier (Paling Populer) -->
+<div class="relative p-8 rounded-lg flex flex-col bg-primary text-white glow-primary hover:translate-y-[-8px] transition-transform duration-500 overflow-hidden">
+<div class="absolute top-0 right-0 bg-secondary-container text-on-secondary-container px-6 py-2 rounded-bl-xl font-label-sm z-10">Paling Populer</div>
+<div class="mb-8">
+<h3 class="font-headline-md text-white mb-2">Pro</h3>
+<p class="text-primary-fixed-dim font-body-md">Langkah serius menjadi ahli di bidang yang kamu minati.</p>
+</div>
+<div class="mb-8">
+<span class="font-display-lg text-headline-lg-mobile md:text-display-lg text-white">Rp 149k</span>
+<span class="text-primary-fixed-dim">/bulan</span>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-[20px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-body-md">Akses Semua Kelas</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-[20px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-body-md">Sertifikat Digital Resmi</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-[20px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-body-md">Grup Eksklusif Discord</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-[20px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-body-md">Offline Download</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-full bg-white text-primary font-extrabold hover:scale-[1.02] transition-transform shadow-xl">Langganan Sekarang</button>
+<div class="absolute -bottom-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+<!-- Master Tier -->
+<div class="glass-card p-8 rounded-lg flex flex-col hover:translate-y-[-8px] transition-transform duration-500">
+<div class="mb-8">
+<h3 class="font-headline-md text-on-background mb-2">Master</h3>
+<p class="text-on-surface-variant font-body-md">Dukungan mentor personal untuk percepatan karir.</p>
+</div>
+<div class="mb-8">
+<span class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background">Rp 499k</span>
+<span class="text-on-surface-variant">/bulan</span>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">Semua Fitur Paket Pro</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">Sesi 1-on-1 Bersama Mentor</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">Bantuan Penyaluran Kerja</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">Akses Beta Fitur Baru</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary/5 transition-colors">Pilih Paket</button>
+</div>
+</section>
+<!-- Feature Comparison Table -->
+<section class="mb-section-gap">
+<h2 class="font-headline-md text-on-background text-center mb-stack-lg">Bandingkan Fitur</h2>
+<div class="glass-card rounded-lg overflow-hidden border border-outline-variant shadow-2xl">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="p-6 font-label-md text-on-background">Fitur Utama</th>
+<th class="p-6 font-label-md text-center text-on-background">Free</th>
+<th class="p-6 font-label-md text-center text-primary">Pro</th>
+<th class="p-6 font-label-md text-center text-on-background">Master</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-white/40 transition-colors">
+<td class="p-6 font-body-md">Akses Materi Dasar</td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-tertiary" data-icon="check">check</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-primary" data-icon="check">check</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-tertiary" data-icon="check">check</span></td>
+</tr>
+<tr class="hover:bg-white/40 transition-colors">
+<td class="p-6 font-body-md">Akses Materi Premium</td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-outline" data-icon="close">close</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-primary" data-icon="check">check</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-tertiary" data-icon="check">check</span></td>
+</tr>
+<tr class="hover:bg-white/40 transition-colors">
+<td class="p-6 font-body-md">Sertifikat Kelulusan</td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-outline" data-icon="close">close</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-primary" data-icon="check">check</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-tertiary" data-icon="check">check</span></td>
+</tr>
+<tr class="hover:bg-white/40 transition-colors">
+<td class="p-6 font-body-md">Bimbingan Mentor 1-on-1</td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-outline" data-icon="close">close</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-outline" data-icon="close">close</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-tertiary" data-icon="check">check</span></td>
+</tr>
+<tr class="hover:bg-white/40 transition-colors">
+<td class="p-6 font-body-md">Forum Diskusi Priority</td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-outline" data-icon="close">close</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-primary" data-icon="check">check</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-tertiary" data-icon="check">check</span></td>
+</tr>
+<tr class="hover:bg-white/40 transition-colors">
+<td class="p-6 font-body-md">Download Materi Offline</td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-outline" data-icon="close">close</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-primary" data-icon="check">check</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-tertiary" data-icon="check">check</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="max-w-4xl mx-auto mb-section-gap">
+<h2 class="font-headline-md text-on-background text-center mb-stack-lg">Pertanyaan Umum (FAQ)</h2>
+<div class="space-y-4">
+<div class="glass-card rounded-lg overflow-hidden border border-outline-variant/30">
+<button class="w-full flex justify-between items-center p-6 text-left hover:bg-primary/5 transition-colors group">
+<span class="font-label-md text-on-background group-hover:text-primary transition-colors">Bagaimana sistem pembayarannya?</span>
+<span class="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform duration-300" data-icon="expand_more">expand_more</span>
+</button>
+<div class="px-6 pb-6 text-on-surface-variant font-body-md">
+                    Kami menerima berbagai metode pembayaran mulai dari Transfer Bank, Kartu Kredit, hingga E-Wallet seperti GoPay, OVO, dan Dana. Pembayaran diproses secara aman melalui gerbang pembayaran terenkripsi.
+                </div>
+</div>
+<div class="glass-card rounded-lg overflow-hidden border border-outline-variant/30">
+<button class="w-full flex justify-between items-center p-6 text-left hover:bg-primary/5 transition-colors group">
+<span class="font-label-md text-on-background group-hover:text-primary transition-colors">Apakah saya bisa berhenti berlangganan kapan saja?</span>
+<span class="material-symbols-outlined text-primary transition-transform duration-300" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<div class="glass-card rounded-lg overflow-hidden border border-outline-variant/30">
+<button class="w-full flex justify-between items-center p-6 text-left hover:bg-primary/5 transition-colors group">
+<span class="font-label-md text-on-background group-hover:text-primary transition-colors">Apa itu sertifikat digital resmi?</span>
+<span class="material-symbols-outlined text-primary transition-transform duration-300" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<div class="glass-card rounded-lg overflow-hidden border border-outline-variant/30">
+<button class="w-full flex justify-between items-center p-6 text-left hover:bg-primary/5 transition-colors group">
+<span class="font-label-md text-on-background group-hover:text-primary transition-colors">Bagaimana cara kerja sesi 1-on-1?</span>
+<span class="material-symbols-outlined text-primary transition-transform duration-300" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+<!-- CTA Floating Section -->
+<section class="relative mb-section-gap">
+<div class="bg-surface-container rounded-lg p-12 text-center overflow-hidden border border-primary/20 glow-primary relative">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<img alt="Team Learning" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5QffrJFaDuqM7CvmH-7Z8VBKWe-RyhxYqzvnF07Ewp6KCnmHOoejAGNeOytxLGAp370aCs21204aP8jBVpz_J85_WkRFrNpB9xbdP6GLZO8aPIBbXZax2i2K1P625Wf3I0JKuBx-TvqmLFuYOJCvKpsQ_GCkDqwweSfc7a3Gl5Rdz8Z_iBFN88Ft7Mh7wlj8m0Z6yhCs03Dt20Q248tHE6P_HRzbRyV_HEIlorzlWIqR6X-Os8uGUt_UWzdlkHAjHSpdGhUcbBA"/>
+</div>
+<h2 class="font-headline-md text-on-background relative z-10 mb-6">Masih Bingung Memilih Paket?</h2>
+<p class="font-body-lg text-on-surface-variant relative z-10 max-w-xl mx-auto mb-10">
+                Hubungi tim bantuan kami untuk mendapatkan saran paket yang paling sesuai dengan kebutuhan belajarmu.
+            </p>
+<div class="flex flex-col md:flex-row justify-center gap-4 relative z-10">
+<button class="bg-primary text-white px-8 py-4 rounded-full font-bold shadow-lg hover:scale-105 active:scale-95 transition-all">Hubungi Customer Success</button>
+<button class="bg-white border-2 border-primary text-primary px-8 py-4 rounded-full font-bold hover:bg-primary/5 transition-all">Lihat Review Alumni</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/30 w-full py-12 px-margin-mobile md:px-margin-desktop mt-section-gap">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="md:col-span-1">
+<div class="font-headline-md font-bold text-on-background mb-6">ClassQu</div>
+<p class="text-on-surface-variant font-body-md">Membangun platform pendidikan masa depan dengan teknologi terbaik dan komunitas yang mendukung.</p>
+</div>
+<div>
+<h4 class="font-label-sm text-primary uppercase mb-6">Navigasi</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Tentang Kami</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Kelas Terbaru</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Community Hub</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Karir</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-primary uppercase mb-6">Dukungan</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Kebijakan Privasi</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Syarat &amp; Ketentuan</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Hubungi Kami</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Bantuan FAQ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-primary uppercase mb-6">Media Sosial</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="alternate_email">alternate_email</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="smart_display">smart_display</span>
+</a>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto pt-8 border-t border-outline-variant/20 text-center">
+<p class="text-on-surface-variant font-body-md">© 2024 ClassQu. Dibuat dengan semangat untuk masa depan.</p>
+</div>
+</footer>
+</body></html>

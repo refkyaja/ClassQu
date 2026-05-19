@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Belajar - ClassQu Student Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "on-background": "#1C1B1B",
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-low": "#FFFBF4",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface-variant": "#57423e",
+                    },
+                    borderRadius: {
+                        'card': '32px',
+                        'lg': '2rem',
+                        'xl': '3rem',
+                        'full': '9999px'
+                    },
+                    boxShadow: {
+                        'playful-sm': '2px 2px 0px 0px #1C1B1B',
+                        'playful': '4px 4px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 10px 30px -5px rgba(255, 126, 103, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #1C1B1B;
+            box-shadow: 4px 4px 0px 0px #1C1B1B;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #1C1B1B;
+        }
+        .btn-playful {
+            border: 2px solid #1C1B1B;
+            box-shadow: 2px 2px 0px 0px #1C1B1B;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-playful:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px 0px #1C1B1B;
+        }
+        .btn-playful:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px 0px #1C1B1B;
+        }
+        /* Custom video frame */
+        .video-container {
+            border: 3px solid #1C1B1B;
+            box-shadow: 6px 6px 0px 0px #1C1B1B;
+        }
+        /* Active class elements */
+        .lesson-item.active {
+            background-color: rgba(255, 126, 103, 0.08) !important;
+            border-color: #FF7E67 !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Workspace Container Grid -->
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 mt-12 px-6 md:px-12 mb-24">
+        
+        <!-- Left Side Navigation Sidebar Placeholder -->
+        <div id="sidebar-placeholder" class="w-full lg:w-72 flex-none lg:sticky lg:top-12"></div>
+
+        <!-- Main LMS Content Canvas -->
+        <main class="flex-grow space-y-8">
+            
+            <!-- Breadcrumbs / Back button -->
+            <div>
+                <a href="materi_siswa.html" class="inline-flex items-center gap-2 text-neutral/65 font-bold text-xs hover:text-primary transition-colors group">
+                    <span class="material-symbols-outlined text-sm font-black group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    <span>Kembali ke Materi Saya</span>
+                </a>
+            </div>
+
+            <!-- Dashboard Course Header Panel -->
+            <div class="glass-card bg-white p-6 md:p-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span id="course-tag" class="bg-primary/10 text-primary border border-primary/20 px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider mb-2 inline-block">KATEGORI</span>
+                        <h1 id="course-title" class="text-2xl md:text-3xl font-black text-neutral leading-tight">Nama Kelas Siswa</h1>
+                        <p id="course-mentor" class="text-neutral/50 text-xs font-semibold mt-1">Dimentori oleh Sarah W. • Lead Developer</p>
+                    </div>
+
+                    <!-- Progress Status Widget -->
+                    <div class="w-full md:w-64 space-y-1.5 shrink-0 bg-[#FFF3DF] border-2 border-neutral p-4 rounded-2xl shadow-playful-sm">
+                        <div class="flex justify-between items-center text-[10px] font-extrabold">
+                            <span class="text-neutral/60">Progress Belajar</span>
+                            <span id="progress-percent" class="text-primary font-black">71%</span>
+                        </div>
+                        <div class="w-full h-3.5 bg-white border border-neutral rounded-full overflow-hidden flex p-0.5">
+                            <div id="progress-fill" class="h-full rounded-full bg-primary transition-all duration-500" style="width: 71%"></div>
+                        </div>
+                        <div class="flex justify-between items-center text-[9px] font-bold text-neutral/40 pt-1">
+                            <span id="completed-modules-lbl">15 / 21 Modul</span>
+                            <span id="xp-earned-lbl">+350 XP earned</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workspace Grid (Video Player & Curriculums) -->
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left 7 columns: Lesson Player -->
+                <div class="xl:col-span-7 space-y-4">
+                    <!-- Premium Interactive Player -->
+                    <div class="video-container relative aspect-[16/9] rounded-[24px] overflow-hidden bg-neutral">
+                        <video id="lecture-video" class="w-full h-full object-cover" controls poster="">
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-typing-on-a-laptop-40542-large.mp4" type="video/mp4">
+                        </video>
+                        <!-- Floating overlay if locked -->
+                        <div id="locked-overlay" class="absolute inset-0 bg-neutral/85 backdrop-blur-sm flex flex-col items-center justify-center text-white space-y-3 hidden">
+                            <span class="material-symbols-outlined text-4xl text-secondary">lock</span>
+                            <h4 class="font-black text-sm uppercase tracking-wider">Bab Ini Masih Terkunci!</h4>
+                            <p class="text-[10px] text-white/60 max-w-xs text-center leading-normal">Selesaikan bab dan modul sebelum ini terlebih dahulu untuk membuka akses ke bab ini.</p>
+                        </div>
+                    </div>
+
+                    <!-- Lecture Active Info card -->
+                    <div class="glass-card bg-white p-5 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[9px] font-black uppercase text-primary tracking-wider" id="active-module-title">MODUL 1: PENGENALAN</span>
+                            <span class="text-[9px] font-bold text-neutral/40 flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[10px]">timer</span>
+                                <span id="active-duration">15 Menit</span>
+                            </span>
+                        </div>
+                        <h2 class="font-black text-base text-neutral" id="active-lecture-title">Pilih modul di sebelah kanan untuk memulai belajar</h2>
+                        <p class="text-neutral/60 text-xs leading-relaxed font-semibold">Tonton video tutorial materi di atas sampai habis untuk mengklaim koin bonus dan menambahkan XP harian Anda secara otomatis!</p>
+                    </div>
+
+                    <!-- Discussion and Assets Widget -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="glass-card bg-white p-5 flex flex-col justify-between gap-4">
+                            <div>
+                                <h4 class="font-black text-xs text-neutral uppercase tracking-wider flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-sm text-primary">forum</span>
+                                    <span>Tanya Mentor</span>
+                                </h4>
+                                <p class="text-[10px] text-neutral/50 font-semibold mt-1">Mengalami kesulitan belajar? Ajukan pertanyaan langsung ke mentor Anda.</p>
+                            </div>
+                            <button class="btn-playful py-2 bg-neutral text-white font-extrabold text-[10px] rounded-xl">Buka Forum Diskusi</button>
+                        </div>
+
+                        <div class="glass-card bg-white p-5 flex flex-col justify-between gap-4">
+                            <div>
+                                <h4 class="font-black text-xs text-neutral uppercase tracking-wider flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-sm text-tertiary">download</span>
+                                    <span>File Aset Praktik</span>
+                                </h4>
+                                <p class="text-[10px] text-neutral/50 font-semibold mt-1">Unduh source code, materi bacaan PDF, atau template latihan.</p>
+                            </div>
+                            <button class="btn-playful py-2 bg-tertiary text-white font-extrabold text-[10px] rounded-xl border border-neutral shadow-playful-sm">Unduh File Pendukung</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right 5 columns: Curriculums Accordion list -->
+                <div class="xl:col-span-5 space-y-4">
+                    <h3 class="font-black text-sm text-neutral px-2 flex items-center justify-between">
+                        <span>Daftar Kurikulum Materi</span>
+                        <span class="text-[10px] font-black text-primary uppercase">Silabus Kelas</span>
+                    </h3>
+
+                    <!-- Dynamic Accordions injected by JS -->
+                    <div id="syllabus-list" class="space-y-3">
+                        <!-- Loaded dynamically -->
+                    </div>
+                    
+                    <!-- Reward Certificate Button (If 100%) -->
+                    <div id="cert-wrapper" class="hidden">
+                        <button onclick="showCertificateModal()" class="btn-playful w-full py-4 bg-tertiary text-white font-extrabold text-xs rounded-2xl flex items-center justify-center gap-2 border-2 border-neutral shadow-playful">
+                            <span class="material-symbols-outlined">workspace_premium</span>
+                            <span>Klaim Sertifikat Kelulusan!</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Certificate Mock Modal (Confetti / WOW effect) -->
+    <div id="cert-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-neutral/70 backdrop-blur-sm" onclick="closeCertModal()"></div>
+        
+        <!-- Certificate Card -->
+        <div class="relative z-10 w-full max-w-2xl bg-white border-4 border-neutral rounded-card p-8 shadow-playful overflow-hidden text-center space-y-6">
+            <!-- Decorative burst -->
+            <div class="absolute -right-20 -top-20 w-52 h-52 bg-secondary/30 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-20 -bottom-20 w-52 h-52 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="space-y-2">
+                <span class="bg-tertiary/10 text-tertiary border border-tertiary/20 px-4 py-1 rounded-full text-xs font-black tracking-widest uppercase">KELULUSAN RESMI CLASSQU</span>
+                <h3 class="text-2xl font-black text-neutral">Selamat Belajar Kamu Selesai! 🎉</h3>
+                <p class="text-neutral/50 text-xs font-semibold">Tingkat kelulusan 100% sempurna dengan hasil portofolio yang tervalidasi.</p>
+            </div>
+
+            <!-- Certificate Mockup Visual -->
+            <div class="border-4 border-double border-neutral bg-[#FFFBF4] p-6 rounded-2xl shadow-inner relative space-y-4">
+                <div class="absolute top-3 left-3 text-[10px] font-black text-neutral/30">CLASSQU CERTIFICATE</div>
+                <div class="absolute top-3 right-3 text-secondary text-lg">★</div>
+                
+                <div class="pt-6 space-y-1">
+                    <span class="text-[9px] font-bold tracking-widest text-neutral/40 uppercase">SERTIFIKAT KELULUSAN DIBERIKAN KEPADA</span>
+                    <h4 class="text-xl font-black text-primary">Andi Pratama</h4>
+                    <div class="w-32 h-0.5 bg-neutral/10 mx-auto my-3"></div>
+                    <span class="text-[9px] font-bold tracking-widest text-neutral/40 uppercase">ATAS PENYELESAIAN KELAS KELAS</span>
+                    <h5 id="cert-course-name" class="text-sm font-extrabold text-neutral">Web Developer Roadmap</h5>
+                </div>
+
+                <div class="flex justify-between items-end pt-6 text-left">
+                    <div>
+                        <span class="block text-[8px] font-bold text-neutral/40 uppercase">DITANDATANGANI</span>
+                        <span class="font-extrabold text-[10px] text-neutral">ClassQu Academics</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="block text-[8px] font-bold text-neutral/40 uppercase">VERIFIED ID</span>
+                        <span class="font-mono text-[9px] font-bold text-neutral/50">CQ-9821-XP80</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-3 justify-center pt-2">
+                <button class="btn-playful px-6 py-2.5 bg-neutral text-white font-extrabold text-xs rounded-xl" onclick="closeCertModal()">Tutup</button>
+                <button class="btn-playful px-6 py-2.5 bg-primary text-white font-extrabold text-xs rounded-xl" onclick="alert('Sertifikat berhasil diunduh dalam format PDF!')">Unduh PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Components dynamic loader script -->
+    <script src="components.js"></script>
+
+    <!-- Page interactivity and state control logic -->
+    <script>
+        // High fidelity LMS courses datasets with nested modules & chapters
+        const STUDENT_COURSES = {
+            1: {
+                id: 1,
+                title: "Web Developer Roadmap: Level 12 (Sang Penjelajah)",
+                tag: "WEB DEVELOPMENT",
+                category: "web-dev",
+                mentor: "Sarah W. • Lead Dev",
+                progress: 71,
+                modulesLbl: "15 / 21 Modul Selesai",
+                xp: "+350 XP earned",
+                modules: [
+                    {
+                        title: "Modul 1: Pengenalan HTML & CSS Dasar",
+                        completed: true,
+                        lessons: [
+                            { name: "Bab 1.1: Sejarah Web & Cara Kerja Browser", duration: "15 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-smartphone-in-his-hand-40540-large.mp4" },
+                            { name: "Bab 1.2: Sintaks HTML & Element Dasar", duration: "20 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-typing-on-a-laptop-40545-large.mp4" },
+                            { name: "Bab 1.3: Pengenalan CSS & Styling Pertama", duration: "25 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-woman-typing-on-a-laptop-40542-large.mp4" }
+                        ]
+                    },
+                    {
+                        title: "Modul 2: JavaScript Modern & ES6",
+                        completed: true,
+                        lessons: [
+                            { name: "Bab 2.1: Variabel, Tipe Data & Operator", duration: "20 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-smartphone-in-his-hand-40540-large.mp4" },
+                            { name: "Bab 2.2: Percabangan & Perulangan", duration: "30 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-typing-on-a-laptop-40545-large.mp4" },
+                            { name: "Bab 2.3: Arrow Function & Array Methods", duration: "25 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-woman-typing-on-a-laptop-40542-large.mp4" }
+                        ]
+                    },
+                    {
+                        title: "Modul 3: DOM Manipulation & Web Projects",
+                        completed: false,
+                        lessons: [
+                            { name: "Bab 3.1: Mengambil & Memanipulasi Element", duration: "35 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-smartphone-in-his-hand-40540-large.mp4" },
+                            { name: "Bab 3.2: Event Listener & Interaktivitas", duration: "40 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-typing-on-a-laptop-40545-large.mp4" },
+                            { name: "Bab 3.3: Project Mini: To-Do App", duration: "45 Menit", done: false, active: true, url: "https://assets.mixkit.co/videos/preview/mixkit-woman-typing-on-a-laptop-40542-large.mp4" },
+                            { name: "Bab 3.4: Project Mini: Kalkulator Retro", duration: "35 Menit", done: false, locked: true }
+                        ]
+                    },
+                    {
+                        title: "Modul 4: Framework React & Deployment",
+                        completed: false,
+                        locked: true,
+                        lessons: [
+                            { name: "Bab 4.1: Pengenalan React & Component", duration: "30 Menit", done: false, locked: true },
+                            { name: "Bab 4.2: State & Props Management", duration: "45 Menit", done: false, locked: true },
+                            { name: "Bab 4.3: Deploy ke Vercel/Netlify", duration: "20 Menit", done: false, locked: true }
+                        ]
+                    }
+                ]
+            },
+            2: {
+                id: 2,
+                title: "Figma UI/UX Design: Wireframe to Prototype",
+                tag: "UI/UX DESIGN",
+                category: "ui-ux",
+                mentor: "Nadia A. • UI/UX Specialist",
+                progress: 45,
+                modulesLbl: "9 / 20 Modul Selesai",
+                xp: "+200 XP earned",
+                modules: [
+                    {
+                        title: "Modul 1: Pengenalan Figma & UI Basics",
+                        completed: true,
+                        lessons: [
+                            { name: "Bab 1.1: Memahami Ruang Kerja Figma", duration: "15 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-woman-typing-on-a-laptop-40542-large.mp4" },
+                            { name: "Bab 1.2: Menggunakan Shapes & Grids", duration: "25 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-smartphone-in-his-hand-40540-large.mp4" }
+                        ]
+                    },
+                    {
+                        title: "Modul 2: Wireframing & Layout",
+                        completed: false,
+                        lessons: [
+                            { name: "Bab 2.1: Seni Membuat Low Fidelity Wireframe", duration: "30 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-typing-on-a-laptop-40545-large.mp4" },
+                            { name: "Bab 2.2: Auto-Layout & Komponen Reusable", duration: "45 Menit", done: false, active: true, url: "https://assets.mixkit.co/videos/preview/mixkit-woman-typing-on-a-laptop-40542-large.mp4" },
+                            { name: "Bab 2.3: Membuat High Fidelity Screens", duration: "50 Menit", done: false, locked: true }
+                        ]
+                    },
+                    {
+                        title: "Modul 3: Prototyping & Motion",
+                        completed: false,
+                        locked: true,
+                        lessons: [
+                            { name: "Bab 3.1: Membuat Koneksi & Alur Interaksi", duration: "40 Menit", done: false, locked: true },
+                            { name: "Bab 3.2: Smart Animate & Micro-interactions", duration: "45 Menit", done: false, locked: true }
+                        ]
+                    }
+                ]
+            },
+            3: {
+                id: 3,
+                title: "Confident Public Speaking 101: Seni Presentasi",
+                tag: "SOFT SKILLS",
+                category: "soft-skills",
+                mentor: "Dimas P. • Public Speaking Expert",
+                progress: 100,
+                modulesLbl: "12 / 12 Modul Selesai",
+                xp: "+500 XP earned",
+                modules: [
+                    {
+                        title: "Modul 1: Mengalahkan Demam Panggung",
+                        completed: true,
+                        lessons: [
+                            { name: "Bab 1.1: Memahami Penyebab Gugup", duration: "15 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-smartphone-in-his-hand-40540-large.mp4" },
+                            { name: "Bab 1.2: Teknik Bernafas & Rileksasi Tubuh", duration: "20 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-woman-typing-on-a-laptop-40542-large.mp4" }
+                        ]
+                    },
+                    {
+                        title: "Modul 2: Struktur Pembicaraan & Storytelling",
+                        completed: true,
+                        lessons: [
+                            { name: "Bab 2.1: Kerangka Utama: Opening - Body - Closing", duration: "25 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-typing-on-a-laptop-40545-large.mp4" },
+                            { name: "Bab 2.2: Seni Menyisipkan Cerita & Humor", duration: "30 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-smartphone-in-his-hand-40540-large.mp4" }
+                        ]
+                    },
+                    {
+                        title: "Modul 3: Bahasa Tubuh & Intonasi",
+                        completed: true,
+                        lessons: [
+                            { name: "Bab 3.1: Kontak Mata & Gestur Tangan", duration: "20 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-woman-typing-on-a-laptop-40542-large.mp4" },
+                            { name: "Bab 3.2: Mengontrol Pitch, Speed, & Jeda", duration: "30 Menit", done: true, url: "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-typing-on-a-laptop-40545-large.mp4" }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // Active State Control Variables
+        let currentCourse = null;
+
+        // Toggles accordion open/close dynamically
+        function toggleSyllabusAccordion(idx) {
+            const accordionContent = document.getElementById(`syllabus-content-${idx}`);
+            const arrowIcon = document.getElementById(`syllabus-arrow-${idx}`);
+            const isClosed = accordionContent.classList.contains('hidden');
+
+            if (isClosed) {
+                accordionContent.classList.remove('hidden');
+                arrowIcon.style.transform = 'rotate(180deg)';
+            } else {
+                accordionContent.classList.add('hidden');
+                arrowIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Activates a lecture when clicked, updating the video player
+        function playLecture(mIdx, lIdx, element) {
+            const module = currentCourse.modules[mIdx];
+            const lesson = module.lessons[lIdx];
+
+            if (lesson.locked) {
+                alert("Bab ini terkunci! Harap selesaikan modul dan bab sebelumnya terlebih dahulu.");
+                return;
+            }
+
+            // Update UI states
+            document.querySelectorAll('.lesson-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            // Update active lecture info
+            document.getElementById('active-module-title').textContent = module.title.toUpperCase();
+            document.getElementById('active-lecture-title').textContent = lesson.name;
+            document.getElementById('active-duration').textContent = lesson.duration;
+
+            // Load Video source
+            const videoPlayer = document.getElementById('lecture-video');
+            const overlay = document.getElementById('locked-overlay');
+            
+            overlay.classList.add('hidden');
+            if (lesson.url) {
+                videoPlayer.src = lesson.url;
+                videoPlayer.load();
+                videoPlayer.play().catch(e => console.log("Auto-play blocked by browser. Ready for user click."));
+            } else {
+                videoPlayer.pause();
+                overlay.classList.remove('hidden');
+            }
+        }
+
+        // Populates page layout with course details on load
+        function loadCourseDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = parseInt(urlParams.get('id')) || 1;
+
+            currentCourse = STUDENT_COURSES[courseId];
+            if (!currentCourse) {
+                document.body.innerHTML = `
+                    <div class="text-center py-20 bg-background min-h-screen flex flex-col justify-center items-center gap-4">
+                        <span class="material-symbols-outlined text-6xl text-neutral/40">error</span>
+                        <h2 class="text-2xl font-bold text-neutral">Kelas Tidak Ditemukan!</h2>
+                        <a href="materi_siswa.html" class="btn-playful px-6 py-2 bg-primary text-white font-extrabold text-xs rounded-xl">Kembali ke Portal</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Bind values to widgets
+            document.getElementById('course-title').textContent = currentCourse.title;
+            document.getElementById('course-tag').textContent = currentCourse.tag;
+            document.getElementById('course-mentor').textContent = `Dimentori oleh ${currentCourse.mentor}`;
+            
+            // Progress details
+            document.getElementById('progress-percent').textContent = `${currentCourse.progress}%`;
+            document.getElementById('progress-fill').style.width = `${currentCourse.progress}%`;
+            document.getElementById('completed-modules-lbl').textContent = currentCourse.modulesLbl;
+            document.getElementById('xp-earned-lbl').textContent = currentCourse.xp;
+
+            // Render syllabus accordion list
+            const syllabusContainer = document.getElementById('syllabus-list');
+            
+            syllabusContainer.innerHTML = currentCourse.modules.map((mod, mIdx) => {
+                const isModuleLocked = mod.locked;
+                
+                return `
+                    <div class="glass-card bg-white overflow-hidden">
+                        <!-- Accordion Header -->
+                        <button onclick="toggleSyllabusAccordion(${mIdx})" class="w-full text-left p-4 flex items-center justify-between gap-3 font-extrabold bg-white hover:bg-neutral/5 transition-colors focus:outline-none">
+                            <div class="flex items-center gap-2.5 min-w-0">
+                                <span class="w-6 h-6 rounded-full ${mod.completed ? 'bg-tertiary/10 text-tertiary' : 'bg-primary/10 text-primary'} flex items-center justify-center text-[10px] shrink-0 font-black">${mIdx + 1}</span>
+                                <span class="text-xs text-neutral truncate">${mod.title}</span>
+                            </div>
+                            <div class="flex items-center gap-2 shrink-0">
+                                ${mod.completed ? `
+                                    <span class="bg-tertiary/10 text-tertiary px-2 py-0.5 border border-tertiary/20 rounded-full text-[8px] font-black uppercase tracking-wider">SELESAI</span>
+                                ` : isModuleLocked ? `
+                                    <span class="material-symbols-outlined text-xs text-neutral/30">lock</span>
+                                ` : `
+                                    <span class="bg-primary/10 text-primary px-2 py-0.5 border border-primary/20 rounded-full text-[8px] font-black uppercase tracking-wider">BELAJAR</span>
+                                `}
+                                <span id="syllabus-arrow-${mIdx}" class="material-symbols-outlined text-sm text-neutral/50 transition-transform duration-300">expand_more</span>
+                            </div>
+                        </button>
+
+                        <!-- Accordion Items (Chapters) -->
+                        <div id="syllabus-content-${mIdx}" class="border-t border-neutral/5 divide-y divide-neutral/5 bg-neutral/[0.01]">
+                            ${mod.lessons.map((lesson, lIdx) => {
+                                const isLessonActive = lesson.active;
+                                const isLessonLocked = lesson.locked || isModuleLocked;
+                                
+                                return `
+                                    <div onclick="playLecture(${mIdx}, ${lIdx}, this)" class="lesson-item ${isLessonActive ? 'active' : ''} p-3.5 flex items-center justify-between gap-3 cursor-pointer hover:bg-neutral/5 transition-colors text-[11px] font-bold">
+                                        <div class="flex items-center gap-2.5 min-w-0">
+                                            ${lesson.done ? `
+                                                <span class="material-symbols-outlined text-sm text-tertiary font-bold shrink-0">check_circle</span>
+                                            ` : isLessonActive ? `
+                                                <span class="material-symbols-outlined text-sm text-primary font-bold shrink-0 animate-pulse">play_circle</span>
+                                            ` : isLessonLocked ? `
+                                                <span class="material-symbols-outlined text-sm text-neutral/30 shrink-0">lock</span>
+                                            ` : `
+                                                <span class="material-symbols-outlined text-sm text-neutral/45 shrink-0">play_circle</span>
+                                            `}
+                                            <span class="${isLessonLocked ? 'text-neutral/35' : 'text-neutral/70'} truncate">${lesson.name}</span>
+                                        </div>
+                                        <span class="text-[9px] font-black text-neutral/35 shrink-0 uppercase tracking-wider">${lesson.duration}</span>
+                                    </div>
+                                `;
+                            }).join('')}
+
+                            <!-- Dynamic Module Quiz Button (Separated Page) -->
+                            ${isModuleLocked ? `
+                                <div class="flex items-center justify-between gap-3 p-3.5 bg-neutral/5 text-[11px] font-black opacity-45 cursor-not-allowed border-t border-neutral/5">
+                                    <div class="flex items-center gap-2.5 min-w-0">
+                                        <span class="material-symbols-outlined text-sm text-neutral/40 shrink-0">lock</span>
+                                        <span class="text-neutral/40 truncate">Kuis Modul ${mIdx + 1}: Evaluasi Pembelajaran</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-xs text-neutral/30">lock</span>
+                                </div>
+                            ` : `
+                                <a href="quiz.html?course=${courseId}&module=${mIdx + 1}" 
+                                   class="flex items-center justify-between gap-3 p-3.5 bg-[#FFF3DF]/30 hover:bg-[#FFF3DF] transition-all text-[11px] font-black border-t border-neutral/5 border-b-2 border-b-neutral group">
+                                    <div class="flex items-center gap-2.5 min-w-0">
+                                        <span class="material-symbols-outlined text-sm text-primary font-black shrink-0" style="font-variation-settings: 'FILL' 1;">quiz</span>
+                                        <span class="text-primary truncate">Kuis Modul ${mIdx + 1}: Evaluasi Pembelajaran</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 shrink-0">
+                                        <span class="text-[9px] font-black text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/10 tracking-wider font-mono">+100 XP</span>
+                                        <span class="material-symbols-outlined text-xs text-neutral/40 group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+                                    </div>
+                                </a>
+                            `}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // If completed (100%), show claim certificate button
+            if (currentCourse.progress === 100) {
+                document.getElementById('cert-wrapper').classList.remove('hidden');
+                document.getElementById('cert-course-name').textContent = currentCourse.title;
+            }
+
+            // Auto-trigger and play the first active lesson
+            let triggered = false;
+            currentCourse.modules.forEach((mod, mIdx) => {
+                mod.lessons.forEach((les, lIdx) => {
+                    if (les.active && !triggered) {
+                        const items = document.querySelectorAll(`#syllabus-content-${mIdx} .lesson-item`);
+                        if (items[lIdx]) {
+                            playLecture(mIdx, lIdx, items[lIdx]);
+                            triggered = true;
+                        }
+                    }
+                });
+            });
+
+            // If no active lessons found, trigger first done lesson
+            if (!triggered) {
+                const firstItem = document.querySelector(`.lesson-item`);
+                if (firstItem) {
+                    playLecture(0, 0, firstItem);
+                }
+            }
+        }
+
+        // Certificate modal handlers
+        function showCertificateModal() {
+            document.getElementById('cert-modal').classList.remove('hidden');
+        }
+
+        function closeCertModal() {
+            document.getElementById('cert-modal').classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCourseDetails();
+        });
+    </script>
+</body>
+</html>

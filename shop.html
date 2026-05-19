@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Toko Hadiah - ClassQu Student Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "on-background": "#1C1B1B",
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-low": "#FFFBF4",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface-variant": "#57423e",
+                    },
+                    borderRadius: {
+                        'card': '32px',
+                        'lg': '2rem',
+                        'xl': '3rem',
+                        'full': '9999px'
+                    },
+                    boxShadow: {
+                        'playful-sm': '2px 2px 0px 0px #1C1B1B',
+                        'playful': '4px 4px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 10px 30px -5px rgba(255, 126, 103, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #1C1B1B;
+            box-shadow: 4px 4px 0px 0px #1C1B1B;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #1C1B1B;
+        }
+        .btn-playful {
+            border: 2px solid #1C1B1B;
+            box-shadow: 2px 2px 0px 0px #1C1B1B;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-playful:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px 0px #1C1B1B;
+        }
+        .btn-playful:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px 0px #1C1B1B;
+        }
+        .tag-filter.active {
+            background-color: #FF7E67 !important;
+            color: white !important;
+            border-color: #1C1B1B !important;
+        }
+        @keyframes coin-spin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        .spinning-coin {
+            animation: coin-spin 3s linear infinite;
+            transform-style: preserve-3d;
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Workspace Container Grid -->
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 mt-12 px-6 md:px-12 mb-24">
+        
+        <!-- Left Side Navigation Sidebar Placeholder -->
+        <div id="sidebar-placeholder" class="w-full lg:w-72 flex-none lg:sticky lg:top-12"></div>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow space-y-8">
+            
+            <!-- Page Header Widget -->
+            <div class="glass-card bg-white p-8 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-secondary/20 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="space-y-1.5">
+                        <span class="bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/20 font-extrabold text-[10px] uppercase tracking-widest inline-block">MARKETPLACE KOIN SISWA</span>
+                        <h1 class="text-3xl font-black tracking-tight text-neutral">
+                            Toko Hadiah <span class="text-primary">ClassQu</span>
+                        </h1>
+                        <p class="text-neutral/60 text-xs font-semibold max-w-lg leading-relaxed">
+                            Tukarkan ClassQu Coins milikmu dengan diskon langganan pro, merchandise eksklusif, e-wallet saldo, lencana avatar, dan berbagai benefit seru lainnya!
+                        </p>
+                    </div>
+
+                    <!-- User coin widget -->
+                    <div class="bg-[#FFF3DF] border-2 border-neutral p-4 rounded-2xl flex items-center gap-3.5 shrink-0 shadow-playful">
+                        <div class="w-12 h-12 rounded-full bg-secondary border-2 border-neutral flex items-center justify-center text-neutral shrink-0 shadow-playful-sm spinning-coin">
+                            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+                        </div>
+                        <div>
+                            <span class="block text-[8px] font-black text-neutral/40 uppercase tracking-widest">SALDO KOIN KAMU</span>
+                            <span class="font-black text-xl text-neutral flex items-center gap-1.5">
+                                <span id="coin-balance-lbl">2,450</span>
+                                <span class="text-[10px] text-neutral/50 font-bold">Coins</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Filter -->
+            <div class="glass-card bg-white p-6 space-y-4">
+                <div class="flex flex-wrap gap-2">
+                    <button class="tag-filter active px-4 py-2 bg-[#FFFBF4] border-2 border-neutral rounded-xl text-[10px] font-extrabold text-neutral/70 hover:text-primary transition-all" data-category="semua">
+                        Semua Hadiah
+                    </button>
+                    <button class="tag-filter px-4 py-2 bg-[#FFFBF4] border-2 border-neutral rounded-xl text-[10px] font-extrabold text-neutral/70 hover:text-primary transition-all" data-category="diskon">
+                        Diskon Pro
+                    </button>
+                    <button class="tag-filter px-4 py-2 bg-[#FFFBF4] border-2 border-neutral rounded-xl text-[10px] font-extrabold text-neutral/70 hover:text-primary transition-all" data-category="merch">
+                        Merchandise
+                    </button>
+                    <button class="tag-filter px-4 py-2 bg-[#FFFBF4] border-2 border-neutral rounded-xl text-[10px] font-extrabold text-neutral/70 hover:text-primary transition-all" data-category="ewallet">
+                        E-Wallet & Voucher
+                    </button>
+                    <button class="tag-filter px-4 py-2 bg-[#FFFBF4] border-2 border-neutral rounded-xl text-[10px] font-extrabold text-neutral/70 hover:text-primary transition-all" data-category="avatar">
+                        Avatar & Frame
+                    </button>
+                </div>
+            </div>
+
+            <!-- Gifts Widescreen Grid (4 Columns packed tight) -->
+            <div id="gifts-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+                <!-- Injected dynamically by JS -->
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Confirm Redemption Modal -->
+    <div id="confirm-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+        <div class="fixed inset-0 bg-neutral/60 backdrop-blur-sm" onclick="closeConfirmModal()"></div>
+        <div class="relative z-10 w-full max-w-sm bg-white border-2 border-neutral rounded-card p-6 shadow-playful text-center space-y-4">
+            <div class="w-14 h-14 bg-secondary/15 rounded-full flex items-center justify-center mx-auto border-2 border-neutral">
+                <span class="material-symbols-outlined text-2xl text-neutral">help</span>
+            </div>
+            <div>
+                <h3 class="font-black text-sm text-neutral">Konfirmasi Tukarkan Koin?</h3>
+                <p id="confirm-msg" class="text-[11px] font-semibold text-neutral/50 mt-1">Apakah kamu yakin ingin menukarkan koin untuk hadiah ini?</p>
+            </div>
+            <div class="flex gap-3 pt-2 justify-center">
+                <button class="btn-playful flex-1 py-2 bg-neutral text-white font-extrabold text-xs rounded-xl" onclick="closeConfirmModal()">Batal</button>
+                <button id="confirm-yes-btn" class="btn-playful flex-1 py-2 bg-primary text-white font-extrabold text-xs rounded-xl border border-neutral">Tukarkan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Claim Modal -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+        <div class="fixed inset-0 bg-neutral/60 backdrop-blur-sm" onclick="closeSuccessModal()"></div>
+        <div class="relative z-10 w-full max-w-sm bg-white border-4 border-neutral rounded-card p-8 shadow-playful text-center space-y-5">
+            <div class="w-16 h-16 bg-tertiary/10 rounded-full flex items-center justify-center mx-auto border-2 border-neutral text-tertiary">
+                <span class="material-symbols-outlined text-3xl font-bold">check_circle</span>
+            </div>
+            <div class="space-y-1">
+                <h3 class="font-black text-base text-neutral">Penukaran Berhasil! 🎉</h3>
+                <p id="success-msg" class="text-[10px] font-semibold text-neutral/50">Hadiah kamu siap digunakan! Kode voucher penukaran kamu:</p>
+            </div>
+            <div class="bg-[#FFF3DF] border-2 border-dashed border-neutral/30 p-3 rounded-xl font-mono font-black text-xs text-primary flex items-center justify-between">
+                <span id="claim-code">CQ-XXXX-XXXX</span>
+                <button onclick="copyClaimCode()" class="material-symbols-outlined text-xs hover:text-neutral transition-colors text-neutral/40 cursor-pointer" title="Salin Kode">content_copy</button>
+            </div>
+            <button class="btn-playful w-full py-2 bg-tertiary text-white font-extrabold text-xs rounded-xl" onclick="closeSuccessModal()">Mantap!</button>
+        </div>
+    </div>
+
+    <!-- Insufficient Balance Modal -->
+    <div id="error-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+        <div class="fixed inset-0 bg-neutral/60 backdrop-blur-sm" onclick="closeErrorModal()"></div>
+        <div class="relative z-10 w-full max-w-sm bg-[#FFFBF4] border-2 border-neutral rounded-card p-6 shadow-playful text-center space-y-4">
+            <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto border-2 border-neutral text-primary">
+                <span class="material-symbols-outlined text-2xl font-bold">sentiment_dissatisfied</span>
+            </div>
+            <div>
+                <h3 class="font-black text-sm text-neutral">Koin Tidak Cukup! 😢</h3>
+                <p id="error-msg" class="text-[11px] font-semibold text-neutral/50 mt-1">Koin belajarmu tidak cukup untuk menukarkan hadiah ini. Terus selesaikan quest harian dan modul materi!</p>
+            </div>
+            <button class="btn-playful w-full py-2 bg-neutral text-white font-extrabold text-xs rounded-xl" onclick="closeErrorModal()">Mengerti</button>
+        </div>
+    </div>
+
+    <!-- Components dynamic loader script -->
+    <script src="components.js"></script>
+
+    <!-- Page logical engine -->
+    <script>
+        // High fidelity mock database for prizes
+        const PRIZES = [
+            {
+                id: 1,
+                title: "Diskon Pro 20% (1 Bulan)",
+                category: "diskon",
+                cost: 1000,
+                image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=600&auto=format&fit=crop",
+                tag: "DISKON LANGGANAN",
+                code: "CQ-PRO-DISC20",
+                desc: "Hemat biaya langganan paket Pro belajar untuk akses penuh materi premium."
+            },
+            {
+                id: 2,
+                title: "ClassQu Exclusive T-Shirt",
+                category: "merch",
+                cost: 3000,
+                image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600&auto=format&fit=crop",
+                tag: "MERCHANDISE",
+                code: "CQ-SHIRT-PREM",
+                desc: "Kaos eksklusif berkualitas premium, dikirim gratis langsung ke rumahmu."
+            },
+            {
+                id: 3,
+                title: "Saldo GoPay Rp 50.000",
+                category: "ewallet",
+                cost: 2000,
+                image: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?q=80&w=600&auto=format&fit=crop",
+                tag: "E-WALLET VOUCHER",
+                code: "CQ-GOPAY-50K",
+                desc: "Ubah koin belajarmu jadi saldo jajan GoPay elektronik instan."
+            },
+            {
+                id: 4,
+                title: "Avatar Frame: Master Coder",
+                category: "avatar",
+                cost: 500,
+                image: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=600&auto=format&fit=crop",
+                tag: "AVATAR COSMETIC",
+                code: "CQ-FRAME-CODER",
+                desc: "Dapatkan bingkai profil neon hijau menyala yang elegan di leaderboard."
+            },
+            {
+                id: 5,
+                title: "ClassQu Retro Mug",
+                category: "merch",
+                cost: 1500,
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop",
+                tag: "MERCHANDISE",
+                desc: "Mug keramik vintage elegan untuk menemanimu ngopi sambil ngoding.",
+                code: "CQ-MUG-RETRO"
+            },
+            {
+                id: 6,
+                title: "Voucher OVO Rp 25.000",
+                category: "ewallet",
+                cost: 1000,
+                image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=600&auto=format&fit=crop",
+                tag: "E-WALLET VOUCHER",
+                desc: "Voucher pulsa atau belanja OVO instan untuk memacu belajarmu.",
+                code: "CQ-OVO-25K"
+            }
+        ];
+
+        // Reactive balance state
+        let userCoins = 2450;
+        let selectedPrize = null;
+
+        // Renders gift cards in grid
+        function renderPrizes(gifts) {
+            const grid = document.getElementById('gifts-grid');
+            
+            grid.innerHTML = gifts.map(gift => `
+                <div class="glass-card bg-white p-4 flex flex-col space-y-4">
+                    <!-- Cover Image and Badge -->
+                    <div class="relative aspect-[16/10] rounded-2xl overflow-hidden border-2 border-neutral shrink-0 bg-neutral/5">
+                        <img alt="${gift.title}" class="w-full h-full object-cover" src="${gift.image}" />
+                        <span class="absolute top-2 left-2 bg-white text-neutral border border-neutral text-[8px] font-black px-2 py-0.5 rounded-full tracking-wider uppercase">${gift.tag}</span>
+                    </div>
+
+                    <!-- Prize details -->
+                    <div class="flex-grow flex flex-col justify-between space-y-4">
+                        <div class="space-y-1">
+                            <h3 class="font-extrabold text-xs text-neutral leading-snug line-clamp-2 min-h-[32px]">${gift.title}</h3>
+                            <p class="text-[9px] font-semibold text-neutral/50 leading-relaxed">${gift.desc}</p>
+                        </div>
+
+                        <!-- Cost and redeem CTA -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-[10px] font-black border-t border-neutral/5 pt-2">
+                                <span class="text-neutral/40">Biaya Tukar</span>
+                                <span class="text-primary flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+                                    <span>${gift.cost.toLocaleString('id-ID')} Coin</span>
+                                </span>
+                            </div>
+                            <button onclick="promptRedeem(${gift.id})" class="btn-playful w-full py-2 bg-secondary text-neutral font-extrabold text-[10px] rounded-xl flex items-center justify-center gap-1">
+                                <span class="material-symbols-outlined text-sm font-bold">redeem</span>
+                                <span>Tukarkan</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filters gifts based on tags
+        function filterPrizes(category) {
+            if (category === 'semua') {
+                renderPrizes(PRIZES);
+            } else {
+                const filtered = PRIZES.filter(p => p.category === category);
+                renderPrizes(filtered);
+            }
+        }
+
+        // Open prompt verification modal
+        function promptRedeem(id) {
+            selectedPrize = PRIZES.find(p => p.id === id);
+            if (!selectedPrize) return;
+
+            document.getElementById('confirm-msg').textContent = `Apakah kamu yakin ingin menukarkan ${selectedPrize.cost.toLocaleString('id-ID')} Coin untuk "${selectedPrize.title}"?`;
+            document.getElementById('confirm-modal').classList.remove('hidden');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirm-modal').classList.add('hidden');
+        }
+
+        // Perform redemption transaction
+        document.getElementById('confirm-yes-btn').addEventListener('click', () => {
+            closeConfirmModal();
+            if (!selectedPrize) return;
+
+            if (userCoins >= selectedPrize.cost) {
+                // Success path
+                userCoins -= selectedPrize.cost;
+                
+                // Update UI state
+                document.getElementById('coin-balance-lbl').textContent = userCoins.toLocaleString('id-ID');
+                document.getElementById('claim-code').textContent = selectedPrize.code;
+                document.getElementById('success-msg').textContent = `Hadiah "${selectedPrize.title}" berhasil ditukarkan! Saldo koin kamu kini menjadi ${userCoins.toLocaleString('id-ID')} koin. Berikut kode penukaran vouchermu:`;
+                
+                document.getElementById('success-modal').classList.remove('hidden');
+            } else {
+                // Error path
+                const missing = selectedPrize.cost - userCoins;
+                document.getElementById('error-msg').textContent = `Koin belajarmu tidak cukup untuk menukar "${selectedPrize.title}". Kamu membutuhkan ${missing.toLocaleString('id-ID')} koin lagi. Semangat kumpulkan koin!`;
+                document.getElementById('error-modal').classList.remove('hidden');
+            }
+        });
+
+        // Copy voucher claim code
+        function copyClaimCode() {
+            const code = document.getElementById('claim-code').textContent;
+            navigator.clipboard.writeText(code);
+            alert("Kode voucher berhasil disalin ke clipboard!");
+        }
+
+        // Modal closures
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+
+        function closeErrorModal() {
+            document.getElementById('error-modal').classList.add('hidden');
+        }
+
+        // Initialize listeners and tag buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPrizes(PRIZES);
+
+            document.querySelectorAll('.tag-filter').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.tag-filter').forEach(b => b.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+                    filterPrizes(e.currentTarget.getAttribute('data-category'));
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Detail Postingan - ClassQu Community</title>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "primary": "#a53b29",      // Premium deep brick/coral
+              "primary-light": "#ff7e67",
+              "secondary-accent": "#ffd56d", // Amber yellow
+              "tertiary": "#006a64",     // Deep Teal
+              "tertiary-light": "#60b2ab", // Mint Teal
+              "on-surface": "#1c1b1b",
+              "on-surface-variant": "#57423e",
+              "background": "#fdf8f8",
+              "outline-variant": "#dec0ba"
+            },
+            "borderRadius": {
+              "DEFAULT": "1rem",
+              "lg": "1.75rem",
+              "xl": "2.5rem",
+              "full": "9999px"
+            },
+            "spacing": {
+              "margin-mobile": "20px",
+              "margin-desktop": "48px",
+              "gutter": "24px"
+            },
+            "fontFamily": {
+              "body-lg": ["Plus Jakarta Sans"],
+              "display-lg": ["Plus Jakarta Sans"],
+              "headline-md": ["Plus Jakarta Sans"],
+              "title-sm": ["Plus Jakarta Sans"],
+              "label-upper": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(165, 59, 41, 0.08);
+            box-shadow: 0 10px 40px -10px rgba(165, 59, 41, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 50px -10px rgba(165, 59, 41, 0.1);
+            border-color: rgba(165, 59, 41, 0.15);
+        }
+        .glow-button {
+            transition: all 0.3s ease;
+        }
+        .glow-button:hover {
+            box-shadow: 0 8px 24px rgba(165, 59, 41, 0.25);
+            transform: translateY(-1px);
+        }
+        .glow-button:active {
+            transform: translateY(1px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+        }
+        .chat-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: rgba(165, 59, 41, 0.15);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-lg text-on-surface selection:bg-primary-light/10 selection:text-primary overflow-x-hidden lg:overflow-y-hidden min-h-screen lg:h-screen flex flex-col justify-start relative">
+
+    <!-- Background Ambient Glowing Blobs -->
+    <div class="fixed top-[-10%] left-[-10%] w-[45vw] h-[45vw] bg-primary/4 rounded-full blur-[100px] pointer-events-none z-[-1]"></div>
+    <div class="fixed bottom-[-15%] right-[-5%] w-[40vw] h-[40vw] bg-tertiary-light/4 rounded-full blur-[90px] pointer-events-none z-[-1]"></div>
+
+    <!-- Main Grid Layout Container -->
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter px-margin-mobile md:px-margin-desktop mt-4 lg:mb-0 lg:pb-6 items-start w-full lg:flex-grow lg:overflow-hidden">
+        
+        <!-- LEFT SIDEBAR Placeholder -->
+        <div id="community-sidebar-left-placeholder" class="lg:col-span-3 space-y-6 flex flex-col w-full lg:h-[calc(100vh-50px)] lg:overflow-y-auto chat-scroll pr-1 pb-8"></div>
+
+        <!-- MAIN POST DETAIL CONTENT AREA (9 Columns) -->
+        <main class="lg:col-span-9 w-full lg:h-[calc(100vh-50px)] lg:overflow-y-auto chat-scroll px-1 pb-8 flex flex-col gap-4">
+            
+            <!-- TWITTER-STYLE STICKY HEADER (Back Button + Title) -->
+            <div class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary/5 py-3.5 px-4 -mx-1 flex items-center gap-6 shrink-0 rounded-b-xl shadow-sm">
+                <a href="community.html" class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-neutral-100/80 border border-primary/10 transition-colors text-on-surface">
+                    <span class="material-symbols-outlined text-lg font-black">arrow_back</span>
+                </a>
+                <div>
+                    <h1 class="text-sm font-black text-on-surface tracking-tight leading-none">Postingan</h1>
+                    <p class="text-[9.5px] font-bold text-on-surface-variant/40 mt-1 leading-none">ClassQu Community</p>
+                </div>
+            </div>
+
+            <!-- TWITTER/X STYLE FLAT POST VIEW -->
+            <article class="flex flex-col gap-3.5 bg-transparent w-full">
+                
+                <!-- 1. Header (Avatar, Name, Handle, Time) -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img id="detail-author-avatar" alt="Avatar" class="w-10 h-10 rounded-full border border-primary/10 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB04QHkH6tB9ZzxuotPYoJyGEnbZp8Jl3ioaVh9nkSh32h_hIkOi7tW6KhkkSYXy3yhpHDYjM0OzBdkx7gwUSVRDodciM_U-MlxAn0olsTIw6IF9Fd1TPHV8qMZSLsngnPjrweW7YGnsUQpLqjmALtNvhwct6rAdQHmjAKvMbIqvEups2BYCQnDdcYJ1907DoY-Cf8ZZCWpL5NTXiR6TXP0itxQ7q8lJkfJsn7FI_Pfcd_q7eRfUZotZr5p0SJnYm1GekY0YUrWjg"/>
+                        <div>
+                            <h4 class="text-xs font-black text-on-surface flex items-center gap-1">
+                                <span id="detail-author-name">Maya Putri</span>
+                                <span class="material-symbols-outlined text-xs text-primary font-black">verified</span>
+                            </h4>
+                            <p class="text-[9.5px] font-bold text-on-surface-variant/40 flex items-center gap-1.5">
+                                <span id="detail-author-level" class="text-tertiary-light font-black">Level 8</span>
+                                <span>•</span>
+                                <span id="detail-post-tag" class="text-primary font-black"># UI/UX &amp; Design</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span id="detail-pinned-badge" class="bg-[#EFE9FF] text-[#6A4BFF] border border-[#6A4BFF]/20 rounded-lg px-2.5 py-0.5 font-black text-[9px] uppercase tracking-wider hidden">★ Pinned</span>
+                        <button class="text-on-surface-variant/40 hover:text-on-surface"><span class="material-symbols-outlined text-base">more_horiz</span></button>
+                    </div>
+                </div>
+
+                <!-- 2. Text Content (Body) directly below header -->
+                <div class="space-y-1.5 mt-1">
+                    <h2 id="detail-post-title" class="font-extrabold text-base md:text-[17px] leading-snug text-on-surface tracking-tight">
+                        Tips membuat hierarchy yang baik di UI Design ✨
+                    </h2>
+                    <div id="detail-post-content" class="text-[12.5px] md:text-[13px] text-on-surface-variant/90 leading-relaxed font-bold space-y-2.5">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <!-- 3. Full-width Visual (Image/Spreadsheet) directly below text -->
+                <div id="detail-visual-container" class="w-full flex justify-start rounded-xl overflow-hidden bg-transparent">
+                    <!-- Loaded dynamically based on post type -->
+                </div>
+
+                <!-- 4. Post timestamp (Flat, like Twitter) -->
+                <div class="text-[9.5px] font-bold text-on-surface-variant/45 flex items-center gap-2 py-1 select-none">
+                    <span id="detail-post-time">2 jam yang lalu</span>
+                </div>
+
+                <!-- 5. Horizontal Divider + Action Icons Row (Flat, Bordered) -->
+                <div class="border-y border-primary/5 py-3 flex justify-between items-center text-on-surface-variant/65 text-[11px] font-black select-none">
+                    <!-- Left: Comments count + bullet + views count + likes -->
+                    <div class="flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">chat_bubble</span>
+                        <span id="detail-comments-count">12 Komentar</span>
+                        <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                        <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">visibility</span>
+                        <span id="detail-views-count">156 Dilihat</span>
+                        <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                        <button onclick="likeDetailPagePost(this)" class="flex items-center gap-1 hover:text-primary transition-all active:scale-95">
+                            <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">thumb_up</span>
+                            <span id="detail-likes-count">42 Suka</span>
+                        </button>
+                    </div>
+                    <!-- Right: Share + Wishlist -->
+                    <div class="flex items-center gap-4">
+                        <button onclick="sharePost(event)" class="flex items-center gap-1.5 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">share</span>
+                            <span>Bagikan</span>
+                        </button>
+                        <button onclick="toggleWishlist(this)" class="flex items-center gap-1.5 text-on-surface-variant/65 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">bookmark</span>
+                            <span>Wishlist</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 6. Integrated Inline Comments Form (Twitter-style: Avatar + Input + Reply Button) -->
+                <div class="flex items-center gap-3 py-3 border-b border-primary/5 w-full">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&amp;auto=format&amp;fit=crop&amp;q=80" alt="Active User Avatar" class="w-8 h-8 rounded-full border border-primary/10 object-cover shrink-0"/>
+                    <div class="flex-grow flex items-center bg-neutral-100/70 border border-primary/5 rounded-full px-4 py-1.5">
+                        <input id="detail-comment-input" type="text" placeholder="Tulis balasan Anda..." onkeydown="if(event.key === 'Enter') submitNewPostComment()" class="w-full text-xs font-bold bg-transparent border-none p-0 focus:ring-0 focus:outline-none placeholder-on-surface-variant/40"/>
+                    </div>
+                    <button onclick="submitNewPostComment()" class="glow-button bg-primary hover:bg-primary-light text-white font-black text-[10px] uppercase tracking-wider px-5 py-2 rounded-full shadow-sm transition-all">Balas</button>
+                </div>
+
+                <!-- 7. Comments Feed Thread (Discover more style, clean flat separators) -->
+                <div class="space-y-4 pt-2">
+                    <h5 class="text-[9.5px] font-black text-on-surface-variant/40 uppercase tracking-wider mb-2">Semua Balasan</h5>
+                    <div id="detail-comments-stream" class="space-y-1">
+                        <!-- Dynamic comments populated by JS -->
+                    </div>
+                </div>
+
+            </article>
+
+        </main>
+
+    </div>
+
+    <!-- Notice Overlay Dialogue Modal -->
+    <div id="notice-overlay" class="fixed inset-0 bg-neutral-900/60 backdrop-blur-md z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-3xl p-6 border border-primary/10 shadow-xl max-w-sm w-full mx-4 space-y-4 transform transition-all scale-100">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-black">✨</span>
+                <h4 id="notice-title" class="text-sm font-black text-on-surface">Notice</h4>
+            </div>
+            <p id="notice-msg" class="text-xs text-on-surface-variant/75 font-bold leading-relaxed">Pemberitahuan penting.</p>
+            <div class="flex justify-end pt-2">
+                <button onclick="closeNotice()" class="glow-button px-5 py-2.5 bg-primary text-white font-black text-[10.5px] rounded-xl shadow-md uppercase tracking-wide">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load JavaScript controllers -->
+    <script src="community_components.js"></script>
+    <script>
+        // Notice modal helpers
+        function showNotice(title, message) {
+            document.getElementById('notice-title').textContent = title;
+            document.getElementById('notice-msg').textContent = message;
+            document.getElementById('notice-overlay').classList.remove('hidden');
+        }
+        function closeNotice() {
+            document.getElementById('notice-overlay').classList.add('hidden');
+        }
+
+        // Like handler for Detail Page
+        function likeDetailPagePost(btn) {
+            const countSpan = document.getElementById('detail-likes-count');
+            if (!countSpan) return;
+            const icon = btn.querySelector('.material-symbols-outlined');
+            let current = parseInt(countSpan.textContent);
+            
+            if (btn.classList.contains('text-primary')) {
+                btn.classList.remove('text-primary');
+                if (icon) {
+                    icon.classList.add('text-on-surface-variant/60');
+                    icon.style.fontVariationSettings = "'FILL' 0";
+                }
+                countSpan.textContent = (current - 1) + " Suka";
+            } else {
+                btn.classList.add('text-primary');
+                if (icon) {
+                    icon.classList.remove('text-on-surface-variant/60');
+                    icon.style.fontVariationSettings = "'FILL' 1";
+                }
+                countSpan.textContent = (current + 1) + " Suka";
+            }
+        }
+
+        // Fetch post ID from URL parameter or default to maya on load
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const postId = urlParams.get('id') || 'maya';
+                if (typeof renderPostDetails === "function") {
+                    renderPostDetails(postId);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

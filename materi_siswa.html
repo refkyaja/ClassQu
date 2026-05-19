@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Materi Saya - ClassQu Student Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "on-background": "#1C1B1B",
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-low": "#FFFBF4",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface-variant": "#57423e",
+                    },
+                    borderRadius: {
+                        'card': '32px',
+                        'lg': '2rem',
+                        'xl': '3rem',
+                        'full': '9999px'
+                    },
+                    boxShadow: {
+                        'playful-sm': '2px 2px 0px 0px #1C1B1B',
+                        'playful': '4px 4px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 10px 30px -5px rgba(255, 126, 103, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #1C1B1B;
+            box-shadow: 4px 4px 0px 0px #1C1B1B;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #1C1B1B;
+        }
+        .btn-playful {
+            border: 2px solid #1C1B1B;
+            box-shadow: 2px 2px 0px 0px #1C1B1B;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-playful:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px 0px #1C1B1B;
+        }
+        .btn-playful:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px 0px #1C1B1B;
+        }
+        .tag-filter.active {
+            background-color: #FF7E67 !important;
+            color: white !important;
+            border-color: #1C1B1B !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Workspace Container Grid (Floating Setup) -->
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 mt-12 px-6 md:px-12 mb-24">
+        
+        <!-- Left Side Navigation Sidebar Placeholder -->
+        <div id="sidebar-placeholder" class="w-full lg:w-72 flex-none lg:sticky lg:top-12"></div>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow space-y-8">
+            
+            <!-- Page Header Widget -->
+            <div class="glass-card bg-white p-8 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-secondary/20 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="relative z-10">
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/20 font-extrabold text-[10px] uppercase tracking-widest mb-3 inline-block">Portal Akademik Siswa</span>
+                    <h1 class="text-3xl font-black tracking-tight text-neutral leading-tight">
+                        Materi & <span class="text-primary">Roadmap Belajar</span>
+                    </h1>
+                    <p class="text-neutral/60 text-xs font-semibold mt-1.5 leading-relaxed">
+                        Lanjutkan perjuangan belajarmu, selesaikan modul aktif, kumpulkan lencana prestasi, dan raih XP menuju puncak karir impianmu!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Search, Filter & Tab Control Panel -->
+            <div class="glass-card bg-white p-6 space-y-4">
+                
+                <!-- Search bar & Progress Filter Selector -->
+                <div class="flex flex-col md:flex-row gap-3">
+                    <!-- Search Input -->
+                    <div class="relative flex-grow">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-neutral/40">search</span>
+                        <input id="course-search" type="text" placeholder="Cari materi belajarmu..." class="w-full pl-11 pr-4 py-3 border-2 border-neutral rounded-2xl focus:outline-none focus:ring-0 focus:border-primary text-xs font-bold bg-[#FFFBF4]/40" />
+                    </div>
+
+                    <!-- Progress Selector -->
+                    <div class="relative shrink-0">
+                        <select id="progress-filter" class="w-full md:w-48 py-3 pl-4 pr-10 border-2 border-neutral rounded-2xl focus:outline-none focus:ring-0 focus:border-primary text-xs font-extrabold bg-[#FFFBF4]/40 appearance-none cursor-pointer">
+                            <option value="semua">Semua Status</option>
+                            <option value="belajar">Sedang Dipelajari</option>
+                            <option value="selesai">Selesai</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Category Filtering Tags -->
+                <div class="flex flex-wrap gap-2 pt-2 border-t border-neutral/10">
+                    <button class="tag-filter active px-4 py-2 bg-[#FFFBF4] border-2 border-neutral rounded-xl text-[10px] font-extrabold text-neutral/70 hover:text-primary transition-all" data-category="semua">
+                        Semua Kategori
+                    </button>
+                    <button class="tag-filter px-4 py-2 bg-[#FFFBF4] border-2 border-neutral rounded-xl text-[10px] font-extrabold text-neutral/70 hover:text-primary transition-all" data-category="web-dev">
+                        Web Development
+                    </button>
+                    <button class="tag-filter px-4 py-2 bg-[#FFFBF4] border-2 border-neutral rounded-xl text-[10px] font-extrabold text-neutral/70 hover:text-primary transition-all" data-category="ui-ux">
+                        UI/UX Design
+                    </button>
+                    <button class="tag-filter px-4 py-2 bg-[#FFFBF4] border-2 border-neutral rounded-xl text-[10px] font-extrabold text-neutral/70 hover:text-primary transition-all" data-category="soft-skills">
+                        Soft Skills & Karir
+                    </button>
+                </div>
+            </div>
+
+            <!-- Purchased Courses Grid -->
+            <div id="courses-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+                <!-- Courses injected dynamically by JS -->
+            </div>
+
+            <!-- Empty State Illustration Placeholder (Hidden by default) -->
+            <div id="empty-state" class="glass-card bg-white p-12 text-center space-y-4 hidden">
+                <div class="w-20 h-20 bg-secondary/15 rounded-full flex items-center justify-center mx-auto border-2 border-neutral">
+                    <span class="material-symbols-outlined text-3xl text-neutral">search_off</span>
+                </div>
+                <div>
+                    <h3 class="font-black text-sm text-neutral">Materi tidak ditemukan</h3>
+                    <p class="text-[11px] font-semibold text-neutral/50 max-w-sm mx-auto mt-1">Coba ganti kata kunci pencarian Anda atau periksa filter kategori/status progres yang Anda terapkan.</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Components Dynamic Loader script -->
+    <script src="components.js"></script>
+
+    <!-- Page Logic & Reactive Filtering Engine -->
+    <script>
+        // Array containing the student's purchased classes/materials
+        const PURCHASED_COURSES = [
+            {
+                id: 1,
+                title: "Web Developer Roadmap: Level 12 (Sang Penjelajah)",
+                category: "web-dev",
+                status: "belajar",
+                progress: 71,
+                modules: "15 / 21 Modul Selesai",
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop",
+                mentor: "Sarah W. • Lead Dev",
+                lastActive: "Terakhir aktif: Kemarin",
+                tag: "WEB DEVELOPMENT"
+            },
+            {
+                id: 2,
+                title: "Figma UI/UX Design: Wireframe to Prototype",
+                category: "ui-ux",
+                status: "belajar",
+                progress: 45,
+                modules: "9 / 20 Modul Selesai",
+                image: "https://images.unsplash.com/photo-1618788372246-79faff0c3742?q=80&w=600&auto=format&fit=crop",
+                mentor: "Nadia A. • UI/UX Specialist",
+                lastActive: "Terakhir aktif: 3 hari lalu",
+                tag: "UI/UX DESIGN"
+            },
+            {
+                id: 3,
+                title: "Confident Public Speaking 101: Seni Presentasi",
+                category: "soft-skills",
+                status: "selesai",
+                progress: 100,
+                modules: "12 / 12 Modul Selesai",
+                image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=600&auto=format&fit=crop",
+                mentor: "Dimas P. • Senior Communicator",
+                lastActive: "Selesai pada: 12 Mei 2026",
+                tag: "SOFT SKILLS"
+            }
+        ];
+
+        // Renders class cards dynamically in the grid
+        function renderCourses(courses) {
+            const grid = document.getElementById('courses-grid');
+            const emptyState = document.getElementById('empty-state');
+            
+            if (courses.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            
+            emptyState.classList.add('hidden');
+            grid.innerHTML = courses.map(course => {
+                const isCompleted = course.progress === 100;
+                
+                return `
+                    <div class="glass-card bg-white p-5 flex flex-col space-y-4 cursor-pointer" onclick="window.location.href='detail_siswa.html?id=${course.id}'">
+                        <!-- Cover Image and Badge -->
+                        <div class="relative aspect-[16/10] rounded-2xl overflow-hidden border-2 border-neutral shrink-0">
+                            <img alt="${course.title}" class="w-full h-full object-cover" src="${course.image}" />
+                            <div class="absolute top-3 left-3 flex gap-1.5">
+                                <span class="bg-white text-neutral border border-neutral text-[9px] font-extrabold px-2.5 py-0.5 rounded-full tracking-wider uppercase">${course.tag}</span>
+                            </div>
+                        </div>
+
+                        <!-- Course Info -->
+                        <div class="flex-grow flex flex-col justify-between space-y-3">
+                            <div class="space-y-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[9px] font-bold text-neutral/50">${course.mentor}</span>
+                                    <span class="text-[9px] font-bold text-neutral/45 flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[10px]">schedule</span>
+                                        <span>${course.lastActive}</span>
+                                    </span>
+                                </div>
+                                <h3 class="font-extrabold text-sm text-neutral hover:text-primary transition-colors leading-snug line-clamp-2 min-h-[40px]">${course.title}</h3>
+                            </div>
+
+                            <!-- Progress Section -->
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between items-center text-[10px] font-bold">
+                                    <span class="text-neutral/60">${course.modules}</span>
+                                    <span class="${isCompleted ? 'text-tertiary' : 'text-primary'} font-black">${course.progress}%</span>
+                                </div>
+                                <!-- Progress Bar Wrapper -->
+                                <div class="w-full h-3.5 bg-[#FFF3DF] border-2 border-neutral rounded-full overflow-hidden flex p-0.5 shadow-playful-sm">
+                                    <div class="h-full rounded-full transition-all duration-500 ${isCompleted ? 'bg-tertiary' : 'bg-primary'}" style="width: ${course.progress}%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="pt-2">
+                                ${isCompleted ? `
+                                    <button onclick="event.stopPropagation(); window.location.href='detail_siswa.html?id=${course.id}'" class="btn-playful w-full py-2 bg-tertiary text-white font-extrabold text-xs rounded-xl flex items-center justify-center gap-1.5">
+                                        <span class="material-symbols-outlined text-sm">emoji_events</span>
+                                        <span>Lihat Sertifikat</span>
+                                    </button>
+                                ` : `
+                                    <button onclick="event.stopPropagation(); window.location.href='detail_siswa.html?id=${course.id}'" class="btn-playful w-full py-2 bg-primary text-white font-extrabold text-xs rounded-xl flex items-center justify-center gap-1.5 hover:bg-white hover:text-neutral transition-colors">
+                                        <span class="material-symbols-outlined text-sm">play_arrow</span>
+                                        <span>Lanjutkan Belajar</span>
+                                    </button>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filters student purchased courses based on search bar, tags, and progress dropdown
+        function applyFilters() {
+            const searchQuery = document.getElementById('course-search').value.toLowerCase().trim();
+            const progressFilter = document.getElementById('progress-filter').value;
+            const activeTagEl = document.querySelector('.tag-filter.active');
+            const activeCategory = activeTagEl ? activeTagEl.getAttribute('data-category') : 'semua';
+            
+            const filtered = PURCHASED_COURSES.filter(course => {
+                const matchesSearch = course.title.toLowerCase().includes(searchQuery) || course.tag.toLowerCase().includes(searchQuery);
+                const matchesCategory = activeCategory === 'semua' || course.category === activeCategory;
+                const matchesProgress = progressFilter === 'semua' || course.status === progressFilter;
+                
+                return matchesSearch && matchesCategory && matchesProgress;
+            });
+            
+            renderCourses(filtered);
+        }
+
+        // Initialize listeners and setup page inputs
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial render
+            renderCourses(PURCHASED_COURSES);
+            
+            // Search Input listener
+            document.getElementById('course-search').addEventListener('input', applyFilters);
+            
+            // Progress Dropdown listener
+            document.getElementById('progress-filter').addEventListener('change', applyFilters);
+            
+            // Tag filters listeners
+            document.querySelectorAll('.tag-filter').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.tag-filter').forEach(b => b.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+                    applyFilters();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Katalog Kelas & Roadmap - ClassQu</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "on-background": "#1C1B1B",
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-low": "#FFFBF4",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface-variant": "#57423e",
+                    },
+                    borderRadius: {
+                        'card': '32px',
+                        'lg': '2rem',
+                        'xl': '3rem',
+                        'full': '9999px'
+                    },
+                    boxShadow: {
+                        'playful-sm': '2px 2px 0px 0px #1C1B1B',
+                        'playful': '4px 4px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 10px 30px -5px rgba(255, 126, 103, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(28, 27, 27, 0.05);
+            box-shadow: 0 12px 45px rgba(0, 0, 0, 0.03);
+            border-radius: 32px;
+        }
+        .glass-card-soft {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(28, 27, 27, 0.1);
+            box-shadow: 0 10px 35px -5px rgba(28, 27, 27, 0.03);
+            border-radius: 24px;
+        }
+        .btn-playful {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 24px rgba(255, 126, 103, 0.15);
+        }
+        .btn-playful:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(255, 126, 103, 0.25);
+        }
+        .btn-playful:active {
+            transform: translateY(1px);
+        }
+        .tab-btn.active {
+            background-color: #FF7E67;
+            color: #FFFFFF;
+            box-shadow: 0 8px 24px rgba(255, 126, 103, 0.2);
+        }
+        .progress-glow {
+            filter: drop-shadow(0 0 12px #FF7E67);
+        }
+        /* Custom scrollbar */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Top Sticky Glass Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Header Section -->
+    <header class="max-w-7xl mx-auto px-6 md:px-12 pt-16 text-center">
+        <span class="bg-primary/10 text-primary px-4 py-1.5 rounded-full border border-primary/20 font-bold text-xs uppercase tracking-wider mb-4 inline-block">PUSAT PEMBELAJARAN INTERAKTIF</span>
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight text-neutral mb-6 leading-tight">
+            Eksplorasi Kelas & <span class="text-primary">Evolusi Skill</span>
+        </h1>
+        <p class="text-neutral/60 text-lg md:text-xl max-w-2xl mx-auto font-medium mb-10">
+            Pilih kelas berkualitas yang dipimpin oleh expert industri, atau lacak perkembangan skill karirmu secara runut menggunakan gamified roadmap kami!
+        </p>
+
+        <!-- Segmented Tab Switches -->
+        <div class="inline-flex bg-white/90 border border-neutral/10 p-1.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.03)] mb-12">
+            <button onclick="switchTab('catalog')" id="catalog-tab-btn" class="tab-btn active px-8 py-3 rounded-full font-extrabold text-sm transition-all flex items-center gap-2 border border-transparent">
+                <span class="material-symbols-outlined text-[18px]">grid_view</span>
+                <span>Katalog Kelas</span>
+            </button>
+            <button onclick="switchTab('roadmap')" id="roadmap-tab-btn" class="tab-btn px-8 py-3 rounded-full font-extrabold text-sm text-neutral/70 hover:text-primary transition-all flex items-center gap-2 border border-transparent">
+                <span class="material-symbols-outlined text-[18px]">map</span>
+                <span>Roadmap Belajar (Peta Karir)</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- CONTENT: CLASS CATALOG TAB -->
+    <main id="catalog-tab-content" class="max-w-7xl mx-auto px-6 md:px-12 pb-24 transition-all duration-300">
+        <div class="flex flex-col lg:flex-row gap-10 items-start">
+            <!-- Sidebar filter -->
+            <aside class="w-full lg:w-72 flex-none lg:sticky lg:top-24 self-start lg:max-h-[calc(100vh-120px)] lg:overflow-y-auto hide-scrollbar pb-4">
+                <div class="glass-card bg-white p-5 relative">
+                    <div class="flex items-center justify-between mb-4 border-b border-neutral/10 pb-2.5">
+                        <h3 class="font-black text-base text-neutral flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-primary text-xl">filter_alt</span>
+                            <span>Filter Kelas</span>
+                        </h3>
+                        <button id="reset-filters" class="text-primary hover:underline text-xs font-bold">Reset</button>
+                    </div>
+
+                    <!-- Search bar inside filter for small layouts -->
+                    <div class="mb-4 relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-neutral/40 text-[18px]">search</span>
+                        <input type="text" id="search-input" placeholder="Cari materi..." class="w-full pl-9 pr-4 py-2 border border-neutral/10 rounded-full focus:ring-primary/20 focus:border-primary focus:outline-none text-xs font-bold shadow-[0_4px_15px_rgba(0,0,0,0.02)]"/>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="mb-4">
+                        <h4 class="font-extrabold text-[10px] text-neutral/50 uppercase tracking-widest mb-2.5">Kategori</h4>
+                        <div class="flex flex-wrap gap-1.5" id="category-filters">
+                            <label class="cursor-pointer">
+                                <input type="checkbox" value="semua" checked class="sr-only peer category-checkbox" />
+                                <span class="block px-2.5 py-1 rounded-full text-[11px] font-bold border border-neutral/20 peer-checked:bg-[#FF7E67] peer-checked:text-white peer-checked:border-transparent transition-all">Semua</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" value="komputer-it" class="sr-only peer category-checkbox" />
+                                <span class="block px-2.5 py-1 rounded-full text-[11px] font-bold border border-neutral/20 peer-checked:bg-[#FF7E67] peer-checked:text-white peer-checked:border-transparent transition-all">Komputer, Coding & IT</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" value="bahasa-asing" class="sr-only peer category-checkbox" />
+                                <span class="block px-2.5 py-1 rounded-full text-[11px] font-bold border border-neutral/20 peer-checked:bg-[#FF7E67] peer-checked:text-white peer-checked:border-transparent transition-all">Bahasa & Asing</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" value="keahlian-kerja" class="sr-only peer category-checkbox" />
+                                <span class="block px-2.5 py-1 rounded-full text-[11px] font-bold border border-neutral/20 peer-checked:bg-[#FF7E67] peer-checked:text-white peer-checked:border-transparent transition-all">Persiapan Kerja & Karir</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" value="agama-mengaji" class="sr-only peer category-checkbox" />
+                                <span class="block px-2.5 py-1 rounded-full text-[11px] font-bold border border-neutral/20 peer-checked:bg-[#FF7E67] peer-checked:text-white peer-checked:border-transparent transition-all">Agama & Mengaji</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" value="musik-kesenian" class="sr-only peer category-checkbox" />
+                                <span class="block px-2.5 py-1 rounded-full text-[11px] font-bold border border-neutral/20 peer-checked:bg-[#FF7E67] peer-checked:text-white peer-checked:border-transparent transition-all">Musik & Kesenian</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="checkbox" value="akademik-sekolah" class="sr-only peer category-checkbox" />
+                                <span class="block px-2.5 py-1 rounded-full text-[11px] font-bold border border-neutral/20 peer-checked:bg-[#FF7E67] peer-checked:text-white peer-checked:border-transparent transition-all">Akademik Sekolah</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Level -->
+                    <div class="mb-4 border-t border-neutral/10 pt-3">
+                        <h4 class="font-extrabold text-[10px] text-neutral/50 uppercase tracking-widest mb-2.5">Tingkat Kesulitan</h4>
+                        <div class="space-y-2 font-semibold text-xs" id="level-filters">
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input type="checkbox" value="pemula" class="w-4 h-4 rounded border-neutral text-primary focus:ring-primary/20 cursor-pointer level-checkbox"/>
+                                <span class="text-neutral/70 group-hover:text-primary transition-colors text-[11px] font-bold">Pemula (Beginner)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input type="checkbox" value="menengah" class="w-4 h-4 rounded border-neutral text-primary focus:ring-primary/20 cursor-pointer level-checkbox"/>
+                                <span class="text-neutral/70 group-hover:text-primary transition-colors text-[11px] font-bold">Menengah (Intermediate)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input type="checkbox" value="mahir" class="w-4 h-4 rounded border-neutral text-primary focus:ring-primary/20 cursor-pointer level-checkbox"/>
+                                <span class="text-neutral/70 group-hover:text-primary transition-colors text-[11px] font-bold">Mahir (Advanced)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Format -->
+                    <div class="border-t border-neutral/10 pt-3">
+                        <h4 class="font-extrabold text-[10px] text-neutral/50 uppercase tracking-widest mb-2.5">Format Kelas</h4>
+                        <div class="flex flex-wrap gap-1.5" id="format-filters">
+                            <label class="cursor-pointer flex-1 min-w-[65px]">
+                                <input type="radio" value="semua" checked name="format" class="sr-only peer format-radio"/>
+                                <span class="block text-center py-1.5 rounded-lg text-[9px] font-bold border border-neutral/20 peer-checked:bg-[#FF7E67] peer-checked:border-transparent peer-checked:text-white transition-all">Semua</span>
+                            </label>
+                            <label class="cursor-pointer flex-1 min-w-[65px]">
+                                <input type="radio" value="online" name="format" class="sr-only peer format-radio"/>
+                                <span class="block text-center py-1.5 rounded-lg text-[9px] font-bold border border-neutral/20 peer-checked:bg-[#FF7E67] peer-checked:border-transparent peer-checked:text-white transition-all">Online</span>
+                            </label>
+                            <label class="cursor-pointer flex-1 min-w-[65px]">
+                                <input type="radio" value="zoom" name="format" class="sr-only peer format-radio"/>
+                                <span class="block text-center py-1.5 rounded-lg text-[9px] font-bold border border-neutral/20 peer-checked:bg-[#FF7E67] peer-checked:border-transparent peer-checked:text-white transition-all">Zoom</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Catalog Cards Grid -->
+            <div class="flex-1 space-y-12">
+                <!-- Rekomendasi Untukmu Section -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-black text-neutral mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary fill-current" style="font-variation-settings: 'FILL' 1;">recommend</span>
+                        <span>Rekomendasi Untukmu</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 classes-grid" id="recommended-grid" data-expanded="false">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="btn-playful bg-white border-2 border-neutral font-black text-xs px-8 py-3 rounded-full shadow-playful-sm hover:scale-105 transition-transform btn-load-more hidden" data-target="recommended-grid">
+                            Lebih Banyak Lagi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kelas yang Sedang Populer Section -->
+                <div class="space-y-6 pt-12">
+                    <h3 class="text-2xl font-black text-neutral mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-tertiary fill-current" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                        <span>Kelas yang Sedang Populer</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 classes-grid" id="popular-grid" data-expanded="false">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="btn-playful bg-white border-2 border-neutral font-black text-xs px-8 py-3 rounded-full shadow-playful-sm hover:scale-105 transition-transform btn-load-more hidden" data-target="popular-grid">
+                            Lebih Banyak Lagi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Katalog Semua Kelas Section -->
+                <div class="space-y-6 pt-12">
+                    <h3 class="text-2xl font-black text-neutral mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[#B18E36] fill-current" style="font-variation-settings: 'FILL' 1;">stars</span>
+                        <span>Katalog Semua Kelas</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 classes-grid" id="all-classes-grid" data-expanded="false">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="btn-playful bg-white border-2 border-neutral font-black text-xs px-8 py-3 rounded-full shadow-playful-sm hover:scale-105 transition-transform btn-load-more hidden" data-target="all-classes-grid">
+                            Lebih Banyak Lagi
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- CONTENT: LEARNING JOURNEY ROADMAP TAB -->
+    <main id="roadmap-tab-content" class="max-w-7xl mx-auto px-6 md:px-12 pb-24 hidden transition-all duration-300">
+        <section class="max-w-5xl mx-auto relative px-4 py-8">
+            <!-- Map Line Connectors (HTML canvas path background mock) -->
+            <div class="absolute inset-0 pointer-events-none z-0 hidden md:block">
+                <svg class="opacity-20 progress-glow" width="100%" height="100%" viewBox="0 0 1000 1200" preserveAspectRatio="none">
+                    <path d="M 500 100 Q 150 350 500 600 T 500 1100" fill="none" stroke="#FF7E67" stroke-width="8" stroke-dasharray="25,15"></path>
+                </svg>
+            </div>
+
+            <!-- Progression Stages -->
+            <div class="relative z-10 flex flex-col gap-28">
+                
+                <!-- BEGINNER STAGE (Node Left) -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="relative flex-shrink-0">
+                        <div class="w-32 h-32 md:w-44 md:h-44 rounded-full bg-primary border-[6px] border-secondary flex items-center justify-center shadow-glow">
+                            <span class="material-symbols-outlined text-white text-[48px] md:text-[60px]" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+                        </div>
+                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-neutral border border-white text-white rounded-full font-extrabold text-[10px] tracking-widest whitespace-nowrap">
+                            BEGINNER
+                        </div>
+                    </div>
+                    <div class="glass-card bg-white p-6 md:p-8 max-w-xl w-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-[10px] font-black text-primary uppercase tracking-widest mb-1 block">TAHAP 01</span>
+                                <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight">Dasar Literasi Digital</h3>
+                            </div>
+                        </div>
+                        <p class="text-neutral/70 text-sm font-medium leading-relaxed mb-0">Membangun fondasi kuat tentang ekosistem internet, cara belajar mandiri, dan pengenalan tools produktivitas paling krusial.</p>
+                    </div>
+                </div>
+
+                <!-- INTERMEDIATE STAGE (Node Right) -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                    <div class="relative flex-shrink-0">
+                        <div class="w-32 h-32 md:w-44 md:h-44 rounded-full bg-secondary border-[6px] border-white flex items-center justify-center shadow-premium">
+                            <span class="material-symbols-outlined text-neutral text-[48px] md:text-[60px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+                        </div>
+                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-neutral border border-white text-white rounded-full font-extrabold text-[10px] tracking-widest whitespace-nowrap">
+                            INTERMEDIATE
+                        </div>
+                    </div>
+                    <div class="glass-card bg-white p-6 md:p-8 max-w-xl w-full border-primary border-2 shadow-premium">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-[10px] font-black text-primary uppercase tracking-widest mb-1 block">TAHAP 02 (AKTIF)</span>
+                                <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight">Spesialisasi & Kreativitas Terapan</h3>
+                            </div>
+                        </div>
+                        <p class="text-neutral/70 text-sm font-medium leading-relaxed mb-0">Mempelajari cara mengubah ide konseptual menjadi karya komersial nyata lewat skill Graphic Design, Copywriting, & English Speak.</p>
+                    </div>
+                </div>
+
+                <!-- ADVANCED STAGE (Node Left) -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="relative flex-shrink-0">
+                        <div class="w-32 h-32 md:w-44 md:h-44 rounded-full bg-tertiary border-[6px] border-white flex items-center justify-center shadow-premium relative">
+                            <span class="material-symbols-outlined text-white text-[48px] md:text-[60px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                        </div>
+                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-5 py-1.5 bg-neutral border border-white text-white rounded-full font-extrabold text-[10px] tracking-widest whitespace-nowrap">
+                            ADVANCED
+                        </div>
+                    </div>
+                    <div class="glass-card bg-white p-6 md:p-8 max-w-xl w-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-[10px] font-black text-[#B18E36] uppercase tracking-widest mb-1 block">TAHAP 03</span>
+                                <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight">Kemandirian & Mastery Karir</h3>
+                            </div>
+                        </div>
+                        <p class="text-neutral/70 text-sm font-medium leading-relaxed mb-0">Tahap finalisasi skill. Penyusunan portfolio berkelas internasional, simulasi interview, dan penyaluran kerja langsung.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+
+    <!-- Interactive JS to Toggle Tabs & Multi-Filtering Class Catalog -->
+    <script>
+        function switchTab(tabId) {
+            const catalogBtn = document.getElementById('catalog-tab-btn');
+            const roadmapBtn = document.getElementById('roadmap-tab-btn');
+            const catalogContent = document.getElementById('catalog-tab-content');
+            const roadmapContent = document.getElementById('roadmap-tab-content');
+
+            if (tabId === 'catalog') {
+                catalogBtn.classList.add('active', 'bg-primary', 'text-white');
+                catalogBtn.classList.remove('text-neutral/70');
+                roadmapBtn.classList.remove('active', 'bg-primary', 'text-white');
+                roadmapBtn.classList.add('text-neutral/70');
+
+                catalogContent.classList.remove('hidden');
+                roadmapContent.classList.add('hidden');
+            } else if (tabId === 'roadmap') {
+                roadmapBtn.classList.add('active', 'bg-primary', 'text-white');
+                roadmapBtn.classList.remove('text-neutral/70');
+                catalogBtn.classList.remove('active', 'bg-primary', 'text-white');
+                catalogBtn.classList.add('text-neutral/70');
+
+                roadmapContent.classList.remove('hidden');
+                catalogContent.classList.add('hidden');
+            }
+        }
+
+        // --- DATA SOURCE: PREMIUM HIGH-QUALITY COURSES ---
+        const COURSES = [
+            {
+                id: 1,
+                title: "Mastering Canva for Social Media",
+                category: "musik-kesenian",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC1vlG6t7-WJnsVjoer6yNaQgE6XINSF8-qMQCfjUlxIyp6DpPxSS89qvW7Gxlp4QNlMJKUvs0s5Rd_RtMUSsf5bENHX99UZg2JZKDznKD9Gd5rTRJ8ovhoRVZ7-KoW9Xez1GcY6mfbjprmgNERoC3HUAG7W0RBw1KytIf2_VVZbzrDklV_O7D5cW3hU4nbsvg8K8OqGZ3Ql40I_OMuHh4PGZ-jqKBF9CuLoWUS8M-3vm9gzcXVKQp30RR4v1vR6QWAd5-1-wt_eg",
+                badge: "ONLINE",
+                tag: "CANVA",
+                rating: "4.9/5.0",
+                stats: "12 Modul • 4 Jam",
+                price: "Rp 149.000",
+                mentorName: "Sarah W.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"
+            },
+            {
+                id: 2,
+                title: "Confident Public Speaking 101",
+                category: "akademik-sekolah",
+                level: "menengah",
+                format: "zoom",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBA3yjOAAimUqhfCD8Zh9YaLzd7pcRTe1fAAPChZ51NaMwtMr_NQHg0z82__M0mKquwy7CHpCjDjrGRbxF1nFs613rWDIbiQ-djJNcER2QuOyOwljEoLSDT1QcziIM8aYB7cJgxiXu_NkcIQEIq1I8BxvnMudJFXD4QicN_iSX4eRINJ-bt5LJhFoxKPmJ7Kr6OrsPYGyMEKAVNE0zA3NF2K3E6R4qgg3JKKEoBnhhJUE-MqP6FrbEJgvwuCB-cKLVL-nREW87iTA",
+                badge: "LIVE ZOOM",
+                tag: "SPEAKING",
+                rating: "4.8/5.0",
+                stats: "8 Sesi • 12 Jam",
+                price: "Rp 199.000",
+                mentorName: "Dimas P.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA"
+            },
+            {
+                id: 3,
+                title: "Excel Masterclass: Zero to Business Hero",
+                category: "komputer-it",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCecdthvFiTV6G37GgGXdU3Vxp7Qe1GC_uV0hIMWFF-qjmPNzdye7rpSo3ji3RC_DkHJRT5KWl-a1vgU2wyxiyrSq7KvnI-b-_BrKrejih5jExWclLARo0VXJITH3aYMHZXdHCjBw610VgOTQ2CYmvRtfAGgA6giOOesJkhrVjmci1oOCBxEx1UpzdDAnJuAzqBVIvTWyuONeEJ2K3jcWHQPuqpzrUfa2mib0goEq7ipnqcDBeOpMbR8eXCrLfAfwN19JLAUejj0Q",
+                badge: "ONLINE",
+                tag: "OFFICE",
+                rating: "4.9/5.0",
+                stats: "15 Modul • 6 Jam",
+                price: "Rp 179.000",
+                mentorName: "Budi S.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCLO3sZEHa41v4D_ppeLwr2050LvdV0av2ImdUnETvV0ICgfNiI7XRYPt8HYmx1Ncy_bvQKat1yCxRPJ_MthQPxM94wMnrQyU-IEYO-kpuh29Vlcu8gHz30e6sf08Ziv1lcrq6N19FQ1xQH_u1FqUPyzBFjQWMs1D9hbL92Cf41ybEfHdsrVb97z2DxS7XSN2ko-0T-UIxHdoSC8hjwJtaE1wVzVVMf3kIjPBsMqJliAH66BZ_JlffgPoZsNWyFPbVMD9eW4w5PBQ"
+            },
+            {
+                id: 4,
+                title: "Python Coding for Absolute Beginners",
+                category: "komputer-it",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRc8VvQgXTVFvgkxmTm1_5n6_rrfUPTJIzIDRWiSYcJbatWY0tWHe2BdupLLm4Bh2zfx7GXDfX6n18G4WS4pwd5nSGIVzuKAXet63Y5U5jV7gGJ791xvyJGi99F9MVG7Wjew4ON_Xgq1UVL6Wa3Gxdwr3u4DnvSUJ2febTcoKVMzolYOAObViybatZtB6GfjGZNUI43Q-DF4VL04AMNzEB3sAY4FetC-iyf7NQ0rik8BkPETKWR1in_91ne8cvAfKkq20k9fiVgw",
+                badge: "ONLINE",
+                tag: "CODING",
+                rating: "5.0/5.0",
+                stats: "24 Modul • 10 Jam",
+                price: "Rp 249.000",
+                mentorName: "Rian C.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA"
+            },
+            {
+                id: 5,
+                title: "English Speaking for Business Communication",
+                category: "bahasa-asing",
+                level: "menengah",
+                format: "zoom",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAJdCXnF7tN5TIg85mnZpVE3wT1-us09ocXUC5uFSy7Zya2O8ABifXJDOdKHFn5hLntRPoXs1-0OmKYsFk8SgyytJK_TGXDO0QMLEb6x6w7mXv0CT4bWp3Syg-tTHvl8UuP62MEtA6rtEHtHGoiecnG_ZPBSgLGjiNFqdU5XfwrKlWJD5klG8h6KblojLSptCH8itimnLgeW3--IXSWkNa4kd7Nzjn9LvPqiig6GByrID-tN8nzB-ETbj1bi8GBcEaU2xTnyPRgg",
+                badge: "LIVE ZOOM",
+                tag: "ENGLISH",
+                rating: "4.8/5.0",
+                stats: "10 Sesi • 15 Jam",
+                price: "Rp 299.000",
+                mentorName: "Jessica T.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"
+            },
+            {
+                id: 6,
+                title: "Figma UI/UX Design: Wireframe to Prototype",
+                category: "komputer-it",
+                level: "mahir",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDhuWouGkhdvTyDit4zrRW4vexx4i7CC6Idj2dCMWCIzDcEqXhTOREXpS33xTVvj42isnKrlrBBttZ8pVF0f78onIyGU_wBHYgLtoy2i1slMezn2PHj3MbdaZWD-A-Y92hJfhq7yWmdB2tVeRFq1fN3bbIRjAsl6aU4t5tsGsA601ySvvlAjXra81PBBUoSBOZRlj1Gb5jpKgrUt3gMF-GIsQSZdR9noYr8cbPkBmTeSGP8MxISt33ahCC1EzM-VAXiouRcp5KdwA",
+                badge: "ONLINE",
+                tag: "DESIGN",
+                rating: "4.9/5.0",
+                stats: "18 Modul • 8 Jam",
+                price: "Rp 199.000",
+                mentorName: "Nadia A.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCecdthvFiTV6G37GgGXdU3Vxp7Qe1GC_uV0hIMWFF-qjmPNzdye7rpSo3ji3RC_DkHJRT5KWl-a1vgU2wyxiyrSq7KvnI-b-_BrKrejih5jExWclLARo0VXJITH3aYMHZXdHCjBw610VgOTQ2CYmvRtfAGgA6giOOesJkhrVjmci1oOCBxEx1UpzdDAnJuAzqBVIvTWyuONeEJ2K3jcWHQPuqpzrUfa2mib0goEq7ipnqcDBeOpMbR8eXCrLfAfwN19JLAUejj0Q"
+            },
+            {
+                id: 7,
+                title: "Internet Productivity & AI Hacks",
+                category: "komputer-it",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAWK8dlCWoMvKpoObFsiRdDZ2GDZMfWMpOibdnaXXBKoKStaNRK7ZNdE5QcfQK9xAj27h1llqb5NLkOVtj0bi-J68fplwFHR_Dz-X3SJzxSvj3iwwSpKfLtaJnPT_M5HQwMOT8j1Iw8W5OU-mvqPs3RqYtlxVLM-hu80cDMPADqOW0Cwm99pOwJdx7R2UTg9yHgBOcS4JRLPxjs5qTDWX11y12Q-yyfuItKk-lgtaSZy9mmLDi-yJqRJJDyNnFgw9NtmOGpoPW-1Q",
+                badge: "ONLINE",
+                tag: "PRODUCTIVITY",
+                rating: "4.7/5.0",
+                stats: "10 Modul • 3.5 Jam",
+                price: "Rp 129.000",
+                mentorName: "Anita S.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA"
+            },
+            {
+                id: 8,
+                title: "Persiapan Kerja & CV ATS Optimization",
+                category: "keahlian-kerja",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAWK8dlCWoMvKpoObFsiRdDZ2GDZMfWMpOibdnaXXBKoKStaNRK7ZNdE5QcfQK9xAj27h1llqb5NLkOVtj0bi-J68fplwFHR_Dz-X3SJzxSvj3iwwSpKfLtaJnPT_M5HQwMOT8j1Iw8W5OU-mvqPs3RqYtlxVLM-hu80cDMPADqOW0Cwm99pOwJdx7R2UTg9yHgBOcS4JRLPxjs5qTDWX11y12Q-yyfuItKk-lgtaSZy9mmLDi-yJqRJJDyNnFgw9NtmOGpoPW-1Q",
+                badge: "ONLINE",
+                tag: "CAREER",
+                rating: "4.9/5.0",
+                stats: "12 Modul • 5 Jam",
+                price: "Rp 199.000",
+                mentorName: "Kevin S.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"
+            },
+            {
+                id: 9,
+                title: "Copywriting Komersial: Jual dengan Kata",
+                category: "keahlian-kerja",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRc8VvQgXTVFvgkxmTm1_5n6_rrfUPTJIzIDRWiSYcJbatWY0tWHe2BdupLLm4Bh2zfx7GXDfX6n18G4WS4pwd5nSGIVzuKAXet63Y5U5jV7gGJ791xvyJGi99F9MVG7Wjew4ON_Xgq1UVL6Wa3Gxdwr3u4DnvSUJ2febTcoKVMzolYOAObViybatZtB6GfjGZNUI43Q-DF4VL04AMNzEB3sAY4FetC-iyf7NQ0rik8BkPETKWR1in_91ne8cvAfKkq20k9fiVgw",
+                badge: "ONLINE",
+                tag: "WRITING",
+                rating: "4.8/5.0",
+                stats: "10 Modul • 3 Jam",
+                price: "Rp 159.000",
+                mentorName: "Indra K.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCLO3sZEHa41v4D_ppeLwr2050LvdV0av2ImdUnETvV0ICgfNiI7XRYPt8HYmx1Ncy_bvQKat1yCxRPJ_MthQPxM94wMnrQyU-IEYO-kpuh29Vlcu8gHz30e6sf08Ziv1lcrq6N19FQ1xQH_u1FqUPyzBFjQWMs1D9hbL92Cf41ybEfHdsrVb97z2DxS7XSN2ko-0T-UIxHdoSC8hjwJtaE1wVzVVMf3kIjPBsMqJliAH66BZ_JlffgPoZsNWyFPbVMD9eW4w5PBQ"
+            },
+            {
+                id: 10,
+                title: "Dasar Cloud Computing (AWS & GCP)",
+                category: "komputer-it",
+                level: "menengah",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAWK8dlCWoMvKpoObFsiRdDZ2GDZMfWMpOibdnaXXBKoKStaNRK7ZNdE5QcfQK9xAj27h1llqb5NLkOVtj0bi-J68fplwFHR_Dz-X3SJzxSvj3iwwSpKfLtaJnPT_M5HQwMOT8j1Iw8W5OU-mvqPs3RqYtlxVLM-hu80cDMPADqOW0Cwm99pOwJdx7R2UTg9yHgBOcS4JRLPxjs5qTDWX11y12Q-yyfuItKk-lgtaSZy9mmLDi-yJqRJJDyNnFgw9NtmOGpoPW-1Q",
+                badge: "ONLINE",
+                tag: "CLOUD",
+                rating: "5.0/5.0",
+                stats: "20 Modul • 12 Jam",
+                price: "Rp 299.000",
+                mentorName: "Rahmat M.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA"
+            },
+            {
+                id: 11,
+                title: "Digital Marketing Strategy 360",
+                category: "keahlian-kerja",
+                level: "menengah",
+                format: "zoom",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBA3yjOAAimUqhfCD8Zh9YaLzd7pcRTe1fAAPChZ51NaMwtMr_NQHg0z82__M0mKquwy7CHpCjDjrGRbxF1nFs613rWDIbiQ-djJNcER2QuOyOwljEoLSDT1QcziIM8aYB7cJgxiXu_NkcIQEIq1I8BxvnMudJFXD4QicN_iSX4eRINJ-bt5LJhFoxKPmJ7Kr6OrsPYGyMEKAVNE0zA3NF2K3E6R4qgg3JKKEoBnhhJUE-MqP6FrbEJgvwuCB-cKLVL-nREW87iTA",
+                badge: "LIVE ZOOM",
+                tag: "MARKETING",
+                rating: "4.9/5.0",
+                stats: "8 Sesi • 10 Jam",
+                price: "Rp 249.000",
+                mentorName: "Putri A.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"
+            },
+            {
+                id: 12,
+                title: "Content Creator & CapCut Editing",
+                category: "musik-kesenian",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC1vlG6t7-WJnsVjoer6yNaQgE6XINSF8-qMQCfjUlxIyp6DpPxSS89qvW7Gxlp4QNlMJKUvs0s5Rd_RtMUSsf5bENHX99UZg2JZKDznKD9Gd5rTRJ8ovhoRVZ7-KoW9Xez1GcY6mfbjprmgNERoC3HUAG7W0RBw1KytIf2_VVZbzrDklV_O7D5cW3hU4nbsvg8K8OqGZ3Ql40I_OMuHh4PGZ-jqKBF9CuLoWUS8M-3vm9gzcXVKQp30RR4v1vR6QWAd5-1-wt_eg",
+                badge: "ONLINE",
+                tag: "VIDEO",
+                rating: "4.8/5.0",
+                stats: "14 Modul • 5 Jam",
+                price: "Rp 139.000",
+                mentorName: "Fahmi R.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"
+            },
+            {
+                id: 13,
+                title: "Data Science & Tableau Visualization",
+                category: "komputer-it",
+                level: "mahir",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRc8VvQgXTVFvgkxmTm1_5n6_rrfUPTJIzIDRWiSYcJbatWY0tWHe2BdupLLm4Bh2zfx7GXDfX6n18G4WS4pwd5nSGIVzuKAXet63Y5U5jV7gGJ791xvyJGi99F9MVG7Wjew4ON_Xgq1UVL6Wa3Gxdwr3u4DnvSUJ2febTcoKVMzolYOAObViybatZtB6GfjGZNUI43Q-DF4VL04AMNzEB3sAY4FetC-iyf7NQ0rik8BkPETKWR1in_91ne8cvAfKkq20k9fiVgw",
+                badge: "ONLINE",
+                tag: "DATA",
+                rating: "4.9/5.0",
+                stats: "16 Modul • 7 Jam",
+                price: "Rp 279.000",
+                mentorName: "Hendra W.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCLO3sZEHa41v4D_ppeLwr2050LvdV0av2ImdUnETvV0ICgfNiI7XRYPt8HYmx1Ncy_bvQKat1yCxRPJ_MthQPxM94wMnrQyU-IEYO-kpuh29Vlcu8gHz30e6sf08Ziv1lcrq6N19FQ1xQH_u1FqUPyzBFjQWMs1D9hbL92Cf41ybEfHdsrVb97z2DxS7XSN2ko-0T-UIxHdoSC8hjwJtaE1wVzVVMf3kIjPBsMqJliAH66BZ_JlffgPoZsNWyFPbVMD9eW4w5PBQ"
+            },
+            {
+                id: 14,
+                title: "Belajar Javascript untuk Web Dinamis",
+                category: "komputer-it",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRc8VvQgXTVFvgkxmTm1_5n6_rrfUPTJIzIDRWiSYcJbatWY0tWHe2BdupLLm4Bh2zfx7GXDfX6n18G4WS4pwd5nSGIVzuKAXet63Y5U5jV7gGJ791xvyJGi99F9MVG7Wjew4ON_Xgq1UVL6Wa3Gxdwr3u4DnvSUJ2febTcoKVMzolYOAObViybatZtB6GfjGZNUI43Q-DF4VL04AMNzEB3sAY4FetC-iyf7NQ0rik8BkPETKWR1in_91ne8cvAfKkq20k9fiVgw",
+                badge: "ONLINE",
+                tag: "CODING",
+                rating: "4.9/5.0",
+                stats: "18 Modul • 8 Jam",
+                price: "Rp 219.000",
+                mentorName: "Dewi S.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"
+            }
+        ];
+
+        // Assign course subsets for sections
+        const RECOMMENDED_IDS = [1, 2, 3, 5, 6, 8, 9, 10, 11, 12, 13, 14]; // 12 courses
+        const POPULAR_IDS = [4, 6, 7, 8, 1, 3, 10, 9, 12, 13, 14]; // 11 courses
+        const ALL_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; // 14 courses
+
+        // Helper: Generate card HTML template dynamically
+        function createCardHTML(course) {
+            return `
+                <div class="class-card group cursor-pointer bg-white rounded-[24px] p-4 border border-neutral/5 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:translate-y-[-4px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)] transition-all duration-300"
+                     data-title="${course.title}" data-category="${course.category}" data-level="${course.level}" data-format="${course.format}"
+                     onclick="window.location.href='detail.html?id=${course.id}'">
+                    <div class="relative aspect-[16/10] rounded-[16px] overflow-hidden mb-3 border border-neutral/5">
+                        <img class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" src="${course.image}" alt="${course.title}"/>
+                        <div class="absolute top-2.5 left-2.5 flex gap-1.5">
+                            <span class="bg-[#ECE6E1] text-[#7A665A] text-[9px] font-extrabold px-2 py-0.5 rounded-full backdrop-blur-sm tracking-wider">${course.badge}</span>
+                            <span class="bg-primary text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase shadow-sm tracking-wider">${course.tag}</span>
+                        </div>
+                        <button class="absolute bottom-2.5 right-2.5 w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#A73A24] shadow-md hover:scale-105 transition-transform duration-300">
+                            <span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] font-bold text-neutral/80 mb-2">
+                        <div class="flex items-center">
+                            <span class="text-[#B18E36] text-xs mr-0.5">★</span>
+                            <span class="text-neutral font-black">${course.rating}</span>
+                        </div>
+                        <span class="text-neutral/50 text-[10px]">${course.stats}</span>
+                    </div>
+                    <h4 class="font-extrabold text-sm text-neutral/90 hover:text-[#A73A24] transition-colors leading-tight mb-3 min-h-[40px] line-clamp-2">${course.title}</h4>
+                    <div class="flex items-center justify-between pt-3 border-t border-neutral/5 gap-2">
+                        <span class="text-[#A73A24] font-black text-xs md:text-sm whitespace-nowrap shrink-0">${course.price}</span>
+                        <div class="flex items-center gap-1 min-w-0 shrink-0">
+                            <div class="w-5 h-5 rounded-full overflow-hidden border border-neutral/10 shadow-sm shrink-0">
+                                <img alt="${course.mentorName}" class="object-cover w-full h-full" src="${course.mentorImage}"/>
+                            </div>
+                            <span class="text-[9px] font-extrabold text-neutral/70 truncate max-w-[50px] shrink-0">${course.mentorName}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render data grids statically once on load
+        function initGrids() {
+            const renderGrid = (gridId, ids) => {
+                const grid = document.getElementById(gridId);
+                if (!grid) return;
+                const coursesToRender = ids.map(id => COURSES.find(c => c.id === id)).filter(Boolean);
+                grid.innerHTML = coursesToRender.map(createCardHTML).join('');
+            };
+
+            renderGrid("recommended-grid", RECOMMENDED_IDS);
+            renderGrid("popular-grid", POPULAR_IDS);
+            renderGrid("all-classes-grid", ALL_IDS);
+        }
+
+        // --- DYNAMIC LIVE CLASS CATALOG FILTERING ENGINE ---
+        function filterClasses() {
+            const searchVal = document.getElementById('search-input').value.toLowerCase().trim();
+            const selectedCats = Array.from(document.querySelectorAll('.category-checkbox:checked')).map(el => el.value);
+            const selectedLevels = Array.from(document.querySelectorAll('.level-checkbox:checked')).map(el => el.value);
+            const selectedFormatEl = document.querySelector('.format-radio:checked');
+            const selectedFormat = selectedFormatEl ? selectedFormatEl.value : 'semua';
+
+            const grids = document.querySelectorAll('.classes-grid');
+            let overallVisibleCount = 0;
+
+            grids.forEach(grid => {
+                const cards = grid.querySelectorAll('.class-card');
+                const isExpanded = grid.getAttribute('data-expanded') === 'true';
+                let matchCount = 0;
+
+                cards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const category = card.getAttribute('data-category');
+                    const level = card.getAttribute('data-level');
+                    const format = card.getAttribute('data-format');
+
+                    const matchesSearch = title.includes(searchVal);
+                    const matchesCategory = selectedCats.includes('semua') || selectedCats.length === 0 || selectedCats.includes(category);
+                    const matchesLevel = selectedLevels.length === 0 || selectedLevels.includes(level);
+                    const matchesFormat = selectedFormat === 'semua' || selectedFormat === format;
+
+                    if (matchesSearch && matchesCategory && matchesLevel && matchesFormat) {
+                        card.setAttribute('data-match', 'true');
+                        matchCount++;
+                    } else {
+                        card.setAttribute('data-match', 'false');
+                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                    }
+                });
+
+                // Display only up to 10 cards unless expanded (strictly capped at 16)
+                let displayedCount = 0;
+                const maxCards = isExpanded ? 16 : 10;
+                cards.forEach(card => {
+                    if (card.getAttribute('data-match') === 'true') {
+                        if (displayedCount < maxCards) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 10);
+                            displayedCount++;
+                        } else {
+                            card.style.display = 'none';
+                            card.style.opacity = '0';
+                        }
+                    }
+                });
+
+                overallVisibleCount += matchCount;
+
+                // Handle the dynamic Load More button visibility
+                const loadMoreBtn = grid.parentElement.querySelector('.btn-load-more');
+                if (loadMoreBtn) {
+                    if (matchCount > 10 && !isExpanded) {
+                        loadMoreBtn.classList.remove('hidden');
+                        loadMoreBtn.style.display = 'inline-block';
+                    } else {
+                        loadMoreBtn.classList.add('hidden');
+                        loadMoreBtn.style.display = 'none';
+                    }
+                }
+            });
+
+            // Handle empty state showing
+            const emptyState = document.getElementById('empty-state');
+            if (overallVisibleCount === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+            }
+        }
+
+        // Helper: reset grid expansions when inputs change
+        function resetExpansions() {
+            document.querySelectorAll('.classes-grid').forEach(grid => {
+                grid.setAttribute('data-expanded', 'false');
+            });
+        }
+
+
+        // Initialize dynamic scripts on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initGrids();
+            
+            // Listeners for load more buttons
+            document.querySelectorAll('.btn-load-more').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const targetId = e.target.getAttribute('data-target');
+                    const grid = document.getElementById(targetId);
+                    if (grid) {
+                        grid.setAttribute('data-expanded', 'true');
+                        filterClasses();
+                    }
+                });
+            });
+
+            // Live keystroke search
+            document.getElementById('search-input').addEventListener('input', () => {
+                resetExpansions();
+                filterClasses();
+            });
+            
+            // Multi-category selections
+            document.querySelectorAll('.category-checkbox').forEach(cb => {
+                cb.addEventListener('change', (e) => {
+                    resetExpansions();
+                    // Mutual exclusion logic for "Semua" button
+                    if (e.target.value === 'semua' && e.target.checked) {
+                        document.querySelectorAll('.category-checkbox').forEach(other => {
+                            if (other.value !== 'semua') other.checked = false;
+                        });
+                    } else if (e.target.value !== 'semua' && e.target.checked) {
+                        const allBtn = document.querySelector('.category-checkbox[value="semua"]');
+                        if (allBtn) allBtn.checked = false;
+                    }
+                    
+                    // Fallback: If no boxes checked, check "Semua"
+                    const checkedCount = Array.from(document.querySelectorAll('.category-checkbox:checked')).length;
+                    if (checkedCount === 0) {
+                        const allBtn = document.querySelector('.category-checkbox[value="semua"]');
+                        if (allBtn) allBtn.checked = true;
+                    }
+                    
+                    filterClasses();
+                });
+            });
+
+            // Checkbox level filter listeners
+            document.querySelectorAll('.level-checkbox').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    resetExpansions();
+                    filterClasses();
+                });
+            });
+
+            // Radio format selector listeners
+            document.querySelectorAll('.format-radio').forEach(rad => {
+                rad.addEventListener('change', () => {
+                    resetExpansions();
+                    filterClasses();
+                });
+            });
+
+            // Reset Filter Button Action
+            document.getElementById('reset-filters').addEventListener('click', () => {
+                document.getElementById('search-input').value = '';
+                resetExpansions();
+                
+                // Set categories back to "Semua" only
+                document.querySelectorAll('.category-checkbox').forEach(cb => {
+                    cb.checked = (cb.value === 'semua');
+                });
+
+                // Clear all level selections
+                document.querySelectorAll('.level-checkbox').forEach(cb => {
+                    cb.checked = false;
+                });
+
+                // Set format selector back to "Semua"
+                document.querySelectorAll('.format-radio').forEach(rad => {
+                    rad.checked = (rad.value === 'semua');
+                });
+
+                filterClasses();
+            });
+
+
+
+            // Run initial filter to correctly structure and show/hide the load mores
+            filterClasses();
+        });
+    </script>
+    <script src="components.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!-- DUAL VIEW: DISCOVERY HUB & CHAT ROOM -->
+<div class="space-y-6">
+
+    <!-- VIEW 1: GROUP DISCOVERY HUB -->
+    <div id="group-discovery-view" class="space-y-6">
+        
+
+        <!-- SECTION 1: DISARANKAN UNTUK ANDA (Suggested for You Grid) -->
+        <div class="space-y-3">
+            <h4 class="font-extrabold text-[13px] text-on-surface/90 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">stars</span>
+                <span>Disarankan Untuk Anda</span>
+            </h4>
+            <div id="suggested-groups-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Populated dynamically by JS -->
+            </div>
+        </div>
+
+        <!-- SECTION 2: POPULER DI SEKITAR ANDA (Replicating User Screenshot Exactly) -->
+        <div class="space-y-4 pt-2">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h4 class="font-extrabold text-[15px] text-on-surface">Populer di Sekitar Anda</h4>
+                    <p class="text-[10px] font-bold text-on-surface-variant/60">Mengelompokkan orang di area Anda berada.</p>
+                </div>
+                <a href="#" onclick="showNotice('Fitur Premium', 'Fitur filter geolokasi berbasis IP akan menampilkan komunitas regional terdekat Anda!')" class="text-xs font-black text-primary hover:underline">Lihat Semua</a>
+            </div>
+
+            <!-- Grid of Cards resembling the attached mockup -->
+            <div id="local-groups-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                
+                <!-- Local Card 1: Lowongan Brunei -->
+                <div class="bg-white border border-primary/5 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow relative flex flex-col justify-between">
+                    <!-- Cover image with close circle overlay -->
+                    <div class="relative h-44 w-full bg-neutral-100 overflow-hidden shrink-0">
+                        <img src="https://images.unsplash.com/photo-1590073844006-33379778ae09?w=600&auto=format&fit=crop&q=60" alt="Brunei" class="w-full h-full object-cover"/>
+                        <button onclick="this.closest('.relative').parentElement.remove()" class="w-7 h-7 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center absolute top-3.5 right-3.5 backdrop-blur-sm transition-colors">
+                            <span class="material-symbols-outlined text-sm font-black">close</span>
+                        </button>
+                    </div>
+                    <!-- Body info -->
+                    <div class="p-4 flex-grow flex flex-col justify-between gap-4">
+                        <div class="space-y-1">
+                            <h5 class="text-[12px] font-black text-on-surface uppercase tracking-wide leading-snug">LOWONGAN KERJA BRUNEI DARUSSALAM</h5>
+                            <p class="text-[10px] font-bold text-on-surface-variant/50">23 rb anggota • 8 postingan per bulan</p>
+                        </div>
+                        <button id="btn-brunei" onclick="toggleJoinLocal('brunei', 'LOWONGAN KERJA BRUNEI', 'office')" class="w-full py-2.5 rounded-xl bg-neutral-100 hover:bg-primary hover:text-white font-black text-xs text-on-surface-variant transition-all">
+                            Gabung ke grup
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Local Card 2: Little Empire MMO -->
+                <div class="bg-white border border-primary/5 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow relative flex flex-col justify-between">
+                    <!-- Cover image with close circle overlay -->
+                    <div class="relative h-44 w-full bg-neutral-100 overflow-hidden shrink-0">
+                        <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=600&auto=format&fit=crop&q=60" alt="Gaming MMO" class="w-full h-full object-cover"/>
+                        <button onclick="this.closest('.relative').parentElement.remove()" class="w-7 h-7 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center absolute top-3.5 right-3.5 backdrop-blur-sm transition-colors">
+                            <span class="material-symbols-outlined text-sm font-black">close</span>
+                        </button>
+                    </div>
+                    <!-- Body info -->
+                    <div class="p-4 flex-grow flex flex-col justify-between gap-4">
+                        <div class="space-y-1">
+                            <h5 class="text-[12px] font-black text-on-surface uppercase tracking-wide leading-snug">♦ Little Empire ♦ Android MMO [KasKus]</h5>
+                            <p class="text-[10px] font-bold text-on-surface-variant/50">3,4 rb anggota • 7 postingan per bulan</p>
+                        </div>
+                        <button id="btn-empire" onclick="toggleJoinLocal('empire', 'Little Empire Android MMO', 'coding')" class="w-full py-2.5 rounded-xl bg-neutral-100 hover:bg-primary hover:text-white font-black text-xs text-on-surface-variant transition-all">
+                            Gabung ke grup
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- VIEW 2: GROUP DETAILS PAGE (REPLICATING FACEBOOK GROUP LOOK EXACTLY) -->
+    <div id="group-chat-view" class="space-y-6 hidden">
+        
+        <!-- Back Navigation Button -->
+        <button onclick="closeGroupChatView()" class="flex items-center gap-1.5 text-xs font-black text-primary hover:text-primary-light transition-colors py-1 shrink-0">
+            <span class="material-symbols-outlined text-base">arrow_back</span>
+            <span>Kembali ke Penjelajah Grup</span>
+        </button>
+
+        <!-- Group Cover & Meta Info Header Card -->
+        <div class="bg-white border border-primary/5 rounded-2xl overflow-hidden shadow-sm space-y-4">
+            <!-- Cover Banner Image -->
+            <div class="h-44 sm:h-56 md:h-64 w-full bg-neutral-100 relative">
+                <img id="detail-group-cover" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1000&auto=format&fit=crop&q=80" alt="Cover" class="w-full h-full object-cover"/>
+            </div>
+            
+            <!-- Group Info Row -->
+            <div class="px-6 pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-primary/5">
+                <div class="space-y-1">
+                    <h2 id="detail-group-title" class="text-lg md:text-xl font-black text-on-surface">General Discussion Community</h2>
+                    <div class="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant/60">
+                        <span class="material-symbols-outlined text-sm font-black" id="detail-group-privacy-icon">public</span>
+                        <span id="detail-group-privacy-text">Grup Publik</span>
+                        <span>•</span>
+                        <span id="detail-group-members">24.5 rb anggota</span>
+                    </div>
+                </div>
+                
+                <!-- CTA Action buttons -->
+                <div class="flex items-center gap-2 w-full md:w-auto shrink-0">
+                    <button id="detail-group-join-btn" class="flex-grow md:flex-grow-0 bg-primary text-white font-black text-xs px-4 py-2.5 rounded-xl shadow-md flex items-center justify-center gap-1.5 hover:scale-103 active:scale-97 transition-all glow-button">
+                        <span class="material-symbols-outlined text-sm font-black">group_add</span>
+                        <span>Gabung ke grup</span>
+                    </button>
+                    <button onclick="showNotice('Dibagikan!', 'Tautan grup berhasil disalin ke papan klip.')" class="bg-neutral-100 hover:bg-neutral-200 text-on-surface-variant font-black text-xs px-4 py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm font-black">share</span>
+                        <span>Bagikan</span>
+                    </button>
+                    <button class="w-10 h-10 bg-neutral-100 hover:bg-neutral-200 text-on-surface-variant rounded-xl flex items-center justify-center transition-all shrink-0">
+                        <span class="material-symbols-outlined text-sm font-black">expand_more</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Navigation Tabs -->
+            <div class="px-6 flex items-center justify-between overflow-x-auto gap-4 scrollbar-none">
+                <div class="flex items-center gap-6">
+                    <button onclick="switchGroupTab('diskusi')" id="gtab-diskusi" class="group-tab-btn border-b-2 border-primary text-primary font-black text-[11px] pb-3.5 pt-1.5 transition-all">Diskusi</button>
+                    <button onclick="switchGroupTab('tentang')" id="gtab-tentang" class="group-tab-btn border-b-2 border-transparent text-on-surface-variant/60 hover:text-on-surface font-bold text-[11px] pb-3.5 pt-1.5 transition-all">Tentang</button>
+                    <button onclick="switchGroupTab('orang')" id="gtab-orang" class="group-tab-btn border-b-2 border-transparent text-on-surface-variant/60 hover:text-on-surface font-bold text-[11px] pb-3.5 pt-1.5 transition-all">Orang</button>
+                    <button onclick="switchGroupTab('media')" id="gtab-media" class="group-tab-btn border-b-2 border-transparent text-on-surface-variant/60 hover:text-on-surface font-bold text-[11px] pb-3.5 pt-1.5 transition-all">Media</button>
+                </div>
+                
+                <div class="flex items-center gap-2 pb-2">
+                    <button onclick="showNotice('Pencarian Grup', 'Gunakan fitur pencarian inline untuk mencari bahasan spesifik!')" class="w-8 h-8 rounded-full hover:bg-neutral-100 flex items-center justify-center text-on-surface-variant">
+                        <span class="material-symbols-outlined text-base">search</span>
+                    </button>
+                    <button class="w-8 h-8 rounded-full hover:bg-neutral-100 flex items-center justify-center text-on-surface-variant">
+                        <span class="material-symbols-outlined text-base">more_horiz</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Columns Layout below -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- LEFT COLUMN: Postings Feed and Creator (lg:col-span-8) -->
+            <div class="lg:col-span-8 space-y-5">
+                
+                <!-- Tulis Sesuatu Box -->
+                <div class="bg-white border border-primary/5 rounded-2xl p-4 shadow-sm space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-10 h-10 rounded-full object-cover"/>
+                        <input id="group-post-input" type="text" placeholder="Tulis sesuatu..." onkeydown="if(event.key === 'Enter') submitNewGroupPost()" class="flex-grow bg-neutral-100 hover:bg-neutral-200/60 rounded-full py-2.5 px-4 text-xs font-bold transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white"/>
+                    </div>
+                    
+                    <div class="border-t border-primary/5 pt-3 flex items-center justify-around gap-2 text-on-surface-variant/70 text-[10px] font-black">
+                        <button onclick="showNotice('Fitur Tambahan', 'Unggah perasaan atau ekspresikan aktivitas belajar Anda!')" class="flex items-center gap-1.5 hover:bg-neutral-100 px-3 py-2 rounded-xl transition-all">
+                            <span class="material-symbols-outlined text-base text-yellow-500" style="font-variation-settings: 'FILL' 1;">sentiment_satisfied</span>
+                            <span>Perasaan/aktivitas</span>
+                        </button>
+                        <button onclick="showNotice('Fitur Tambahan', 'Tandai lokasi belajar bersama teman Anda!')" class="flex items-center gap-1.5 hover:bg-neutral-100 px-3 py-2 rounded-xl transition-all">
+                            <span class="material-symbols-outlined text-base text-coral" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                            <span>Singgah</span>
+                        </button>
+                        <button onclick="showNotice('Buat Polling', 'Buat jajak pendapat interaktif untuk anggota grup!')" class="flex items-center gap-1.5 hover:bg-neutral-100 px-3 py-2 rounded-xl transition-all">
+                            <span class="material-symbols-outlined text-base text-primary" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+                            <span>Polling</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dynamic Post stream area -->
+                <div id="group-posts-stream" class="space-y-5">
+                    <!-- Loaded dynamically based on active group id! -->
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Metadata Widgets (lg:col-span-4) -->
+            <div class="lg:col-span-4 space-y-5">
+                
+                <!-- Tentang Card -->
+                <div class="bg-white border border-primary/5 rounded-2xl p-5 shadow-sm space-y-4">
+                    <h4 class="font-black text-xs text-on-surface">Tentang</h4>
+                    <p id="detail-group-about-desc" class="text-xs font-medium text-on-surface-variant/80 leading-relaxed">
+                        Diskusi santai dan tanya jawab seputar materi pelajaran sekolah bersama teman se-Indonesia.
+                    </p>
+                    
+                    <div class="space-y-3.5 border-t border-primary/5 pt-4">
+                        <div class="flex items-start gap-3 text-xs">
+                            <span class="material-symbols-outlined text-on-surface-variant/60 text-lg shrink-0">public</span>
+                            <div class="space-y-0.5">
+                                <h5 class="font-black text-on-surface leading-none">Publik</h5>
+                                <p class="text-[10px] text-on-surface-variant/60 font-medium leading-normal">Siapa pun bisa melihat siapa saja anggota grup ini dan apa yang mereka posting.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-3 text-xs">
+                            <span class="material-symbols-outlined text-on-surface-variant/60 text-lg shrink-0">visibility</span>
+                            <div class="space-y-0.5">
+                                <h5 class="font-black text-on-surface leading-none">Dapat dilihat</h5>
+                                <p class="text-[10px] text-on-surface-variant/60 font-medium leading-normal">Semua orang bisa menemukan grup ini dengan mudah di penjelajah.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Media Terbaru Card -->
+                <div class="bg-white border border-primary/5 rounded-2xl p-5 shadow-sm space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-black text-xs text-on-surface">Media terbaru</h4>
+                        <a href="#" onclick="showNotice('Galeri Foto', 'Tampilkan seluruh berkas gambar dan visual yang diunggah anggota.')" class="text-[10px] font-black text-primary hover:underline">Lihat Semua</a>
+                    </div>
+                    
+                    <!-- Grid of 4 images loaded dynamically -->
+                    <div id="detail-group-media-grid" class="grid grid-cols-2 gap-2 rounded-xl overflow-hidden">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

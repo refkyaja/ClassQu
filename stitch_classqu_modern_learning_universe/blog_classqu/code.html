@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog ClassQu - Belajar Jadi Lebih Seru</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "background": "#fdf8f8",
+                    "outline": "#8b716d",
+                    "inverse-surface": "#313030",
+                    "surface-tint": "#a53b29",
+                    "on-surface-variant": "#57423e",
+                    "on-surface": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#594400",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "on-primary-container": "#731709",
+                    "tertiary-fixed": "#9ff1e9",
+                    "surface-container": "#f1edec",
+                    "primary": "#a53b29",
+                    "tertiary-container": "#60b2ab",
+                    "primary-fixed": "#ffdad4",
+                    "on-secondary-fixed": "#251a00",
+                    "secondary-fixed-dim": "#eac25b",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#fdf8f8",
+                    "primary-container": "#ff7e67",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#f4f0ef",
+                    "inverse-primary": "#ffb4a6",
+                    "on-tertiary-container": "#00423e",
+                    "surface-dim": "#ddd9d8",
+                    "surface-container-highest": "#e6e1e1",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f7f2f2",
+                    "on-tertiary-fixed": "#00201e",
+                    "on-primary-fixed": "#3f0300",
+                    "surface-container-high": "#ece7e7",
+                    "secondary-fixed": "#ffdf96",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#ffd56d",
+                    "surface-variant": "#e6e1e1",
+                    "tertiary-fixed-dim": "#83d5cd",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#ffb4a6",
+                    "on-secondary-container": "#775b00",
+                    "on-primary-fixed-variant": "#842415",
+                    "tertiary": "#006a64",
+                    "on-background": "#1c1b1b",
+                    "surface": "#fdf8f8",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#dec0ba",
+                    "secondary": "#765a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "margin-desktop": "64px",
+                    "unit": "4px",
+                    "gutter": "20px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="bg-surface/80 backdrop-blur-md dark:bg-inverse-surface/80 rounded-3xl mt-4 mx-4 md:mx-margin-desktop sticky top-4 z-50 bg-surface-container-low/60 border border-white/20 shadow-lg shadow-primary/5">
+<nav class="flex justify-between items-center px-lg py-sm w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-xl">
+<span class="text-headline-md font-headline-md font-black text-primary dark:text-inverse-primary">ClassQu</span>
+<div class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200 hover:scale-105" href="#">Home</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200 hover:scale-105" href="#">Kelas</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200 hover:scale-105" href="#">Subscription</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200 hover:scale-105" href="#">Community</a>
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1 hover:scale-105" href="#">Blog</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden lg:flex items-center bg-surface-container-high px-md py-xs rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant mr-xs">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md w-32 xl:w-48" placeholder="Cari artikel..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-md hover:scale-105 transition-transform duration-200 active:scale-95">Mulai Belajar</button>
+</div>
+</nav>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+<!-- Page Header -->
+<section class="mb-xl text-center md:text-left">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-xs">Inspirasi &amp; Update</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Temukan tips belajar efektif, berita terbaru dari platform, dan kisah sukses yang akan memacu semangat belajarmu.</p>
+</section>
+<!-- Categories -->
+<nav class="flex flex-wrap gap-md mb-xl overflow-x-auto pb-xs">
+<button class="px-lg py-sm rounded-full bg-primary text-on-primary font-label-md transition-all shadow-md shadow-primary/20">Semua</button>
+<button class="px-lg py-sm rounded-full bg-tertiary-container text-on-tertiary-container font-label-md hover:bg-tertiary hover:text-on-tertiary transition-colors">Tips Belajar</button>
+<button class="px-lg py-sm rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-secondary-container hover:text-on-secondary-container transition-colors">Update Platform</button>
+<button class="px-lg py-sm rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-secondary-container hover:text-on-secondary-container transition-colors">Cerita Sukses Alumni</button>
+</nav>
+<!-- Featured Post (Bento Style Layout) -->
+<section class="mb-xl">
+<div class="relative group overflow-hidden rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col lg:flex-row h-auto lg:h-[480px]">
+<div class="w-full lg:w-3/5 h-64 lg:h-full relative overflow-hidden">
+<img alt="Featured Article" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A cinematic, high-angle photograph of a modern, sunlit student workspace featuring a sleek laptop, a cup of coffee, and organized notebooks on a light oak desk. The background is a soft-focus interior with lush green plants and minimalist decor, bathed in warm golden-hour light. The overall mood is aspirational, premium, and calm, using a palette of soft whites, warm oranges, and deep teal accents to match a youthful ed-tech brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEF6P5MdFZmSNiJMVr5JM5iWN6LMCnS2fg_TRZzH2hVLDgJianeMc9crP1C0E2GkIFX2pgBYZbG-GDeRvjJvLJ_shlMo1XLu4qPOwcRnACe0wThZ1dw1ZoT4Vimwico4uGTtLfxxJieOlz3-1zSahn9p573DJC0TrYggrovDT6dfzSoOvL9UmnwOAlQJD4oGjeJA94GeOjDLvXVCIVm2Tv-YVRnhqq6DIuGsrGYemcFn-Wh8F0bgHTxdhp-9GPmppFHVxhh_W1sQ"/>
+<div class="absolute top-md left-md bg-secondary-container text-on-secondary-container px-md py-xs rounded-full font-label-sm uppercase tracking-wider">Editor's Pick</div>
+</div>
+<div class="w-full lg:w-2/5 p-xl flex flex-col justify-center gap-md">
+<div class="flex items-center gap-xs text-tertiary font-label-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+                        24 Oktober 2024
+                    </div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface leading-tight">Rahasia Manajemen Waktu Mahasiswa dengan IPK 4.0</h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">Membangun kebiasaan belajar yang efektif bukan hanya soal jam kerja yang panjang, melainkan sistem yang berkelanjutan. Pelajari bagaimana alumni ClassQu menyeimbangkan hobi dan prestasi akademik.</p>
+<div class="flex items-center gap-md mt-sm">
+<img alt="Author" class="w-10 h-10 rounded-full border-2 border-primary-container" data-alt="A professional yet friendly headshot of a young woman with a warm smile, wearing a casual orange blazer over a white shirt. She has a clean, minimalist studio background with soft lighting that highlights her approachable personality. The image follows a modern, high-key photography style suitable for a premium ed-tech platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo51rW4QDYfLPcNt0BgZkL_G5MNVKqinOUp2RGKPR8hZ-G1RZCU3zDhkjQ53YEEj7yup-FwxViel7F7xU2f_fl5fHKkl6heYgptuLYlx3-czOQgxU3Yrf0z3Lwpsa1-0QjmagCYxdNQ9YVmR3jVGe3NUUGd0g3r6VmGrWS2VlqfFF1vRSIaQG91ktYDYz2UWxZGTX4yBCGj1ppN8iBLGv8XOHVSiSkSMX1j-FwfKMjPY-uokfLzC9RdsUCN_6ANdg0ir_3Nm4L3A"/>
+<div>
+<p class="font-label-md text-on-surface">Amara Sutedjo</p>
+<p class="font-label-sm text-on-surface-variant">Education Specialist</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-sm text-primary font-bold hover:gap-lg transition-all duration-300 mt-md" href="#">
+                        Baca Selengkapnya
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Secondary Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
+<!-- Article Card 1 -->
+<article class="flex flex-col gap-md group">
+<div class="aspect-video rounded-xl overflow-hidden bg-surface-container relative">
+<img alt="Article Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An artistic flat-lay of digital learning tools including a tablet with a colorful interface, a stylus, and an open planner on a teal-colored background. The composition is clean and organized, with soft studio lighting creating gentle shadows. The color scheme is vibrant and youthful, featuring high-contrast orange and teal tones that reflect a creative academic environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAp2jofQGHmms7hLxFab90hKg9TM_kLm9Oo7NQzbRjsrluepL1xRSO_OonukQvfOKW1IpTi--1MxERGHJA_-BMHE0E1boIO1EdWEBN2jjCEhzZL9WlFvxokScodKGg17CZs1KUVSedSg6urs5rM6QiiyO584Gxm8n-aRqVDl38ggZKjwnbWq6GprQ366_TViDbRxMzMoU5xL6qKkBsLCVdvlY3Ti3oUitHWK5F-EgUVjp9RzA4FUKszsqh47w5qQd1sBr4Pr5oUg"/>
+<div class="absolute bottom-md right-md bg-surface/90 backdrop-blur-sm px-md py-xs rounded-full font-label-sm text-tertiary">Tips Belajar</div>
+</div>
+<div class="flex flex-col gap-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">5 Ekstensi Chrome yang Wajib Dimiliki Pelajar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Optimalkan browser kamu untuk sesi belajar yang lebih produktif dengan alat-alat cerdas ini.</p>
+<div class="flex items-center justify-between mt-md">
+<span class="text-label-sm text-on-surface-variant">5 Menit Baca</span>
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined">arrow_outward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Article Card 2 -->
+<article class="flex flex-col gap-md group">
+<div class="aspect-video rounded-xl overflow-hidden bg-surface-container relative">
+<img alt="Article Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A dynamic, wide-angle shot of a group of diverse students laughing and collaborating in a brightly lit, modern co-working space. The environment features high ceilings, glass walls, and pops of primary orange furniture. The lighting is natural and airy, conveying a sense of community and successful collaboration in a high-tech academic setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMhm2fLl70acDoYW1VpbY6HKhU2l8OZEgqyTfKTtfueIDIZu9hTrw0gR_7q9k9TXgP9_v79uJB_nCoFQeGqrScbY6J1JXL_kpeFwKm2yVkFGCw-8Q8BySJnYbLzTUZ9Mh_RbnOZANjTDIWcoY4SgmkKiLA3-7sQKfgFBD6MCWH6gf-nJG6eFCwsZ7i3Eb7i6ujsv4nldtaNo-gmnPYIG_YZw1RbdGM46644VPBhW9sdvvVYTKXJ1-bAomhJn7uKWO0lwBB3lUAGQ"/>
+<div class="absolute bottom-md right-md bg-surface/90 backdrop-blur-sm px-md py-xs rounded-full font-label-sm text-tertiary">Cerita Sukses</div>
+</div>
+<div class="flex flex-col gap-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Dari Nol ke Junior Developer: Kisah Budi di ClassQu</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Bagaimana kurikulum ClassQu membantu Budi beralih karir dalam waktu kurang dari 6 bulan.</p>
+<div class="flex items-center justify-between mt-md">
+<span class="text-label-sm text-on-surface-variant">8 Menit Baca</span>
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined">arrow_outward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Article Card 3 -->
+<article class="flex flex-col gap-md group">
+<div class="aspect-video rounded-xl overflow-hidden bg-surface-container relative">
+<img alt="Article Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A futuristic close-up of a high-resolution smartphone screen displaying a sleek mobile app interface with progress bars, badges, and learning statistics. The background is a blurred bokeh of neon teal and soft orange lights. The image represents modern technology and platform updates in a clean, high-end digital design style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIYlOD_86s2sJqZj0WstIOuVNgmghH23TRFAdvgCs41yTFoaOUulRGUrTLhvSFM1I5EMXxTr8-1n-wg-oInUfgOrlErT7OxgV8ICo6H84FsPxgfzh6NAvvisjfDb9Uqznb7F80ujRjQYu-tNn4kWy6lDGpGUyzNbEm5Zu-fJwx0PHhcK3_szJrh9M7HoQOpJ9IArnHk02qgJ3HsmclhxmCSCFVNLfgp_KwVEJHNcUhjppoRLs4aj6ZxvBZTHW3OnFPAy3FFSgKoQ"/>
+<div class="absolute bottom-md right-md bg-surface/90 backdrop-blur-sm px-md py-xs rounded-full font-label-sm text-tertiary">Update Platform</div>
+</div>
+<div class="flex flex-col gap-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Fitur Baru: AI Study Buddy Kini Lebih Pintar!</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Kini AI kami dapat membantu merangkum video materi panjang menjadi catatan singkat secara instan.</p>
+<div class="flex items-center justify-between mt-md">
+<span class="text-label-sm text-on-surface-variant">3 Menit Baca</span>
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined">arrow_outward</span>
+</a>
+</div>
+</div>
+</article>
+</section>
+<!-- Newsletter Subscription (Asymmetric/Modern Layout) -->
+<section class="mt-xl bg-on-tertiary-container text-on-tertiary rounded-xl p-xl flex flex-col md:flex-row items-center gap-xl relative overflow-hidden">
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-tertiary rounded-full opacity-20"></div>
+<div class="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary rounded-full opacity-10"></div>
+<div class="relative z-10 md:w-1/2">
+<h2 class="font-headline-lg text-headline-lg text-white mb-sm">Dapatkan tips belajar langsung di inbox-mu!</h2>
+<p class="font-body-md text-body-md text-tertiary-fixed opacity-90">Jangan lewatkan update konten terbaru dan penawaran spesial member setiap minggunya.</p>
+</div>
+<div class="relative z-10 md:w-1/2 w-full flex flex-col sm:flex-row gap-sm">
+<input class="flex-grow bg-white/10 border-white/20 text-white placeholder:text-white/60 rounded-full px-lg py-sm focus:ring-secondary focus:border-secondary transition-all" placeholder="Alamat email kamu" type="email"/>
+<button class="bg-secondary text-on-secondary px-xl py-sm rounded-full font-label-md hover:scale-105 active:scale-95 transition-all whitespace-nowrap shadow-lg">Langganan Sekarang</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant/30 full-width rounded-t-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg px-margin-mobile md:px-margin-desktop py-xl w-full max-w-7xl mx-auto">
+<div class="flex flex-col gap-md">
+<span class="text-headline-md font-headline-md font-black text-primary">ClassQu</span>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 ClassQu. Belajar jadi lebih seru.</p>
+<div class="flex gap-md mt-sm">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+<div class="flex flex-col gap-md">
+<h4 class="font-label-md text-on-surface">Navigasi</h4>
+<ul class="flex flex-col gap-sm">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 transition-colors" href="#">Tentang Kami</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 transition-colors" href="#">Pusat Bantuan</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 transition-colors" href="#">Blog</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-md">
+<h4 class="font-label-md text-on-surface">Legal</h4>
+<ul class="flex flex-col gap-sm">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 transition-colors" href="#">Syarat &amp; Ketentuan</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 transition-colors" href="#">Kebijakan Privasi</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-md">
+<h4 class="font-label-md text-on-surface">Hubungi Kami</h4>
+<ul class="flex flex-col gap-sm">
+<li class="font-body-md text-body-md text-on-surface-variant">Halo@classqu.com</li>
+<li class="font-body-md text-body-md text-on-surface-variant">+62 812 3456 7890</li>
+<li class="font-body-md text-body-md text-on-surface-variant">Jakarta, Indonesia</li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

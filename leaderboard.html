@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Leaderboard - ClassQu Student Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "on-background": "#1C1B1B",
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-low": "#FFFBF4",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface-variant": "#57423e",
+                    },
+                    borderRadius: {
+                        'card': '32px',
+                        'lg': '2rem',
+                        'xl': '3rem',
+                        'full': '9999px'
+                    },
+                    boxShadow: {
+                        'playful-sm': '2px 2px 0px 0px #1C1B1B',
+                        'playful': '4px 4px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 10px 30px -5px rgba(255, 126, 103, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #1C1B1B;
+            box-shadow: 4px 4px 0px 0px #1C1B1B;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #1C1B1B;
+        }
+        .btn-playful {
+            border: 2px solid #1C1B1B;
+            box-shadow: 2px 2px 0px 0px #1C1B1B;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-playful:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px 0px #1C1B1B;
+        }
+        .btn-playful:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px 0px #1C1B1B;
+        }
+        .tab-btn.active {
+            background-color: #FF7E67 !important;
+            color: white !important;
+            border-color: #1C1B1B !important;
+        }
+        /* Custom scrollbar layout */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #FFF3DF;
+            border-left: 2px solid #1C1B1B;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #FF7E67;
+            border: 2px solid #1C1B1B;
+            border-radius: 99px;
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Workspace Container Grid -->
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 mt-12 px-6 md:px-12 mb-24">
+        
+        <!-- Left Side Navigation Sidebar Placeholder -->
+        <div id="sidebar-placeholder" class="w-full lg:w-72 flex-none lg:sticky lg:top-12"></div>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow space-y-8">
+            
+            <!-- Page Header Widget -->
+            <div class="glass-card bg-white p-8 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="space-y-1.5">
+                        <span class="bg-[#FFF3DF] text-primary px-3 py-1 rounded-full border border-primary/20 font-extrabold text-[10px] uppercase tracking-widest inline-block">ARENA KOMPETISI GLOBAL</span>
+                        <h1 class="text-3xl font-black tracking-tight text-neutral">
+                            Papan Peringkat <span class="text-primary">Siswa</span>
+                        </h1>
+                        <p class="text-neutral/60 text-xs font-semibold max-w-lg leading-relaxed">
+                            Kumpulkan XP sebanyak-banyaknya dari belajar materi, kuis sempurna, dan quest harian untuk merebut tahta juara liga bulan ini!
+                        </p>
+                    </div>
+
+                    <!-- Season timer widget -->
+                    <div class="bg-[#FFF3DF] border-2 border-neutral p-4 rounded-2xl flex items-center gap-3 shrink-0 shadow-playful-sm">
+                        <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white border border-neutral">
+                            <span class="material-symbols-outlined font-bold text-lg">hourglass_empty</span>
+                        </div>
+                        <div>
+                            <span class="block text-[8px] font-black text-neutral/40 uppercase tracking-widest">SISA WAKTU MUSIM</span>
+                            <span class="font-extrabold text-xs text-neutral">12 Hari 04 Jam</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Podiums Grid (Top 3 Students) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end pt-8 relative">
+                
+                <!-- Rank 2 Podium Card -->
+                <div class="glass-card bg-white p-6 text-center space-y-4 flex flex-col items-center relative md:order-1 order-2">
+                    <div class="absolute -top-6 w-12 h-12 rounded-full bg-[#E5E7EB] border-2 border-neutral flex items-center justify-center shadow-playful-sm font-black text-neutral text-lg">2</div>
+                    <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-[#94A3B8] shadow-md relative">
+                        <img id="p2-avatar" alt="Citra" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvRbYAeuvGgR26Gn7gqnKhicjKHKt4UWAEkMcuxt1bHfLQPy4t8rYI-xMwcXvfNLJ7gGHRECuenmpJvYcqRoSfvvlVyBf2sKoAxEZ6T1LmGxpVk-wqYNZDRfJhAeSX9CIDghc5XnMl2lujaL4a3FUTC5Sh4e7y6CPtAcVDJtspkHI12vlFc2KUF84m4PE7uHxwUSFmE4N0s6I2GXZzRKaF-511uHAtcCltBBJyVBfHE-MMiE3hAP1NNwTYNWywpjVROMl4V6iMIg"/>
+                        <span class="material-symbols-outlined absolute bottom-0 right-0 bg-[#94A3B8] text-white border border-neutral text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">star</span>
+                    </div>
+                    <div>
+                        <h4 id="p2-name" class="font-black text-sm text-neutral">Citra Lestari</h4>
+                        <span class="text-[9px] font-black text-[#94A3B8] uppercase">EXPERT STUDENT</span>
+                    </div>
+                    <div class="bg-[#FFF3DF] border border-neutral/15 px-4 py-1.5 rounded-full font-black text-xs text-neutral">
+                        <span id="p2-xp">2,710</span> <span class="text-[9px] text-neutral/40 font-bold">XP</span>
+                    </div>
+                </div>
+
+                <!-- Rank 1 Podium Card (Featured Center/Taller) -->
+                <div class="glass-card bg-[#FFF3DF] p-8 text-center space-y-4 flex flex-col items-center relative md:scale-105 border-4 md:-translate-y-4 md:order-2 order-1 shadow-playful">
+                    <div class="absolute -top-7 w-14 h-14 rounded-full bg-secondary border-2 border-neutral flex items-center justify-center shadow-playful font-black text-neutral text-xl">1</div>
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-secondary shadow-md relative">
+                        <img id="p1-avatar" alt="Budi" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMLIxb0ROdqhOzRaBLL1Z9ye_ufFrW8XkBOpcicPVrBIGWX1vyh9W2WKOofFgvm8O4OdaWRciN_tGSuR3wgOMVg5Ic18B1a1OeSw4ck4FlQ-lyNLpvqB7ObWVLqooMVRLfCEOpkF9wNj_ntdVGNWiyltElDiGxS92rbOdbfzfar4goQsWiWM3Mf5sx9KIa9xVnOuYEF1BcHzzc9yWu2oG-StJq4txjVgGlmynOzsU_kqmx22Zjg_M6SRPpgkwOMFTd_Cw04BvTTw"/>
+                        <span class="material-symbols-outlined absolute bottom-0 right-0 bg-secondary text-neutral border border-neutral text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold">workspace_premium</span>
+                    </div>
+                    <div>
+                        <h4 id="p1-name" class="font-black text-base text-neutral">Budi Santoso</h4>
+                        <span class="text-[9px] font-black text-primary uppercase">ELITE MASTER CHAMPION</span>
+                    </div>
+                    <div class="bg-white border-2 border-neutral px-5 py-2 rounded-full font-black text-sm text-neutral shadow-playful-sm">
+                        <span id="p1-xp">2,850</span> <span class="text-[10px] text-neutral/40 font-bold">XP</span>
+                    </div>
+                </div>
+
+                <!-- Rank 3 Podium Card -->
+                <div class="glass-card bg-white p-6 text-center space-y-4 flex flex-col items-center relative md:order-3 order-3">
+                    <div class="absolute -top-6 w-12 h-12 rounded-full bg-[#F3E5D8] border-2 border-neutral flex items-center justify-center shadow-playful-sm font-black text-neutral text-lg">3</div>
+                    <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-[#B45309] shadow-md relative">
+                        <img id="p3-avatar" alt="Aditya" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJdCXnF7tN5TIg85mnZpVE3wT1-us09ocXUC5uFSy7Zya2O8ABifXJDOdKHFn5hLntRPoXs1-0OmKYsFk8SgyytJK_TGXDO0QMLEb6x6w7mXv0CT4bWp3Syg-tTHvl8UuP62MEtA6rtEHtHGoiecnG_ZPBSgLGjiNFqdU5XfwrKlWJD5klG8h6KblojLSptCH8itimnLgeW3--IXSWkNa4kd7Nzjn9LvPqiig6GByrID-tN8nzB-ETbj1bi8GBcEaU2xTnyPRgg"/>
+                        <span class="material-symbols-outlined absolute bottom-0 right-0 bg-[#B45309] text-white border border-neutral text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">military_tech</span>
+                    </div>
+                    <div>
+                        <h4 id="p3-name" class="font-black text-sm text-neutral">Aditya Kurniawan</h4>
+                        <span class="text-[9px] font-black text-[#B45309] uppercase">SKILLED WARRIOR</span>
+                    </div>
+                    <div class="bg-[#FFF3DF] border border-neutral/15 px-4 py-1.5 rounded-full font-black text-xs text-neutral">
+                        <span id="p3-xp">2,490</span> <span class="text-[9px] text-neutral/40 font-bold">XP</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Tab Selectors & Leaderboard Table -->
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left 8 columns: Tabbed list of students -->
+                <div class="xl:col-span-8 space-y-4">
+                    <!-- Tab control buttons -->
+                    <div class="glass-card bg-white p-3 flex gap-2">
+                        <button onclick="switchTab('mingguan', this)" class="tab-btn active flex-1 py-2 rounded-xl text-[10px] font-extrabold uppercase border-2 border-transparent text-neutral/65 transition-colors">Mingguan</button>
+                        <button onclick="switchTab('bulanan', this)" class="tab-btn flex-1 py-2 rounded-xl text-[10px] font-extrabold uppercase border-2 border-transparent text-neutral/65 transition-colors">Bulanan</button>
+                        <button onclick="switchTab('alltime', this)" class="tab-btn flex-1 py-2 rounded-xl text-[10px] font-extrabold uppercase border-2 border-transparent text-neutral/65 transition-colors">Sepanjang Masa</button>
+                    </div>
+
+                    <!-- Rankings list with fixed height & sticky active user row -->
+                    <div class="glass-card bg-white overflow-hidden flex flex-col">
+                        <div class="overflow-y-auto max-h-[450px] relative custom-scrollbar border-b border-neutral/10">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-[#FFF3DF] border-b-2 border-neutral text-[9px] font-black uppercase tracking-wider text-neutral/60 sticky top-0 z-10">
+                                        <th class="p-4 w-20 text-center bg-[#FFF3DF]">Rank</th>
+                                        <th class="p-4 bg-[#FFF3DF]">Student</th>
+                                        <th class="p-4 bg-[#FFF3DF]">Tingkat / Badge</th>
+                                        <th class="p-4 w-32 text-right bg-[#FFF3DF]">Total XP</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="rank-table-body" class="divide-y divide-neutral/10 text-xs font-bold text-neutral">
+                                    <!-- Dynamic rows loaded dynamically from JS up to Rank 50 -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Sticky Current User Pinned Row (Sticky Footer) -->
+                        <div id="sticky-user-row" class="bg-primary/10 border-t-2 border-neutral p-4 flex items-center justify-between font-black text-xs text-neutral relative z-10">
+                            <!-- Loaded dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right 4 columns: Prize rules sidebar panel -->
+                <div class="xl:col-span-4 space-y-6">
+                    <div class="glass-card bg-white p-6 md:p-8 space-y-6 sticky top-28">
+                        <div>
+                            <h3 class="font-black text-sm text-neutral border-b border-neutral/10 pb-3 flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-primary">emoji_events</span>
+                                <span>Hadiah Liga Musim Ini</span>
+                            </h3>
+                            <p class="text-[10px] text-neutral/50 font-semibold mt-2 leading-relaxed">
+                                Tiga besar di liga Global pada akhir musim 30 Mei 2026 berhak mendapatkan paket merchandise premium yang dikirim langsung ke rumah Anda!
+                            </p>
+                        </div>
+
+                        <!-- Gifts stack list -->
+                        <div class="space-y-4">
+                            <!-- Gift 1 -->
+                            <div class="flex gap-3 items-center">
+                                <div class="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-neutral border border-neutral shrink-0">
+                                    <span class="material-symbols-outlined text-lg font-bold">emoji_events</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <h4 class="text-xs font-black text-neutral">Juara 1: Trophy & Exclusive Hoodie</h4>
+                                    <span class="text-[9px] text-[#FF7E67] font-black uppercase tracking-wider block">10,000 Coins + Master Badge</span>
+                                </div>
+                            </div>
+                            <!-- Gift 2 -->
+                            <div class="flex gap-3 items-center">
+                                <div class="w-10 h-10 rounded-xl bg-tertiary flex items-center justify-center text-white border border-neutral shrink-0">
+                                    <span class="material-symbols-outlined text-lg font-bold">workspace_premium</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <h4 class="text-xs font-black text-neutral">Juara 2: ClassQu T-Shirt Premium</h4>
+                                    <span class="text-[9px] text-tertiary font-black uppercase tracking-wider block">5,000 Coins + Expert Badge</span>
+                                </div>
+                            </div>
+                            <!-- Gift 3 -->
+                            <div class="flex gap-3 items-center">
+                                <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white border border-neutral shrink-0">
+                                    <span class="material-symbols-outlined text-lg font-bold">military_tech</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <h4 class="text-xs font-black text-neutral">Juara 3: Custom Tumbler ClassQu</h4>
+                                    <span class="text-[9px] text-primary font-black uppercase tracking-wider block">2,500 Coins + Skilled Badge</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-neutral/10">
+                            <span class="block text-[8px] font-black text-neutral/40 uppercase tracking-widest mb-3 text-center">SEMUA SISWA MEMILIKI KESEMPATAN</span>
+                            <button onclick="window.location.href='shop.html'" class="btn-playful w-full py-2 bg-secondary text-neutral font-extrabold text-[10px] rounded-xl flex items-center justify-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm font-bold">store</span>
+                                <span>Tukarkan Koin di Toko</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Components dynamic loader script -->
+    <script src="components.js"></script>
+
+    <!-- Page logical engine -->
+    <script>
+        // High fidelity mock datasets for Weekly, Monthly, and All-Time rankings
+        const DATASETS = {
+            mingguan: {
+                podiums: [
+                    { name: "Dewi Lestari", xp: "980", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg" },
+                    { name: "Budi Santoso", xp: "1,120", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDMLIxb0ROdqhOzRaBLL1Z9ye_ufFrW8XkBOpcicPVrBIGWX1vyh9W2WKOofFgvm8O4OdaWRciN_tGSuR3wgOMVg5Ic18B1a1OeSw4ck4FlQ-lyNLpvqB7ObWVLqooMVRLfCEOpkF9wNj_ntdVGNWiyltElDiGxS92rbOdbfzfar4goQsWiWM3Mf5sx9KIa9xVnOuYEF1BcHzzc9yWu2oG-StJq4txjVgGlmynOzsU_kqmx22Zjg_M6SRPpgkwOMFTd_Cw04BvTTw" },
+                    { name: "Rian Cahyadi", xp: "890", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA" }
+                ],
+                user: { rank: 8, name: "Kamu (Andi)", xp: 450, badge: "STUDENT", badgeColor: "bg-primary text-white border-2 border-neutral shadow-playful-sm" }
+            },
+            bulanan: {
+                podiums: [
+                    { name: "Citra Lestari", xp: "2,710", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBvRbYAeuvGgR26Gn7gqnKhicjKHKt4UWAEkMcuxt1bHfLQPy4t8rYI-xMwcXvfNLJ7gGHRECuenmpJvYcqRoSfvvlVyBf2sKoAxEZ6T1LmGxpVk-wqYNZDRfJhAeSX9CIDghc5XnMl2lujaL4a3FUTC5Sh4e7y6CPtAcVDJtspkHI12vlFc2KUF84m4PE7uHxwUSFmE4N0s6I2GXZzRKaF-511uHAtcCltBBJyVBfHE-MMiE3hAP1NNwTYNWywpjVROMl4V6iMIg" },
+                    { name: "Budi Santoso", xp: "2,850", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDMLIxb0ROdqhOzRaBLL1Z9ye_ufFrW8XkBOpcicPVrBIGWX1vyh9W2WKOofFgvm8O4OdaWRciN_tGSuR3wgOMVg5Ic18B1a1OeSw4ck4FlQ-lyNLpvqB7ObWVLqooMVRLfCEOpkF9wNj_ntdVGNWiyltElDiGxS92rbOdbfzfar4goQsWiWM3Mf5sx9KIa9xVnOuYEF1BcHzzc9yWu2oG-StJq4txjVgGlmynOzsU_kqmx22Zjg_M6SRPpgkwOMFTd_Cw04BvTTw" },
+                    { name: "Aditya Kurniawan", xp: "2,490", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAJdCXnF7tN5TIg85mnZpVE3wT1-us09ocXUC5uFSy7Zya2O8ABifXJDOdKHFn5hLntRPoXs1-0OmKYsFk8SgyytJK_TGXDO0QMLEb6x6w7mXv0CT4bWp3Syg-tTHvl8UuP62MEtA6rtEHtHGoiecnG_ZPBSgLGjiNFqdU5XfwrKlWJD5klG8h6KblojLSptCH8itimnLgeW3--IXSWkNa4kd7Nzjn9LvPqiig6GByrID-tN8nzB-ETbj1bi8GBcEaU2xTnyPRgg" }
+                ],
+                user: { rank: 24, name: "Kamu (Andi)", xp: 1240, badge: "STUDENT", badgeColor: "bg-primary text-white border-2 border-neutral shadow-playful-sm" }
+            },
+            alltime: {
+                podiums: [
+                    { name: "Aditya Kurniawan", xp: "14,790", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAJdCXnF7tN5TIg85mnZpVE3wT1-us09ocXUC5uFSy7Zya2O8ABifXJDOdKHFn5hLntRPoXs1-0OmKYsFk8SgyytJK_TGXDO0QMLEb6x6w7mXv0CT4bWp3Syg-tTHvl8UuP62MEtA6rtEHtHGoiecnG_ZPBSgLGjiNFqdU5XfwrKlWJD5klG8h6KblojLSptCH8itimnLgeW3--IXSWkNa4kd7Nzjn9LvPqiig6GByrID-tN8nzB-ETbj1bi8GBcEaU2xTnyPRgg" },
+                    { name: "Budi Santoso", xp: "18,920", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDMLIxb0ROdqhOzRaBLL1Z9ye_ufFrW8XkBOpcicPVrBIGWX1vyh9W2WKOofFgvm8O4OdaWRciN_tGSuR3wgOMVg5Ic18B1a1OeSw4ck4FlQ-lyNLpvqB7ObWVLqooMVRLfCEOpkF9wNj_ntdVGNWiyltElDiGxS92rbOdbfzfar4goQsWiWM3Mf5sx9KIa9xVnOuYEF1BcHzzc9yWu2oG-StJq4txjVgGlmynOzsU_kqmx22Zjg_M6SRPpgkwOMFTd_Cw04BvTTw" },
+                    { name: "Citra Lestari", xp: "12,410", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBvRbYAeuvGgR26Gn7gqnKhicjKHKt4UWAEkMcuxt1bHfLQPy4t8rYI-xMwcXvfNLJ7gGHRECuenmpJvYcqRoSfvvlVyBf2sKoAxEZ6T1LmGxpVk-wqYNZDRfJhAeSX9CIDghc5XnMl2lujaL4a3FUTC5Sh4e7y6CPtAcVDJtspkHI12vlFc2KUF84m4PE7uHxwUSFmE4N0s6I2GXZzRKaF-511uHAtcCltBBJyVBfHE-MMiE3hAP1NNwTYNWywpjVROMl4V6iMIg" }
+                ],
+                user: { rank: 48, name: "Kamu (Andi)", xp: 4240, badge: "SKILLED", badgeColor: "bg-[#FFF3DF] border border-neutral/15 text-neutral" }
+            }
+        };
+
+        const RANDOM_NAMES = [
+            "Jessica Tan", "Kevin Susanto", "Fahmi Rizal", "Nadia Amelia", "Dimas Pratama",
+            "Sarah Wijaya", "Rian Cahyadi", "Hendra Wijaya", "Dewi Lestari", "Rizky Firmansyah",
+            "Putri Ananda", "Reza Rahadian", "Chelsea Islan", "Kevin Sanjaya", "Indra Kusuma",
+            "Ahmad Fauzi", "Siti Aminah", "Robby Cahyadi", "Anisa Rahma", "Taufik Hidayat",
+            "Eka Saputra", "Gita Gutawa", "Dian Sastro", "Joe Taslim", "Iko Uwais",
+            "Rio Dewanto", "Chico Jericho", "Tara Basro", "Marissa Anita", "Lukman Sardi",
+            "Ario Bayu", "Adinia Wirasti", "Arifin Putra", "Tatjana Saphira", "Laura Basuki",
+            "Nicholas Saputra", "Pevita Pearce", "Yayan Ruhian", "Prisia Nasution", "Raline Shah"
+        ];
+
+        // Renders podium elements and dynamically generates ranks 4 to 50
+        function renderLeaderboard(type) {
+            const data = DATASETS[type];
+            
+            // 1. Populate top 3 podiums
+            const podiums = data.podiums;
+            document.getElementById('p1-name').textContent = podiums[1].name;
+            document.getElementById('p1-xp').textContent = podiums[1].xp;
+            document.getElementById('p1-avatar').src = podiums[1].avatar;
+            
+            document.getElementById('p2-name').textContent = podiums[0].name;
+            document.getElementById('p2-xp').textContent = podiums[0].xp;
+            document.getElementById('p2-avatar').src = podiums[0].avatar;
+            
+            document.getElementById('p3-name').textContent = podiums[2].name;
+            document.getElementById('p3-xp').textContent = podiums[2].xp;
+            document.getElementById('p3-avatar').src = podiums[2].avatar;
+
+            // 2. Generate ranking rows from Rank 4 to 50
+            const startXp = parseInt(podiums[2].xp.replace(/,/g, '')); // Rank 3 XP
+            const user = data.user;
+            const rows = [];
+            let currentXp = startXp;
+
+            for (let r = 4; r <= 50; r++) {
+                if (r === user.rank) {
+                    rows.push({
+                        rank: r,
+                        name: user.name,
+                        xp: user.xp.toLocaleString('id-ID'),
+                        badge: user.badge,
+                        badgeColor: user.badgeColor,
+                        me: true
+                    });
+                    continue;
+                }
+
+                // Smoothly decay XP values
+                const step = Math.floor(startXp / 50) + 5;
+                currentXp = Math.max(currentXp - step - Math.floor(Math.random() * 15), 120);
+
+                // Re-adjust boundary to ensure logic constraints are not violated
+                if (r < user.rank && currentXp <= user.xp) {
+                    currentXp = user.xp + (user.rank - r) * 20 + Math.floor(Math.random() * 5);
+                } else if (r > user.rank && currentXp >= user.xp) {
+                    currentXp = user.xp - (r - user.rank) * 20 - Math.floor(Math.random() * 5);
+                }
+
+                // Determine badge tier
+                let badge = 'STUDENT';
+                let badgeColor = 'bg-primary/10 text-primary border border-primary/20';
+                if (currentXp > 8000) {
+                    badge = 'EXPERT';
+                    badgeColor = 'bg-tertiary text-white';
+                } else if (currentXp > 2000) {
+                    badge = 'SKILLED';
+                    badgeColor = 'bg-[#FFF3DF] border border-neutral/15 text-neutral';
+                }
+
+                const nameIdx = (r - 4) % RANDOM_NAMES.length;
+                rows.push({
+                    rank: r,
+                    name: RANDOM_NAMES[nameIdx],
+                    xp: currentXp.toLocaleString('id-ID'),
+                    badge: badge,
+                    badgeColor: badgeColor,
+                    me: false
+                });
+            }
+
+            // 3. Render table body
+            const tbody = document.getElementById('rank-table-body');
+            tbody.innerHTML = rows.map(student => `
+                <tr class="${student.me ? 'bg-primary/10 font-black' : 'hover:bg-neutral/5'} transition-colors">
+                    <td class="p-4 text-center font-black ${student.me ? 'text-primary' : 'text-neutral/50'}">${student.rank}</td>
+                    <td class="p-4 flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full border-2 ${student.me ? 'border-primary' : 'border-neutral/10'} overflow-hidden shrink-0">
+                            <div class="w-full h-full bg-primary/15 flex items-center justify-center font-extrabold text-[10px]">
+                                ${student.name[0]}
+                            </div>
+                        </div>
+                        <span class="${student.me ? 'text-primary font-black' : ''}">${student.name}</span>
+                    </td>
+                    <td class="p-4">
+                        <span class="${student.badgeColor} px-2.5 py-0.5 rounded-full text-[8px] font-black uppercase tracking-wider inline-block">
+                            ${student.badge}
+                        </span>
+                    </td>
+                    <td class="p-4 text-right font-black ${student.me ? 'text-primary' : ''}">${student.xp} XP</td>
+                </tr>
+            `).join('');
+
+            // 4. Render Sticky footer row
+            const stickyRow = document.getElementById('sticky-user-row');
+            stickyRow.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-black shadow-playful-sm">#${user.rank}</span>
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-full border-2 border-primary bg-primary/10 overflow-hidden shrink-0">
+                            <div class="w-full h-full flex items-center justify-center font-black text-xs text-primary">A</div>
+                        </div>
+                        <div>
+                            <span class="text-primary font-black text-xs block leading-tight">Kamu (Andi Pratama)</span>
+                            <span class="text-[8px] font-bold text-neutral/40 block">Tingkat Kelas • Level 12</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 shrink-0">
+                    <span class="${user.badgeColor} px-2.5 py-0.5 rounded-full text-[8px] font-black uppercase tracking-wider inline-block">
+                        ${user.badge}
+                    </span>
+                    <span class="text-primary font-black text-xs">${user.xp.toLocaleString('id-ID')} XP</span>
+                </div>
+            `;
+        }
+
+        // Handles switching between leaderboard categories/tabs
+        function switchTab(type, button) {
+            // Remove active style from tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            // Activate selected button
+            button.classList.add('active');
+            // Populate
+            renderLeaderboard(type);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load bulanan (monthly) by default
+            const monthlyTab = document.querySelectorAll('.tab-btn')[1];
+            if (monthlyTab) {
+                switchTab('bulanan', monthlyTab);
+            } else {
+                renderLeaderboard('bulanan');
+            }
+        });
+    </script>
+</body>
+</html>

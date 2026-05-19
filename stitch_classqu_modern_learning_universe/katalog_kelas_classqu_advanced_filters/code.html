@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "background": "#fdf8f8",
+                    "outline": "#8b716d",
+                    "inverse-surface": "#313030",
+                    "surface-tint": "#a53b29",
+                    "on-surface-variant": "#57423e",
+                    "on-surface": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#594400",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "on-primary-container": "#731709",
+                    "tertiary-fixed": "#9ff1e9",
+                    "surface-container": "#f1edec",
+                    "primary": "#a53b29",
+                    "tertiary-container": "#60b2ab",
+                    "primary-fixed": "#ffdad4",
+                    "on-secondary-fixed": "#251a00",
+                    "secondary-fixed-dim": "#eac25b",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#fdf8f8",
+                    "primary-container": "#ff7e67",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#f4f0ef",
+                    "inverse-primary": "#ffb4a6",
+                    "on-tertiary-container": "#00423e",
+                    "surface-dim": "#ddd9d8",
+                    "surface-container-highest": "#e6e1e1",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f7f2f2",
+                    "on-tertiary-fixed": "#00201e",
+                    "on-primary-fixed": "#3f0300",
+                    "surface-container-high": "#ece7e7",
+                    "secondary-fixed": "#ffdf96",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#ffd56d",
+                    "surface-variant": "#e6e1e1",
+                    "tertiary-fixed-dim": "#83d5cd",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#ffb4a6",
+                    "on-secondary-container": "#775b00",
+                    "on-primary-fixed-variant": "#842415",
+                    "tertiary": "#006a64",
+                    "on-background": "#1c1b1b",
+                    "surface": "#fdf8f8",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#dec0ba",
+                    "secondary": "#765a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "margin-desktop": "64px",
+                    "unit": "4px",
+                    "gutter": "20px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .netflix-scroll::-webkit-scrollbar { display: none; }
+        .netflix-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 backdrop-blur-md sticky top-4 z-50 rounded-3xl mt-4 mx-4 md:mx-margin-desktop shadow-lg shadow-primary/5 flex justify-between items-center px-lg py-sm max-w-7xl lg:mx-auto">
+<div class="flex items-center gap-xl">
+<span class="text-headline-md font-headline-md font-black text-primary">ClassQu</span>
+<div class="hidden lg:flex items-center gap-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Home</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Kelas</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Subscription</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Community</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Blog</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center bg-surface-container-low/60 border border-outline-variant/30 rounded-full px-md py-xs gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md w-32 lg:w-48" placeholder="Cari materi..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-lg py-sm rounded-full hover:scale-105 transition-transform duration-200 active:scale-95">Mulai Belajar</button>
+</div>
+</nav>
+<main class="py-xl max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section -->
+<div class="mb-xl">
+<h1 class="font-display-lg text-display-lg mb-xs text-primary">Katalog Kelas</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Upgrade skill kamu dengan mentor industri terbaik.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-xl">
+<!-- Filter Sidebar (Advanced Filtering) -->
+<aside class="w-full lg:w-72 flex-none space-y-lg">
+<div class="bg-surface-container-low rounded-3xl p-lg border border-outline-variant/20 sticky top-28">
+<div class="flex items-center justify-between mb-lg">
+<h2 class="font-headline-md text-body-lg font-bold">Filter</h2>
+<button class="text-primary text-label-sm hover:underline">Reset</button>
+</div>
+<!-- Category -->
+<div class="mb-xl">
+<h3 class="font-label-md text-on-surface mb-md">Kategori</h3>
+<div class="flex flex-wrap gap-xs">
+<label class="cursor-pointer group">
+<input checked="" class="hidden peer" type="checkbox"/>
+<span class="block px-sm py-1 rounded-full text-label-sm border border-outline-variant/30 peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-all">Semua</span>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" type="checkbox"/>
+<span class="block px-sm py-1 rounded-full text-label-sm border border-outline-variant/30 peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-all">Ms Office</span>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" type="checkbox"/>
+<span class="block px-sm py-1 rounded-full text-label-sm border border-outline-variant/30 peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-all">English</span>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" type="checkbox"/>
+<span class="block px-sm py-1 rounded-full text-label-sm border border-outline-variant/30 peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-all">Canva &amp; Design</span>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" type="checkbox"/>
+<span class="block px-sm py-1 rounded-full text-label-sm border border-outline-variant/30 peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-all">Public Speaking</span>
+</label>
+<label class="cursor-pointer group">
+<input class="hidden peer" type="checkbox"/>
+<span class="block px-sm py-1 rounded-full text-label-sm border border-outline-variant/30 peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-all">Career Preparation</span>
+</label>
+</div>
+</div>
+<!-- Level -->
+<div class="mb-xl">
+<h3 class="font-label-md text-on-surface mb-md">Level</h3>
+<div class="space-y-sm">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-label-md text-on-surface-variant group-hover:text-on-surface">Pemula</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-label-md text-on-surface-variant group-hover:text-on-surface">Menengah</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-label-md text-on-surface-variant group-hover:text-on-surface">Mahir</span>
+</label>
+</div>
+</div>
+<!-- Format -->
+<div class="mb-xl">
+<h3 class="font-label-md text-on-surface mb-md">Format</h3>
+<div class="grid grid-cols-2 gap-sm">
+<label class="cursor-pointer">
+<input checked="" class="hidden peer" name="format" type="radio"/>
+<span class="block text-center py-2 rounded-xl text-label-sm border border-outline-variant/30 peer-checked:bg-secondary-container peer-checked:border-secondary-container peer-checked:text-on-secondary-container transition-all">Online</span>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="format" type="radio"/>
+<span class="block text-center py-2 rounded-xl text-label-sm border border-outline-variant/30 peer-checked:bg-secondary-container peer-checked:border-secondary-container peer-checked:text-on-secondary-container transition-all">Offline</span>
+</label>
+</div>
+</div>
+<!-- Duration -->
+<div>
+<h3 class="font-label-md text-on-surface mb-md">Durasi</h3>
+<div class="space-y-sm">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-label-md text-on-surface-variant group-hover:text-on-surface">&lt; 2 Jam</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-label-md text-on-surface-variant group-hover:text-on-surface">2 - 5 Jam</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<span class="text-label-md text-on-surface-variant group-hover:text-on-surface">&gt; 5 Jam</span>
+</label>
+</div>
+</div>
+</div>
+</aside>
+<!-- Catalog Content -->
+<div class="flex-1 space-y-xl">
+<!-- Trending Rows (Main Content Area) -->
+<section>
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-md text-headline-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                        Paling Populer
+                    </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Class Card 1 -->
+<div class="group cursor-pointer bg-surface-container-lowest border border-outline-variant/20 rounded-3xl p-md transition-all hover:shadow-xl hover:shadow-primary/5">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-md">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Mastering Canva" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1vlG6t7-WJnsVjoer6yNaQgE6XINSF8-qMQCfjUlxIyp6DpPxSS89qvW7Gxlp4QNlMJKUvs0s5Rd_RtMUSsf5bENHX99UZg2JZKDznKD9Gd5rTRJ8ovhoRVZ7-KoW9Xez1GcY6mfbjprmgNERoC3HUAG7W0RBw1KytIf2_VVZbzrDklV_O7D5cW3hU4nbsvg8K8OqGZ3Ql40I_OMuHh4PGZ-jqKBF9CuLoWUS8M-3vm9gzcXVKQp30RR4v1vR6QWAd5-1-wt_eg"/>
+<div class="absolute top-sm left-sm flex gap-xs">
+<span class="glass-effect text-primary text-[10px] font-bold px-sm py-1 rounded-full border border-white/20">ONLINE</span>
+<span class="bg-tertiary text-on-tertiary text-[10px] font-bold px-sm py-1 rounded-full uppercase">Canva</span>
+</div>
+<button class="absolute bottom-sm right-sm w-10 h-10 rounded-full glass-effect flex items-center justify-center text-primary shadow-lg hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-sm">4.9/5.0</span>
+</div>
+<span class="text-on-surface-variant text-label-sm">12 Modul • 4 Jam</span>
+</div>
+<h3 class="font-headline-md text-body-lg line-clamp-1 mb-md group-hover:text-primary transition-colors">Mastering Canva for Social Media</h3>
+<div class="flex items-center justify-between">
+<span class="text-primary font-bold text-headline-md">Rp 149.000</span>
+<div class="flex items-center gap-xs">
+<div class="w-6 h-6 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Mentor" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"/>
+</div>
+<span class="text-label-sm text-on-surface-variant">Sarah W.</span>
+</div>
+</div>
+</div>
+<!-- Class Card 2 -->
+<div class="group cursor-pointer bg-surface-container-lowest border border-outline-variant/20 rounded-3xl p-md transition-all hover:shadow-xl hover:shadow-primary/5">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-md">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Public Speaking" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA3yjOAAimUqhfCD8Zh9YaLzd7pcRTe1fAAPChZ51NaMwtMr_NQHg0z82__M0mKquwy7CHpCjDjrGRbxF1nFs613rWDIbiQ-djJNcER2QuOyOwljEoLSDT1QcziIM8aYB7cJgxiXu_NkcIQEIq1I8BxvnMudJFXD4QicN_iSX4eRINJ-bt5LJhFoxKPmJ7Kr6OrsPYGyMEKAVNE0zA3NF2K3E6R4qgg3JKKEoBnhhJUE-MqP6FrbEJgvwuCB-cKLVL-nREW87iTA"/>
+<div class="absolute top-sm left-sm flex gap-xs">
+<span class="glass-effect text-primary text-[10px] font-bold px-sm py-1 rounded-full border border-white/20">OFFLINE</span>
+<span class="bg-tertiary text-on-tertiary text-[10px] font-bold px-sm py-1 rounded-full uppercase">Speaking</span>
+</div>
+<button class="absolute bottom-sm right-sm w-10 h-10 rounded-full glass-effect flex items-center justify-center text-primary shadow-lg hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-label-sm">4.8/5.0</span>
+</div>
+<span class="text-on-surface-variant text-label-sm">8 Sesi • 12 Jam</span>
+</div>
+<h3 class="font-headline-md text-body-lg line-clamp-1 mb-md group-hover:text-primary transition-colors">Confident Public Speaking 101</h3>
+<div class="flex items-center justify-between">
+<span class="text-primary font-bold text-headline-md">Rp 199.000</span>
+<div class="flex items-center gap-xs">
+<div class="w-6 h-6 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Mentor" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA"/>
+</div>
+<span class="text-label-sm text-on-surface-variant">Dimas P.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommendation Section (Bento style updated) -->
+<section>
+<div class="mb-md">
+<h2 class="font-headline-md text-headline-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                        Rekomendasi Untukmu
+                    </h2>
+</div>
+<div class="grid grid-cols-1 gap-lg">
+<!-- Feature Large Card -->
+<div class="bg-tertiary-container/10 border border-tertiary/20 rounded-3xl p-lg flex flex-col md:flex-row gap-lg items-center group cursor-pointer hover:bg-tertiary-container/20 transition-all">
+<div class="w-full md:w-2/5 aspect-video rounded-2xl overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" data-alt="Cloud Computing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWK8dlCWoMvKpoObFsiRdDZ2GDZMfWMpOibdnaXXBKoKStaNRK7ZNdE5QcfQK9xAj27h1llqb5NLkOVtj0bi-J68fplwFHR_Dz-X3SJzxSvj3iwwSpKfLtaJnPT_M5HQwMOT8j1Iw8W5OU-mvqPs3RqYtlxVLM-hu80cDMPADqOW0Cwm99pOwJdx7R2UTg9yHgBOcS4JRLPxjs5qTDWX11y12Q-yyfuItKk-lgtaSZy9mmLDi-yJqRJJDyNnFgw9NtmOGpoPW-1Q"/>
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all"></div>
+<span class="absolute top-sm right-sm bg-primary text-on-primary text-[10px] font-bold px-sm py-1 rounded-full">PREVIEW</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-xs">
+<span class="text-label-sm font-label-sm text-tertiary uppercase tracking-widest">TOP CHOICE</span>
+<span class="text-label-sm text-on-surface-variant">• Online • 20 Modul</span>
+</div>
+<h3 class="font-display-lg text-headline-md mb-sm group-hover:text-tertiary transition-colors">Cloud Computing Basics</h3>
+<p class="text-body-md text-on-surface-variant mb-lg">Pelajari fondasi cloud computing untuk karir masa depanmu.</p>
+<div class="flex items-center justify-between">
+<div>
+<span class="text-headline-md text-primary font-bold">Rp 299.000</span>
+<div class="flex items-center gap-xs mt-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-bold">5.0/5.0</span>
+</div>
+</div>
+<button class="bg-tertiary text-on-tertiary px-lg py-sm rounded-full font-label-md hover:scale-105 transition-transform shadow-lg shadow-tertiary/20">Ikuti Kelas</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/30 mt-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg px-margin-mobile md:px-margin-desktop py-xl w-full max-w-7xl mx-auto">
+<div>
+<span class="text-headline-md font-headline-md font-black text-primary block mb-md">ClassQu</span>
+<p class="text-on-surface-variant font-body-md text-body-md">
+                Platform belajar online untuk Gen-Z yang ingin menguasai skill praktis dengan cara yang seru dan interaktif.
+            </p>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-md">Perusahaan</h4>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary decoration-2 font-body-md text-body-md" href="#">Tentang Kami</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary decoration-2 font-body-md text-body-md" href="#">Pusat Bantuan</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary decoration-2 font-body-md text-body-md" href="#">Kontak</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-md">Bantuan</h4>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary decoration-2 font-body-md text-body-md" href="#">Syarat &amp; Ketentuan</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-secondary decoration-2 font-body-md text-body-md" href="#">Kebijakan Privasi</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-md">Ikuti Kami</h4>
+<div class="flex gap-md">
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined">camera</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined">mail</span>
+</a>
+</div>
+</div>
+</div>
+<div class="px-margin-mobile md:px-margin-desktop py-lg border-t border-outline-variant/10 text-center text-on-surface-variant text-label-md font-label-md max-w-7xl mx-auto">
+        © 2024 ClassQu. Belajar jadi lebih seru.
+    </div>
+</footer>
+<!-- FAB for Support -->
+<button class="fixed bottom-6 right-6 bg-secondary-container text-on-secondary-container w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</button>
+</body></html>

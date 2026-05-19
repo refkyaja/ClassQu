@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - ClassQu Les Privat Bandung</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF7E67',      // Coral/Orange
+                        secondary: '#FFD56C',    // Pastel Yellow
+                        tertiary: '#60B2AB',     // Soft Mint/Teal
+                        neutral: '#1C1B1B',      // Charcoal/Ink Black
+                        background: '#FFFBF4',   // Warm Cream
+                        'surface-container': '#FFF3DF', // Light cream border/fill
+                    },
+                    boxShadow: {
+                        'playful-sm': '4px 4px 0px #1C1B1B',
+                        'playful': '8px 8px 0px #1C1B1B',
+                        'premium': '0 15px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 12px 35px rgba(255, 126, 103, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(28, 27, 27, 0.05);
+            box-shadow: 0 12px 45px rgba(0, 0, 0, 0.03);
+            border-radius: 32px;
+        }
+        .btn-playful {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 24px rgba(255, 126, 103, 0.15);
+        }
+        .btn-playful:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(255, 126, 103, 0.25);
+        }
+        .btn-playful:active {
+            transform: translateY(1px);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Top Sticky Glass Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Hero Header Section -->
+    <header class="max-w-7xl mx-auto px-6 md:px-12 pt-16 text-center">
+        <span class="bg-primary/10 text-primary px-4 py-1.5 rounded-full border border-primary/20 font-bold text-xs uppercase tracking-wider mb-4 inline-block">MEMBERSIHKAN JALAN MENUJU PRESTASI</span>
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight text-neutral mb-6 leading-tight">
+            Kenali <span class="text-primary">ClassQu</span> Les Privat<br/>Terpercaya di Bandung
+        </h1>
+        <p class="text-neutral/60 text-lg md:text-xl max-w-3xl mx-auto font-medium mb-12">
+            Dengan dedikasi tinggi selama lebih dari 7 tahun, ClassQu hadir sebagai mitra belajar terbaik untuk membantu putra-putri Anda meraih impian akademik dan non-akademik mereka.
+        </p>
+
+        <!-- Stats Counters -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-20">
+            <div class="glass-card bg-white p-6 border-2 border-neutral shadow-playful-sm text-center">
+                <span class="material-symbols-outlined text-primary text-4xl mb-2">groups</span>
+                <h3 class="text-3xl font-black text-neutral">2.000+</h3>
+                <p class="text-neutral/60 text-xs font-bold uppercase tracking-wider mt-1">Tutor Terseleksi</p>
+            </div>
+            <div class="glass-card bg-white p-6 border-2 border-neutral shadow-playful-sm text-center">
+                <span class="material-symbols-outlined text-secondary text-4xl mb-2">emoji_events</span>
+                <h3 class="text-3xl font-black text-neutral">8.000+</h3>
+                <p class="text-neutral/60 text-xs font-bold uppercase tracking-wider mt-1">Siswa Terbantu</p>
+            </div>
+            <div class="glass-card bg-white p-6 border-2 border-neutral shadow-playful-sm text-center">
+                <span class="material-symbols-outlined text-tertiary text-4xl mb-2">star</span>
+                <h3 class="text-3xl font-black text-neutral">4.8/5.0</h3>
+                <p class="text-neutral/60 text-xs font-bold uppercase tracking-wider mt-1">Rating Kepuasan</p>
+            </div>
+            <div class="glass-card bg-white p-6 border-2 border-neutral shadow-playful-sm text-center">
+                <span class="material-symbols-outlined text-[#B18E36] text-4xl mb-2">workspace_premium</span>
+                <h3 class="text-3xl font-black text-neutral">7+ Tahun</h3>
+                <p class="text-neutral/60 text-xs font-bold uppercase tracking-wider mt-1">Pengalaman Nyata</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="max-w-7xl mx-auto px-6 md:px-12 pb-24 space-y-24">
+        
+        <!-- Siapa Kami Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h2 class="text-3xl font-black text-neutral flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-3xl">question_mark</span>
+                    <span>Siapa ClassQu?</span>
+                </h2>
+                <p class="text-neutral/70 font-medium leading-relaxed">
+                    ClassQu adalah lembaga les privat No.1 di Bandung yang berdiri sejak 2018. Berbeda dengan lembaga les privat konvensional, ClassQu menawarkan <span class="text-primary font-bold">100+ program pembelajaran komprehensif</span> yang mencakup bidang akademik sekolah hingga bakat minat non-akademik.
+                </p>
+                <p class="text-neutral/70 font-medium leading-relaxed">
+                    Mulai dari pendampingan mata pelajaran SD, SMP, SMA, persiapan SNBT/UTBK, hingga kelas non-akademik seperti mengaji, kursus komputer, alat musik, seni lukis, bela diri, renang, hingga keahlian praktis lainnya. Semua program dibina langsung oleh tutor berkompeten dari kampus ternama.
+                </p>
+                <div class="flex flex-wrap gap-2.5 pt-2">
+                    <span class="px-3 py-1.5 bg-[#FFF3DF] border border-neutral/10 rounded-full text-xs font-bold text-neutral/70">Tutor ITB</span>
+                    <span class="px-3 py-1.5 bg-[#FFF3DF] border border-neutral/10 rounded-full text-xs font-bold text-neutral/70">Tutor Unpad</span>
+                    <span class="px-3 py-1.5 bg-[#FFF3DF] border border-neutral/10 rounded-full text-xs font-bold text-neutral/70">Tutor UPI</span>
+                    <span class="px-3 py-1.5 bg-[#FFF3DF] border border-neutral/10 rounded-full text-xs font-bold text-neutral/70">Tutor Telkom</span>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-2 bg-neutral rounded-[34px] rotate-1 z-0"></div>
+                <div class="glass-card bg-white p-8 relative z-10 border-2 border-neutral shadow-premium">
+                    <h4 class="font-extrabold text-sm text-primary uppercase tracking-widest mb-4">Proses Seleksi Ketat Kami</h4>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3">
+                            <span class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span>
+                            <div>
+                                <h5 class="font-bold text-sm">Verifikasi Akademik & Kampus</h5>
+                                <p class="text-neutral/60 text-xs mt-0.5">Tutor wajib berasal dari kampus top Bandung dengan IPK memuaskan.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="w-6 h-6 rounded-full bg-secondary/30 text-neutral flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
+                            <div>
+                                <h5 class="font-bold text-sm">Tes Kompetensi Mengajar</h5>
+                                <p class="text-neutral/60 text-xs mt-0.5">Simulasi pengajaran langsung (Microteaching) untuk memvalidasi cara penyampaian materi.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="w-6 h-6 rounded-full bg-tertiary/20 text-tertiary flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span>
+                            <div>
+                                <h5 class="font-bold text-sm">Pelatihan Karakter & Etika</h5>
+                                <p class="text-neutral/60 text-xs mt-0.5">Membekali tutor dengan kesabaran, etika kesopanan, dan metode pengajaran personal.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Komitmen / Visi Misi Section -->
+        <section class="glass-card bg-[#FFF3DF] p-8 md:p-12 border-2 border-neutral shadow-playful relative overflow-hidden">
+            <div class="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-primary/5 pointer-events-none"></div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div class="space-y-4">
+                    <span class="bg-primary text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">KOMITMEN UTAMA</span>
+                    <h2 class="text-3xl font-black text-neutral">Komitmen Kami Untuk Pendidikan</h2>
+                    <p class="text-neutral/60 text-sm font-medium">Kami mendedikasikan seluruh potensi kami untuk mendampingi generasi bangsa berkembang secara maksimal dan adaptif.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-neutral/10 shadow-premium">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined font-bold">visibility</span>
+                    </div>
+                    <h4 class="font-black text-lg text-neutral mb-2">Visi Kami</h4>
+                    <p class="text-neutral/60 text-xs leading-relaxed font-semibold">
+                        Menjadi lembaga les privat terbaik dan terpercaya di Indonesia yang membantu setiap siswa mencapai potensi maksimal mereka, baik dalam bidang akademik maupun non-akademik.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-neutral/10 shadow-premium">
+                    <div class="w-10 h-10 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined font-bold">task_alt</span>
+                    </div>
+                    <h4 class="font-black text-lg text-neutral mb-2">Misi Kami</h4>
+                    <ul class="text-neutral/60 text-[11px] font-semibold space-y-2">
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-tertiary">✔</span> Menyediakan layanan pendidikan berkualitas yang komprehensif dan personal.
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-tertiary">✔</span> Menyeleksi dan membina tutor-tutor terbaik dari kampus ternama di Bandung.
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-tertiary">✔</span> Memberikan fleksibilitas waktu dan lokasi belajar bagi siswa.
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-tertiary">✔</span> Menjamin kepuasan dengan garansi ganti tutor gratis 100%.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mengapa ClassQu No.1? -->
+        <section class="space-y-12">
+            <div class="text-center max-w-xl mx-auto space-y-3">
+                <span class="text-primary font-extrabold text-xs uppercase tracking-widest">KEUNGGULAN UTAMA</span>
+                <h2 class="text-3xl md:text-4xl font-black text-neutral">Mengapa ClassQu Les Privat No.1 di Bandung?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Point 1 -->
+                <div class="glass-card bg-white p-6 border-2 border-neutral shadow-playful-sm hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-5">
+                        <span class="material-symbols-outlined text-2xl font-bold">category</span>
+                    </div>
+                    <h4 class="font-extrabold text-lg text-neutral mb-2">1. Program Terlengkap</h4>
+                    <p class="text-neutral/60 text-xs font-semibold leading-relaxed">
+                        Menawarkan 100+ program les privat siap saji — mulai dari bimbingan akademik sekolah (SD, SMP, SMA, UTBK, Mahasiswa), mengaji, komputer & coding, kesenian, musik, hingga aneka cabang olahraga.
+                    </p>
+                </div>
+                <!-- Point 2 -->
+                <div class="glass-card bg-white p-6 border-2 border-neutral shadow-playful-sm hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center text-neutral mb-5">
+                        <span class="material-symbols-outlined text-2xl font-bold">school</span>
+                    </div>
+                    <h4 class="font-extrabold text-lg text-neutral mb-2">2. Tutor dari Kampus Top</h4>
+                    <p class="text-neutral/60 text-xs font-semibold leading-relaxed">
+                        Kami memiliki jaringan 2.000+ tutor aktif dari ITB, Unpad, UPI, Telkom University, dan kampus top lainnya. Proses seleksi ketat menjamin kualitas penyampaian materi tutor sangat bersahabat.
+                    </p>
+                </div>
+                <!-- Point 3 -->
+                <div class="glass-card bg-white p-6 border-2 border-neutral shadow-playful-sm hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary mb-5">
+                        <span class="material-symbols-outlined text-2xl font-bold">schedule</span>
+                    </div>
+                    <h4 class="font-extrabold text-lg text-neutral mb-2">3. Fleksibilitas 100%</h4>
+                    <p class="text-neutral/60 text-xs font-semibold leading-relaxed">
+                        Siswa bebas memilih format belajar: tutor datang ke rumah atau belajar online via Zoom / Meet dengan jadwal belajar fleksibel menyesuaikan waktu luang siswa yang padat.
+                    </p>
+                </div>
+                <!-- Point 4 -->
+                <div class="glass-card bg-white p-6 border-2 border-neutral shadow-playful-sm hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-12 h-12 bg-[#B18E36]/10 rounded-full flex items-center justify-center text-[#B18E36] mb-5">
+                        <span class="material-symbols-outlined text-2xl font-bold">map</span>
+                    </div>
+                    <h4 class="font-extrabold text-lg text-neutral mb-2">4. Seluruh Bandung Raya</h4>
+                    <p class="text-neutral/60 text-xs font-semibold leading-relaxed">
+                        Jangkauan layanan les privat kami luas mencakup Kota Bandung, Kota Cimahi, Kabupaten Bandung, dan Kabupaten Bandung Barat. Kami datangkan tutor terbaik langsung ke depan pintu Anda.
+                    </p>
+                </div>
+                <!-- Point 5 -->
+                <div class="glass-card bg-white p-6 border-2 border-neutral shadow-playful-sm hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-5">
+                        <span class="material-symbols-outlined text-2xl font-bold">check_circle</span>
+                    </div>
+                    <h4 class="font-extrabold text-lg text-neutral mb-2">5. Garansi Kepuasan</h4>
+                    <p class="text-neutral/60 text-xs font-semibold leading-relaxed">
+                        Apabila Anda merasa kurang cocok dengan karakter atau cara mengajar tutor yang dikirimkan, kami menjamin garansi penggantian tutor baru 100% gratis demi kepuasan putra-putri Anda.
+                    </p>
+                </div>
+                <!-- Point 6 -->
+                <div class="glass-card bg-white p-6 border-2 border-neutral shadow-playful-sm hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center text-neutral mb-5">
+                        <span class="material-symbols-outlined text-2xl font-bold">payments</span>
+                    </div>
+                    <h4 class="font-extrabold text-lg text-neutral mb-2">6. Harga Hemat & Terjangkau</h4>
+                    <p class="text-neutral/60 text-xs font-semibold leading-relaxed">
+                        Investasi masa depan terbaik mulai dari Rp80.000 saja per sesi pertemuan. Sistem pembayaran transparan dan jauh lebih ekonomis jika dibandingkan dengan mendaftar di bimbel reguler biasa.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wilayah Layanan Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-12 border-t border-neutral/10">
+            <div class="lg:col-span-4 space-y-4">
+                <span class="bg-[#B18E36]/10 text-[#B18E36] px-3.5 py-1.5 rounded-full border border-[#B18E36]/20 font-bold text-xs uppercase tracking-wider inline-block">DAERAH JANGKAUAN</span>
+                <h3 class="text-3xl font-black text-neutral">Melayani Seluruh Bandung Raya</h3>
+                <p class="text-neutral/60 text-sm font-medium leading-relaxed">
+                    Layanan les privat ke rumah (Home Tutoring) kami menjangkau seluruh kecamatan di 4 wilayah utama Bandung Raya demi memastikan kemudahan akses belajar Anda:
+                </p>
+                <div class="p-4 bg-tertiary/10 rounded-2xl border border-tertiary/20 flex gap-3 items-center">
+                    <span class="material-symbols-outlined text-tertiary text-2xl">laptop_mac</span>
+                    <p class="text-[11px] font-bold text-tertiary leading-normal">Layanan Les Online Terintegrasi juga tersedia luas di seluruh penjuru Indonesia via Zoom & Google Meet.</p>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-5 bg-white rounded-2xl border border-neutral/10 shadow-premium">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+                        <h4 class="font-black text-sm text-neutral">Kota Bandung</h4>
+                    </div>
+                    <p class="text-neutral/50 text-[11px] font-medium leading-relaxed">
+                        Coblong, Cibeunying, Sumur Bandung, Andir, Cicendo, Lengkong, Buahbatu, Cibiru, Arcamanik, Antapani, Sukasari, Regol, Astanajanyar, dan seluruh kecamatan lainnya.
+                    </p>
+                </div>
+                <div class="p-5 bg-white rounded-2xl border border-neutral/10 shadow-premium">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+                        <h4 class="font-black text-sm text-neutral">Kota Cimahi</h4>
+                    </div>
+                    <p class="text-neutral/50 text-[11px] font-medium leading-relaxed">
+                        Cimahi Utara, Cimahi Tengah, Cimahi Selatan, serta seluruh kelurahan dan pemukiman di wilayah administratif Kota Cimahi.
+                    </p>
+                </div>
+                <div class="p-5 bg-white rounded-2xl border border-neutral/10 shadow-premium">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+                        <h4 class="font-black text-sm text-neutral">Kabupaten Bandung</h4>
+                    </div>
+                    <p class="text-neutral/50 text-[11px] font-medium leading-relaxed">
+                        Dayeuhkolot, Bojongsoang, Baleendah, Margahayu, Margaasih, Soreang, Rancaekek, Cileunyi, Majalaya, Katapang, Cicalengka, dan kecamatan lainnya.
+                    </p>
+                </div>
+                <div class="p-5 bg-white rounded-2xl border border-neutral/10 shadow-premium">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#B18E36]"></span>
+                        <h4 class="font-black text-sm text-neutral">Kabupaten Bandung Barat</h4>
+                    </div>
+                    <p class="text-neutral/50 text-[11px] font-medium leading-relaxed">
+                        Padalarang, Ngamprah, Lembang, Parongpong, Cisarua, Batujajar, Cihampelas, Cililin, dan kecamatan sekitarnya.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="glass-card bg-[#FF7E67] text-white p-8 md:p-12 border-2 border-neutral shadow-playful text-center relative overflow-hidden">
+            <div class="absolute -left-12 -bottom-12 w-40 h-40 bg-white/10 rounded-full"></div>
+            <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+                <h3 class="text-2xl md:text-3xl font-black">Siap Belajar Bersama Les Privat Terbaik di Bandung?</h3>
+                <p class="text-white/90 text-sm font-semibold leading-relaxed">
+                    Bergabunglah sekarang juga dengan 8.000+ siswa yang telah membuktikan kemudahan berprestasi bersama tutor-tutor handal ClassQu!
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center pt-2">
+                    <a href="hubungi.html" class="btn-playful bg-white text-neutral border-2 border-neutral font-black text-xs px-8 py-3 rounded-full shadow-playful-sm hover:scale-105 transition-transform">
+                        Daftar Sekarang
+                    </a>
+                    <a href="https://wa.me/6282136176459?text=Halo%20ClassQu,%20saya%20tertarik%20untuk%20konsultasi%20les%20privat%20siswa." target="_blank" class="btn-playful bg-secondary text-neutral border-2 border-neutral font-black text-xs px-8 py-3 rounded-full shadow-playful-sm hover:scale-105 transition-transform">
+                        Konsultasi Gratis
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="components.js"></script>
+</body>
+</html>

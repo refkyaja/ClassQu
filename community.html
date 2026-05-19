@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Community Hub - ClassQu</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#a53b29",      // Premium deep brick/coral
+                    "primary-light": "#ff7e67",
+                    "secondary-accent": "#ffd56d", // Amber yellow
+                    "tertiary": "#006a64",     // Deep Teal
+                    "tertiary-light": "#60b2ab", // Mint Teal
+                    "on-surface": "#1c1b1b",
+                    "on-surface-variant": "#57423e",
+                    "background": "#fdf8f8",
+                    "outline-variant": "#dec0ba"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "1.75rem",
+                    "xl": "2.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "margin-desktop": "48px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "title-sm": ["Plus Jakarta Sans"],
+                    "label-upper": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(165, 59, 41, 0.08);
+            box-shadow: 0 10px 40px -10px rgba(165, 59, 41, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 50px -10px rgba(165, 59, 41, 0.1);
+            border-color: rgba(165, 59, 41, 0.15);
+        }
+        .glow-button {
+            transition: all 0.3s ease;
+        }
+        .glow-button:hover {
+            box-shadow: 0 8px 24px rgba(165, 59, 41, 0.25);
+            transform: translateY(-1px);
+        }
+        .glow-button:active {
+            transform: translateY(1px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+        }
+        .chat-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: rgba(165, 59, 41, 0.15);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-lg text-on-surface selection:bg-primary-light/10 selection:text-primary overflow-x-hidden lg:overflow-y-hidden min-h-screen lg:h-screen flex flex-col justify-start relative">
+
+<!-- Background Ambient Glowing Blobs -->
+<div class="fixed top-[-10%] left-[-10%] w-[45vw] h-[45vw] bg-primary/4 rounded-full blur-[100px] pointer-events-none z-[-1]"></div>
+<div class="fixed bottom-[-15%] right-[-5%] w-[40vw] h-[40vw] bg-tertiary-light/4 rounded-full blur-[90px] pointer-events-none z-[-1]"></div>
+
+<!-- Top Navigation Bar Placeholder (Dynamically loaded by community_components.js) -->
+<div id="community-navbar-placeholder" class="sticky top-4 z-50 w-full shrink-0 px-4 md:px-0"></div>
+
+<!-- Main Three Columns Layout Container -->
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter px-margin-mobile md:px-margin-desktop mt-8 lg:mb-0 lg:pb-6 items-start w-full lg:flex-grow lg:overflow-hidden">
+    
+    <!-- LEFT SIDE COLUMN Placeholder (Dynamically loaded by community_components.js) -->
+    <div id="community-sidebar-left-placeholder" class="lg:col-span-3 space-y-6 flex flex-col w-full lg:h-[calc(100vh-140px)] lg:overflow-y-auto chat-scroll pr-1 pb-8"></div>
+
+    <!-- CENTER POSTS FEED COLUMN (lg:col-span-6) -->
+    <main class="lg:col-span-6 space-y-6 w-full lg:h-[calc(100vh-140px)] lg:overflow-y-auto chat-scroll px-1 pb-8">
+        
+        <!-- PANEL 1: BERANDA FEED PANEL -->
+        <div id="panel-beranda" class="tab-panel space-y-6">
+            
+            <!-- Discuss Area Input box -->
+            <div class="glass-card rounded-2xl p-5 flex flex-col gap-4">
+                <div class="flex gap-3.5 items-start">
+                    <img class="w-10 h-10 rounded-full object-cover border border-primary/20 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q" alt="My Profile"/>
+                    <div class="flex-grow">
+                        <textarea id="discuss-input-area" rows="2" class="w-full text-xs font-bold border border-primary/10 bg-neutral-100/30 focus:bg-white rounded-xl focus:ring-primary focus:border-primary p-3 focus:outline-none placeholder-on-surface-variant/45" placeholder="Apa yang ingin kamu diskusikan hari ini?"></textarea>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-2 border-t border-primary/5 justify-between items-center">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button onclick="switchTab('postingan')" class="px-3.5 py-1.5 rounded-full border border-primary/15 bg-white/70 hover:bg-white text-[10px] font-black text-on-surface-variant flex items-center gap-1.5 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[13px] text-primary">edit</span>
+                            <span>Tulis Postingan</span>
+                        </button>
+                        <button onclick="showNotice('Bagikan File', 'Unggah berkas PDF, Figma, atau dokumen tugas pendukung belajar Anda.')" class="px-3.5 py-1.5 rounded-full border border-primary/15 bg-white/70 hover:bg-white text-[10px] font-black text-on-surface-variant flex items-center gap-1.5 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[13px] text-tertiary-light">attach_file</span>
+                            <span>Bagikan File</span>
+                        </button>
+                        <button onclick="showNotice('Buat Polling', 'Buat jajak pendapat interaktif untuk berdiskusi dengan sesama pelajar.')" class="px-3.5 py-1.5 rounded-full border border-primary/15 bg-white/70 hover:bg-white text-[10px] font-black text-on-surface-variant flex items-center gap-1.5 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[13px] text-[#e3aa1a]">bar_chart</span>
+                            <span>Buat Polling</span>
+                        </button>
+                    </div>
+                    <button onclick="submitDiscussionQuick()" class="glow-button px-5 py-2 bg-primary text-white rounded-full text-[10.5px] font-black uppercase tracking-wide shadow-md shadow-primary/20">Kirim</button>
+                </div>
+            </div>
+
+            <!-- Feed Pills navigation selectors -->
+            <div class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-primary/5 py-3.5 px-4 -mx-1 flex justify-between items-center rounded-b-xl shadow-sm mb-3 select-none">
+                <div class="flex gap-4 font-black text-xs">
+                    <button onclick="filterFeed('Semua', this)" class="feed-filter-btn text-primary border-b-2 border-primary pb-1">Semua</button>
+                    <button onclick="filterFeed('Mengikuti', this)" class="feed-filter-btn text-on-surface-variant/50 hover:text-primary transition-colors pb-1">Mengikuti</button>
+                    <button onclick="filterFeed('Populer', this)" class="feed-filter-btn text-on-surface-variant/50 hover:text-primary transition-colors pb-1">Populer</button>
+                    <button onclick="filterFeed('Mentor', this)" class="feed-filter-btn text-on-surface-variant/50 hover:text-primary transition-colors pb-1">Mentor</button>
+                </div>
+                
+                <div class="flex items-center gap-1 border border-primary/15 rounded-full px-3 py-1 bg-white/80 backdrop-blur-md text-[10px] font-black shadow-sm cursor-pointer hover:bg-white transition-colors">
+                    <span>Terbaru</span>
+                    <span class="material-symbols-outlined text-xs">keyboard_arrow_down</span>
+                </div>
+            </div>
+
+            <!-- Posts Feed stream list -->
+            <div id="posts-feed-container" class="space-y-0 divide-y divide-primary/5">
+                <!-- Post 1: Maya (Pinned UI design guide) -->
+                <article class="bg-transparent py-4 px-3 hover:bg-neutral-50/20 transition-all flex flex-col gap-3.5 w-full">
+                    <!-- Author header -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img alt="Maya" class="w-10 h-10 rounded-full border border-primary/15 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB04QHkH6tB9ZzxuotPYoJyGEnbZp8Jl3ioaVh9nkSh32h_hIkOi7tW6KhkkSYXy3yhpHDYjM0OzBdkx7gwUSVRDodciM_U-MlxAn0olsTIw6IF9Fd1TPHV8qMZSLsngnPjrweW7YGnsUQpLqjmALtNvhwct6rAdQHmjAKvMbIqvEups2BYCQnDdcYJ1907DoY-Cf8ZZCWpL5NTXiR6TXP0itxQ7q8lJkfJsn7FI_Pfcd_q7eRfUZotZr5p0SJnYm1GekY0YUrWjg"/>
+                            <div>
+                                <h4 class="text-xs font-black text-on-surface">
+                                    Maya Putri
+                                    <span class="text-[9px] font-bold text-tertiary-light ml-1.5">Level 8</span>
+                                </h4>
+                                <p class="text-[9.5px] font-bold text-on-surface-variant/50">2 jam yang lalu • <span class="text-primary"># UI/UX &amp; Design</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-[#EFE9FF] text-[#6A4BFF] border border-[#6A4BFF]/20 rounded-lg px-2.5 py-0.5 font-black text-[9px] uppercase tracking-wider">★ Pinned</span>
+                            <button class="text-on-surface-variant/40 hover:text-on-surface"><span class="material-symbols-outlined text-base">more_horiz</span></button>
+                        </div>
+                    </div>
+
+                    <!-- TEXT AT TOP -->
+                    <div class="space-y-1.5">
+                        <h3 class="font-extrabold text-[15px] leading-snug text-on-surface hover:text-primary transition-colors cursor-pointer" onclick="window.location.href='community_post_detail.html?id=maya'">
+                            Tips membuat hierarchy yang baik di UI Design ✨
+                        </h3>
+                        <p class="text-xs text-on-surface-variant leading-relaxed font-bold">
+                            Halo semuanya! Aku baru selesai bikin project dashboard dan ingin berbagi beberapa tips tentang visual hierarchy yang menurutku... 
+                            <a href="community_post_detail.html?id=maya" class="text-primary hover:underline font-black">selengkapnya</a>
+                        </p>
+                    </div>
+
+                    <!-- IMAGE AT BOTTOM -->
+                    <div class="w-full h-48 rounded-xl overflow-hidden shadow-sm relative cursor-pointer" onclick="window.location.href='community_post_detail.html?id=maya'">
+                        <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&auto=format&fit=crop&q=80" alt="Design UI UX" class="w-full h-full object-cover hover:scale-103 transition-transform duration-300"/>
+                        <div class="absolute bottom-3 left-3 bg-black/60 text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full backdrop-blur-md">Figma Mockup</div>
+                    </div>
+
+                    <!-- PREMIUM ACTION FOOTER: Komentar | dilihat | Suka, Bagikan, Wishlist -->
+                    <div class="flex justify-between items-center pt-3.5 border-t border-primary/5 text-[11px] font-black text-on-surface-variant/65 select-none">
+                        <!-- Left: Comments count + bullet + views count + likes -->
+                        <div class="flex items-center gap-1.5">
+                            <div class="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors" onclick="openCommentsModal('maya', event)">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">chat_bubble</span>
+                                <span>12 Komentar</span>
+                            </div>
+                            <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                            <div class="flex items-center gap-1 text-on-surface-variant/65">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">visibility</span>
+                                <span>156 Dilihat</span>
+                            </div>
+                            <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                            <button onclick="event.stopPropagation(); likeStaticPost(this)" class="flex items-center gap-1 hover:text-primary transition-all active:scale-95">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">thumb_up</span>
+                                <span class="like-count">42 Suka</span>
+                            </button>
+                        </div>
+                        <!-- Right: Share + Wishlist -->
+                        <div class="flex items-center gap-4">
+                            <button onclick="sharePost(event)" class="flex items-center gap-1.5 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">share</span>
+                                <span>Bagikan</span>
+                            </button>
+                            <button onclick="toggleWishlist(this)" class="flex items-center gap-1.5 text-on-surface-variant/65 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">bookmark</span>
+                                <span>Wishlist</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 2: Rizky (Excel spreadsheet question with simulator) -->
+                <article class="bg-transparent py-4 px-3 hover:bg-neutral-50/20 transition-all flex flex-col gap-3.5 w-full">
+                    <!-- Author header -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img alt="Rizky" class="w-10 h-10 rounded-full border border-primary/15 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA"/>
+                            <div>
+                                <h4 class="text-xs font-black text-on-surface">
+                                    Rizky Pratama
+                                    <span class="text-[9px] font-bold text-tertiary-light ml-1.5">Level 5</span>
+                                </h4>
+                                <p class="text-[9.5px] font-bold text-on-surface-variant/50">5 jam yang lalu • <span class="text-primary"># Ms Office QA</span></p>
+                            </div>
+                        </div>
+                        <button class="text-on-surface-variant/40 hover:text-on-surface"><span class="material-symbols-outlined text-base">more_horiz</span></button>
+                    </div>
+
+                    <!-- TEXT AT TOP -->
+                    <div class="space-y-1.5">
+                        <h3 class="font-extrabold text-[15px] leading-snug text-on-surface hover:text-primary transition-colors cursor-pointer" onclick="window.location.href='community_post_detail.html?id=rizky'">
+                            Rumus Excel ini kenapa hasilnya #VALUE ya?
+                        </h3>
+                        <p class="text-xs text-on-surface-variant leading-relaxed font-bold">
+                            Guys, aku lagi belajar VLOOKUP tapi hasilnya muncul #VALUE. Udah cek data juga. Ada yang bisa bantu... 
+                            <a href="community_post_detail.html?id=rizky" class="text-primary hover:underline font-black">selengkapnya</a>
+                        </p>
+                    </div>
+
+                    <!-- HIGH FIDELITY SPREADSHEET AT BOTTOM -->
+                    <div class="border border-primary/10 rounded-xl overflow-hidden shadow-md shadow-primary/5 bg-white/90 text-[9.5px] w-full font-mono cursor-pointer" onclick="window.location.href='community_post_detail.html?id=rizky'">
+                        <div class="grid grid-cols-4 bg-[#FAF6F0] border-b border-primary/10 font-bold text-center py-1">
+                            <div class="border-r border-primary/10"></div>
+                            <div class="border-r border-primary/10">A</div>
+                            <div class="border-r border-primary/10">B</div>
+                            <div>C</div>
+                        </div>
+                        <div class="grid grid-cols-4 border-b border-primary/5 text-center py-1 bg-white">
+                            <div class="font-bold bg-[#FAF6F0] border-r border-primary/10">1</div>
+                            <div class="border-r border-primary/5">Data 1</div>
+                            <div class="border-r border-primary/5">10</div>
+                            <div>Ok</div>
+                        </div>
+                        <div class="grid grid-cols-4 border-b border-primary/5 text-center py-1 bg-white">
+                            <div class="font-bold bg-[#FAF6F0] border-r border-primary/10">2</div>
+                            <div class="border-r border-primary/5">Data 2</div>
+                            <div class="border-r border-primary/5">20</div>
+                            <div>Pending</div>
+                        </div>
+                        <div class="grid grid-cols-4 text-center py-1 bg-white">
+                            <div class="font-bold bg-[#FAF6F0] border-r border-primary/10">3</div>
+                            <div class="border-r border-primary/5">Total</div>
+                            <div class="border-r border-primary/5">30</div>
+                            <div class="bg-red-50 text-red-600 font-extrabold border border-red-300 rounded mx-1 px-1 animate-pulse">#VALUE!</div>
+                        </div>
+                    </div>
+
+                    <!-- PREMIUM ACTION FOOTER: Komentar | dilihat | Suka, Bagikan, Wishlist -->
+                    <div class="flex justify-between items-center pt-3.5 border-t border-primary/5 text-[11px] font-black text-on-surface-variant/65 select-none">
+                        <!-- Left: Comments count + bullet + views count + likes -->
+                        <div class="flex items-center gap-1.5">
+                            <div class="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors" onclick="openCommentsModal('rizky', event)">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">chat_bubble</span>
+                                <span>8 Komentar</span>
+                            </div>
+                            <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                            <div class="flex items-center gap-1 text-on-surface-variant/65">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">visibility</span>
+                                <span>98 Dilihat</span>
+                            </div>
+                            <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                            <button onclick="event.stopPropagation(); likeStaticPost(this)" class="flex items-center gap-1 hover:text-primary transition-all active:scale-95">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">thumb_up</span>
+                                <span class="like-count">15 Suka</span>
+                            </button>
+                        </div>
+                        <!-- Right: Share + Wishlist -->
+                        <div class="flex items-center gap-4">
+                            <button onclick="sharePost(event)" class="flex items-center gap-1.5 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">share</span>
+                                <span>Bagikan</span>
+                            </button>
+                            <button onclick="toggleWishlist(this)" class="flex items-center gap-1.5 text-on-surface-variant/65 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">bookmark</span>
+                                <span>Wishlist</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 3: Sarah Wijaya (Mentor) -->
+                <article class="bg-transparent py-4 px-3 hover:bg-neutral-50/20 transition-all flex flex-col gap-3.5 w-full">
+                    <!-- Author header -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img alt="Sarah" class="w-10 h-10 rounded-full border border-primary/15 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDssyzQLmMMfFWttctiYSzDFJhuKJM4G_skmst8A0zZ8GnyvH6YOUiKAr9PIh87ilXPLcDVwYGbInuXwRddrRB9IQ_wYGqaNfFRdVpGlCdIzH_cFGrO5o2mQ585QYUSq76zI-uLmFiMotk8vgwsnX-XTLzhM8YO7iW22MfL6VcglCf7H2bHa9_ZSPJknCIjBpNbDimgKbqlDDP1y5HWs9yrb35SUxmNrzc8fZfPHEDwR3vQUyV7YGQyL8SdTmJOfkRoblQ6YZgoBQ"/>
+                            <div>
+                                <h4 class="text-xs font-black text-on-surface">
+                                    Sarah Wijaya
+                                    <span class="bg-[#FFF5F3] text-primary border border-primary/20 rounded px-1.5 py-0.5 ml-1 text-[9px] uppercase tracking-wider font-extrabold">Mentor</span>
+                                    <span class="text-[9px] font-bold text-tertiary-light ml-1.5">Level 15</span>
+                                </h4>
+                                <p class="text-[9.5px] font-bold text-on-surface-variant/50">1 hari yang lalu • <span class="text-primary"># Career Preparation</span></p>
+                            </div>
+                        </div>
+                        <button class="text-on-surface-variant/40 hover:text-on-surface"><span class="material-symbols-outlined text-base">more_horiz</span></button>
+                    </div>
+
+                    <!-- TEXT AT TOP -->
+                    <div class="space-y-1.5">
+                        <h3 class="font-extrabold text-[15px] leading-snug text-on-surface hover:text-primary transition-colors cursor-pointer" onclick="window.location.href='community_post_detail.html?id=sarah'">
+                            3 Hal yang HR Lihat Pertama di CV Kamu
+                        </h3>
+                        <p class="text-xs text-on-surface-variant leading-relaxed font-bold">
+                            Berdasarkan pengalaman aku review ratusan CV, ini 3 hal yang paling diperhatikan HR sebelum lanjut ke tahap... 
+                            <a href="community_post_detail.html?id=sarah" class="text-primary hover:underline font-black">selengkapnya</a>
+                        </p>
+                    </div>
+
+                    <!-- IMAGE AT BOTTOM -->
+                    <div class="w-full h-48 rounded-xl overflow-hidden shadow-sm relative cursor-pointer" onclick="window.location.href='community_post_detail.html?id=sarah'">
+                        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&auto=format&fit=crop&q=80" alt="Mentor CV Review" class="w-full h-full object-cover hover:scale-103 transition-transform duration-300"/>
+                        <div class="absolute bottom-3 left-3 bg-black/60 text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full backdrop-blur-md">Mentor Insight</div>
+                    </div>
+
+                    <!-- PREMIUM ACTION FOOTER: Komentar | dilihat | Suka, Bagikan, Wishlist -->
+                    <div class="flex justify-between items-center pt-3.5 border-t border-primary/5 text-[11px] font-black text-on-surface-variant/65 select-none">
+                        <!-- Left: Comments count + bullet + views count + likes -->
+                        <div class="flex items-center gap-1.5">
+                            <div class="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors" onclick="openCommentsModal('sarah', event)">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">chat_bubble</span>
+                                <span>18 Komentar</span>
+                            </div>
+                            <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                            <div class="flex items-center gap-1 text-on-surface-variant/65">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">visibility</span>
+                                <span>210 Dilihat</span>
+                            </div>
+                            <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                            <button onclick="event.stopPropagation(); likeStaticPost(this)" class="flex items-center gap-1 hover:text-primary transition-all active:scale-95">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">thumb_up</span>
+                                <span class="like-count">89 Suka</span>
+                            </button>
+                        </div>
+                        <!-- Right: Share + Wishlist -->
+                        <div class="flex items-center gap-4">
+                            <button onclick="sharePost(event)" class="flex items-center gap-1.5 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">share</span>
+                                <span>Bagikan</span>
+                            </button>
+                            <button onclick="toggleWishlist(this)" class="flex items-center gap-1.5 text-on-surface-variant/65 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">bookmark</span>
+                                <span>Wishlist</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+        </div>
+
+        <!-- PANEL 2: GRUP BELAJAR PANEL Placeholder -->
+        <div id="panel-grup" class="tab-panel space-y-6 hidden"></div>
+
+        <!-- PANEL 3: MENTOR SPOTLIGHT & CONSULTATIONS Placeholder -->
+        <div id="panel-mentor" class="tab-panel space-y-6 hidden"></div>
+
+        <!-- PANEL 4: PUBLISH NEW POST FORM Placeholder -->
+        <div id="panel-postingan" class="tab-panel space-y-6 hidden"></div>
+
+        <!-- Center ending indicator text inside center feed column -->
+        <div class="w-full py-12 text-center text-on-surface-variant/25 font-black text-xs border-t border-primary/5 mt-12 shrink-0">
+            ✨ ini adalah akhir dari postingan/community ✨
+        </div>
+
+    </main>
+
+    <!-- RIGHT SIDEBAR COLUMN Placeholder (Dynamically loaded by community_components.js) -->
+    <div id="community-sidebar-right-placeholder" class="lg:col-span-3 space-y-6 flex flex-col w-full lg:h-[calc(100vh-140px)] lg:overflow-y-auto chat-scroll pl-1 pb-8"></div>
+
+</div>
+
+<!-- Modal Dialog Notification overlay -->
+<div id="notice-overlay" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+    <div class="fixed inset-0 bg-neutral-900/10 backdrop-blur-md" onclick="closeNotice()"></div>
+    <div class="relative z-10 w-full max-w-sm bg-white/95 backdrop-blur-xl border border-primary/10 rounded-2xl p-6 shadow-2xl text-center space-y-4">
+        <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto shadow-inner">
+            <span class="material-symbols-outlined text-2xl font-bold">done_all</span>
+        </div>
+        <div>
+            <h3 id="notice-title" class="text-xs font-black text-on-surface">Berhasil</h3>
+            <p id="notice-msg" class="text-[10px] text-on-surface-variant font-bold mt-1 leading-relaxed"></p>
+        </div>
+        <button onclick="closeNotice()" class="w-full py-2 bg-primary text-white border border-primary-light/10 rounded-xl font-black text-xs shadow-md glow-button">
+            Oke, Lanjutkan
+        </button>
+    </div>
+</div>
+
+<!-- DYNAMIC COMMENTS DRAWER MODAL OVERLAY (Premium Slate Theme as requested) -->
+<div id="comments-modal-overlay" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4 opacity-0 transition-opacity duration-300">
+    <div class="fixed inset-0 bg-[#000000]/60 backdrop-blur-md" onclick="closeCommentsModal()"></div>
+    <div id="comments-modal-panel" class="relative z-10 w-full max-w-md md:max-w-lg bg-[#121214] text-white border border-[#29292e]/40 rounded-[24px] shadow-2xl flex flex-col max-h-[80vh] transform translate-y-12 scale-95 opacity-0 transition-all duration-300">
+        
+        <!-- Modal Header -->
+        <div class="flex justify-between items-center px-6 py-4.5 border-b border-white/[0.04]">
+            <h3 class="text-sm font-black text-white" id="modal-comments-count-title">0 komentar</h3>
+            <button onclick="closeCommentsModal()" class="w-8 h-8 rounded-full hover:bg-white/5 text-white/60 hover:text-white transition-colors focus:outline-none flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg">close</span>
+            </button>
+        </div>
+
+        <!-- Sort Tabs Sub-header -->
+        <div class="flex items-center gap-2 px-6 py-3 bg-[#16161a]/30 border-b border-white/[0.02]">
+            <button class="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/15 text-[10px] text-white rounded-full font-bold transition-all" id="comments-sort-popular">
+                <span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1">grade</span>
+                <span>Populer</span>
+            </button>
+            <button class="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 hover:bg-white/10 text-[10px] text-white/60 hover:text-white rounded-full font-bold transition-all" id="comments-sort-latest">
+                <span class="material-symbols-outlined text-[13px]">schedule</span>
+                <span>Terbaru</span>
+            </button>
+        </div>
+
+        <!-- Comments Scroll Area -->
+        <div id="modal-comments-list" class="flex-grow overflow-y-auto px-6 py-4 space-y-4.5 scroll-smooth chat-scroll max-h-[50vh]">
+            <!-- Comments will be injected here dynamically -->
+        </div>
+
+        <!-- Modal Footer Input -->
+        <div class="border-t border-white/[0.04] p-4 flex items-center gap-3 bg-[#16161a] rounded-b-[24px]">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-8 h-8 rounded-full border border-white/10 object-cover shrink-0 select-none"/>
+            <div class="flex-grow bg-[#212126] border border-white/[0.06] hover:border-white/10 focus-within:border-primary/40 rounded-2xl py-2 px-4 text-xs font-bold transition-all flex items-center gap-2">
+                <input id="modal-new-comment-input" type="text" placeholder="Tulis komentarmu disini..." onkeydown="if(event.key === 'Enter') submitModalComment()" class="flex-grow bg-transparent text-white placeholder-white/35 focus:outline-none text-[11px]"/>
+                <button onclick="submitModalComment()" class="text-primary hover:text-primary-light transition-colors focus:outline-none flex items-center">
+                    <span class="material-symbols-outlined text-base font-black">send</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- DYNAMIC COMMUNITY ENGINE SCRIPT -->
+<script>
+    // Database for dynamically added posts or actions
+    let FEED_THREADS = [
+        {
+            id: 1,
+            tag: "Tips Belajar",
+            title: "💡 Teknik Feynman: Cara Belajar 10x Lebih Cepat & Nyantol",
+            authorName: "Dian Pratama",
+            authorRole: "MENTOR",
+            authorAvatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAQlgX9G2HBuDhqDtUojpm0MesHmY6kzelS3zL-PmSDFbmEYmr4hfqsgJqa88dNMJzyXzvVdLTyKOrAliTx5JXkipmfF8qTI4vjHjIrcIf1RQDXbw63vpQIZBX8VkTOyCPK2E7wIpixERadCJUm4CtIYmzmLT8UIIWDI6Ojs8xXw6b9RtZQ5fW5-QjmllhAcyKJlZmYZAi1OseMVPmAs1na6I-bAZV1TwS0dNwXLeZqiciDmw9QIPtGNlQnbPaY4tB38AH2yE9EHg",
+            time: "Diposting baru saja",
+            content: "Halo teman-teman! Sering merasa habis baca modul langsung lupa besoknya? Coba gunakan Teknik Feynman: 1) Tulis konsep yang mau dipelajari, 2) Jelaskan konsep itu seolah kamu sedang mengajar anak berumur 8 tahun dengan bahasa sesederhana mungkin, 3) Cari bagian yang kamu masih bingung, baca lagi teorinya. Selamat mencoba! 🧠",
+            likes: 84,
+            likedByMe: false,
+            commentsCount: 9,
+            views: 184,
+            image: null
+        }
+    ];
+
+    const CHAT_GROUPS = {
+        general: {
+            title: "# general-discussion",
+            online: "128 Online",
+            history: [
+                { sender: "Maya", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuB04QHkH6tB9ZzxuotPYoJyGEnbZp8Jl3ioaVh9nkSh32h_hIkOi7tW6KhkkSYXy3yhpHDYjM0OzBdkx7gwUSVRDodciM_U-MlxAn0olsTIw6IF9Fd1TPHV8qMZSLsngnPjrweW7YGnsUQpLqjmALtNvhwct6rAdQHmjAKvMbIqvEups2BYCQnDdcYJ1907DoY-Cf8ZZCWpL5NTXiR6TXP0itxQ7q8lJkfJsn7FI_Pfcd_q7eRfUZotZr5p0SJnYm1GekY0YUrWjg", text: "Guys, bootcamp batch 6 UI/UX ClassQu udah dibuka lho. Keren parah mentoringnya!", self: false },
+                { sender: "Budi", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDMLIxb0ROdqhOzRaBLL1Z9ye_ufFrW8XkBOpcicPVrBIGWX1vyh9W2WKOofFgvm8O4OdaWRciN_tGSuR3wgOMVg5Ic18B1a1OeSw4ck4FlQ-lyNLpvqB7ObWVLqooMVRLfCEOpkF9wNj_ntdVGNWiyltElDiGxS92rbOdbfzfar4goQsWiWM3Mf5sx9KIa9xVnOuYEF1BcHzzc9yWu2oG-StJq4txjVgGlmynOzsU_kqmx22Zjg_M6SRPpgkwOMFTd_Cw04BvTTw", text: "Iya bener, saya lulusan batch 4 kerasa banget peningkatan portofolionya.", self: false }
+            ]
+        },
+        office: {
+            title: "# ms-office-qa",
+            online: "95 Online",
+            history: [
+                { sender: "Rian", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA", text: "Ada yang tau cara bikin rumus Excel gabungin teks tanpa manual di ratusan baris?", self: false },
+                { sender: "Citra", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBvRbYAeuvGgR26Gn7gqnKhicjKHKt4UWAEkMcuxt1bHfLQPy4t8rYI-xMwcXvfNLJ7gGHRECuenmpJvYcqRoSfvvlVyBf2sKoAxEZ6T1LmGxpVk-wqYNZDRfJhAeSX9CIDghc5XnMl2lujaL4a3FUTC5Sh4e7y6CPtAcVDJtspkHI12vlFc2KUF84m4PE7uHxwUSFmE4N0s6I2GXZzRKaF-511uHAtcCltBBJyVBfHE-MMiE3hAP1NNwTYNWywpjVROMl4V6iMIg", text: "Bisa pake rumus =TEXTJOIN(\", \"; TRUE; A1:D1) kak, auto gabung deh!", self: false }
+            ]
+        },
+        coding: {
+            title: "# coding-bootcamp",
+            online: "112 Online",
+            history: [
+                { sender: "Hendra", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA", text: "Halo guys, ada yg bisa ajarin middleware authentication pake JWT di Node Express?", self: false }
+            ]
+        },
+        uiux: {
+            title: "# uiux-design",
+            online: "86 Online",
+            history: [
+                { sender: "Chelsea", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBvRbYAeuvGgR26Gn7gqnKhicjKHKt4UWAEkMcuxt1bHfLQPy4t8rYI-xMwcXvfNLJ7gGHRECuenmpJvYcqRoSfvvlVyBf2sKoAxEZ6T1LmGxpVk-wqYNZDRfJhAeSX9CIDghc5XnMl2lujaL4a3FUTC5Sh4e7y6CPtAcVDJtspkHI12vlFc2KUF84m4PE7uHxwUSFmE4N0s6I2GXZzRKaF-511uHAtcCltBBJyVBfHE-MMiE3hAP1NNwTYNWywpjVROMl4V6iMIg", text: "Rekomendasi warna pastel ceria buat UI/UX landing page mainan anak dong.", self: false }
+            ]
+        },
+        career: {
+            title: "# career-prep",
+            online: "74 Online",
+            history: [
+                { sender: "Ahmad", avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDJ41sdb2nd-8X-I7zF7Ixeb9JxI4FdIW17CXcyQP6CqainX0HVr_GoOC2A42T3fO5ZHqBIlYbHvPqEsrSr6ceRdBM3x2BdEXHVLpsHBXfw5N70AkkpCo1k00DIhKu7awVzlluEY98gNRw_GaRou_2U2InSuZbcJRo7jgxCVFwaWNCS7cmHepQrHVMSmkzXvI999algutCE6o8JF6KU2thNp-rjnSvDKmNgWCg_x7_Z1D_y8dPBhr38OSU6wa7SJF0qGUDhVeIfIg", text: "Tips biar lolos screening CV ATS dong rek, lagi ngelamar intern PM nih.", self: false }
+            ]
+        }
+    };
+
+    const CLASS_MENTORS = [
+        {
+            name: "Dimas Pratama",
+            role: "Public Speaking Specialist",
+            avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAQlgX9G2HBuDhqDtUojpm0MesHmY6kzelS3zL-PmSDFbmEYmr4hfqsgJqa88dNMJzyXzvVdLTyKOrAliTx5JXkipmfF8qTI4vjHjIrcIf1RQDXbw63vpQIZBX8VkTOyCPK2E7wIpixERadCJUm4CtIYmzmLT8UIIWDI6Ojs8xXw6b9RtZQ5fW5-QjmllhAcyKJlZmYZAi1OseMVPmAs1na6I-bAZV1TwS0dNwXLeZqiciDmw9QIPtGNlQnbPaY4tB38AH2yE9EHg",
+            badge: "👑",
+            badgeClass: "bg-[#FFF5F3] text-primary border border-primary/10",
+            skills: ["Public Speaking", "Presentation"],
+            rating: "4.9",
+            reviews: "230"
+        },
+        {
+            name: "Aulia Rizky",
+            role: "Senior UI/UX Designer",
+            avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDVqCS4JcK8zSkdk8gF67Dogn_DsKXfgMf6HabnC0Wu3zPc-OVbdAz1ai38rGgkKZ3JA7nO1RlKd7WRxZEIEdk-vLiE7BL7zkVOOetgR2mNL-Gpf59nMLT80L_nFcD7MJBbGr0JZz60g2CB2zG9Y62yjuMlL_DWWscx-q2b6alE0zeRBQnD6MSxYQyqvSTXl9GtjhhW7HpmKGnEKGOKcrItgzr7uOJ_CCfrBsP-M1xXv8ERFnBL8oEpM5lwdy8Qpd6IsC6eGkvaHQ",
+            badge: "🛡️",
+            badgeClass: "bg-[#E8F8F5] text-[#20a48a] border border-[#20a48a]/10",
+            skills: ["UI/UX Design", "Figma"],
+            rating: "4.9",
+            reviews: "198"
+        },
+        {
+            name: "Rizky Pratama",
+            role: "Microsoft Office Expert",
+            avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA",
+            badge: "⚡",
+            badgeClass: "bg-red-50 text-red-600 border border-red-200",
+            skills: ["Excel", "PowerPoint"],
+            rating: "4.8",
+            reviews: "312"
+        },
+        {
+            name: "Sarah Wijaya",
+            role: "Career & HR Consultant",
+            avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDssyzQLmMMfFWttctiYSzDFJhuKJM4G_skmst8A0zZ8GnyvH6YOUiKAr9PIh87ilXPLcDVwYGbInuXwRddrRB9IQ_wYGqaNfFRdVpGlCdIzH_cFGrO5o2mQ585QYUSq76zI-uLmFiMotk8vgwsnX-XTLzhM8YO7iW22MfL6VcglCf7H2bHa9_ZSPJknCIjBpNbDimgKbqlDDP1y5HWs9yrb35SUxmNrzc8fZfPHEDwR3vQUyV7YGQyL8SdTmJOfkRoblQ6YZgoBQ",
+            badge: "🏅",
+            badgeClass: "bg-[#EFE9FF] text-[#6A4BFF] border border-[#6A4BFF]/10",
+            skills: ["Career Prep", "CV Writing"],
+            rating: "4.9",
+            reviews: "156"
+        },
+        {
+            name: "Fajar Maulana",
+            role: "Full Stack Developer",
+            avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
+            badge: "&lt;&gt;",
+            badgeClass: "bg-[#E8F8F5] text-[#20a48a] border border-[#20a48a]/10",
+            skills: ["JavaScript", "React"],
+            rating: "4.8",
+            reviews: "178"
+        },
+        {
+            name: "Maya Putri",
+            role: "English Language Coach",
+            avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuB04QHkH6tB9ZzxuotPYoJyGEnbZp8Jl3ioaVh9nkSh32h_hIkOi7tW6KhkkSYXy3yhpHDYjM0OzBdkx7gwUSVRDodciM_U-MlxAn0olsTIw6IF9Fd1TPHV8qMZSLsngnPjrweW7YGnsUQpLqjmALtNvhwct6rAdQHmjAKvMbIqvEups2BYCQnDdcYJ1907DoY-Cf8ZZCWpL5NTXiR6TXP0itxQ7q8lJkfJsn7FI_Pfcd_q7eRfUZotZr5p0SJnYm1GekY0YUrWjg",
+            badge: "📝",
+            badgeClass: "bg-orange-50 text-orange-600 border border-orange-200",
+            skills: ["English Speaking", "TOEFL"],
+            rating: "4.9",
+            reviews: "265"
+        },
+        {
+            name: "Yoga Adi",
+            role: "Digital Marketing Specialist",
+            avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80",
+            badge: "📢",
+            badgeClass: "bg-[#EFE9FF] text-[#6A4BFF] border border-[#6A4BFF]/10",
+            skills: ["Digital Marketing", "Ads"],
+            rating: "4.7",
+            reviews: "129"
+        },
+        {
+            name: "Putri Ananda",
+            role: "Canva & Design Trainer",
+            avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80",
+            badge: "💛",
+            badgeClass: "bg-yellow-50 text-[#e3aa1a] border border-yellow-200",
+            skills: ["Canva", "Design"],
+            rating: "4.8",
+            reviews: "210"
+        }
+    ];
+
+    let activeChannelId = "general";
+    let activeCategoryFilter = "Semua";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        renderChatChannels();
+        renderChatMessages();
+        renderMentors();
+    });
+
+    // Tab switcher logic with dynamic sidebar swap for Mentor page
+    let originalLeftSidebarHTML = "";
+    let originalRightSidebarHTML = "";
+
+    const MENTOR_LEFT_SIDEBAR = `
+<div class="glass-card rounded-2xl p-5 border border-primary/10 shadow-sm space-y-6 bg-white/90">
+    <div class="flex items-center justify-between border-b border-primary/5 pb-3">
+        <h3 class="font-extrabold text-xs text-on-surface uppercase tracking-wider">Filter Mentor</h3>
+        <span class="material-symbols-outlined text-primary text-base">filter_list</span>
+    </div>
+
+    <!-- Keahlian Filter -->
+    <div class="space-y-3">
+        <h4 class="text-[10px] font-black text-on-surface-variant/50 uppercase tracking-wider">Keahlian</h4>
+        <div class="space-y-2">
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface cursor-pointer select-none">
+                <input type="checkbox" checked class="w-4 h-4 rounded text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Semua Keahlian</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="checkbox" class="w-4 h-4 rounded text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Ms Office</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="checkbox" class="w-4 h-4 rounded text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Bahasa Inggris</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="checkbox" class="w-4 h-4 rounded text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>UI/UX & Design</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="checkbox" class="w-4 h-4 rounded text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Programming</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="checkbox" class="w-4 h-4 rounded text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Digital Marketing</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="checkbox" class="w-4 h-4 rounded text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Public Speaking</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="checkbox" class="w-4 h-4 rounded text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Career Preparation</span>
+            </label>
+            <button class="text-[10px] font-black text-primary flex items-center gap-1.5 hover:text-primary-light transition-colors pt-1">
+                <span>Lainnya</span>
+                <span class="material-symbols-outlined text-xs">keyboard_arrow_down</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Tipe Sesi Filter -->
+    <div class="space-y-3 pt-3 border-t border-primary/5">
+        <h4 class="text-[10px] font-black text-on-surface-variant/50 uppercase tracking-wider">Tipe Sesi</h4>
+        <div class="space-y-2">
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface cursor-pointer select-none">
+                <input type="radio" name="session-type" checked class="w-4 h-4 text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Semua Tipe</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="radio" name="session-type" class="w-4 h-4 text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>1 on 1 Mentoring</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="radio" name="session-type" class="w-4 h-4 text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Group Mentoring</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="radio" name="session-type" class="w-4 h-4 text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Live Class</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Ketersediaan Filter -->
+    <div class="space-y-3 pt-3 border-t border-primary/5">
+        <h4 class="text-[10px] font-black text-on-surface-variant/50 uppercase tracking-wider">Ketersediaan</h4>
+        <div class="space-y-2">
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="checkbox" class="w-4 h-4 rounded text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Tersedia Hari Ini</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="checkbox" class="w-4 h-4 rounded text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Akhir Pekan</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-on-surface-variant/75 hover:text-on-surface transition-colors cursor-pointer select-none">
+                <input type="checkbox" class="w-4 h-4 rounded text-primary focus:ring-primary border-primary/20 bg-neutral-50"/>
+                <span>Malam Hari</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <button onclick="showNotice('Reset Filter', 'Semua filter keahlian dan ketersediaan mentor berhasil disetel ulang.')" class="w-full py-2.5 bg-neutral-50 border border-primary/10 rounded-xl hover:bg-neutral-100/60 font-black text-xs uppercase tracking-wide text-on-surface-variant transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+        <span class="material-symbols-outlined text-xs">restart_alt</span>
+        <span>Reset Filter</span>
+    </button>
+</div>
+    `;
+
+    const MENTOR_RIGHT_SIDEBAR = `
+<div class="space-y-6">
+    <!-- Mentor Unggulan Card -->
+    <div class="glass-card rounded-3xl p-5 border border-primary/10 bg-white/90 shadow-sm relative overflow-hidden flex flex-col gap-4">
+        <div class="absolute top-0 right-0 w-16 h-16 bg-[#FFF5F3] rounded-bl-full flex items-start justify-end p-2 z-0">
+            <span class="text-primary text-[10px] font-black">★</span>
+        </div>
+        <h4 class="font-extrabold text-xs text-on-surface uppercase tracking-wider border-b border-primary/5 pb-2">Mentor Unggulan</h4>
+        
+        <div class="flex flex-col items-center text-center gap-3 pt-2 relative z-10">
+            <div class="relative">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQlgX9G2HBuDhqDtUojpm0MesHmY6kzelS3zL-PmSDFbmEYmr4hfqsgJqa88dNMJzyXzvVdLTyKOrAliTx5JXkipmfF8qTI4vjHjIrcIf1RQDXbw63vpQIZBX8VkTOyCPK2E7wIpixERadCJUm4CtIYmzmLT8UIIWDI6Ojs8xXw6b9RtZQ5fW5-QjmllhAcyKJlZmYZAi1OseMVPmAs1na6I-bAZV1TwS0dNwXLeZqiciDmw9QIPtGNlQnbPaY4tB38AH2yE9EHg" alt="Dimas Pratama" class="w-16 h-16 rounded-full border-2 border-primary object-cover"/>
+                <span class="absolute -bottom-1 -right-1 bg-primary text-white text-[9px] font-black px-1.5 py-0.5 rounded-full flex items-center gap-0.5 shadow">
+                    <span class="material-symbols-outlined text-[8px] font-black">verified</span>
+                    <span>Top</span>
+                </span>
+            </div>
+            
+            <div>
+                <h5 class="text-xs font-black text-on-surface">Dimas Pratama</h5>
+                <p class="text-[9px] text-tertiary-light font-black uppercase mt-0.5">Public Speaking Specialist</p>
+            </div>
+        </div>
+
+        <div class="space-y-2 pt-2 text-[10.5px] font-bold text-on-surface-variant/80 border-t border-primary/5">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-xs text-[#e3aa1a]">star</span>
+                <span>4.9 Rating</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-xs text-primary">groups</span>
+                <span>230+ Siswa</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-xs text-[#20a48a]">verified</span>
+                <span>98% Kepuasan</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-xs text-tertiary-light">schedule</span>
+                <span>5 Tahun Pengalaman</span>
+            </div>
+        </div>
+
+        <button onclick="selectMentorForBooking('Dimas Pratama')" class="glow-button bg-primary hover:bg-primary-light text-white w-full py-2.5 rounded-xl font-black text-[10.5px] uppercase tracking-wider transition-all shadow shadow-primary/10">Pesan Sesi</button>
+    </div>
+
+    <!-- Sesi Mendatang Card -->
+    <div class="glass-card rounded-3xl p-5 border border-primary/10 bg-white/90 shadow-sm space-y-4">
+        <h4 class="font-extrabold text-xs text-on-surface uppercase tracking-wider flex items-center gap-1.5 border-b border-primary/5 pb-2">
+            <span class="material-symbols-outlined text-xs text-primary">calendar_month</span>
+            <span>Jadwal Sesi Mendatang</span>
+        </h4>
+        
+        <div class="space-y-3">
+            <div class="flex gap-2.5 items-start p-2 rounded-xl bg-[#FAF6F0]/50 border border-primary/5">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA" alt="Rizky" class="w-8 h-8 rounded-full border border-primary/10 object-cover mt-0.5"/>
+                <div class="space-y-0.5">
+                    <p class="text-[9px] font-black text-primary leading-none uppercase tracking-wider">Sesi 1 on 1</p>
+                    <h5 class="text-[10.5px] font-black text-on-surface leading-snug">Excel Advanced Tips</h5>
+                    <p class="text-[8.5px] font-bold text-on-surface-variant/40 leading-none mt-0.5">Bersama Rizky Pratama</p>
+                    <p class="text-[9px] font-extrabold text-tertiary-light mt-1">Sab, 25 Mei • 19.00 WIB</p>
+                </div>
+            </div>
+            
+            <div class="flex gap-2.5 items-start p-2 rounded-xl bg-[#EFE9FF]/40 border border-primary/5">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDssyzQLmMMfFWttctiYSzDFJhuKJM4G_skmst8A0zZ8GnyvH6YOUiKAr9PIh87ilXPLcDVwYGbInuXwRddrRB9IQ_wYGqaNfFRdVpGlCdIzH_cFGrO5o2mQ585QYUSq76zI-uLmFiMotk8vgwsnX-XTLzhM8YO7iW22MfL6VcglCf7H2bHa9_ZSPJknCIjBpNbDimgKbqlDDP1y5HWs9yrb35SUxmNrzc8fZfPHEDwR3vQUyV7YGQyL8SdTmJOfkRoblQ6YZgoBQ" alt="Sarah" class="w-8 h-8 rounded-full border border-primary/10 object-cover mt-0.5"/>
+                <div class="space-y-0.5">
+                    <p class="text-[9px] font-black text-[#6A4BFF] leading-none uppercase tracking-wider">Group Mentoring</p>
+                    <h5 class="text-[10.5px] font-black text-on-surface leading-snug">Career Preparation</h5>
+                    <p class="text-[8.5px] font-bold text-on-surface-variant/40 leading-none mt-0.5">Bersama Sarah Wijaya</p>
+                    <p class="text-[9px] font-extrabold text-tertiary-light mt-1">Min, 26 Mei • 15.00 WIB</p>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="showNotice('Jadwal Mentor', 'Semua riwayat dan jadwal sesi mentoring dapat diakses di menu Riwayat Sesi.')" class="text-[10px] font-black text-primary hover:text-primary-light transition-colors flex items-center justify-center gap-1 w-full pt-1">
+            <span>Lihat Semua Jadwal</span>
+            <span class="material-symbols-outlined text-xs">arrow_forward</span>
+        </button>
+    </div>
+
+    <!-- Butuh Bantuan Card -->
+    <div class="glass-card rounded-3xl p-5 border border-primary/10 bg-[#FAF6F0]/60 shadow-sm flex items-center justify-between gap-4">
+        <div class="space-y-2 max-w-[70%]">
+            <h5 class="text-[11px] font-black text-on-surface leading-snug">Butuh Bantuan Memilih Mentor?</h5>
+            <p class="text-[9px] font-bold text-on-surface-variant/60 leading-normal">Kami akan rekomendasikan mentor yang paling cocok untukmu!</p>
+            <button onclick="showNotice('Rekomendasi', 'Menghubungkan ke asisten cerdas untuk memilih mentor ideal Anda...')" class="px-3.5 py-1.5 bg-white border border-primary/10 hover:bg-primary hover:text-white rounded-xl text-[9px] font-black uppercase tracking-wider transition-all shadow-sm">Rekomendasikan Mentor ↗</button>
+        </div>
+        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center border border-primary/10 shrink-0 text-xl shadow-sm">💡</div>
+    </div>
+</div>
+    `;
+
+    function switchTab(tabId) {
+        const leftSidebar = document.getElementById("community-sidebar-left-placeholder");
+        const rightSidebar = document.getElementById("community-sidebar-right-placeholder");
+
+        // Save original sidebars on first load
+        if (leftSidebar && !originalLeftSidebarHTML) {
+            originalLeftSidebarHTML = leftSidebar.innerHTML;
+        }
+        if (rightSidebar && !originalRightSidebarHTML) {
+            originalRightSidebarHTML = rightSidebar.innerHTML;
+        }
+
+        // Dynamically swap sidebars if we are going to or leaving the Mentor page
+        if (tabId === "mentor") {
+            if (leftSidebar) leftSidebar.innerHTML = MENTOR_LEFT_SIDEBAR;
+            if (rightSidebar) rightSidebar.innerHTML = MENTOR_RIGHT_SIDEBAR;
+        } else {
+            if (leftSidebar && originalLeftSidebarHTML) leftSidebar.innerHTML = originalLeftSidebarHTML;
+            if (rightSidebar && originalRightSidebarHTML) rightSidebar.innerHTML = originalRightSidebarHTML;
+        }
+
+        document.querySelectorAll('.tab-panel').forEach(panel => {
+            panel.classList.add('hidden');
+        });
+        
+        const targetPanel = document.getElementById('panel-' + tabId);
+        if (targetPanel) {
+            targetPanel.classList.remove('hidden');
+        }
+
+        // Reset all navigation link buttons
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.className = "sidebar-link text-on-surface-variant rounded-full px-5 py-2 flex items-center gap-2 font-black text-xs transition-all duration-300 hover:bg-white/60";
+            const icon = link.querySelector('.material-symbols-outlined');
+            if (icon) {
+                icon.style.fontVariationSettings = "'FILL' 0";
+            }
+        });
+
+        // Set the active navigation link button styled as a primary gradient pill
+        const activeLink = document.getElementById('link-' + tabId);
+        if (activeLink) {
+            activeLink.className = "sidebar-link bg-primary text-white shadow-lg shadow-primary/25 rounded-full px-5 py-2 flex items-center gap-2 font-black text-xs transition-all duration-200";
+            const activeIcon = activeLink.querySelector('.material-symbols-outlined');
+            if (activeIcon) {
+                activeIcon.style.fontVariationSettings = "'FILL' 1";
+            }
+        }
+
+        // Dynamic content renderer trigger on tab activation
+        if (tabId === 'postingan' && typeof renderMyPosts === 'function') {
+            renderMyPosts();
+        } else if (tabId === 'grup' && typeof renderDiscoveryGroups === 'function') {
+            renderDiscoveryGroups();
+        } else if (tabId === 'mentor' && typeof renderMentors === 'function') {
+            renderMentors();
+        }
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function filterMentorTab(tabName, btn) {
+        document.querySelectorAll('.mentor-tab-btn').forEach(b => {
+            b.className = "mentor-tab-btn text-on-surface-variant/50 hover:text-primary transition-colors pb-1";
+        });
+        btn.className = "mentor-tab-btn text-primary border-b-2 border-primary pb-1";
+        showNotice("Filter Mentor", `Menampilkan kategori: ${tabName.toUpperCase()}`);
+    }
+
+    // Direct Group selection trigger from left widget
+    function openGroupChat(groupId) {
+        switchTab('grup');
+        loadGroupChannel(groupId);
+    }
+
+    // Search Trending discussions from right widget
+    function searchTrending(query) {
+        switchTab('beranda');
+        alert(`Memfilter feed untuk topik: "${query}"`);
+    }
+
+    // Submit Discussion Quick
+    function submitDiscussionQuick() {
+        const input = document.getElementById('discuss-input-area');
+        const text = input.value.trim();
+        if (!text) {
+            alert("Silakan masukkan teks diskusi terlebih dahulu.");
+            return;
+        }
+
+        const newPost = {
+            id: FEED_THREADS.length + 2,
+            tag: "General",
+            title: text,
+            authorName: "Kevin Sanjaya",
+            authorRole: "STUDENT",
+            authorAvatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q",
+            time: "Baru saja",
+            content: "",
+            likes: 0,
+            likedByMe: false,
+            commentsCount: 0,
+            views: 1,
+            image: null
+        };
+
+        FEED_THREADS.unshift(newPost);
+        
+        // Register in Comments store for dynamic live commenting
+        POST_DETAILS_DATA[newPost.id] = {
+            commentsCount: 0,
+            comments: []
+        };
+
+        input.value = "";
+        
+        // Render a new card dynamically at the top of the feed container
+        const feedContainer = document.getElementById('posts-feed-container');
+        const newCard = document.createElement('article');
+        newCard.className = "glass-card rounded-2xl p-5 flex flex-col gap-4";
+        newCard.innerHTML = `
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <img alt="Kevin" class="w-10 h-10 rounded-full border border-primary/15 object-cover" src="${newPost.authorAvatar}"/>
+                    <div>
+                        <h4 class="text-xs font-black text-on-surface">
+                            ${newPost.authorName}
+                            <span class="text-[9px] font-bold text-tertiary-light ml-1.5">Level 12</span>
+                        </h4>
+                        <p class="text-[9.5px] font-bold text-on-surface-variant/50">${newPost.time} • <span class="text-primary"># General</span></p>
+                    </div>
+                </div>
+                <button class="text-on-surface-variant/40 hover:text-on-surface"><span class="material-symbols-outlined text-base">more_horiz</span></button>
+            </div>
+            <div class="space-y-2">
+                <h3 class="font-extrabold text-[15px] leading-snug text-on-surface">${newPost.title}</h3>
+                ${newPost.content ? `<p class="text-xs text-on-surface-variant leading-relaxed font-bold">${newPost.content}</p>` : ''}
+            </div>
+            <div class="flex justify-between items-center pt-3.5 border-t border-primary/5 text-[11px] font-black text-on-surface-variant/65 select-none">
+                <!-- Left: Comments count + bullet + views count + likes -->
+                <div class="flex items-center gap-1.5">
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors" onclick="openCommentsModal('${newPost.id}', event)">
+                        <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">chat_bubble</span>
+                        <span>0 Komentar</span>
+                    </div>
+                    <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                    <div class="flex items-center gap-1 text-on-surface-variant/65">
+                        <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">visibility</span>
+                        <span>1 Dilihat</span>
+                    </div>
+                    <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                    <button onclick="event.stopPropagation(); likeStaticPost(this)" class="flex items-center gap-1 hover:text-primary transition-all active:scale-95">
+                        <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">thumb_up</span>
+                        <span class="like-count">0 Suka</span>
+                    </button>
+                </div>
+                <!-- Right: Share + Wishlist -->
+                <div class="flex items-center gap-4">
+                    <button onclick="sharePost(event)" class="flex items-center gap-1.5 hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">share</span>
+                        <span>Bagikan</span>
+                    </button>
+                    <button onclick="toggleWishlist(this)" class="flex items-center gap-1.5 text-on-surface-variant/65 hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">bookmark</span>
+                        <span>Wishlist</span>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        feedContainer.insertBefore(newCard, feedContainer.firstChild);
+        showNotice("Postingan Terbit", "Diskusi barumu berhasil diterbitkan ke lini masa komunitas.");
+    }
+
+    // Render Group Channels selector list
+    function renderChatChannels() {
+        const list = document.getElementById('chat-channels-list');
+        list.innerHTML = Object.keys(CHAT_GROUPS).map(key => {
+            const channel = CHAT_GROUPS[key];
+            const isActive = key === activeChannelId;
+            return `
+                <button id="channel-btn-${key}" onclick="loadGroupChannel('${key}')" class="w-full text-left font-black text-xs p-3 rounded-xl flex items-center justify-between border transition-all ${isActive ? 'bg-primary/5 text-primary border-primary-light/20 shadow-sm' : 'bg-white/80 border-transparent hover:bg-neutral-100/50 hover:border-neutral-200/10 text-on-surface-variant/80'}">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">forum</span>
+                        <span>${channel.title}</span>
+                    </div>
+                    <span class="bg-neutral-100 text-[8.5px] font-black text-on-surface-variant/50 px-2 py-0.5 rounded-full">${channel.online}</span>
+                </button>
+            `;
+        }).join('');
+    }
+
+    // Switch and load group chats
+    function loadGroupChannel(channelId) {
+        activeChannelId = channelId;
+        renderChatChannels();
+        renderChatMessages();
+    }
+
+    // Render group chat messages stream
+    function renderChatMessages() {
+        const container = document.getElementById('chat-stream-box');
+        const channel = CHAT_GROUPS[activeChannelId];
+        
+        document.getElementById('current-chat-title').textContent = channel.title;
+        document.getElementById('current-chat-online').textContent = channel.online;
+
+        container.innerHTML = channel.history.map(msg => `
+            <div class="flex ${msg.self ? 'flex-row-reverse' : ''} gap-2.5 items-start">
+                ${!msg.self ? `<img alt="${msg.sender}" class="w-7 h-7 rounded-full border border-primary/10 object-cover mt-0.5" src="${msg.avatar}"/>` : ''}
+                <div class="max-w-[75%] p-3 rounded-2xl ${msg.self ? 'bg-primary text-white rounded-tr-none shadow-md' : 'bg-white border border-primary/5 text-on-surface rounded-tl-none shadow-sm'}">
+                    ${!msg.self ? `<p class="text-[9px] font-black text-primary uppercase tracking-wider mb-0.5">${msg.sender}</p>` : ''}
+                    <p class="text-xs leading-relaxed font-bold">${msg.text}</p>
+                </div>
+            </div>
+        `).join('');
+        container.scrollTop = container.scrollHeight;
+    }
+
+    // Send Group chat message
+    function sendGroupMessage() {
+        const input = document.getElementById('chat-input');
+        const text = input.value.trim();
+        if (!text) return;
+
+        CHAT_GROUPS[activeChannelId].history.push({
+            sender: "Kevin Sanjaya",
+            avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q",
+            text: text,
+            self: true
+        });
+
+        input.value = "";
+        renderChatMessages();
+
+        setTimeout(() => {
+            simulateBotReply();
+        }, 1200);
+    }
+
+    function simulateBotReply() {
+        const replies = [
+            "Wah, mantap sekali masukannya kak! 👍",
+            "Setuju banget! Saya juga kemaren sempet bingung di materi itu.",
+            "Keren, makasih infonya ya! Sangat terbantu.",
+            "Boleh dicoba nih triknya pas ngerjain tugas nanti.",
+            "Solusinya jos banget! 🔥"
+        ];
+        const randomText = replies[Math.floor(Math.random() * replies.length)];
+        
+        CHAT_GROUPS[activeChannelId].history.push({
+            sender: "Dimas Pratama",
+            avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAQlgX9G2HBuDhqDtUojpm0MesHmY6kzelS3zL-PmSDFbmEYmr4hfqsgJqa88dNMJzyXzvVdLTyKOrAliTx5JXkipmfF8qTI4vjHjIrcIf1RQDXbw63vpQIZBX8VkTOyCPK2E7wIpixERadCJUm4CtIYmzmLT8UIIWDI6Ojs8xXw6b9RtZQ5fW5-QjmllhAcyKJlZmYZAi1OseMVPmAs1na6I-bAZV1TwS0dNwXLeZqiciDmw9QIPtGNlQnbPaY4tB38AH2yE9EHg",
+            text: randomText,
+            self: false
+        });
+        renderChatMessages();
+    }
+
+    // Render Mentor Profiles
+    function renderMentors() {
+        const container = document.getElementById('mentor-grid-container');
+        if (!container) return;
+        container.innerHTML = CLASS_MENTORS.map(m => `
+        <div class="glass-card rounded-2xl p-5 border border-primary/10 hover:border-primary/25 transition-all duration-200 bg-white flex flex-col justify-between relative overflow-hidden group shadow-sm hover:shadow">
+            <div class="absolute top-3 right-3 w-7 h-7 ${m.badgeClass} rounded-full flex items-center justify-center text-xs font-black shadow-sm select-none">${m.badge}</div>
+            <div class="space-y-3.5">
+                <div class="flex items-center gap-3">
+                    <img src="${m.avatar}" alt="${m.name}" class="w-12 h-12 rounded-full border border-primary/15 object-cover"/>
+                    <div>
+                        <h4 class="text-xs font-black text-on-surface">${m.name}</h4>
+                        <p class="text-[9px] text-tertiary-light font-black uppercase mt-0.5">${m.role}</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    ${m.skills.map(s => `<span class="bg-neutral-100 text-on-surface-variant/80 text-[8.5px] px-2.5 py-0.5 rounded-full font-black border border-neutral-200/5">${s}</span>`).join('')}
+                </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-primary/5 pt-3 mt-4">
+                <span class="text-[10px] font-black text-[#e3aa1a] flex items-center gap-1">⭐ ${m.rating} <span class="text-on-surface-variant/40 font-bold">(${m.reviews} ulasan)</span></span>
+                <button onclick="selectMentorForBooking('${m.name}')" class="px-4.5 py-1.5 rounded-xl border border-primary/15 hover:border-primary bg-transparent hover:bg-primary hover:text-white text-[9.5px] font-black uppercase tracking-wide transition-all select-none">Lihat Profil</button>
+            </div>
+        </div>
+        `).join('');
+    }
+
+    function selectMentorForBooking(name) {
+        document.getElementById('schedule-mentor').value = name;
+        document.getElementById('schedule-topic').focus();
+        showNotice("Mentor Terpilih", `Formulir sesi konsultasi 1-on-1 bersama ${name} telah siap diisi.`);
+    }
+
+    // Submit consultation schedule
+    function submitConsultationBooking() {
+        const name = document.getElementById('schedule-mentor').value;
+        const topic = document.getElementById('schedule-topic').value.trim();
+        
+        if (!topic) {
+            alert("Harap masukkan topik konsultasi Anda terlebih dahulu.");
+            return;
+        }
+
+        showNotice("Sesi Diajukan", `Jadwal konsultasi bersama ${name} dengan topik "${topic}" berhasil diajukan!`);
+        document.getElementById('schedule-topic').value = "";
+    }
+
+    // Publish custom new thread from form
+    // Database for Kevin Sanjaya's own posts
+    let DEFAULT_MY_POSTS = [
+        {
+            id: "my-post-1",
+            tag: "Coding",
+            title: "Tanya Cara Belajar Javascript dari Nol 🚀",
+            time: "1 hari yang lalu",
+            content: "Halo teman-teman! Aku baru mulai belajar coding Javascript nih. Ada saran ga untuk roadmap belajarnya? Sebaiknya langsung belajar framework kayak React atau kuasain basic DOM manipulation dulu ya? Makasih!",
+            likes: 12,
+            views: 89,
+            image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80",
+            comments: [
+                {
+                    author: "Dimas Pratama (Mentor)",
+                    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAQlgX9G2HBuDhqDtUojpm0MesHmY6kzelS3zL-PmSDFbmEYmr4hfqsgJqa88dNMJzyXzvVdLTyKOrAliTx5JXkipmfF8qTI4vjHjIrcIf1RQDXbw63vpQIZBX8VkTOyCPK2E7wIpixERadCJUm4CtIYmzmLT8UIIWDI6Ojs8xXw6b9RtZQ5fW5-QjmllhAcyKJlZmYZAi1OseMVPmAs1na6I-bAZV1TwS0dNwXLeZqiciDmw9QIPtGNlQnbPaY4tB38AH2yE9EHg",
+                    time: "12 jam yang lalu",
+                    text: "Kuasain basic DOM manipulation dan ES6 syntax dulu ya kak! Itu krusial banget sebelum masuk ke React biar ga pusing nantinya."
+                },
+                {
+                    author: "Sarah Wijaya (Mentor)",
+                    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDssyzQLmMMfFWttctiYSzDFJhuKJM4G_skmst8A0zZ8GnyvH6YOUiKAr9PIh87ilXPLcDVwYGbInuXwRddrRB9IQ_wYGqaNfFRdVpGlCdIzH_cFGrO5o2mQ585QYUSq76zI-uLmFiMotk8vgwsnX-XTLzhM8YO7iW22MfL6VcglCf7H2bHa9_ZSPJknCIjBpNbDimgKbqlDDP1y5HWs9yrb35SUxmNrzc8fZfPHEDwR3vQUyV7YGQyL8SdTmJOfkRoblQ6YZgoBQ",
+                    time: "8 jam yang lalu",
+                    text: "Betul kata Kak Dimas, kuasai Javascript vanilla dulu. Jangan buru-buru loncat ke framework biar logic-nya matang!"
+                }
+            ]
+        },
+        {
+            id: "my-post-2",
+            tag: "Tips Belajar",
+            title: "Bagaimana cara mengatasi burnout saat belajar mandiri? 😩",
+            time: "3 hari yang lalu",
+            content: "Kadang ngerasa jenuh banget kalau belajar coding sendirian di rumah. Ada tips ga dari temen-temen buat ngejaga motivasi belajar biar tetep konsisten tiap hari?",
+            likes: 18,
+            views: 124,
+            image: null,
+            comments: [
+                {
+                    author: "Aulia Rizky (Mentor)",
+                    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDVqCS4JcK8zSkdk8gF67Dogn_DsKXfgMf6HabnC0Wu3zPc-OVbdAz1ai38rGgkKZ3JA7nO1RlKd7WRxZEIEdk-vLiE7BL7zkVOOetgR2mNL-Gpf59nMLT80L_nFcD7MJBbGr0JZz60g2CB2zG9Y62yjuMlL_DWWscx-q2b6alE0zeRBQnD6MSxYQyqvSTXl9GtjhhW7HpmKGnEKGOKcrItgzr7uOJ_CCfrBsP-M1xXv8ERFnBL8oEpM5lwdy8Qpd6IsC6eGkvaHQ",
+                    time: "2 hari yang lalu",
+                    text: "Coba join study group kayak gini kak! Atau bikin jadwal belajar yang realistis, jangan terlalu diforsir. Pomodoro juga ngebantu banget."
+                }
+            ]
+        }
+    ];
+
+    let MY_POSTS = [];
+    try {
+        const stored = localStorage.getItem('MY_POSTS');
+        if (stored) {
+            MY_POSTS = JSON.parse(stored);
+        }
+    } catch(e) {}
+    if (!MY_POSTS || MY_POSTS.length === 0) {
+        MY_POSTS = DEFAULT_MY_POSTS;
+        try {
+            localStorage.setItem('MY_POSTS', JSON.stringify(MY_POSTS));
+        } catch(e) {}
+    }
+
+    // Render My Posts History
+    function renderMyPosts() {
+        const container = document.getElementById("my-posts-container");
+        if (!container) return;
+
+        if (MY_POSTS.length === 0) {
+            container.innerHTML = `
+                <div class="glass-card rounded-2xl p-8 text-center text-on-surface-variant/40 font-bold text-xs bg-white/70">
+                    Kamu belum pernah memposting apa pun. Tulis postingan pertamamu di atas!
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = MY_POSTS.map((post, postIdx) => {
+            let imageHtml = "";
+            if (post.image) {
+                imageHtml = `
+                    <div class="w-full h-40 rounded-xl overflow-hidden shadow-sm relative mt-2 select-none border border-primary/5">
+                        <img src="${post.image}" alt="Cover Image" class="w-full h-full object-cover"/>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="glass-card rounded-2xl p-5 space-y-4 bg-white/95 border border-primary/10 hover:border-primary/20 transition-all shadow-sm hover:shadow relative text-left">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q" alt="Kevin Sanjaya" class="w-9 h-9 rounded-full object-cover border border-primary/15 shrink-0"/>
+                            <div class="space-y-0.5">
+                                <h5 class="text-xs font-black text-on-surface leading-none">Kevin Sanjaya <span class="text-[9px] font-bold text-tertiary-light ml-1">Level 12</span></h5>
+                                <p class="text-[9px] text-on-surface-variant/40 font-bold leading-none flex items-center gap-1.5 mt-0.5">
+                                    <span>${post.time}</span>
+                                    <span>•</span>
+                                    <span class="text-primary font-black"># ${post.tag}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <button class="text-on-surface-variant/40 hover:text-on-surface">
+                            <span class="material-symbols-outlined text-sm font-black">more_horiz</span>
+                        </button>
+                    </div>
+
+                    <!-- Title & Body -->
+                    <div class="space-y-1">
+                        <h4 class="font-extrabold text-[14px] text-on-surface leading-snug">${post.title}</h4>
+                        ${post.content ? `<p class="text-xs text-on-surface-variant/80 font-bold leading-relaxed">${post.content}</p>` : ''}
+                    </div>
+
+                    ${imageHtml}
+
+                    <!-- Stats Bar / PREMIUM ACTION FOOTER -->
+                    <div class="flex justify-between items-center pt-3.5 border-t border-primary/5 text-[11px] font-black text-on-surface-variant/65 select-none">
+                        <!-- Left: Comments count + bullet + views count + likes -->
+                        <div class="flex items-center gap-1.5">
+                            <div class="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors" onclick="openCommentsModal('${post.id}', event)">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">chat_bubble</span>
+                                <span>${post.comments.length} Komentar</span>
+                            </div>
+                            <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                            <div class="flex items-center gap-1 text-on-surface-variant/65">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">visibility</span>
+                                <span>${post.views} Dilihat</span>
+                            </div>
+                            <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                            <button onclick="event.stopPropagation(); likeStaticPost(this)" class="hover:text-primary transition-all active:scale-95 flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">thumb_up</span>
+                                <span class="like-count">${post.likes} Suka</span>
+                            </button>
+                        </div>
+                        <!-- Right: Share + Wishlist -->
+                        <div class="flex items-center gap-4">
+                            <button onclick="sharePost(event)" class="flex items-center gap-1.5 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">share</span>
+                                <span>Bagikan</span>
+                            </button>
+                            <button onclick="toggleWishlist(this)" class="flex items-center gap-1.5 text-on-surface-variant/65 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">bookmark</span>
+                                <span>Wishlist</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function likeMyPost(idx) {
+        MY_POSTS[idx].likes += 1;
+        renderMyPosts();
+    }
+
+    function likeStaticPost(btn) {
+        let countSpan = btn.querySelector('.like-count');
+        if (!countSpan) return;
+        let icon = btn.querySelector('.material-symbols-outlined');
+        let current = parseInt(countSpan.textContent);
+        
+        if (btn.classList.contains('text-primary')) {
+            btn.classList.remove('text-primary');
+            if (icon) {
+                icon.classList.add('text-on-surface-variant/60');
+                icon.style.fontVariationSettings = "'FILL' 0";
+            }
+            countSpan.textContent = (current - 1) + " Suka";
+        } else {
+            btn.classList.add('text-primary');
+            if (icon) {
+                icon.classList.remove('text-on-surface-variant/60');
+                icon.style.fontVariationSettings = "'FILL' 1";
+            }
+            countSpan.textContent = (current + 1) + " Suka";
+        }
+    }
+
+    function submitMyPostComment(idx) {
+        const input = document.getElementById(`my-post-comment-input-${idx}`);
+        if (!input || !input.value.trim()) return;
+
+        const commentText = input.value.trim();
+        MY_POSTS[idx].comments.push({
+            author: "Anda (Siswa ClassQu)",
+            avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q",
+            time: "Baru saja",
+            text: commentText
+        });
+
+        input.value = "";
+        renderMyPosts();
+        
+        // Trigger a simulated reply after 1.5 seconds to make the UI look alive!
+        setTimeout(() => {
+            const replies = [
+                "Pertanyaan menarik kak! Semoga cepat ketemu solusinya.",
+                "Aku setuju banget dengan pendapat kak Kevin.",
+                "Terima kasih atas diskusinya, sangat menginspirasi!",
+                "Boleh dicoba nih idenya, makasih sharingnya kak!",
+                "Wah keren kak Kevin, mantap diskusinya!"
+            ];
+            const randomReply = replies[Math.floor(Math.random() * replies.length)];
+            const mentors = ["Aulia Rizky", "Dimas Pratama", "Sarah Wijaya", "Fajar Maulana"];
+            const randomMentor = mentors[Math.floor(Math.random() * mentors.length)];
+            const chosenMentorData = CLASS_MENTORS.find(m => m.name === randomMentor) || CLASS_MENTORS[0];
+
+            MY_POSTS[idx].comments.push({
+                author: chosenMentorData.name + " (Mentor)",
+                avatar: chosenMentorData.avatar,
+                time: "Baru saja",
+                text: randomReply
+            });
+            renderMyPosts();
+        }, 1500);
+
+        showNotice("Balasan Terkirim", "Komentar balasanmu berhasil dipublikasikan.");
+    }
+
+    // Publish custom new thread from form
+    function publishPost(event) {
+        event.preventDefault();
+        
+        const titleEl = document.getElementById('new-post-title');
+        const tagEl = document.getElementById('new-post-tag');
+        const imgSelectEl = document.getElementById('new-post-image');
+        const bodyEl = document.getElementById('new-post-body');
+
+        const body = bodyEl ? bodyEl.value.trim() : "";
+        const title = titleEl ? titleEl.value.trim() : body;
+        const tag = tagEl ? tagEl.value : "General";
+        const imgSelect = imgSelectEl ? imgSelectEl.value : "none";
+
+        let finalTitle = title;
+        let finalContent = body;
+        
+        if (!titleEl) {
+            // Title input is missing, use body as title and clear content to avoid duplication
+            finalTitle = body;
+            finalContent = "";
+        }
+
+        let imgUrl = null;
+        if (imgSelect === 'design-mock') {
+            imgUrl = "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&auto=format&fit=crop&q=80";
+        } else if (imgSelect === 'code-mock') {
+            imgUrl = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80";
+        }
+
+        const newPost = {
+            id: "my-post-" + (MY_POSTS.length + 1),
+            tag: tag,
+            title: finalTitle,
+            authorName: "Kevin Sanjaya",
+            authorRole: "STUDENT",
+            authorAvatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q",
+            time: "Baru saja",
+            content: finalContent,
+            likes: 0,
+            likedByMe: false,
+            commentsCount: 0,
+            views: 1,
+            image: imgUrl,
+            comments: []
+        };
+
+        // Register in dynamic comments database
+        POST_DETAILS_DATA[newPost.id] = {
+            commentsCount: 0,
+            comments: []
+        };
+
+        // 1. Add to MY_POSTS at top
+        MY_POSTS.unshift(newPost);
+        try {
+            localStorage.setItem('MY_POSTS', JSON.stringify(MY_POSTS));
+        } catch(e) {}
+        renderMyPosts();
+
+        // 2. Add to Beranda feed
+        const feedContainer = document.getElementById('posts-feed-container');
+        if (feedContainer) {
+            const newCard = document.createElement('article');
+            newCard.className = "bg-transparent py-4 px-3 hover:bg-neutral-50/20 transition-all flex flex-col gap-3.5 w-full border-b border-primary/5";
+            
+            let feedImageHtml = "";
+            if (newPost.image) {
+                feedImageHtml = `
+                    <div class="w-full h-48 rounded-xl overflow-hidden shadow-sm relative cursor-pointer" onclick="window.location.href='community_post_detail.html?id=kevin'">
+                        <img src="${newPost.image}" alt="Cover image" class="w-full h-full object-cover hover:scale-103 transition-transform duration-300"/>
+                        <div class="absolute bottom-3 left-3 bg-black/60 text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full backdrop-blur-md">Cover Image</div>
+                    </div>
+                `;
+            }
+
+            newCard.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img alt="Kevin" class="w-10 h-10 rounded-full border border-primary/15 object-cover" src="${newPost.authorAvatar}"/>
+                        <div>
+                            <h4 class="text-xs font-black text-on-surface">
+                                ${newPost.authorName}
+                                <span class="text-[9px] font-bold text-tertiary-light ml-1.5">Level 12</span>
+                            </h4>
+                            <p class="text-[9.5px] font-bold text-on-surface-variant/50">${newPost.time} • <span class="text-primary"># ${newPost.tag}</span></p>
+                        </div>
+                    </div>
+                    <button class="text-on-surface-variant/40 hover:text-on-surface"><span class="material-symbols-outlined text-base">more_horiz</span></button>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-extrabold text-[15px] leading-snug text-on-surface">${newPost.title}</h3>
+                    <p class="text-xs text-on-surface-variant leading-relaxed font-bold">${newPost.content}</p>
+                </div>
+                ${feedImageHtml}
+                <div class="flex justify-between items-center pt-3.5 border-t border-primary/5 text-[11px] font-black text-on-surface-variant/65 select-none">
+                    <!-- Left: Comments count + bullet + views count + likes -->
+                    <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors" onclick="openCommentsModal('kevin', event)">
+                            <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">chat_bubble</span>
+                            <span>0 Komentar</span>
+                        </div>
+                        <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                        <div class="flex items-center gap-1 text-on-surface-variant/65">
+                            <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">visibility</span>
+                            <span>1 Dilihat</span>
+                        </div>
+                        <span class="text-on-surface-variant/30 font-black px-1.5">•</span>
+                        <button onclick="event.stopPropagation(); likeStaticPost(this)" class="flex items-center gap-1 hover:text-primary transition-all active:scale-95">
+                            <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">thumb_up</span>
+                            <span class="like-count">0 Suka</span>
+                        </button>
+                    </div>
+                    <!-- Right: Share + Wishlist -->
+                    <div class="flex items-center gap-4">
+                        <button onclick="sharePost(event)" class="flex items-center gap-1.5 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">share</span>
+                            <span>Bagikan</span>
+                        </button>
+                        <button onclick="toggleWishlist(this)" class="flex items-center gap-1.5 text-on-surface-variant/65 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[17px] text-on-surface-variant/60">bookmark</span>
+                            <span>Wishlist</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            feedContainer.insertBefore(newCard, feedContainer.firstChild);
+        }
+
+        // Reset the form
+        document.getElementById('create-post-form').reset();
+        
+        showNotice("Postingan Terbit", "Hore! Postingan barumu berhasil diterbitkan ke lini masa komunitas dan riwayat postinganmu.");
+    }
+
+    // Modal dialogue triggers
+    function showNotice(title, message) {
+        document.getElementById('notice-title').textContent = title;
+        document.getElementById('notice-msg').textContent = message;
+        document.getElementById('notice-overlay').classList.remove('hidden');
+    }
+
+    function closeNotice() {
+        document.getElementById('notice-overlay').classList.add('hidden');
+    }
+
+    // ==========================================
+    // PREMIUM OVERLAY COMMENTS MODAL CONTROLLER
+    // ==========================================
+    let activeCommentPostId = null;
+
+    function openCommentsModal(postId, event) {
+        if (event) {
+            event.stopPropagation();
+        }
+        activeCommentPostId = postId;
+        
+        // 1. Get post comments data
+        let post = POST_DETAILS_DATA[postId];
+        if (!post) {
+            // Fallback for user custom posts in feed
+            const myPost = MY_POSTS.find(p => p.id === postId);
+            if (myPost) {
+                post = {
+                    commentsCount: myPost.comments.length,
+                    comments: myPost.comments.map(c => ({
+                        name: c.author,
+                        avatar: c.avatar,
+                        level: "Level 1",
+                        time: c.time,
+                        content: c.text
+                    }))
+                };
+            } else {
+                post = { commentsCount: 0, comments: [] };
+            }
+        }
+        
+        // 2. Render Header title
+        const commentCount = post.commentsCount !== undefined ? post.commentsCount : post.comments.length;
+        document.getElementById('modal-comments-count-title').textContent = `${commentCount} komentar`;
+        
+        // 3. Render Comments List area
+        const container = document.getElementById('modal-comments-list');
+        if (post.comments.length === 0) {
+            container.innerHTML = `
+                <div class="py-12 text-center text-white/30 font-bold text-[11px] select-none flex flex-col items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-3xl opacity-40 animate-pulse">forum</span>
+                    <span>Belum ada komentar untuk postingan ini.<br>Jadilah yang pertama untuk berdiskusi!</span>
+                </div>
+            `;
+        } else {
+            container.innerHTML = post.comments.map((c, i) => {
+                let memeHtml = "";
+                let repliesHtml = "";
+                
+                // Specific high-fidelity custom additions to match user's screenshot
+                if (postId === 'maya' && i === 0) {
+                    memeHtml = `
+                        <div class="w-48 rounded-xl overflow-hidden border border-white/10 my-2 select-none shadow-md">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=80" alt="Meme Diluar Nalar" class="w-full h-32 object-cover"/>
+                            <div class="bg-[#1c1c22] p-2 text-center font-black text-[9px] text-white">Diluar Nalar Coy 🔥</div>
+                        </div>
+                    `;
+                    repliesHtml = `
+                        <div class="pt-2">
+                            <button onclick="toggleReplies('maya-0', this)" class="flex items-center gap-1.5 text-[9px] font-black text-amber-500 hover:text-amber-400 transition-colors focus:outline-none">
+                                <span class="material-symbols-outlined text-xs transition-transform duration-200">expand_more</span>
+                                <span>2 balasan</span>
+                            </button>
+                            
+                            <div id="replies-container-maya-0" class="hidden pl-6 border-l border-white/5 mt-3 space-y-3">
+                                <!-- Reply 1 -->
+                                <div class="flex gap-2.5 text-xs pb-1">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" class="w-6 h-6 rounded-full object-cover shrink-0 select-none border border-white/5"/>
+                                    <div class="space-y-0.5">
+                                        <div class="flex items-center gap-1">
+                                            <span class="font-extrabold text-white/90 text-[10.5px]">sarah_wijaya99</span>
+                                            <span class="text-[7px] px-1 py-0.2 rounded bg-white/5 text-white/35 font-bold">Level 8</span>
+                                        </div>
+                                        <p class="text-white/70 font-semibold leading-relaxed text-[11px]">Wkwk bener banget kak Abrar! 😂</p>
+                                        <div class="flex items-center gap-2.5 text-[9px] font-black text-white/35 pt-0.5">
+                                            <span>50 menit yang lalu</span>
+                                            <button class="hover:text-white transition-colors">Balas</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Reply 2 -->
+                                <div class="flex gap-2.5 text-xs">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" class="w-6 h-6 rounded-full object-cover shrink-0 select-none border border-white/5"/>
+                                    <div class="space-y-0.5">
+                                        <div class="flex items-center gap-1">
+                                            <span class="font-extrabold text-white/90 text-[10.5px]">dimas_pratama</span>
+                                            <span class="text-[7px] px-1 py-0.2 rounded bg-white/5 text-white/35 font-bold">Level 5</span>
+                                        </div>
+                                        <p class="text-white/70 font-semibold leading-relaxed text-[11px]">Diluar nalar emang konten jaman now.</p>
+                                        <div class="flex items-center gap-2.5 text-[9px] font-black text-white/35 pt-0.5">
+                                            <span>30 menit yang lalu</span>
+                                            <button class="hover:text-white transition-colors">Balas</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                return `
+                    <div class="flex gap-3 text-sm border-b border-white/[0.03] pb-3 last:border-0 last:pb-0">
+                        <img src="${c.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80'}" alt="${c.name}" class="w-8 h-8 rounded-full border border-white/10 object-cover shrink-0 select-none"/>
+                        <div class="flex-grow space-y-1">
+                            <div class="flex items-center gap-1.5">
+                                <span class="font-extrabold text-white/90 text-xs">${c.name}</span>
+                                <span class="text-[8px] px-1.5 py-0.5 rounded bg-white/5 border border-white/5 text-white/40 font-bold">${c.level || 'Level 5'}</span>
+                            </div>
+                            <p class="text-xs text-white/75 font-semibold leading-relaxed">${c.content || c.text}</p>
+                            ${memeHtml}
+                            <div class="flex items-center justify-between pt-1">
+                                <div class="flex items-center gap-3.5 text-[10px] font-black text-white/40">
+                                    <span>${c.time}</span>
+                                    <button class="hover:text-white transition-colors">Balas</button>
+                                </div>
+                                <div class="flex items-center gap-2.5 text-white/40">
+                                    <button onclick="likeComment(this)" class="hover:text-amber-500 transition-colors flex items-center">
+                                        <span class="material-symbols-outlined text-sm flex items-center">favorite</span>
+                                    </button>
+                                    <button class="hover:text-white transition-colors flex items-center">
+                                        <span class="material-symbols-outlined text-sm flex items-center">more_horiz</span>
+                                    </button>
+                                </div>
+                            </div>
+                            ${repliesHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // 4. Show Modal panels with fade-in and slide-up transition
+        const overlay = document.getElementById('comments-modal-overlay');
+        const panel = document.getElementById('comments-modal-panel');
+        overlay.classList.remove('hidden');
+        
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                panel.classList.remove('translate-y-12', 'scale-95', 'opacity-0');
+            }, 50);
+        });
+    }
+
+    function closeCommentsModal() {
+        const overlay = document.getElementById('comments-modal-overlay');
+        const panel = document.getElementById('comments-modal-panel');
+        
+        overlay.classList.add('opacity-0');
+        panel.classList.add('translate-y-12', 'scale-95', 'opacity-0');
+        
+        setTimeout(() => {
+            overlay.classList.add('hidden');
+        }, 300);
+    }
+
+    function toggleReplies(replyId, btn) {
+        const container = document.getElementById(`replies-container-${replyId}`);
+        const icon = btn.querySelector('.material-symbols-outlined');
+        const text = btn.querySelector('span:not(.material-symbols-outlined)');
+        
+        if (container.classList.contains('hidden')) {
+            container.classList.remove('hidden');
+            icon.classList.add('rotate-180');
+            text.textContent = 'Sembunyikan balasan';
+        } else {
+            container.classList.add('hidden');
+            icon.classList.remove('rotate-180');
+            text.textContent = '2 balasan';
+        }
+    }
+
+    function likeComment(btn) {
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (btn.classList.contains('text-amber-500')) {
+            btn.classList.remove('text-amber-500');
+            btn.classList.add('text-white/40');
+            icon.style.fontVariationSettings = "'FILL' 0";
+        } else {
+            btn.classList.add('text-amber-500');
+            btn.classList.remove('text-white/40');
+            icon.style.fontVariationSettings = "'FILL' 1";
+        }
+    }
+
+    function submitModalComment() {
+        const input = document.getElementById('modal-new-comment-input');
+        if (!input || !input.value.trim()) return;
+        
+        const text = input.value.trim();
+        
+        // Push dynamically to POST_DETAILS_DATA or MY_POSTS
+        let post = POST_DETAILS_DATA[activeCommentPostId];
+        if (post) {
+            const newC = {
+                name: "Rizky Pratama",
+                avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA",
+                level: "Level 12",
+                time: "Baru saja",
+                content: text
+            };
+            post.comments.push(newC);
+            post.commentsCount = post.comments.length;
+            
+            // Update DOM comment count dynamically across any matching feed cards
+            const allCommentTriggers = document.querySelectorAll(`[onclick*="openCommentsModal('${activeCommentPostId}'"]`);
+            allCommentTriggers.forEach(trigger => {
+                const countSpan = trigger.querySelector('span:not(.material-symbols-outlined)');
+                if (countSpan) {
+                    countSpan.textContent = `${post.comments.length} Komentar`;
+                }
+            });
+        } else {
+            const myPost = MY_POSTS.find(p => p.id === activeCommentPostId);
+            if (myPost) {
+                myPost.comments.push({
+                    author: "Rizky Pratama",
+                    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA",
+                    time: "Baru saja",
+                    text: text
+                });
+                renderMyPosts();
+            }
+        }
+        
+        input.value = "";
+        
+        // Reload list inside modal dynamically
+        openCommentsModal(activeCommentPostId);
+        
+        // Floating premium success toast
+        if (typeof showFloatingToast === "function") {
+            showFloatingToast("Komentar Berhasil", "Hore! Komentarmu berhasil diterbitkan di postingan ini. 💬", "share");
+        }
+    }
+</script>
+<script src="community_components.js"></script>
+</body></html>

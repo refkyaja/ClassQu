@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ClassQu - Belajar Skill Masa Kini dengan Seru</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "on-background": "#1C1B1B",
+                        "surface-container": "#FFF5E4", 
+                        "surface-container-low": "#FFFBF4",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface-variant": "#57423e",
+                    },
+                    borderRadius: {
+                        'card': '32px',
+                        'lg': '2rem',
+                        'xl': '3rem',
+                        'full': '9999px'
+                    },
+                    boxShadow: {
+                        'playful-sm': '2px 2px 0px 0px #1C1B1B',
+                        'playful': '4px 4px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 10px 30px -5px rgba(255, 126, 103, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid #1C1B1B;
+            box-shadow: 4px 4px 0px 0px #1C1B1B;
+            border-radius: 32px;
+        }
+        .glass-card-soft {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(28, 27, 27, 0.1);
+            box-shadow: 0 10px 35px -5px rgba(28, 27, 27, 0.03);
+            border-radius: 24px;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .btn-playful {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #1C1B1B;
+            box-shadow: 3px 3px 0px 0px #1C1B1B;
+        }
+        .btn-playful:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px 0px #1C1B1B;
+        }
+        .btn-playful:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px 0px #1C1B1B;
+        }
+        .floating-accent {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden">
+
+    <!-- Top Sticky Glass Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="relative px-6 md:px-12 pt-16 md:pt-24 pb-20 overflow-hidden">
+        <!-- Floating Ambient Glows -->
+        <div class="absolute top-0 right-0 -z-10 w-1/2 h-full opacity-40 pointer-events-none">
+            <div class="absolute top-10 right-20 w-96 h-96 bg-primary rounded-full blur-[140px] opacity-30"></div>
+            <div class="absolute bottom-20 right-40 w-72 h-72 bg-secondary rounded-full blur-[120px] opacity-40"></div>
+            <div class="absolute top-40 right-60 w-80 h-80 bg-tertiary rounded-full blur-[130px] opacity-30"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Column Content -->
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full border border-primary/20">
+                    <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+                    <span class="font-bold text-[11px] uppercase tracking-wider">E-Learning Masa Depan Gen-Z</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-neutral">
+                    Belajar <span class="text-primary italic underline decoration-secondary decoration-4">Skill Masa Kini</span> untuk Karir Impianmu!
+                </h1>
+                <p class="text-lg md:text-xl text-neutral/70 font-medium leading-relaxed max-w-xl">
+                    Lalui batasan akademik konvensional. Kuasai teknologi, desain, coding, dan bahasa modern melalui peta jalan yang seru layaknya bermain game!
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="materi.html" class="btn-playful bg-primary text-white px-8 py-4 rounded-full font-bold text-lg shadow-glow">Mulai Belajar Sekarang</a>
+                    <a href="materi.html" class="btn-playful bg-white text-neutral px-8 py-4 rounded-full font-bold text-lg hover:bg-neutral/5 transition-all flex items-center gap-2">
+                        Coba Gratis
+                        <span class="material-symbols-outlined fill-current text-primary" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+                    </a>
+                </div>
+                <!-- Trust Stats -->
+                <div class="flex items-center gap-6 pt-4">
+                    <div class="flex -space-x-3">
+                        <img class="w-10 h-10 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGW0DEe4CjvxZO3XyledvIkwl35Wog5HiN2fiv_ibAhKFl_OSZGCGnn5qNVMuk5h9jWTzcqtIDMAbvh8i34uKS1EuTKsC54q1wmTjLwVOiPG7F4xCx7dGU5FS2d7fITu09ItGGz2eyTOpQC9wRKuJE6YrWPqADiA2LhZCXFVsdPi486UyYVepXiwnjSgAxIxFwWNbjZ2JK-GqV7akv5qKUJveYHdmUCNavqrrwnyIEqE6Xiyb93DM8OiLMQHofU176Vm0bGpGW1Q" alt="Avatar"/>
+                        <img class="w-10 h-10 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXqIL_lbzaxYeLvqMdZpsD1Yp2WMHpIyuLXlttGaLNCSZIrPr9-BF2gUr-0Q-zpU-S-sXjpFGXi3u2EcmGQOBW8271ndRkQ4EiGw5dt6YUTIcf5RzpssQ1nIX4uVqrJFpW-35csmFUHCOeHhPKpRY1IP7pOUB-sSfHJxcJw_-FN0eUb4mzMQB_P37p3vfIZCc9IOCsYeGbmiHWJ1QyUqMHvh0NMIofls39CymxhrrjQzroLX_o948x7Vu8TRcl3DWd_p5rVSOtJQ" alt="Avatar"/>
+                        <img class="w-10 h-10 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSUcXO8I6oSdIJfYk0T6RPnojT0nDdqhzgfrPPFNdo6Z-hJ-3N6XiQNAfH7ky8sUAxri-u6UxxRIjUCo_9Hm4HB6R6A5tQgie1GYxASItZA7UkIaxUkyFIe-PQOjeB8WDLPxhT-A16jCbDHFkIOrh0pb1surh7_K8_ellPg8bjBe427d-9q6x9BwjSVXYisj-ciKs7U0uiaI-TGDwCtZbL24R1q6oXvt7u-pW1GGP7aMpkmXTqYyFQpn7bQpDuFQsmch5m4bTLjA" alt="Avatar"/>
+                    </div>
+                    <div>
+                        <p class="font-extrabold text-neutral text-sm">Bergabung dengan 5,000+ Siswa Aktif</p>
+                        <p class="text-neutral/60 text-xs font-semibold">Telah lulus & mendapatkan karir impian mereka</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column Futuristic Mockup -->
+            <div class="relative mt-8 lg:mt-0">
+                <div class="glass-card bg-white/95 p-6 shadow-premium relative z-10 overflow-hidden transform lg:rotate-2 hover:rotate-0 transition-transform duration-700">
+                    <div class="flex items-center justify-between mb-8 border-b-2 border-neutral pb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-secondary border border-neutral flex items-center justify-center font-bold text-neutral text-xs">CQ</div>
+                            <div>
+                                <h3 class="font-extrabold text-sm text-neutral">Dashboard Pelajar</h3>
+                                <p class="text-[10px] font-bold text-neutral/50">Level 12 • 14,250 XP</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-1.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-primary border border-neutral"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-secondary border border-neutral"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-tertiary border border-neutral"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Progress Card -->
+                        <div class="bg-primary/10 rounded-2xl p-4 flex flex-col justify-between border border-primary/20">
+                            <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                            <div class="space-y-2 mt-4">
+                                <div class="text-xs font-black text-neutral">Learning Progress</div>
+                                <div class="h-2.5 w-full bg-white border border-neutral/20 rounded-full overflow-hidden">
+                                    <div class="h-full w-[75%] bg-primary rounded-full"></div>
+                                </div>
+                                <div class="flex justify-between text-[9px] font-bold text-neutral/60">
+                                    <span>MS OFFICE</span>
+                                    <span>75%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Achievement Card -->
+                        <div class="bg-secondary/15 rounded-2xl p-4 flex flex-col justify-center items-center text-center border border-secondary/30">
+                            <span class="material-symbols-outlined text-secondary text-4xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                            <div class="text-xs font-black text-neutral mt-2">Design Star Unlocked!</div>
+                            <div class="text-[10px] text-neutral/70 font-semibold">Kuasai Dasar Canva 2026</div>
+                        </div>
+                    </div>
+
+                    <!-- Streak Card -->
+                    <div class="mt-4 bg-tertiary/10 rounded-2xl p-4 border border-tertiary/20">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="font-extrabold text-sm text-neutral flex items-center gap-1">
+                                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                <span>Active Learning Streak</span>
+                            </span>
+                            <span class="text-primary font-black text-sm">12 Days 🔥</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-8 h-8 rounded-full bg-primary border border-neutral text-white flex items-center justify-center text-[10px] font-bold">S</div>
+                            <div class="w-8 h-8 rounded-full bg-primary border border-neutral text-white flex items-center justify-center text-[10px] font-bold">S</div>
+                            <div class="w-8 h-8 rounded-full bg-primary border border-neutral text-white flex items-center justify-center text-[10px] font-bold">R</div>
+                            <div class="w-8 h-8 rounded-full bg-primary border border-neutral text-white flex items-center justify-center text-[10px] font-bold">K</div>
+                            <div class="w-8 h-8 rounded-full bg-primary border border-neutral text-white flex items-center justify-center text-[10px] font-bold">J</div>
+                            <div class="w-8 h-8 rounded-full bg-secondary border border-neutral text-neutral flex items-center justify-center text-[10px] font-bold">S</div>
+                            <div class="w-8 h-8 rounded-full bg-neutral/10 border border-neutral/20 text-neutral/40 flex items-center justify-center text-[10px] font-bold">M</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Sparkle Elements -->
+                <div class="absolute -top-6 -left-6 glass-card bg-white p-4 shadow-premium z-20 floating-accent">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-tertiary rounded-full border border-neutral flex items-center justify-center text-white">
+                            <span class="material-symbols-outlined text-[18px]">bolt</span>
+                        </div>
+                        <div>
+                            <div class="text-[9px] font-black text-neutral/50">CURRENT XP</div>
+                            <div class="text-xs font-black text-neutral">14,250 XP</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute -bottom-6 -right-6 glass-card bg-white p-3.5 shadow-premium z-20 floating-accent" style="animation-delay: -3s;">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
+                            <img alt="User" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDssyzQLmMMfFWttctiYSzDFJhuKJM4G_skmst8A0zZ8GnyvH6YOUiKAr9PIh87ilXPLcDVwYGbInuXwRddrRB9IQ_wYGqaNfFRdVpGlCdIzH_cFGrO5o2mQ585QYUSq76zI-uLmFiMotk8vgwsnX-XTLzhM8YO7iW22MfL6VcglCf7H2bHa9_ZSPJknCIjBpNbDimgKbqlDDP1y5HWs9yrb35SUxmNrzc8fZfPHEDwR3vQUyV7YGQyL8SdTmJOfkRoblQ6YZgoBQ"/>
+                        </div>
+                        <div>
+                            <div class="text-[9px] font-black text-primary">BARU SAJA BERGABUNG</div>
+                            <div class="text-xs font-bold text-neutral">Kevin Sanjaya</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-2 lg:grid-cols-4 gap-6 -mt-4 relative z-30">
+        <div class="glass-card bg-white p-6 text-center hover:-translate-y-2 transition-all duration-300">
+            <h3 class="text-4xl font-extrabold text-primary mb-1">5,000+</h3>
+            <p class="text-xs font-extrabold text-neutral/50 uppercase tracking-widest">Siswa Aktif</p>
+        </div>
+        <div class="glass-card bg-white p-6 text-center hover:-translate-y-2 transition-all duration-300">
+            <h3 class="text-4xl font-extrabold text-tertiary mb-1">20+</h3>
+            <p class="text-xs font-extrabold text-neutral/50 uppercase tracking-widest">Kelas Premium</p>
+        </div>
+        <div class="glass-card bg-white p-6 text-center hover:-translate-y-2 transition-all duration-300">
+            <h3 class="text-4xl font-extrabold text-secondary mb-1">15+</h3>
+            <p class="text-xs font-extrabold text-neutral/50 uppercase tracking-widest">Mentor Expert</p>
+        </div>
+        <div class="glass-card bg-white p-6 text-center hover:-translate-y-2 transition-all duration-300">
+            <h3 class="text-4xl font-extrabold text-primary mb-1">4.9/5</h3>
+            <p class="text-xs font-extrabold text-neutral/50 uppercase tracking-widest">Rating Kepuasan</p>
+        </div>
+    </section>
+
+    <!-- Class Categories (Pilih Fokus Belajarmu) -->
+    <section class="py-24 bg-background">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 mb-20 text-center">
+            <h2 class="text-3xl md:text-5xl font-black text-neutral relative inline-block pb-3">
+                Pilih Fokus Belajarmu
+                <span class="absolute bottom-0 left-0 right-0 h-2 bg-secondary rounded-full"></span>
+            </h2>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-wrap justify-center gap-8 pb-16 lg:pb-32">
+            
+            <!-- Card 1: Ms Office (Staggered Higher) -->
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-0 min-h-[240px]">
+                <div class="space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-primary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                        <span class="material-symbols-outlined text-white text-xl font-bold">description</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Ms Office</h3>
+                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Excel, Word, Powerpoint expert.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Bahasa Inggris (Staggered Lower) -->
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-8 min-h-[240px]">
+                <div class="space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-secondary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                        <span class="material-symbols-outlined text-neutral text-xl font-bold">language</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Bahasa Inggris</h3>
+                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Daily conversation & TOEFL.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Komputer Dasar (Staggered Higher) -->
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-0 min-h-[240px]">
+                <div class="space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-tertiary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                        <span class="material-symbols-outlined text-white text-xl font-bold">computer</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Komputer Dasar</h3>
+                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Kuasai dasar hardware & software.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Canva & Design (Staggered Lower) -->
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-8 min-h-[240px]">
+                <div class="space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-[#FFB4A6] border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                        <span class="material-symbols-outlined text-neutral text-xl font-bold">palette</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Canva & Design</h3>
+                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Visual branding yang estetik.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Internet Productivity (Staggered Higher) -->
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-0 min-h-[240px]">
+                <div class="space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-primary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                        <span class="material-symbols-outlined text-white text-xl font-bold">bolt</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Internet Productivity</h3>
+                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Browsing cerdas & tools kolaborasi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Public Speaking (Staggered Lower) -->
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-8 min-h-[240px]">
+                <div class="space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-secondary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                        <span class="material-symbols-outlined text-neutral text-xl font-bold">record_voice_over</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Public Speaking</h3>
+                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">Berani bicara di depan umum.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7: Persiapan Kerja (Staggered Higher) -->
+            <div class="w-full sm:w-[calc(50%-16px)] lg:w-[calc(25%-24px)] flex-none bg-white rounded-[32px] border-[3px] border-neutral p-8 shadow-[6px_6px_0px_0px_rgba(28,27,27,1)] flex flex-col justify-between hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] transition-all lg:translate-y-0 min-h-[240px]">
+                <div class="space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-tertiary border-[3px] border-neutral flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_rgba(28,27,27,1)]">
+                        <span class="material-symbols-outlined text-white text-xl font-bold">work</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-black text-neutral leading-tight mb-2">Persiapan Kerja</h3>
+                        <p class="text-neutral/60 text-xs md:text-sm font-semibold leading-relaxed">CV ATS friendly & interview hack.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Learning Journey Roadmap Teaser -->
+    <section class="py-20 bg-surface-container/50 border-y-2 border-neutral/10 relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <span class="text-xs font-black text-primary uppercase tracking-widest mb-2 block">PETA BELAJAR INTERAKTIF</span>
+                <h2 class="text-3xl md:text-5xl font-black text-neutral mb-4">Peta Jalan Menuju Sukses</h2>
+                <p class="text-neutral/60 text-lg font-medium max-w-xl mx-auto">Kami tidak sekedar memberi tumpukan video tutorial. Kami membimbingmu langkah demi langkah melalui jalur visual yang menantang!</p>
+            </div>
+
+            <!-- Roadmap Pathway visual -->
+            <div class="relative py-12">
+                <!-- Roadmap Dashed Connector -->
+                <div class="absolute top-24 left-0 w-full h-0.5 border-t-2 border-dashed border-neutral/20 hidden lg:block z-0"></div>
+                
+                <div class="grid lg:grid-cols-4 gap-12 relative z-10">
+                    <!-- Milestone 1 -->
+                    <div class="text-center group">
+                        <div class="w-24 h-24 bg-white rounded-full mx-auto flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] border-[3px] border-neutral group-hover:scale-105 transition-all relative">
+                            <span class="material-symbols-outlined text-primary text-3xl font-bold">login</span>
+                            <div class="absolute -top-1 -right-1 bg-neutral border-2 border-white text-white text-[10px] font-black px-2 py-0.5 rounded-full">01</div>
+                        </div>
+                        <h4 class="mt-6 font-extrabold text-lg text-neutral">Onboarding</h4>
+                        <p class="text-sm font-medium text-neutral/60 mt-2 px-4">Tentukan minat karirmu dan pilih jalur belajar personal.</p>
+                    </div>
+
+                    <!-- Milestone 2 -->
+                    <div class="text-center group">
+                        <div class="w-24 h-24 bg-white rounded-full mx-auto flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] border-[3px] border-neutral group-hover:scale-105 transition-all relative">
+                            <span class="material-symbols-outlined text-primary text-3xl font-bold">play_lesson</span>
+                            <div class="absolute -top-1 -right-1 bg-neutral border-2 border-white text-white text-[10px] font-black px-2 py-0.5 rounded-full">02</div>
+                        </div>
+                        <h4 class="mt-6 font-extrabold text-lg text-neutral">Deep Dive Materi</h4>
+                        <p class="text-sm font-medium text-neutral/60 mt-2 px-4">Belajar materi fundamental bersama mentor industri dengan video asik.</p>
+                    </div>
+
+                    <!-- Milestone 3 -->
+                    <div class="text-center group">
+                        <div class="w-24 h-24 bg-white rounded-full mx-auto flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] border-[3px] border-neutral group-hover:scale-105 transition-all relative">
+                            <span class="material-symbols-outlined text-primary text-3xl font-bold">assignment</span>
+                            <div class="absolute -top-1 -right-1 bg-neutral border-2 border-white text-white text-[10px] font-black px-2 py-0.5 rounded-full">03</div>
+                        </div>
+                        <h4 class="mt-6 font-extrabold text-lg text-neutral">Real-World Project</h4>
+                        <p class="text-sm font-medium text-neutral/60 mt-2 px-4">Bangun portofolio asli berdasarkan studi kasus nyata.</p>
+                    </div>
+
+                    <!-- Milestone 4 -->
+                    <div class="text-center group">
+                        <div class="w-24 h-24 bg-white rounded-full mx-auto flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(28,27,27,1)] border-[3px] border-neutral group-hover:scale-105 transition-all relative">
+                            <span class="material-symbols-outlined text-primary text-3xl font-bold">workspace_premium</span>
+                            <div class="absolute -top-1 -right-1 bg-neutral border-2 border-white text-white text-[10px] font-black px-2 py-0.5 rounded-full">04</div>
+                        </div>
+                        <h4 class="mt-6 font-extrabold text-lg text-neutral">Certification</h4>
+                        <p class="text-sm font-medium text-neutral/60 mt-2 px-4">Dapatkan sertifikat resmi untuk melamar kerja secara langsung.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-8">
+                <a href="materi.html" class="btn-playful bg-white text-neutral px-8 py-3.5 rounded-full font-bold text-sm">Lihat Seluruh Roadmap Karir</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gamification & Leaderboard Section -->
+    <section class="py-24 max-w-7xl mx-auto px-6 md:px-12">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Side Leaderboard Preview -->
+            <div class="order-2 lg:order-1">
+                <div class="glass-card bg-white p-8 border-2 border-neutral shadow-playful relative overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-secondary/20 text-neutral border border-neutral/15 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm font-bold" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+                        <span>Weekly Rank</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-neutral mb-8">Papan Peringkat Minggu Ini</h3>
+                    
+                    <div class="space-y-4">
+                        <!-- Top Rank 1 -->
+                        <div class="flex items-center justify-between bg-primary/10 p-4 rounded-2xl border border-primary/20">
+                            <div class="flex items-center gap-4">
+                                <span class="font-black text-primary text-xl">1</span>
+                                <div class="w-10 h-10 rounded-full border border-neutral overflow-hidden">
+                                    <img alt="Sarah" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGW0DEe4CjvxZO3XyledvIkwl35Wog5HiN2fiv_ibAhKFl_OSZGCGnn5qNVMuk5h9jWTzcqtIDMAbvh8i34uKS1EuTKsC54q1wmTjLwVOiPG7F4xCx7dGU5FS2d7fITu09ItGGz2eyTOpQC9wRKuJE6YrWPqADiA2LhZCXFVsdPi486UyYVepXiwnjSgAxIxFwWNbjZ2JK-GqV7akv5qKUJveYHdmUCNavqrrwnyIEqE6Xiyb93DM8OiLMQHofU176Vm0bGpGW1Q"/>
+                                </div>
+                                <span class="font-extrabold text-neutral text-sm">Sarah Wijaya</span>
+                            </div>
+                            <span class="bg-primary text-white text-xs font-extrabold px-3 py-1 rounded-full border border-neutral">1,240 XP</span>
+                        </div>
+
+                        <!-- Top Rank 2 -->
+                        <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-neutral/15">
+                            <div class="flex items-center gap-4">
+                                <span class="font-black text-neutral/40 text-xl">2</span>
+                                <div class="w-10 h-10 rounded-full border border-neutral/10 overflow-hidden">
+                                    <img alt="Budi" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXqIL_lbzaxYeLvqMdZpsD1Yp2WMHpIyuLXlttGaLNCSZIrPr9-BF2gUr-0Q-zpU-S-sXjpFGXi3u2EcmGQOBW8271ndRkQ4EiGw5dt6YUTIcf5RzpssQ1nIX4uVqrJFpW-35csmFUHCOeHhPKpRY1IP7pOUB-sSfHJxcJw_-FN0eUb4mzMQB_P37p3vfIZCc9IOCsYeGbmiHWJ1QyUqMHvh0NMIofls39CymxhrrjQzroLX_o948x7Vu8TRcl3DWd_p5rVSOtJQ"/>
+                                </div>
+                                <span class="font-bold text-neutral text-sm">Budi Santoso</span>
+                            </div>
+                            <span class="text-neutral/60 text-xs font-bold px-3 py-1 rounded-full border border-neutral/10">980 XP</span>
+                        </div>
+
+                        <!-- Top Rank 3 -->
+                        <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-neutral/15">
+                            <div class="flex items-center gap-4">
+                                <span class="font-black text-neutral/40 text-xl">3</span>
+                                <div class="w-10 h-10 rounded-full border border-neutral/10 overflow-hidden">
+                                    <img alt="Dewi" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSUcXO8I6oSdIJfYk0T6RPnojT0nDdqhzgfrPPFNdo6Z-hJ-3N6XiQNAfH7ky8sUAxri-u6UxxRIjUCo_9Hm4HB6R6A5tQgie1GYxASItZA7UkIaxUkyFIe-PQOjeB8WDLPxhT-A16jCbDHFkIOrh0pb1surh7_K8_ellPg8bjBe427d-9q6x9BwjSVXYisj-ciKs7U0uiaI-TGDwCtZbL24R1q6oXvt7u-pW1GGP7aMpkmXTqYyFQpn7bQpDuFQsmch5m4bTLjA"/>
+                                </div>
+                                <span class="font-bold text-neutral text-sm">Dewi Lestari</span>
+                            </div>
+                            <span class="text-neutral/60 text-xs font-bold px-3 py-1 rounded-full border border-neutral/10">850 XP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side Gamification Text -->
+            <div class="order-1 lg:order-2 space-y-6">
+                <span class="text-xs font-black text-primary tracking-widest uppercase block">BELAJAR JADI SERU</span>
+                <h2 class="text-3xl md:text-5xl font-black text-neutral leading-tight">Rasakan Pengalaman Belajar Serasa Bermain Game!</h2>
+                <p class="text-lg text-neutral/70 font-medium leading-relaxed">
+                    Dapatkan XP untuk setiap video materi yang diselesaikan, kumpulkan lencana digital langka, dan bersainglah di papan peringkat nasional mingguan untuk mendapatkan merchandise khusus!
+                </p>
+                <div class="space-y-4 pt-2">
+                    <div class="flex items-center gap-3">
+                        <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20 font-bold">
+                            <span class="material-symbols-outlined text-[16px] font-bold">check</span>
+                        </div>
+                        <span class="font-extrabold text-neutral">Tantangan Harian & Streak Belajar (Streak Challenge)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20 font-bold">
+                            <span class="material-symbols-outlined text-[16px] font-bold">check</span>
+                        </div>
+                        <span class="font-extrabold text-neutral">Achievement Kustom (Unlocked Achievement Badges)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20 font-bold">
+                            <span class="material-symbols-outlined text-[16px] font-bold">check</span>
+                        </div>
+                        <span class="font-extrabold text-neutral">Menduduki Peringkat Teratas untuk Mendapatkan Pro Gratis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community & Discord Teaser -->
+    <section class="py-20 bg-tertiary/10 border-y-2 border-neutral/15">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <span class="text-xs font-black text-tertiary uppercase tracking-widest mb-2 block">SOSIAL & KOLABORATIF</span>
+                <h2 class="text-3xl md:text-5xl font-black text-neutral">Belajar Lebih Cepat Bersama!</h2>
+                <p class="text-neutral/60 text-lg font-medium max-w-xl mx-auto">Masuk ke ruang diskusi interaktif dengan mentor dan kawan-kawan seperjuanganmu.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-card bg-white p-8 relative border-2 border-neutral shadow-playful hover:translate-y-[-4px] transition-transform">
+                    <div class="absolute -top-6 left-8 w-12 h-12 rounded-full border-2 border-neutral overflow-hidden">
+                        <img alt="Kevin" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDssyzQLmMMfFWttctiYSzDFJhuKJM4G_skmst8A0zZ8GnyvH6YOUiKAr9PIh87ilXPLcDVwYGbInuXwRddrRB9IQ_wYGqaNfFRdVpGlCdIzH_cFGrO5o2mQ585QYUSq76zI-uLmFiMotk8vgwsnX-XTLzhM8YO7iW22MfL6VcglCf7H2bHa9_ZSPJknCIjBpNbDimgKbqlDDP1y5HWs9yrb35SUxmNrzc8fZfPHEDwR3vQUyV7YGQyL8SdTmJOfkRoblQ6YZgoBQ"/>
+                    </div>
+                    <div class="pt-4 space-y-4">
+                        <div class="flex text-secondary text-sm">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="italic text-neutral/70 text-sm font-medium leading-relaxed">"ClassQu beneran ngebantu banget buat nambah skill di luar jam kuliah. Materinya ringkas, padat, dan gak ngebosenin!"</p>
+                        <div>
+                            <h5 class="font-extrabold text-neutral text-sm">Kevin Sanjaya</h5>
+                            <span class="text-xs text-neutral/50 font-bold">Mahasiswa Sistem Informasi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-card bg-white p-8 relative border-2 border-neutral shadow-playful hover:translate-y-[-4px] transition-transform">
+                    <div class="absolute -top-6 left-8 w-12 h-12 rounded-full border-2 border-neutral overflow-hidden">
+                        <img alt="Maya" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ2J7kcqcM5bKQXM6zUECue1UdSqQcMyClk7EasOzSuURrd4Gx_N7dDhh-kM4lhEzVwsSZO8l7FYxhGrJgxPE1MCDuh3gF2qSeUp1A1E4vFsF-mZS1POiNwVvrpJbVf_il5VI86pmJ_SOfsLG1ho_RhDDTwj6QvESRyb_X9gYgWM7hysvsP1BpFqufNR9kPfH-L6GvfS9b3wDHbgoVGaugAiabgs2QNsF6DGo97U41V3N_8HtPmwr6y32Wa44h5xVCOetFreTDuQ"/>
+                    </div>
+                    <div class="pt-4 space-y-4">
+                        <div class="flex text-secondary text-sm">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="italic text-neutral/70 text-sm font-medium leading-relaxed">"Nggak nyangka belajar Canva bisa seseru ini. Tutornya asik banget dan sekarang aku udah bisa buka jasa desain freelance kecil-kecilan."</p>
+                        <div>
+                            <h5 class="font-extrabold text-neutral text-sm">Maya Putri</h5>
+                            <span class="text-xs text-neutral/50 font-bold">Pelajar SMA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Card CTA -->
+                <div class="glass-card bg-primary text-white p-8 flex flex-col justify-between border-2 border-neutral shadow-playful relative overflow-hidden group">
+                    <div class="space-y-3 z-10">
+                        <h4 class="font-black text-2xl">ClassQu Discord Hub</h4>
+                        <p class="text-sm text-white/90 leading-relaxed font-semibold">Tanya jawab langsung dengan mentor industri, dapatkan referensi karir, dan ikuti review portfolio mingguan secara gratis!</p>
+                    </div>
+                    <a href="community.html" class="w-full bg-white text-primary border-2 border-neutral py-3 rounded-full font-extrabold mt-8 text-center text-sm shadow-playful-sm hover:scale-[1.02] active:scale-95 transition-transform flex items-center justify-center gap-2 z-10">
+                        <span class="material-symbols-outlined font-bold">groups</span>
+                        <span>Gabung Komunitas</span>
+                    </a>
+                    <div class="absolute -right-20 -bottom-20 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-24 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto bg-primary rounded-[32px] p-12 text-center relative overflow-hidden border-2 border-neutral shadow-[0_30px_60px_-10px_rgba(255,126,103,0.4)]">
+            <div class="absolute inset-0 opacity-15 pointer-events-none z-0">
+                <div class="absolute top-0 left-10 w-52 h-52 bg-white rounded-full blur-[80px]"></div>
+                <div class="absolute bottom-0 right-10 w-72 h-72 bg-white rounded-full blur-[100px]"></div>
+            </div>
+            
+            <div class="relative z-10 space-y-6">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight">Siap Menguasai Skill Masa Depan?</h2>
+                <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-semibold">Daftar sekarang secara gratis dan dapatkan akses penuh ke 3 materi dasar pilihan serta roadmap karir terpadu.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <a href="login.html" class="btn-playful bg-white text-primary px-10 py-4 rounded-full font-black text-lg shadow-premium">Mulai Belajar Sekarang</a>
+                    <a href="materi.html" class="btn-playful bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/15 transition-all">Eksplor Katalog Kelas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="components.js"></script>
+</body>
+</html>

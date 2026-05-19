@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Detail Kelas - ClassQu</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS with Playful Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF7E67",          // Coral Orange
+                        secondary: "#FFD56C",        // Warm Yellow
+                        tertiary: "#60B2AB",         // Teal Mint
+                        neutral: "#1C1B1B",          // Ink Black
+                        background: "#FFFBF4",       // Warm Cream
+                        "on-background": "#1C1B1B",
+                        "surface-container": "#FFF3DF", 
+                        "surface-container-low": "#FFFBF4",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface-variant": "#57423e",
+                    },
+                    borderRadius: {
+                        'card': '32px',
+                        'lg': '2rem',
+                        'xl': '3rem',
+                        'full': '9999px'
+                    },
+                    boxShadow: {
+                        'playful-sm': '2px 2px 0px 0px #1C1B1B',
+                        'playful': '4px 4px 0px 0px #1C1B1B',
+                        'premium': '0 20px 40px -10px rgba(28, 27, 27, 0.05)',
+                        'glow': '0 10px 30px -5px rgba(255, 126, 103, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFBF4;
+            color: #1C1B1B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(28, 27, 27, 0.05);
+            box-shadow: 0 12px 45px rgba(0, 0, 0, 0.03);
+            border-radius: 32px;
+        }
+        .btn-playful {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 24px rgba(255, 126, 103, 0.15);
+        }
+        .btn-playful:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(255, 126, 103, 0.25);
+        }
+        .btn-playful:active {
+            transform: translateY(1px);
+        }
+        /* Accordion transition classes */
+        .accordion-content {
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-neutral overflow-x-hidden min-h-screen">
+
+    <!-- Top Sticky Glass Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- BACK TO CATALOG BAR -->
+    <div class="max-w-6xl mx-auto px-6 pt-8">
+        <a href="materi.html" class="inline-flex items-center gap-2 text-neutral/65 font-bold text-xs hover:text-primary transition-colors group">
+            <span class="material-symbols-outlined text-sm font-black group-hover:-translate-x-1 transition-transform">arrow_back</span>
+            <span>Kembali ke Katalog Kelas</span>
+        </a>
+    </div>
+
+    <!-- MAIN HEADER HERO SECTION -->
+    <header class="max-w-6xl mx-auto px-6 pt-6 pb-12">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+            
+            <!-- Left Info Pane -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="flex flex-wrap gap-2">
+                    <span id="header-badge-category" class="bg-primary text-white text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-wider shadow-sm">KATEGORI</span>
+                    <span id="header-badge-level" class="bg-[#ECE6E1] text-[#7A665A] text-[10px] font-extrabold px-3.5 py-1 rounded-full uppercase tracking-wider">LEVEL</span>
+                </div>
+                
+                <h1 id="header-title" class="text-3xl md:text-5xl font-black text-neutral leading-tight">Nama Kelas</h1>
+                
+                <p id="header-description" class="text-neutral/70 text-sm md:text-base font-medium leading-relaxed">
+                    Deskripsi kelas populated dynamically.
+                </p>
+
+                <!-- Stats Cards Row -->
+                <div class="bg-surface-container rounded-[24px] p-5 border border-neutral/5 grid grid-cols-3 text-center gap-4 shadow-premium max-w-md">
+                    <div class="border-r border-neutral/10">
+                        <span class="block text-[10px] font-extrabold text-neutral/40 uppercase tracking-widest mb-1">Kurikulum</span>
+                        <span id="header-stat-modules" class="font-black text-base text-neutral/80">12 Modul</span>
+                    </div>
+                    <div class="border-r border-neutral/10">
+                        <span class="block text-[10px] font-extrabold text-neutral/40 uppercase tracking-widest mb-1">Total Durasi</span>
+                        <span id="header-stat-duration" class="font-black text-base text-neutral/80">4 Jam</span>
+                    </div>
+                    <div>
+                        <span class="block text-[10px] font-extrabold text-neutral/40 uppercase tracking-widest mb-1">Rating Siswa</span>
+                        <span id="header-stat-rating" class="font-black text-base text-neutral/80 flex items-center justify-center gap-1">
+                            <span class="text-[#B18E36] text-sm">★</span> 4.9
+                        </span>
+                    </div>
+                </div>
+
+                <!-- CTA Action Box -->
+                <div class="pt-2 flex flex-wrap items-center gap-4">
+                    <div class="mr-2">
+                        <span class="block text-[10px] font-black text-neutral/40 uppercase tracking-widest mb-1">HARGA KELAS</span>
+                        <span id="header-price" class="text-[#A73A24] font-black text-3xl">Rp 149.000</span>
+                    </div>
+                    <button class="btn-playful bg-primary text-white font-black text-sm px-8 py-4 rounded-full shadow-playful-sm hover:scale-105 active:scale-95 transition-transform flex items-center gap-2">
+                        <span>Beli Sekarang</span>
+                        <span class="material-symbols-outlined text-sm">shopping_cart</span>
+                    </button>
+                    <button id="wishlist-toggle-btn" class="bg-white border-2 border-neutral w-14 h-14 flex items-center justify-center rounded-full shadow-playful-sm hover:scale-105 active:scale-95 transition-transform" title="Tambah Wishlist">
+                        <span class="material-symbols-outlined text-neutral text-xl" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Preview Player -->
+            <div class="lg:col-span-5 space-y-3">
+                <span class="text-[10px] font-black text-neutral/40 uppercase tracking-widest block mb-1">VIDEO PREVIEW BELAJAR</span>
+                <div class="relative aspect-[16/10] rounded-[32px] overflow-hidden border-4 border-neutral shadow-playful bg-neutral bg-opacity-5">
+                    <video id="preview-video" class="w-full h-full object-cover" controls poster="">
+                        <source src="" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- CONTENT BODY SECTION -->
+    <main class="max-w-6xl mx-auto px-6 pb-24 grid lg:grid-cols-12 gap-12">
+        
+        <!-- Left 8 Columns: Instructor & Modules & Reviews -->
+        <div class="lg:col-span-8 space-y-12">
+            
+            <!-- SECTION 1: INSTRUKTUR KELAS -->
+            <section class="space-y-6 pt-6 border-t-2 border-neutral/5">
+                <h3 class="text-2xl font-black text-neutral flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary fill-current" style="font-variation-settings: 'FILL' 1;">badge</span>
+                    <span>Instruktur Professional</span>
+                </h3>
+                
+                <div class="glass-card bg-white p-6 md:p-8 border-2 border-neutral shadow-playful flex flex-col md:flex-row gap-6 items-center">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-neutral shadow-sm shrink-0">
+                        <img id="instructor-img" alt="Mentor Photo" class="object-cover w-full h-full" src=""/>
+                    </div>
+                    <div class="space-y-3 text-center md:text-left flex-1">
+                        <div>
+                            <h4 id="instructor-name" class="text-xl font-black text-neutral">Nama Instruktur</h4>
+                            <span class="text-xs font-extrabold text-primary uppercase tracking-wider block mt-1">Lead Mentor & Expert Praktisi</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2 justify-center md:justify-start">
+                            <span class="bg-[#ECE6E1] text-[#7A665A] text-[9px] font-black px-3 py-1 rounded-full tracking-wider uppercase">CERTIFIED EXPERT</span>
+                            <span class="bg-[#ECE6E1] text-[#7A665A] text-[9px] font-black px-3 py-1 rounded-full tracking-wider uppercase">8+ TAHUN PENGALAMAN</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: KURIKULUM MODUL (ACCORDION DENGAN CHILD BAB) -->
+            <section class="space-y-6">
+                <h3 class="text-2xl font-black text-neutral flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary fill-current" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+                    <span>Kurikulum & Modul Kelas</span>
+                </h3>
+                
+                <p class="text-neutral/60 text-sm font-medium">Klik pada judul modul di bawah ini untuk melihat daftar bab pelajaran interaktif secara detail.</p>
+
+                <!-- Accordion Wrapper -->
+                <div id="curriculum-accordion-list" class="space-y-4">
+                    <!-- Populated dynamically -->
+                </div>
+            </section>
+
+            <!-- SECTION 3: ULASAN SISWA -->
+            <section class="space-y-6">
+                <h3 class="text-2xl font-black text-neutral flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary fill-current" style="font-variation-settings: 'FILL' 1;">rate_review</span>
+                    <span>Ulasan Siswa Sukses</span>
+                </h3>
+                
+                <div id="reviews-grid-list" class="grid sm:grid-cols-2 gap-6">
+                    <!-- Populated dynamically -->
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Right 4 Columns: Side Quick Info widget -->
+        <div class="lg:col-span-4 space-y-6">
+            <div class="glass-card bg-white p-6 md:p-8 border-2 border-neutral shadow-playful sticky top-28 self-start">
+                <h4 class="font-black text-base text-neutral mb-4 border-b border-neutral/10 pb-3 flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-primary">verified_user</span>
+                    <span>Fasilitas Belajar</span>
+                </h4>
+                
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary font-bold text-lg mt-0.5">check_circle</span>
+                        <span class="text-xs font-extrabold text-neutral/70 leading-normal">Akses Selamanya & Tanpa Batas</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary font-bold text-lg mt-0.5">check_circle</span>
+                        <span class="text-xs font-extrabold text-neutral/70 leading-normal">Kuis Interaktif & Ujian Sertifikat</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary font-bold text-lg mt-0.5">check_circle</span>
+                        <span class="text-xs font-extrabold text-neutral/70 leading-normal">Support Komunitas Belajar ClassQu</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary font-bold text-lg mt-0.5">check_circle</span>
+                        <span class="text-xs font-extrabold text-neutral/70 leading-normal">Sesi Diskusi Tanya Jawab Instruktur</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary font-bold text-lg mt-0.5">check_circle</span>
+                        <span class="text-xs font-extrabold text-neutral/70 leading-normal">Bahan Bacaan & File Aset Latihan</span>
+                    </li>
+                </ul>
+
+                <div class="mt-8 pt-6 border-t border-neutral/10 text-center">
+                    <span class="block text-[10px] font-black text-neutral/40 uppercase tracking-widest mb-4">GARANSI UANG KEMBALI 100%</span>
+                    <button class="w-full bg-[#ECE6E1] text-[#7A665A] font-black text-xs py-3 rounded-full uppercase tracking-wider hover:scale-103 transition-transform">
+                        Tanya Hubungi CS
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- DYNAMIC RENDER DETAILS JS -->
+    <script>
+        // High Fidelity Shared Dataset (identical matching COURSES from materi.html)
+        const COURSES = [
+            {
+                id: 1,
+                title: "Mastering Canva for Social Media",
+                category: "canvadesign",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRc8VvQgXTVFvgkxmTm1_5n6_rrfUPTJIzIDRWiSYcJbatWY0tWHe2BdupLLm4Bh2zfx7GXDfX6n18G4WS4pwd5nSGIVzuKAXet63Y5U5jV7gGJ791xvyJGi99F9MVG7Wjew4ON_Xgq1UVL6Wa3Gxdwr3u4DnvSUJ2febTcoKVMzolYOAObViybatZtB6GfjGZNUI43Q-DF4VL04AMNzEB3sAY4FetC-iyf7NQ0rik8BkPETKWR1in_91ne8cvAfKkq20k9fiVgw",
+                badge: "ONLINE",
+                tag: "CANVA",
+                rating: "4.9/5.0",
+                stats: "12 Modul • 4 Jam",
+                price: "Rp 149.000",
+                mentorName: "Sarah W.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCecdthvFiTV6G37GgGXdU3Vxp7Qe1GC_uV0hIMWFF-qjmPNzdye7rpSo3ji3RC_DkHJRT5KWl-a1vgU2wyxiyrSq7KvnI-b-_BrKrejih5jExWclLARo0VXJITH3aYMHZXdHCjBw610VgOTQ2CYmvRtfAGgA6giOOesJkhrVjmci1oOCBxEx1UpzdDAnJuAzqBVIvTWyuONeEJ2K3jcWHQPuqpzrUfa2mib0goEq7ipnqcDBeOpMbR8eXCrLfAfwN19JLAUejj0Q"
+            },
+            {
+                id: 2,
+                title: "Confident Public Speaking 101",
+                category: "publicspeaking",
+                level: "pemula",
+                format: "zoom",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRc8VvQgXTVFvgkxmTm1_5n6_rrfUPTJIzIDRWiSYcJbatWY0tWHe2BdupLLm4Bh2zfx7GXDfX6n18G4WS4pwd5nSGIVzuKAXet63Y5U5jV7gGJ791xvyJGi99F9MVG7Wjew4ON_Xgq1UVL6Wa3Gxdwr3u4DnvSUJ2febTcoKVMzolYOAObViybatZtB6GfjGZNUI43Q-DF4VL04AMNzEB3sAY4FetC-iyf7NQ0rik8BkPETKWR1in_91ne8cvAfKkq20k9fiVgw",
+                badge: "LIVE ZOOM",
+                tag: "SPEAKING",
+                rating: "4.8/5.0",
+                stats: "8 Sesi • 12 Jam",
+                price: "Rp 199.000",
+                mentorName: "Dimas P.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA"
+            },
+            {
+                id: 3,
+                title: "Excel Masterclass: Zero to Business Hero",
+                category: "msoffice",
+                level: "menengah",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRc8VvQgXTVFvgkxmTm1_5n6_rrfUPTJIzIDRWiSYcJbatWY0tWHe2BdupLLm4Bh2zfx7GXDfX6n18G4WS4pwd5nSGIVzuKAXet63Y5U5jV7gGJ791xvyJGi99F9MVG7Wjew4ON_Xgq1UVL6Wa3Gxdwr3u4DnvSUJ2febTcoKVMzolYOAObViybatZtB6GfjGZNUI43Q-DF4VL04AMNzEB3sAY4FetC-iyf7NQ0rik8BkPETKWR1in_91ne8cvAfKkq20k9fiVgw",
+                badge: "ONLINE",
+                tag: "OFFICE",
+                rating: "4.9/5.0",
+                stats: "15 Modul • 6 Jam",
+                price: "Rp 179.000",
+                mentorName: "Budi S.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCLO3sZEHa41v4D_ppeLwr2050LvdV0av2ImdUnETvV0ICgfNiI7XRYPt8HYmx1Ncy_bvQKat1yCxRPJ_MthQPxM94wMnrQyU-IEYO-kpuh29Vlcu8gHz30e6sf08Ziv1lcrq6N19FQ1xQH_u1FqUPyzBFjQWMs1D9hbL92Cf41ybEfHdsrVb97z2DxS7XSN2ko-0T-UIxHdoSC8hjwJtaE1wVzVVMf3kIjPBsMqJliAH66BZ_JlffgPoZsNWyFPbVMD9eW4w5PBQ"
+            },
+            {
+                id: 4,
+                title: "Python Coding for Absolute Beginners",
+                category: "komputerdasar",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRc8VvQgXTVFvgkxmTm1_5n6_rrfUPTJIzIDRWiSYcJbatWY0tWHe2BdupLLm4Bh2zfx7GXDfX6n18G4WS4pwd5nSGIVzuKAXet63Y5U5jV7gGJ791xvyJGi99F9MVG7Wjew4ON_Xgq1UVL6Wa3Gxdwr3u4DnvSUJ2febTcoKVMzolYOAObViybatZtB6GfjGZNUI43Q-DF4VL04AMNzEB3sAY4FetC-iyf7NQ0rik8BkPETKWR1in_91ne8cvAfKkq20k9fiVgw",
+                badge: "ONLINE",
+                tag: "CODING",
+                rating: "5.0/5.0",
+                stats: "24 Modul • 10 Jam",
+                price: "Rp 249.000",
+                mentorName: "Rian C.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA"
+            },
+            {
+                id: 5,
+                title: "English Speaking for Business Communication",
+                category: "bahasainggris",
+                level: "menengah",
+                format: "zoom",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAJdCXnF7tN5TIg85mnZpVE3wT1-us09ocXUC5uFSy7Zya2O8ABifXJDOdKHFn5hLntRPoXs1-0OmKYsFk8SgyytJK_TGXDO0QMLEb6x6w7mXv0CT4bWp3Syg-tTHvl8UuP62MEtA6rtEHtHGoiecnG_ZPBSgLGjiNFqdU5XfwrKlWJD5klG8h6KblojLSptCH8itimnLgeW3--IXSWkNa4kd7Nzjn9LvPqiig6GByrID-tN8nzB-ETbj1bi8GBcEaU2xTnyPRgg",
+                badge: "LIVE ZOOM",
+                tag: "ENGLISH",
+                rating: "4.8/5.0",
+                stats: "10 Sesi • 15 Jam",
+                price: "Rp 299.000",
+                mentorName: "Jessica T.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"
+            },
+            {
+                id: 6,
+                title: "Figma UI/UX Design: Wireframe to Prototype",
+                category: "canvadesign",
+                level: "mahir",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDhuWouGkhdvTyDit4zrRW4vexx4i7CC6Idj2dCMWCIzDcEqXhTOREXpS33xTVvj42isnKrlrBBttZ8pVF0f78onIyGU_wBHYgLtoy2i1slMezn2PHj3MbdaZWD-A-Y92hJfhq7yWmdB2tVeRFq1fN3bbIRjAsl6aU4t5tsGsA601ySvvlAjXra81PBBUoSBOZRlj1Gb5jpKgrUt3gMF-GIsQSZdR9noYr8cbPkBmTeSGP8MxISt33ahCC1EzM-VAXiouRcp5KdwA",
+                badge: "ONLINE",
+                tag: "DESIGN",
+                rating: "4.9/5.0",
+                stats: "18 Modul • 8 Jam",
+                price: "Rp 199.000",
+                mentorName: "Nadia A.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCecdthvFiTV6G37GgGXdU3Vxp7Qe1GC_uV0hIMWFF-qjmPNzdye7rpSo3ji3RC_DkHJRT5KWl-a1vgU2wyxiyrSq7KvnI-b-_BrKrejih5jExWclLARo0VXJITH3aYMHZXdHCjBw610VgOTQ2CYmvRtfAGgA6giOOesJkhrVjmci1oOCBxEx1UpzdDAnJuAzqBVIvTWyuONeEJ2K3jcWHQPuqpzrUfa2mib0goEq7ipnqcDBeOpMbR8eXCrLfAfwN19JLAUejj0Q"
+            },
+            {
+                id: 7,
+                title: "Internet Productivity & AI Hacks",
+                category: "productivity",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAJdCXnF7tN5TIg85mnZpVE3wT1-us09ocXUC5uFSy7Zya2O8ABifXJDOdKHFn5hLntRPoXs1-0OmKYsFk8SgyytJK_TGXDO0QMLEb6x6w7mXv0CT4bWp3Syg-tTHvl8UuP62MEtA6rtEHtHGoiecnG_ZPBSgLGjiNFqdU5XfwrKlWJD5klG8h6KblojLSptCH8itimnLgeW3--IXSWkNa4kd7Nzjn9LvPqiig6GByrID-tN8nzB-ETbj1bi8GBcEaU2xTnyPRgg",
+                badge: "ONLINE",
+                tag: "PRODUCTIVITY",
+                rating: "4.7/5.0",
+                stats: "12 Modul • 5 Jam",
+                price: "Rp 129.000",
+                mentorName: "Rian C.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA"
+            },
+            {
+                id: 8,
+                title: "Persiapan Kerja & CV ATS Optimization",
+                category: "persiapankerja",
+                level: "pemula",
+                format: "zoom",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDhuWouGkhdvTyDit4zrRW4vexx4i7CC6Idj2dCMWCIzDcEqXhTOREXpS33xTVvj42isnKrlrBBttZ8pVF0f78onIyGU_wBHYgLtoy2i1slMezn2PHj3MbdaZWD-A-Y92hJfhq7yWmdB2tVeRFq1fN3bbIRjAsl6aU4t5tsGsA601ySvvlAjXra81PBBUoSBOZRlj1Gb5jpKgrUt3gMF-GIsQSZdR9noYr8cbPkBmTeSGP8MxISt33ahCC1EzM-VAXiouRcp5KdwA",
+                badge: "LIVE ZOOM",
+                tag: "CAREER",
+                rating: "4.9/5.0",
+                stats: "12 Modul • 5 Jam",
+                price: "Rp 199.000",
+                mentorName: "Kevin S.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCLO3sZEHa41v4D_ppeLwr2050LvdV0av2ImdUnETvV0ICgfNiI7XRYPt8HYmx1Ncy_bvQKat1yCxRPJ_MthQPxM94wMnrQyU-IEYO-kpuh29Vlcu8gHz30e6sf08Ziv1lcrq6N19FQ1xQH_u1FqUPyzBFjQWMs1D9hbL92Cf41ybEfHdsrVb97z2DxS7XSN2ko-0T-UIxHdoSC8hjwJtaE1wVzVVMf3kIjPBsMqJliAH66BZ_JlffgPoZsNWyFPbVMD9eW4w5PBQ"
+            },
+            {
+                id: 9,
+                title: "Copywriting Komersial: Jual dengan Kata",
+                category: "productivity",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRc8VvQgXTVFvgkxmTm1_5n6_rrfUPTJIzIDRWiSYcJbatWY0tWHe2BdupLLm4Bh2zfx7GXDfX6n18G4WS4pwd5nSGIVzuKAXet63Y5U5jV7gGJ791xvyJGi99F9MVG7Wjew4ON_Xgq1UVL6Wa3Gxdwr3u4DnvSUJ2febTcoKVMzolYOAObViybatZtB6GfjGZNUI43Q-DF4VL04AMNzEB3sAY4FetC-iyf7NQ0rik8BkPETKWR1in_91ne8cvAfKkq20k9fiVgw",
+                badge: "ONLINE",
+                tag: "WRITING",
+                rating: "4.8/5.0",
+                stats: "10 Modul • 3 Jam",
+                price: "Rp 159.000",
+                mentorName: "Indra K.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCLO3sZEHa41v4D_ppeLwr2050LvdV0av2ImdUnETvV0ICgfNiI7XRYPt8HYmx1Ncy_bvQKat1yCxRPJ_MthQPxM94wMnrQyU-IEYO-kpuh29Vlcu8gHz30e6sf08Ziv1lcrq6N19FQ1xQH_u1FqUPyzBFjQWMs1D9hbL92Cf41ybEfHdsrVb97z2DxS7XSN2ko-0T-UIxHdoSC8hjwJtaE1wVzVVMf3kIjPBsMqJliAH66BZ_JlffgPoZsNWyFPbVMD9eW4w5PBQ"
+            },
+            {
+                id: 10,
+                title: "Dasar Cloud Computing (AWS & GCP)",
+                category: "komputerdasar",
+                level: "menengah",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAWK8dlCWoMvKpoObFsiRdDZ2GDZMfWMpOibdnaXXBKoKStaNRK7ZNdE5QcfQK9xAj27h1llqb5NLkOVtj0bi-J68fplwFHR_Dz-X3SJzxSvj3iwwSpKfLtaJnPT_M5HQwMOT8j1Iw8W5OU-mvqPs3RqYtlxVLM-hu80cDMPADqOW0Cwm99pOwJdx7R2UTg9yHgBOcS4JRLPxjs5qTDWX11y12Q-yyfuItKk-lgtaSZy9mmLDi-yJqRJJDyNnFgw9NtmOGpoPW-1Q",
+                badge: "ONLINE",
+                tag: "CLOUD",
+                rating: "5.0/5.0",
+                stats: "20 Modul • 12 Jam",
+                price: "Rp 299.000",
+                mentorName: "Rahmat M.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBrDwQ38P9xccl4LXirzosKAl7xaOSfwkZaoHlzA40tsxE_VFm3GdPvdM1wPFGeNhiKR9pdZxeieA9gWHbZYjt2AUV968G_E2q4TixttPeEzl-APHWOnRDS-AudKSU3wjQ0mJg8UVOo1OIzW4K_X0PZrtiFraV8HvRigyoargdKXnym4q-Rq5fq_rgHPVjNL9PBnfm2A6A5Skgr6IsxRLtqU8JDt3dve4zaQBkjZjhSSDm7TLrpNqfKE8mUClooAmR0fxQCB4WUA"
+            },
+            {
+                id: 11,
+                title: "Digital Marketing Strategy 360",
+                category: "productivity",
+                level: "menengah",
+                format: "zoom",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBA3yjOAAimUqhfCD8Zh9YaLzd7pcRTe1fAAPChZ51NaMwtMr_NQHg0z82__M0mKquwy7CHpCjDjrGRbxF1nFs613rWDIbiQ-djJNcER2QuOyOwljEoLSDT1QcziIM8aYB7cJgxiXu_NkcIQEIq1I8BxvnMudJFXD4QicN_iSX4eRINJ-bt5LJhFoxKPmJ7Kr6OrsPYGyMEKAVNE0zA3NF2K3E6R4qgg3JKKEoBnhhJUE-MqP6FrbEJgvwuCB-cKLVL-nREW87iTA",
+                badge: "LIVE ZOOM",
+                tag: "MARKETING",
+                rating: "4.9/5.0",
+                stats: "8 Sesi • 10 Jam",
+                price: "Rp 249.000",
+                mentorName: "Putri A.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"
+            },
+            {
+                id: 12,
+                title: "Content Creator & CapCut Editing",
+                category: "canvadesign",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC1vlG6t7-WJnsVjoer6yNaQgE6XINSF8-qMQCfjUlxIyp6DpPxSS89qvW7Gxlp4QNlMJKUvs0s5Rd_RtMUSsf5bENHX99UZg2JZKDznKD9Gd5rTRJ8ovhoRVZ7-KoW9Xez1GcY6mfbjprmgNERoC3HUAG7W0RBw1KytIf2_VVZbzrDklV_O7D5cW3hU4nbsvg8K8OqGZ3Ql40I_OMuHh4PGZ-jqKBF9CuLoWUS8M-3vm9gzcXVKQp30RR4v1vR6QWAd5-1-wt_eg",
+                badge: "ONLINE",
+                tag: "VIDEO",
+                rating: "4.8/5.0",
+                stats: "14 Modul • 5 Jam",
+                price: "Rp 139.000",
+                mentorName: "Fahmi R.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"
+            },
+            {
+                id: 13,
+                title: "Data Science & Tableau Visualization",
+                category: "komputerdasar",
+                level: "mahir",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRc8VvQgXTVFvgkxmTm1_5n6_rrfUPTJIzIDRWiSYcJbatWY0tWHe2BdupLLm4Bh2zfx7GXDfX6n18G4WS4pwd5nSGIVzuKAXet63Y5U5jV7gGJ791xvyJGi99F9MVG7Wjew4ON_Xgq1UVL6Wa3Gxdwr3u4DnvSUJ2febTcoKVMzolYOAObViybatZtB6GfjGZNUI43Q-DF4VL04AMNzEB3sAY4FetC-iyf7NQ0rik8BkPETKWR1in_91ne8cvAfKkq20k9fiVgw",
+                badge: "ONLINE",
+                tag: "DATA",
+                rating: "4.9/5.0",
+                stats: "16 Modul • 7 Jam",
+                price: "Rp 279.000",
+                mentorName: "Hendra W.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCLO3sZEHa41v4D_ppeLwr2050LvdV0av2ImdUnETvV0ICgfNiI7XRYPt8HYmx1Ncy_bvQKat1yCxRPJ_MthQPxM94wMnrQyU-IEYO-kpuh29Vlcu8gHz30e6sf08Ziv1lcrq6N19FQ1xQH_u1FqUPyzBFjQWMs1D9hbL92Cf41ybEfHdsrVb97z2DxS7XSN2ko-0T-UIxHdoSC8hjwJtaE1wVzVVMf3kIjPBsMqJliAH66BZ_JlffgPoZsNWyFPbVMD9eW4w5PBQ"
+            },
+            {
+                id: 14,
+                title: "Belajar Javascript untuk Web Dinamis",
+                category: "komputerdasar",
+                level: "pemula",
+                format: "online",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRc8VvQgXTVFvgkxmTm1_5n6_rrfUPTJIzIDRWiSYcJbatWY0tWHe2BdupLLm4Bh2zfx7GXDfX6n18G4WS4pwd5nSGIVzuKAXet63Y5U5jV7gGJ791xvyJGi99F9MVG7Wjew4ON_Xgq1UVL6Wa3Gxdwr3u4DnvSUJ2febTcoKVMzolYOAObViybatZtB6GfjGZNUI43Q-DF4VL04AMNzEB3sAY4FetC-iyf7NQ0rik8BkPETKWR1in_91ne8cvAfKkq20k9fiVgw",
+                badge: "ONLINE",
+                tag: "CODING",
+                rating: "4.9/5.0",
+                stats: "18 Modul • 8 Jam",
+                price: "Rp 219.000",
+                mentorName: "Dewi S.",
+                mentorImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0TpCBniTrzGlYjZwGw2LLWLsbf4IOJb8WVfforeu9ismpvVsfl-P7D_Bcvx7zTYeBLOtqdGV8vTtxGPALaBMyyh9D2AR_MYj8qCssYTGBi9nLoIpEkWi98lD-y7WNU_SPH34VRYXrbJNdqixUBKT2ajZ9W5jIdaFsnKoJLZCanRGGxH-MyuOL6O_AQ5C96XC1kPM2y2TYQKuYLpq1o-ZI2GuVofBjMQKsZu0l64WIdRmwLDNaXiAJzRCEiME0gVzS8ryuxkx0mg"
+            }
+        ];
+
+        // Dynamic Curriculums & Chapters Table (Realistic content lookup)
+        const ACCORDION_CHANNELS = {
+            canvadesign: "Canva & Graphic Design",
+            publicspeaking: "Public Speaking & Communication",
+            msoffice: "Microsoft Office",
+            komputerdasar: "Dasar Komputer & Coding",
+            bahasainggris: "Bahasa Inggris",
+            productivity: "Produktivitas & AI Hacks",
+            persiapankerja: "Persiapan Kerja & CV ATS"
+        };
+
+        function fetchCourseFullDetails(course) {
+            const catName = ACCORDION_CHANNELS[course.category] || course.tag;
+            return {
+                description: `Akselerasi keahlian berharga Anda secara mendalam dalam spesialisasi ${catName} bersama mentor legendaris kami melalui kelas ${course.title}. Kurikulum ini telah disesuaikan secara khusus dengan standar kebutuhan industri modern saat ini, membekali Anda dengan teori esensial, studi kasus interaktif, serta implementasi project nyata dari nol hingga siap kerja.`,
+                video: "https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-smartphone-in-his-hand-40540-large.mp4",
+                bio: `Dikenal luas sebagai mentor yang suportif dan adaptif, ${course.mentorName} adalah lead mentor sekaligus praktisi industri berpengalaman di bidang ${catName} dengan rekam jejak karir internasional lebih dari 8 tahun. ${course.mentorName} aktif membimbing ribuan mahasiswa dan membantu menyalurkan bakat-bakat berbakat menuju korporat ternama.`,
+                modules: [
+                    {
+                        title: `Modul 1: Landasan Utama & Filosofi Kerja ${course.tag}`,
+                        chapters: [
+                            `Bab 1.1: Memahami Pola Pikir & Esensi Penting ${course.tag} (15 Menit)`,
+                            "Bab 1.2: Pengenalan Ruang Kerja, Komponen Utama, & Cara Belajar (20 Menit)",
+                            "Bab 1.3: Tantangan Praktis & Formula Sukses dari Praktisi (15 Menit)"
+                        ]
+                    },
+                    {
+                        title: `Modul 2: Teori Fundamental & Bedah Kasus Sukses`,
+                        chapters: [
+                            "Bab 2.1: Analisis Struktur Aturan Emas & Anatomi Karya Berkelas (25 Menit)",
+                            "Bab 2.2: Studi Kasus Riil: Menghindari Kegagalan Desain yang Sering Terjadi (30 Menit)",
+                            "Bab 2.3: Mengidentifikasi Peluang Pasar & Kebutuhan Portofolio (20 Menit)"
+                        ]
+                    },
+                    {
+                        title: `Modul 3: Hands-On Practice & Pembuatan Proyek Komersil`,
+                        chapters: [
+                            "Bab 3.1: Panduan Langkah demi Langkah: Memulai Proyek Pertama Anda (40 Menit)",
+                            "Bab 3.2: Tips Kecepatan Kerja, Keyboard Shortcuts, & Trik Rahasia (30 Menit)",
+                            "Bab 3.3: Menyelesaikan & Melakukan Ekspor Aset dengan Kualitas Terbaik (25 Menit)"
+                        ]
+                    },
+                    {
+                        title: `Modul 4: Evaluasi Mentor & Packaging Portofolio Siap Kerja`,
+                        chapters: [
+                            "Bab 4.1: Uji Pemahaman: Ulasan Menyeluruh & Kuis Kemampuan (30 Menit)",
+                            "Bab 4.2: Cara Menyusun Portfolio di Platform Internasional untuk Menarik Klien (35 Menit)",
+                            "Bab 4.3: Tips Interview, Negosiasi Gaji, & Kelulusan (20 Menit)"
+                        ]
+                    }
+                ],
+                reviews: [
+                    {
+                        name: "Rizky Firmansyah",
+                        rating: "5.0",
+                        comment: "Materi penjelasannya sangat runut dan instruktur sangat ramah dalam memberikan tanggapan di grup diskusi. Sangat direkomendasikan!"
+                    },
+                    {
+                        name: "Aditya Kurniawan",
+                        rating: "4.9",
+                        comment: "Luar biasa lengkap! Modul 3 tentang pengerjaan project langsung membuat saya percaya diri untuk menerima orderan pertama saya di platform freelance."
+                    },
+                    {
+                        name: "Devi Lestari",
+                        rating: "5.0",
+                        comment: "Materi accordian bab-nya sangat detail. Kelas ini memberikan modul berkualitas dengan harga investasi yang super terjangkau!"
+                    }
+                ]
+            };
+        }
+
+        // Accordion Toggle Core Logic
+        function toggleAccordion(index) {
+            const accordionContent = document.getElementById(`accordion-content-${index}`);
+            const arrowIcon = document.getElementById(`accordion-arrow-${index}`);
+            const isClosed = accordionContent.classList.contains('max-h-0') || accordionContent.style.maxHeight === '0px' || !accordionContent.style.maxHeight;
+
+            // Close all other accordions first
+            document.querySelectorAll('.accordion-body').forEach(item => {
+                item.style.maxHeight = '0px';
+                item.classList.add('max-h-0');
+                item.style.opacity = '0';
+            });
+            document.querySelectorAll('.accordion-arrow-icon').forEach(arrow => {
+                arrow.style.transform = 'rotate(0deg)';
+            });
+
+            if (isClosed) {
+                // Open selected accordion
+                accordionContent.classList.remove('max-h-0');
+                accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                accordionContent.style.opacity = '1';
+                arrowIcon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Main Onload population logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Read course ID from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = parseInt(urlParams.get('id')) || 1; // Fallback to course 1
+
+            const course = COURSES.find(c => c.id === courseId);
+            if (!course) {
+                document.body.innerHTML = `
+                    <div class="text-center py-20">
+                        <h2 class="text-2xl font-bold text-neutral">Kelas Tidak Ditemukan!</h2>
+                        <a href="materi.html" class="text-primary hover:underline mt-4 inline-block">Kembali ke Katalog</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const details = fetchCourseFullDetails(course);
+
+            // Populate Dynamic Header Details
+            document.getElementById('header-title').textContent = course.title;
+            document.getElementById('header-badge-category').textContent = course.tag;
+            document.getElementById('header-badge-level').textContent = course.level.toUpperCase();
+            document.getElementById('header-description').textContent = details.description;
+            document.getElementById('header-price').textContent = course.price;
+
+            // Stats Row
+            const stats = course.stats.split('•');
+            document.getElementById('header-stat-modules').textContent = stats[0]?.trim() || "12 Modul";
+            document.getElementById('header-stat-duration').textContent = stats[1]?.trim() || "4 Jam";
+            document.getElementById('header-stat-rating').innerHTML = `
+                <span class="text-[#B18E36] text-sm">★</span> ${course.rating.split('/')[0]}
+            `;
+
+            // Video configurations
+            const videoEl = document.getElementById('preview-video');
+            videoEl.src = details.video;
+            videoEl.poster = course.image;
+            videoEl.load();
+
+            // Populate Instructor Card
+            document.getElementById('instructor-name').textContent = course.mentorName;
+            document.getElementById('instructor-img').src = course.mentorImage;
+
+            // Render Accordion Curriculum & Chapters list
+            const accordionContainer = document.getElementById('curriculum-accordion-list');
+            accordionContainer.innerHTML = details.modules.map((mod, idx) => `
+                <div class="bg-white rounded-[24px] border-2 border-neutral shadow-playful overflow-hidden">
+                    <!-- Accordion Header -->
+                    <button onclick="toggleAccordion(${idx})" class="w-full text-left p-5 md:p-6 flex items-center justify-between gap-4 font-black hover:bg-surface-container/20 transition-colors focus:outline-none">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs shrink-0">${idx + 1}</span>
+                            <span class="text-sm md:text-base text-neutral">${mod.title}</span>
+                        </div>
+                        <span id="accordion-arrow-${idx}" class="material-symbols-outlined accordion-arrow-icon text-neutral transition-transform duration-300">expand_more</span>
+                    </button>
+                    
+                    <!-- Accordion Body (Chapters List) -->
+                    <div id="accordion-content-${idx}" class="accordion-body max-h-0 overflow-hidden opacity-0 accordion-content bg-surface-container/10 border-t border-neutral/5" style="max-height: 0px;">
+                        <div class="p-5 md:p-6 space-y-3">
+                            ${mod.chapters.map(chapter => `
+                                <div class="flex items-center justify-between gap-4 p-3.5 bg-white rounded-xl border border-neutral/5 hover:translate-x-1 transition-transform cursor-pointer">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <span class="material-symbols-outlined text-primary text-sm font-bold shrink-0">play_circle</span>
+                                        <span class="text-xs font-bold text-neutral/70 truncate leading-relaxed">${chapter.split('(')[0].trim()}</span>
+                                    </div>
+                                    <span class="text-[10px] font-black text-neutral/40 tracking-wider shrink-0 uppercase">${chapter.includes('(') ? '(' + chapter.split('(')[1] : ''}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Populate Student Reviews Testimonials
+            const reviewsContainer = document.getElementById('reviews-grid-list');
+            reviewsContainer.innerHTML = details.reviews.map(rev => `
+                <div class="glass-card bg-white p-6 border-2 border-neutral shadow-playful flex flex-col justify-between space-y-4">
+                    <p class="text-xs font-medium text-neutral/70 italic leading-relaxed">
+                        "${rev.comment}"
+                    </p>
+                    <div class="flex items-center justify-between border-t border-neutral/5 pt-3">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-black text-xs">
+                                ${rev.name[0]}
+                            </div>
+                            <span class="text-xs font-extrabold text-neutral">${rev.name}</span>
+                        </div>
+                        <div class="flex items-center text-xs text-[#B18E36] font-bold">
+                            <span class="mr-0.5">★</span> ${rev.rating}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Wishlist Toggle Listener Logic
+            const wishlistBtn = document.getElementById('wishlist-toggle-btn');
+            if (wishlistBtn) {
+                wishlistBtn.addEventListener('click', () => {
+                    const heartIcon = wishlistBtn.querySelector('.material-symbols-outlined');
+                    const isFilled = heartIcon.style.fontVariationSettings.includes("'FILL' 1") || heartIcon.style.fontVariationSettings.includes('"FILL" 1');
+                    
+                    if (isFilled) {
+                        heartIcon.style.fontVariationSettings = "'FILL' 0";
+                        heartIcon.classList.remove('text-primary');
+                        heartIcon.classList.add('text-neutral');
+                        wishlistBtn.style.transform = 'scale(0.9)';
+                        setTimeout(() => wishlistBtn.style.transform = 'scale(1)', 150);
+                    } else {
+                        heartIcon.style.fontVariationSettings = "'FILL' 1";
+                        heartIcon.classList.remove('text-neutral');
+                        heartIcon.classList.add('text-primary');
+                        wishlistBtn.style.transform = 'scale(1.1)';
+                        setTimeout(() => wishlistBtn.style.transform = 'scale(1)', 150);
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="components.js"></script>
+</body>
+</html>

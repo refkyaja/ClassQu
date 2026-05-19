@@ -1,0 +1,55 @@
+<!-- Top Navigation Bar - Glassmorphism Aesthetic -->
+<header class="bg-white/75 backdrop-blur-xl border border-white/30 shadow-xl shadow-primary/5 rounded-3xl sticky top-4 flex justify-between items-center px-6 py-3 z-50 mt-4">
+    <!-- Left Logo Section -->
+    <div class="flex items-center gap-3">
+        <a href="index.html" class="font-extrabold text-2xl text-primary tracking-tighter hover:scale-105 transition-transform flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[28px] fill-current text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
+            <span class="text-on-surface">ClassQu</span>
+        </a>
+    </div>
+
+    <!-- Center Navigation Tabs (Pill Buttons as Requested) -->
+    <div class="hidden md:flex items-center gap-1 bg-neutral-100/40 p-1 rounded-full border border-white/20">
+        <button id="link-beranda" onclick="switchTab('beranda')" class="sidebar-link bg-primary text-white shadow-lg shadow-primary/25 rounded-full px-5 py-2 flex items-center gap-2 font-black text-xs transition-all duration-200">
+            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">home</span>
+            <span>Beranda</span>
+        </button>
+        <button id="link-grup" onclick="switchTab('grup')" class="sidebar-link text-on-surface-variant rounded-full px-5 py-2 flex items-center gap-2 font-black text-xs transition-all duration-200 hover:bg-white/60">
+            <span class="material-symbols-outlined text-sm">group</span>
+            <span>Grup</span>
+        </button>
+        <button id="link-mentor" onclick="switchTab('mentor')" class="sidebar-link text-on-surface-variant rounded-full px-5 py-2 flex items-center gap-2 font-black text-xs transition-all duration-200 hover:bg-white/60">
+            <span class="material-symbols-outlined text-sm">person</span>
+            <span>Mentor</span>
+        </button>
+        <button id="link-postingan" onclick="switchTab('postingan')" class="sidebar-link text-on-surface-variant rounded-full px-5 py-2 flex items-center gap-2 font-black text-xs transition-all duration-200 hover:bg-white/60">
+            <span class="material-symbols-outlined text-sm">rate_review</span>
+            <span>Postingan</span>
+        </button>
+    </div>
+
+    <!-- Right Side Actions & Profile Badge -->
+    <div class="flex items-center gap-3">
+        <!-- Action Pill Buttons -->
+        <button onclick="window.location.href='community_search.html'" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white hover:text-primary transition-all border border-white/30 shadow-sm bg-white/40">
+            <span class="material-symbols-outlined text-[19px]">search</span>
+        </button>
+        <button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white hover:text-primary transition-all border border-white/30 shadow-sm bg-white/40 relative">
+            <span class="material-symbols-outlined text-[19px]">notifications</span>
+            <span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-primary-light rounded-full"></span>
+        </button>
+        <button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white hover:text-primary transition-all border border-white/30 shadow-sm bg-white/40">
+            <span class="material-symbols-outlined text-[19px]">mail</span>
+        </button>
+        
+        <!-- User Badge Profile -->
+        <div onclick="window.location.href='profile.html'" class="flex items-center gap-2 border border-primary/10 shadow-lg shadow-primary/5 rounded-full px-3.5 py-1.5 bg-white/80 backdrop-blur-md cursor-pointer hover:scale-103 active:scale-97 transition-all">
+            <img class="w-7 h-7 rounded-full object-cover border border-primary/10 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q" alt="Avatar"/>
+            <div class="hidden sm:block text-left">
+                <p class="text-[10px] font-black text-on-surface leading-none">Kevin Sanjaya</p>
+                <p class="text-[8px] font-bold text-on-surface-variant/80 mt-0.5">Level 12 • 450 XP</p>
+            </div>
+            <span class="material-symbols-outlined text-[14px]">keyboard_arrow_down</span>
+        </div>
+    </div>
+</header>

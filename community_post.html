@@ -1,0 +1,67 @@
+<!-- PANEL 4: PUBLISH NEW POST FORM & MY POSTS -->
+<div class="max-w-2xl mx-auto space-y-6">
+
+    <!-- Card 1: Publish New Post Form -->
+    <div class="glass-card rounded-2xl p-6 space-y-6 bg-white/80">
+        <h3 class="font-headline-md text-xl text-primary font-black flex items-center gap-2 border-b border-primary/5 pb-3">
+            <span class="material-symbols-outlined text-primary text-2xl">edit_document</span>
+            <span>Terbitkan Postingan Komunitas</span>
+        </h3>
+
+        <form id="create-post-form" onsubmit="publishPost(event)" class="space-y-4">
+            <div class="space-y-1">
+                <label class="block text-[9px] font-black text-on-surface-variant/50 uppercase tracking-widest">Judul Postingan / Pertanyaan</label>
+                <input id="new-post-title" type="text" required placeholder="Tuliskan judul yang menarik..." class="w-full text-xs font-bold py-2.5 px-4 border border-primary/10 rounded-xl bg-white focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none"/>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="space-y-1">
+                    <label class="block text-[9px] font-black text-on-surface-variant/50 uppercase tracking-widest">Kategori Tag</label>
+                    <select id="new-post-tag" class="w-full text-xs font-bold py-2.5 px-4 border border-primary/10 rounded-xl bg-white focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none">
+                        <option value="Coding">Coding</option>
+                        <option value="Design">Design</option>
+                        <option value="Tips Belajar">Tips Belajar</option>
+                        <option value="Student Project">Student Project</option>
+                        <option value="Update Mentor">Update Mentor</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="block text-[9px] font-black text-on-surface-variant/50 uppercase tracking-widest">Tambahkan Cover Gambar</label>
+                    <select id="new-post-image" class="w-full text-xs font-bold py-2.5 px-4 border border-primary/10 rounded-xl bg-white focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none">
+                        <option value="none">Tanpa Gambar</option>
+                        <option value="design-mock">UI/UX Layout Template Mockup</option>
+                        <option value="code-mock">Web Coding Workspace Mockup</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="space-y-1">
+                <label class="block text-[9px] font-black text-on-surface-variant/50 uppercase tracking-widest">Isi Diskusi</label>
+                <textarea id="new-post-body" rows="5" required placeholder="Jelaskan pertanyaan atau informasi Anda secara detail..." class="w-full text-xs font-bold p-4 border border-primary/10 rounded-2xl bg-white focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none"></textarea>
+            </div>
+
+            <div class="pt-2">
+                <button type="submit" class="w-full bg-primary text-white glow-button font-black py-3 rounded-full text-xs uppercase tracking-wide flex items-center justify-center gap-1.5 shadow-lg shadow-primary/20">
+                    <span>Kirim Postingan</span>
+                    <span class="material-symbols-outlined text-sm font-bold">send</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Section Divider / Label -->
+    <div class="flex items-center gap-4 py-2 select-none">
+        <div class="flex-grow h-px bg-primary/10"></div>
+        <h4 class="font-extrabold text-[11px] text-primary uppercase tracking-widest flex items-center gap-1.5 whitespace-nowrap">
+            <span class="material-symbols-outlined text-sm font-bold">history_edu</span>
+            <span>Postingan Saya & Balasan</span>
+        </h4>
+        <div class="flex-grow h-px bg-primary/10"></div>
+    </div>
+
+    <!-- Card 2: My Posts History Container -->
+    <div id="my-posts-container" class="space-y-5">
+        <!-- Dynamic posts & comments loaded here -->
+    </div>
+
+</div>
