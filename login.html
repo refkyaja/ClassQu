@@ -114,8 +114,14 @@
                     <p class="text-neutral/50 text-xs font-bold uppercase tracking-wider">Silakan login ke akun belajar ClassQu Anda.</p>
                 </div>
 
+                <!-- Error Toast Notification -->
+                <div id="error-message" class="hidden p-4 bg-red-100 border-2 border-neutral text-neutral font-bold rounded-2xl text-xs flex items-center gap-3 shadow-playful-sm transition-all duration-300">
+                    <span class="material-symbols-outlined text-red-500 font-bold shrink-0">error</span>
+                    <span id="error-text">Email atau password salah. Silakan coba lagi!</span>
+                </div>
+
                 <!-- Input form fields -->
-                <form action="dashboard.html" method="GET" class="space-y-4">
+                <form id="login-form" class="space-y-4">
                     <!-- Email -->
                     <div class="space-y-2">
                         <label for="email" class="text-xs font-black uppercase tracking-widest text-neutral/70">Email Address</label>
@@ -173,5 +179,96 @@
 
     </main>
 
+    <!-- Login Logic Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const errorBox = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+
+            // Predefined accounts
+            const ACCOUNTS = {
+                'pelajar@classqu.id': {
+                    email: 'pelajar@classqu.id',
+                    password: 'pelajar123',
+                    name: 'Andi Pelajar',
+                    role: 'pelajar',
+                    profilePic: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q',
+                    xp: 1240,
+                    level: 12,
+                    coins: 2450,
+                    streak: 14
+                },
+                'guru@classqu.id': {
+                    email: 'guru@classqu.id',
+                    password: 'guru123',
+                    name: 'Budi Guru',
+                    role: 'guru',
+                    profilePic: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDMLIxb0ROdqhOzRaBLL1Z9ye_ufFrW8XkBOpcicPVrBIGWX1vyh9W2WKOofFgvm8O4OdaWRciN_tGSuR3wgOMVg5Ic18B1a1OeSw4ck4FlQ-lyNLpvqB7ObWVLqooMVRLfCEOpkF9wNj_ntdVGNWiyltElDiGxS92rbOdbfzfar4goQsWiWM3Mf5sx9KIa9xVnOuYEF1BcHzzc9yWu2oG-StJq4txjVgGlmynOzsU_kqmx22Zjg_M6SRPpgkwOMFTd_Cw04BvTTw',
+                    roleName: 'Guru Senior',
+                    classes: 4,
+                    students: 128,
+                    teachingHours: 48,
+                    verificationsPending: 5
+                },
+                'admin@classqu.id': {
+                    email: 'admin@classqu.id',
+                    password: 'admin123',
+                    name: 'Dewi Admin',
+                    role: 'admin',
+                    profilePic: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvRbYAeuvGgR26Gn7gqnKhicjKHKt4UWAEkMcuxt1bHfLQPy4t8rYI-xMwcXvfNLJ7gGHRECuenmpJvYcqRoSfvvlVyBf2sKoAxEZ6T1LmGxpVk-wqYNZDRfJhAeSX9CIDghc5XnMl2lujaL4a3FUTC5Sh4e7y6CPtAcVDJtspkHI12vlFc2KUF84m4PE7uHxwUSFmE4N0s6I2GXZzRKaF-511uHAtcCltBBJyVBfHE-MMiE3hAP1NNwTYNWywpjVROMl4V6iMIg',
+                    roleName: 'Super Admin',
+                    totalUsers: 1420,
+                    systemLoad: 12,
+                    totalRevenue: 'IDR 4.2M',
+                    securityAlerts: 0
+                }
+            };
+
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const email = emailInput.value.trim().toLowerCase();
+                    const password = passwordInput.value;
+
+                    // Hide previous error
+                    errorBox.classList.add('hidden');
+
+                    const user = ACCOUNTS[email];
+                    if (user && user.password === password) {
+                        // Success! Save user session
+                        // Copy details excluding password
+                        const sessionData = { ...user };
+                        delete sessionData.password;
+                        
+                        localStorage.setItem('currentUser', JSON.stringify(sessionData));
+                        
+                        // Show success state briefly on button
+                        const submitBtn = loginForm.querySelector('button[type="submit"]');
+                        const originalText = submitBtn.textContent;
+                        submitBtn.textContent = 'Mengarahkan... 🚀';
+                        submitBtn.disabled = true;
+
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.html';
+                        }, 800);
+                    } else {
+                        // Error!
+                        errorText.textContent = 'Email atau password salah! Silakan gunakan pelajar@classqu.id, guru@classqu.id, atau admin@classqu.id.';
+                        errorBox.classList.remove('hidden');
+                        
+                        // Shake effect on error box
+                        errorBox.classList.add('animate-bounce');
+                        setTimeout(() => {
+                            errorBox.classList.remove('animate-bounce');
+                        }, 1000);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

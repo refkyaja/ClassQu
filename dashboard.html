@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html class="light" lang="id">
 <head>
+    <script>
+        // Immediate Auth Check before render
+        if (!localStorage.getItem('currentUser')) {
+            window.location.href = 'login.html';
+        }
+    </script>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Student Dashboard - ClassQu</title>
@@ -101,7 +107,7 @@
         <div id="sidebar-placeholder" class="w-full lg:w-72 flex-none lg:sticky lg:top-12"></div>
 
         <!-- Main Dashboard Canvas -->
-        <main class="flex-grow space-y-8">
+        <main id="dashboard-main" class="flex-grow space-y-8">
             
             <!-- Hero Stats: XP Progress & active learning streak -->
             <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -643,6 +649,554 @@
                 }
             });
         });
+    </script>
+
+    <!-- Role-Based Dashboard Controller & Interactive Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) return;
+
+            const mainContainer = document.getElementById('dashboard-main');
+            if (!mainContainer) return;
+
+            // Render different layouts depending on the active role
+            if (currentUser.role === 'guru') {
+                // Change page title dynamically
+                document.title = 'Guru Dashboard - ClassQu';
+
+                mainContainer.innerHTML = `
+                    <div class="space-y-8 animate-fade-in">
+                        <!-- Hero Stats -->
+                        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="glass-card bg-white p-6 relative overflow-hidden flex items-center justify-between hover:scale-[1.01] transition-transform duration-300">
+                                <div class="space-y-2">
+                                    <span class="bg-[#E6F4F1] text-tertiary px-3 py-1 rounded-full text-[10px] font-black uppercase">Siswa Aktif</span>
+                                    <h2 class="text-3xl font-black text-neutral">128 Siswa</h2>
+                                    <p class="text-[10px] text-neutral/40 font-bold uppercase tracking-wider">+12 baru minggu ini</p>
+                                </div>
+                                <span class="material-symbols-outlined text-[48px] text-tertiary">group</span>
+                            </div>
+                            <div class="glass-card bg-white p-6 relative overflow-hidden flex items-center justify-between hover:scale-[1.01] transition-transform duration-300">
+                                <div class="space-y-2">
+                                    <span class="bg-secondary/10 text-orange-500 px-3 py-1 rounded-full text-[10px] font-black uppercase">Jam Mengajar</span>
+                                    <h2 class="text-3xl font-black text-neutral">48 Jam</h2>
+                                    <p class="text-[10px] text-neutral/40 font-bold uppercase tracking-wider">Rata-rata 4.5 jam/minggu</p>
+                                </div>
+                                <span class="material-symbols-outlined text-[48px] text-secondary">schedule</span>
+                            </div>
+                            <div class="glass-card bg-white p-6 relative overflow-hidden flex items-center justify-between hover:scale-[1.01] transition-transform duration-300">
+                                <div class="space-y-2">
+                                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-black uppercase">Evaluasi Pending</span>
+                                    <h2 class="text-3xl font-black text-neutral" id="pending-count">5 Kuis</h2>
+                                    <p class="text-[10px] text-neutral/40 font-bold uppercase tracking-wider">Harap periksa hari ini</p>
+                                </div>
+                                <span class="material-symbols-outlined text-[48px] text-primary">pending_actions</span>
+                            </div>
+                        </section>
+
+                        <!-- Main Bento Taught Classes and Pending Submissions -->
+                        <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                            
+                            <!-- Left Side: Taught Classes -->
+                            <div class="lg:col-span-7 space-y-4">
+                                <h3 class="font-black text-lg text-neutral px-2 flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-primary">co_present</span>
+                                    <span>Kelas Yang Anda Ajar</span>
+                                </h3>
+                                <div class="glass-card bg-white p-6 space-y-4">
+                                    <!-- Class item 1 -->
+                                    <div class="p-4 bg-neutral/5 border border-neutral/10 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:shadow-premium transition-shadow">
+                                        <div class="space-y-1">
+                                            <span class="bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded text-[9px] font-black uppercase">WEB DESIGN</span>
+                                            <h4 class="text-sm font-black text-neutral">CSS Grid Layouts & Advanced Responsive Design</h4>
+                                            <p class="text-[10px] text-neutral/50 font-bold">42 Pelajar Terdaftar • Rerata Nilai: 88%</p>
+                                        </div>
+                                        <button class="btn-playful bg-secondary text-neutral px-4 py-1.5 rounded-full font-black text-[10px] uppercase">Detail Kelas</button>
+                                    </div>
+                                    <!-- Class item 2 -->
+                                    <div class="p-4 bg-neutral/5 border border-neutral/10 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:shadow-premium transition-shadow">
+                                        <div class="space-y-1">
+                                            <span class="bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded text-[9px] font-black uppercase">JAVASCRIPT</span>
+                                            <h4 class="text-sm font-black text-neutral">Asynchronous JS: Promises, Async-Await & Ajax</h4>
+                                            <p class="text-[10px] text-neutral/50 font-bold">36 Pelajar Terdaftar • Rerata Nilai: 84%</p>
+                                        </div>
+                                        <button class="btn-playful bg-secondary text-neutral px-4 py-1.5 rounded-full font-black text-[10px] uppercase">Detail Kelas</button>
+                                    </div>
+                                    <!-- Class item 3 -->
+                                    <div class="p-4 bg-neutral/5 border border-neutral/10 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 opacity-75 hover:shadow-premium transition-shadow">
+                                        <div class="space-y-1">
+                                            <span class="bg-neutral/10 text-neutral/60 border border-neutral/20 px-2 py-0.5 rounded text-[9px] font-black uppercase">REST API</span>
+                                            <h4 class="text-sm font-black text-neutral">Fetching Server Data with REST APIs</h4>
+                                            <p class="text-[10px] text-neutral/50 font-bold">50 Pendaftar • Mulai Tanggal: 25 Mei</p>
+                                        </div>
+                                        <span class="bg-[#FFF3DF] text-primary border border-primary/10 px-3 py-1 rounded-full text-[9px] font-black uppercase">Segera Hadir</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Side: Tasks Evaluator (Interactive!) -->
+                            <div class="lg:col-span-5 space-y-4">
+                                <h3 class="font-black text-lg text-neutral px-2 flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-tertiary">grade</span>
+                                    <span>Penilaian Kuis & Proyek</span>
+                                </h3>
+                                
+                                <!-- Toast Success for Evaluation -->
+                                <div id="eval-toast" class="hidden p-3 bg-green-100 border-2 border-neutral text-neutral font-black rounded-2xl text-[11px] items-center gap-2 mb-3 shadow-playful-sm transition-all duration-300">
+                                    <span class="material-symbols-outlined text-green-500 font-bold">check_circle</span>
+                                    <span id="eval-toast-text">Berhasil memberikan nilai!</span>
+                                </div>
+
+                                <div class="glass-card bg-white p-6 space-y-4" id="evaluations-container">
+                                    <!-- Student Submission 1 -->
+                                    <div class="p-4 border-2 border-neutral rounded-2xl space-y-3 shadow-playful bg-[#FFFBF4]" id="sub-1">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-black text-xs text-primary">Andi Pelajar</span>
+                                            <span class="text-[9px] font-bold text-neutral/50 uppercase">Asynchronous JS</span>
+                                        </div>
+                                        <p class="text-[10px] font-semibold text-neutral/70 italic bg-white p-2.5 rounded-lg border border-neutral/10">
+                                            "Promise adalah objek javascript yang merepresentasikan hasil operasi asinkronus di masa depan, baik sukses maupun error."
+                                        </p>
+                                        <div class="flex gap-2 items-center">
+                                            <input type="number" min="0" max="100" placeholder="Nilai (0-100)" class="w-1/2 py-1.5 px-3 border-2 border-neutral rounded-xl text-xs font-bold focus:ring-primary bg-white animate-pulse" id="score-1"/>
+                                            <button onclick="evaluateSubmission(1, 'Andi Pelajar')" class="w-1/2 btn-playful bg-primary text-white py-1.5 rounded-full font-black text-[10px] uppercase">Beri Nilai</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Student Submission 2 -->
+                                    <div class="p-4 border-2 border-neutral rounded-2xl space-y-3 shadow-playful bg-[#FFFBF4]" id="sub-2">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-black text-xs text-primary">Citra Lestari</span>
+                                            <span class="text-[9px] font-bold text-neutral/50 uppercase">CSS Grid Layouts</span>
+                                        </div>
+                                        <p class="text-[10px] font-semibold text-neutral/70 italic bg-white p-2.5 rounded-lg border border-neutral/10">
+                                            Tugas Proyek: "grid-template-areas: 'header header' 'sidebar main' 'footer footer';"
+                                        </p>
+                                        <div class="flex gap-2 items-center">
+                                            <input type="number" min="0" max="100" placeholder="Nilai (0-100)" class="w-1/2 py-1.5 px-3 border-2 border-neutral rounded-xl text-xs font-bold focus:ring-primary bg-white" id="score-2"/>
+                                            <button onclick="evaluateSubmission(2, 'Citra Lestari')" class="w-1/2 btn-playful bg-primary text-white py-1.5 rounded-full font-black text-[10px] uppercase">Beri Nilai</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+
+                        <!-- Ask & Answer forum -->
+                        <section class="space-y-4">
+                            <h3 class="font-black text-lg text-neutral px-2 flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[#B18E36]">forum</span>
+                                <span>Pertanyaan Siswa Terbaru</span>
+                            </h3>
+                            <div class="glass-card bg-white p-6 space-y-4">
+                                <div class="p-4 bg-neutral/5 border border-neutral/10 rounded-2xl space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-black text-xs text-neutral flex items-center gap-1.5">
+                                            <span class="material-symbols-outlined text-primary text-sm">person</span> Andi Pelajar
+                                        </span>
+                                        <span class="text-[9px] font-bold text-neutral/40">10 Menit Lalu</span>
+                                    </div>
+                                    <p class="text-xs font-bold text-neutral/70">"Pak Budi, kenapa Promise.all melempar error jika salah satu Promise di dalamnya reject?"</p>
+                                    <div class="flex gap-2 pt-2" id="forum-answer-box">
+                                        <input type="text" placeholder="Tulis jawaban Anda disini..." class="flex-grow py-2 px-4 border-2 border-neutral rounded-xl text-xs font-bold focus:ring-primary bg-white" id="forum-input"/>
+                                        <button onclick="answerForum()" class="btn-playful bg-[#FFF3DF] text-neutral px-5 py-2 rounded-xl font-black text-xs uppercase">Kirim Jawaban</button>
+                                    </div>
+                                    <div id="forum-success-toast" class="hidden text-green-600 font-extrabold text-[10px] mt-2 flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[12px]">check</span> Jawaban Anda berhasil dikirim ke Andi Pelajar!
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                `;
+
+            } else if (currentUser.role === 'admin') {
+                // Change page title dynamically
+                document.title = 'Admin Panel - ClassQu';
+
+                mainContainer.innerHTML = `
+                    <div class="space-y-8 animate-fade-in">
+                        <!-- Hero Stats -->
+                        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="glass-card bg-white p-6 relative overflow-hidden flex items-center justify-between hover:scale-[1.01] transition-transform duration-300">
+                                <div class="space-y-2">
+                                    <span class="bg-[#E6F4F1] text-tertiary px-3 py-1 rounded-full text-[10px] font-black uppercase">Total Pengguna</span>
+                                    <h2 class="text-3xl font-black text-neutral">1,420 Users</h2>
+                                    <p class="text-[10px] text-neutral/40 font-bold uppercase tracking-wider">1,380 Siswa | 40 Guru</p>
+                                </div>
+                                <span class="material-symbols-outlined text-[48px] text-tertiary">people</span>
+                            </div>
+                            <div class="glass-card bg-white p-6 relative overflow-hidden flex items-center justify-between hover:scale-[1.01] transition-transform duration-300">
+                                <div class="space-y-2">
+                                    <span class="bg-secondary/10 text-orange-500 px-3 py-1 rounded-full text-[10px] font-black uppercase">Pendapatan Hari Ini</span>
+                                    <h2 class="text-3xl font-black text-neutral">IDR 4.2M</h2>
+                                    <p class="text-[10px] text-neutral/40 font-bold uppercase tracking-wider">Meningkat 15% dari kemarin</p>
+                                </div>
+                                <span class="material-symbols-outlined text-[48px] text-secondary">payments</span>
+                            </div>
+                            <div class="glass-card bg-white p-6 relative overflow-hidden flex items-center justify-between hover:scale-[1.01] transition-transform duration-300">
+                                <div class="space-y-2">
+                                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-black uppercase">Beban Server</span>
+                                    <h2 class="text-3xl font-black text-neutral">12% Load</h2>
+                                    <p class="text-[10px] text-neutral/40 font-bold uppercase tracking-wider">Status: Sehat & Lancar</p>
+                                </div>
+                                <span class="material-symbols-outlined text-[48px] text-primary">monitoring</span>
+                            </div>
+                        </section>
+
+                        <!-- Main Bento Admin Panels -->
+                        <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                            
+                            <!-- Left Side: User Management Table -->
+                            <div class="lg:col-span-7 space-y-4">
+                                <h3 class="font-black text-lg text-neutral px-2 flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-primary">manage_accounts</span>
+                                    <span>Manajemen Pengguna</span>
+                                </h3>
+                                
+                                <!-- Success Toast User -->
+                                <div id="admin-user-toast" class="hidden p-3 bg-green-100 border-2 border-neutral text-neutral font-black rounded-2xl text-[11px] items-center gap-2 mb-3 shadow-playful-sm transition-all duration-300">
+                                    <span class="material-symbols-outlined text-green-500 font-bold">check_circle</span>
+                                    <span id="admin-user-toast-text">Perubahan berhasil disimpan!</span>
+                                </div>
+
+                                <div class="glass-card bg-white overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-left border-collapse">
+                                            <thead>
+                                                <tr class="bg-primary/10 border-b border-neutral/10 text-[10px] font-black uppercase tracking-wider text-neutral/60">
+                                                    <th class="p-4">Nama</th>
+                                                    <th class="p-4">Role</th>
+                                                    <th class="p-4 text-center">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-neutral/10 text-xs font-bold text-neutral" id="users-table-body">
+                                                <tr class="hover:bg-neutral/5 transition-colors" id="user-row-1">
+                                                    <td class="p-4 flex items-center gap-2">
+                                                        <div class="w-7 h-7 rounded-full overflow-hidden border border-neutral shrink-0">
+                                                            <img alt="Andi" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxKvWl8xetWydUkgy5vu29o_c6gudsejgtnKoTzlYfUnuYrOMSnf48Ro_kWqNObsGFejYahwlvdAG7ydXMfm9L8oeedfs2HTAUEcxhNw1cFm1iyDDFdicbr90mVzEvU6ar3LtwFskIibQrHBst5n4fXjzDqDS00CtpPmgntm3SQrEfYBcEM97P6Rnd_by7qbpGm9QG52EqWKWyc9_TG4YOB7p3VLReveSU-fFzSso2elkHEcR3kgnP-IV6acrGAPvVO9CwB_FW5Q"/>
+                                                        </div>
+                                                        <span>Andi Pelajar</span>
+                                                    </td>
+                                                    <td class="p-4"><span class="bg-[#FFF3DF] text-primary border border-primary/20 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase" id="role-badge-1">Pelajar</span></td>
+                                                    <td class="p-4 text-center flex items-center justify-center gap-2">
+                                                        <button onclick="changeUserRole(1, 'Guru')" class="btn-playful bg-secondary text-neutral px-3 py-1 rounded-lg text-[9px] font-black uppercase hover:scale-[1.02] transition-transform">Jadikan Guru</button>
+                                                        <button onclick="deleteUserRow(1)" class="btn-playful bg-white text-red-500 border-red-500 px-3 py-1 rounded-lg text-[9px] font-black uppercase hover:bg-red-50 transition-colors">Hapus</button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="hover:bg-neutral/5 transition-colors" id="user-row-2">
+                                                    <td class="p-4 flex items-center gap-2">
+                                                        <div class="w-7 h-7 rounded-full overflow-hidden border border-neutral shrink-0">
+                                                            <img alt="Budi" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMLIxb0ROdqhOzRaBLL1Z9ye_ufFrW8XkBOpcicPVrBIGWX1vyh9W2WKOofFgvm8O4OdaWRciN_tGSuR3wgOMVg5Ic18B1a1OeSw4ck4FlQ-lyNLpvqB7ObWVLqooMVRLfCEOpkF9wNj_ntdVGNWiyltElDiGxS92rbOdbfzfar4goQsWiWM3Mf5sx9KIa9xVnOuYEF1BcHzzc9yWu2oG-StJq4txjVgGlmynOzsU_kqmx22Zjg_M6SRPpgkwOMFTd_Cw04BvTTw"/>
+                                                        </div>
+                                                        <span>Budi Guru</span>
+                                                    </td>
+                                                    <td class="p-4"><span class="bg-[#E6F4F1] text-tertiary border border-tertiary/20 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase" id="role-badge-2">Guru</span></td>
+                                                    <td class="p-4 text-center flex items-center justify-center gap-2">
+                                                        <button onclick="changeUserRole(2, 'Pelajar')" class="btn-playful bg-secondary text-neutral px-3 py-1 rounded-lg text-[9px] font-black uppercase hover:scale-[1.02] transition-transform">Jadikan Pelajar</button>
+                                                        <button onclick="deleteUserRow(2)" class="btn-playful bg-white text-red-500 border-red-500 px-3 py-1 rounded-lg text-[9px] font-black uppercase hover:bg-red-50 transition-colors">Hapus</button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="hover:bg-neutral/5 transition-colors" id="user-row-3">
+                                                    <td class="p-4 flex items-center gap-2">
+                                                        <div class="w-7 h-7 rounded-full overflow-hidden border border-neutral shrink-0">
+                                                            <img alt="Citra" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvRbYAeuvGgR26Gn7gqnKhicjKHKt4UWAEkMcuxt1bHfLQPy4t8rYI-xMwcXvfNLJ7gGHRECuenmpJvYcqRoSfvvlVyBf2sKoAxEZ6T1LmGxpVk-wqYNZDRfJhAeSX9CIDghc5XnMl2lujaL4a3FUTC5Sh4e7y6CPtAcVDJtspkHI12vlFc2KUF84m4PE7uHxwUSFmE4N0s6I2GXZzRKaF-511uHAtcCltBBJyVBfHE-MMiE3hAP1NNwTYNWywpjVROMl4V6iMIg"/>
+                                                        </div>
+                                                        <span>Citra Lestari</span>
+                                                    </td>
+                                                    <td class="p-4"><span class="bg-[#FFF3DF] text-primary border border-primary/20 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase" id="role-badge-3">Pelajar</span></td>
+                                                    <td class="p-4 text-center flex items-center justify-center gap-2">
+                                                        <button onclick="changeUserRole(3, 'Guru')" class="btn-playful bg-secondary text-neutral px-3 py-1 rounded-lg text-[9px] font-black uppercase hover:scale-[1.02] transition-transform">Jadikan Guru</button>
+                                                        <button onclick="deleteUserRow(3)" class="btn-playful bg-white text-red-500 border-red-500 px-3 py-1 rounded-lg text-[9px] font-black uppercase hover:bg-red-50 transition-colors">Hapus</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Side: Certificate & Subscription Approvals -->
+                            <div class="lg:col-span-5 space-y-4">
+                                <h3 class="font-black text-lg text-neutral px-2 flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-tertiary">verified_user</span>
+                                    <span>Persetujuan Pembayaran</span>
+                                </h3>
+                                
+                                <!-- Toast Success for Approval -->
+                                <div id="admin-verify-toast" class="hidden p-3 bg-green-100 border-2 border-neutral text-neutral font-black rounded-2xl text-[11px] items-center gap-2 mb-3 shadow-playful-sm transition-all duration-300">
+                                    <span class="material-symbols-outlined text-green-500 font-bold">check_circle</span>
+                                    <span id="admin-verify-toast-text">Transaksi berhasil disetujui!</span>
+                                </div>
+
+                                <div class="glass-card bg-white p-6 space-y-4" id="approvals-container">
+                                    <!-- Approval Item 1 -->
+                                    <div class="p-4 bg-neutral/5 border border-neutral/10 rounded-2xl space-y-3" id="approval-box-1">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-black text-xs text-neutral">Citra Lestari</span>
+                                            <span class="bg-[#FFF3DF] text-primary border border-primary/20 px-2 py-0.5 rounded text-[8px] font-black uppercase">PRO PLAN</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-[10px] text-neutral/50 font-bold">Metode: Transfer Mandiri</span>
+                                            <span class="text-[10px] text-primary font-black">IDR 150,000</span>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <button onclick="approveTransaction(1, 'Citra Lestari', 'Pro Plan')" class="w-1/2 btn-playful bg-primary text-white py-1 rounded-full font-black text-[9px] uppercase shadow-glow">Setujui</button>
+                                            <button onclick="rejectTransaction(1)" class="w-1/2 btn-playful bg-white text-neutral py-1 rounded-full font-black text-[9px] uppercase">Tolak</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Approval Item 2 -->
+                                    <div class="p-4 bg-neutral/5 border border-neutral/10 rounded-2xl space-y-3" id="approval-box-2">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-black text-xs text-neutral">Rian Hidayat</span>
+                                            <span class="bg-[#FFF3DF] text-primary border border-primary/20 px-2 py-0.5 rounded text-[8px] font-black uppercase">MASTER PLAN</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-[10px] text-neutral/50 font-bold">Metode: GoPay</span>
+                                            <span class="text-[10px] text-primary font-black">IDR 299,000</span>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <button onclick="approveTransaction(2, 'Rian Hidayat', 'Master Plan')" class="w-1/2 btn-playful bg-primary text-white py-1 rounded-full font-black text-[9px] uppercase shadow-glow">Setujui</button>
+                                            <button onclick="rejectTransaction(2)" class="w-1/2 btn-playful bg-white text-neutral py-1 rounded-full font-black text-[9px] uppercase">Tolak</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+
+                        <!-- System Log Viewer -->
+                        <section class="space-y-4">
+                            <div class="flex justify-between items-center px-2">
+                                <h3 class="font-black text-lg text-neutral flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-[#1C1B1B]">terminal</span>
+                                    <span>Log Aktivitas Sistem</span>
+                                </h3>
+                                <button onclick="refreshLogs()" class="btn-playful bg-[#FFF3DF] text-neutral px-3 py-1 rounded-full font-black text-[10px] uppercase flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-xs">refresh</span> Refresh
+                                </button>
+                            </div>
+                            <div class="glass-card bg-neutral p-6 rounded-card border-2 border-neutral shadow-playful relative overflow-hidden">
+                                <div class="text-green-400 font-mono text-[11px] leading-relaxed space-y-1.5 h-48 overflow-y-auto pr-2 custom-scrollbar" id="logs-container">
+                                    <p>[INFO] ${new Date().toISOString().slice(0, 19).replace('T', ' ')} - Database pool initialized successfully.</p>
+                                    <p>[INFO] ${new Date().toISOString().slice(0, 19).replace('T', ' ')} - Web Server running on port 80 (HTTPS redirect active).</p>
+                                    <p>[INFO] ${new Date(Date.now() - 5000).toISOString().slice(0, 19).replace('T', ' ')} - Session check: Dewi Admin (Admin) logged in successfully.</p>
+                                    <p>[INFO] ${new Date(Date.now() - 12000).toISOString().slice(0, 19).replace('T', ' ')} - API Route GET /api/v1/leaderboard requested (200 OK).</p>
+                                    <p>[WARN] ${new Date(Date.now() - 45000).toISOString().slice(0, 19).replace('T', ' ')} - Failed login attempt for user xxxx@gmail.com (Invalid credentials).</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                `;
+            }
+        });
+
+        // ==========================================
+        // INTERACTIVE ACTIONS FOR TEACHER (GURU)
+        // ==========================================
+        let pendingEvaluations = 2;
+
+        window.evaluateSubmission = function(id, studentName) {
+            const scoreInput = document.getElementById(`score-${id}`);
+            const score = scoreInput.value;
+
+            if (!score || score < 0 || score > 100) {
+                alert('Silakan masukkan nilai yang valid antara 0 dan 100!');
+                return;
+            }
+
+            // Hide the submission card
+            const card = document.getElementById(`sub-${id}`);
+            if (card) {
+                card.classList.add('transition-all', 'duration-500', 'scale-90', 'opacity-0');
+                setTimeout(() => {
+                    card.remove();
+                    // If no card left, show empty state
+                    const container = document.getElementById('evaluations-container');
+                    if (container && container.children.length === 0) {
+                        container.innerHTML = `
+                            <div class="text-center py-8 text-neutral/40 font-bold text-xs space-y-2">
+                                <span class="material-symbols-outlined text-[36px]">check_circle</span>
+                                <p>Semua kuis telah selesai diperiksa! 🎉</p>
+                            </div>
+                        `;
+                    }
+                }, 500);
+            }
+
+            // Decrement Pending Count
+            pendingEvaluations--;
+            const countBadge = document.getElementById('pending-count');
+            if (countBadge) {
+                countBadge.textContent = `${pendingEvaluations} Kuis`;
+            }
+
+            // Show Toast
+            const toast = document.getElementById('eval-toast');
+            const toastText = document.getElementById('eval-toast-text');
+            if (toast && toastText) {
+                toastText.textContent = `Berhasil memberikan nilai ${score} untuk ${studentName}!`;
+                toast.classList.remove('hidden');
+                toast.classList.add('flex');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                    toast.classList.remove('flex');
+                }, 3000);
+            }
+        };
+
+        window.answerForum = function() {
+            const input = document.getElementById('forum-input');
+            const toast = document.getElementById('forum-success-toast');
+            
+            if (!input || !input.value.trim()) {
+                alert('Tolong ketik jawaban terlebih dahulu!');
+                return;
+            }
+
+            input.value = '';
+            if (toast) {
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 4000);
+            }
+        };
+
+        // ==========================================
+        // INTERACTIVE ACTIONS FOR ADMINISTRATOR (ADMIN)
+        // ==========================================
+        window.changeUserRole = function(id, newRole) {
+            const badge = document.getElementById(`role-badge-${id}`);
+            const btn = document.querySelector(`#user-row-${id} td button:first-child`);
+            const toast = document.getElementById('admin-user-toast');
+            const toastText = document.getElementById('admin-user-toast-text');
+
+            if (badge && btn) {
+                badge.textContent = newRole;
+                if (newRole === 'Guru') {
+                    badge.className = "bg-[#E6F4F1] text-tertiary border border-tertiary/20 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase";
+                    btn.textContent = "Jadikan Pelajar";
+                    btn.setAttribute('onclick', `changeUserRole(${id}, 'Pelajar')`);
+                } else {
+                    badge.className = "bg-[#FFF3DF] text-primary border border-primary/20 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase";
+                    btn.textContent = "Jadikan Guru";
+                    btn.setAttribute('onclick', `changeUserRole(${id}, 'Guru')`);
+                }
+            }
+
+            if (toast && toastText) {
+                toastText.textContent = `Berhasil mengubah role pengguna menjadi ${newRole}!`;
+                toast.classList.remove('hidden');
+                toast.classList.add('flex');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                    toast.classList.remove('flex');
+                }, 3000);
+            }
+        };
+
+        window.deleteUserRow = function(id) {
+            const row = document.getElementById(`user-row-${id}`);
+            const toast = document.getElementById('admin-user-toast');
+            const toastText = document.getElementById('admin-user-toast-text');
+
+            if (row) {
+                row.remove();
+            }
+
+            if (toast && toastText) {
+                toastText.textContent = `Pengguna berhasil dihapus secara permanen dari sistem!`;
+                toast.classList.remove('hidden');
+                toast.classList.add('flex');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                    toast.classList.remove('flex');
+                }, 3000);
+            }
+        };
+
+        window.approveTransaction = function(id, studentName, planName) {
+            const box = document.getElementById(`approval-box-${id}`);
+            const toast = document.getElementById('admin-verify-toast');
+            const toastText = document.getElementById('admin-verify-toast-text');
+
+            if (box) {
+                box.classList.add('transition-all', 'duration-500', 'scale-90', 'opacity-0');
+                setTimeout(() => {
+                    box.remove();
+                    const container = document.getElementById('approvals-container');
+                    if (container && container.children.length === 0) {
+                        container.innerHTML = `
+                            <div class="text-center py-8 text-neutral/40 font-bold text-xs space-y-2">
+                                <span class="material-symbols-outlined text-[36px]">verified</span>
+                                <p>Semua pendaftaran & pembayaran disetujui! 🌟</p>
+                            </div>
+                        `;
+                    }
+                }, 500);
+            }
+
+            if (toast && toastText) {
+                toastText.textContent = `Pembayaran ${planName} oleh ${studentName} disetujui! Akses diaktifkan.`;
+                toast.classList.remove('hidden');
+                toast.classList.add('flex');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                    toast.classList.remove('flex');
+                }, 3000);
+            }
+        };
+
+        window.rejectTransaction = function(id) {
+            const box = document.getElementById(`approval-box-${id}`);
+            const toast = document.getElementById('admin-verify-toast');
+            const toastText = document.getElementById('admin-verify-toast-text');
+
+            if (box) {
+                box.remove();
+                const container = document.getElementById('approvals-container');
+                if (container && container.children.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center py-8 text-neutral/40 font-bold text-xs space-y-2">
+                            <span class="material-symbols-outlined text-[36px]">verified</span>
+                            <p>Semua pendaftaran & pembayaran disetujui! 🌟</p>
+                        </div>
+                    `;
+                }
+            }
+
+            if (toast && toastText) {
+                toastText.textContent = `Transaksi ditolak dan pengajuan dibatalkan.`;
+                toast.classList.remove('hidden');
+                toast.classList.add('flex');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                    toast.classList.remove('flex');
+                }, 3000);
+            }
+        };
+
+        window.refreshLogs = function() {
+            const logsContainer = document.getElementById('logs-container');
+            if (logsContainer) {
+                const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+                const newLogs = [
+                    `<p>[INFO] ${now} - Cleaned up temporary system caches (0.8MB freed).</p>`,
+                    `<p>[INFO] ${now} - Automated backup completed successfully.</p>`,
+                    `<p>[INFO] ${now} - CPU core temperature stabilized at 42°C.</p>`,
+                    `<p>[INFO] ${now} - Synchronized session cache with browser storage.</p>`
+                ];
+                
+                // Insert new logs at the beginning of the container
+                logsContainer.insertAdjacentHTML('afterbegin', newLogs[Math.floor(Math.random() * newLogs.length)]);
+                
+                // Auto scroll to top on refresh
+                logsContainer.scrollTop = 0;
+            }
+        };
     </script>
 
     <script src="components.js"></script>
